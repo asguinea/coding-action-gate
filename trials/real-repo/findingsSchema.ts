@@ -86,7 +86,7 @@ export const realRepoTrialFindingsSchema = z.object({
     .min(1)
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
   trialDate: z.string().min(1).optional(),
-  stepharborVersion: z.string().min(1).optional(),
+  codingActionGateVersion: z.string().min(1).optional(),
   repoCategory: z.enum(realRepoTrialRepoCategories),
   repoSizeCategory: z.enum(realRepoTrialRepoSizeCategories),
   languageCategories: z.array(realRepoTrialCategoryIdSchema),

@@ -5,7 +5,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { normalizeAction } from "../../src/actions/normalizeAction.js";
 import { runDecideCommand } from "../../src/cli/commands/decideCommand.js";
 import { runReadCommand } from "../../src/cli/commands/readCommand.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
 import { defaultPolicy } from "../../src/policy/defaultPolicy.js";
 import { computeSafetySignals } from "../../src/signals/computeSignals.js";
 import { relatedContextDetector } from "../../src/signals/detectors/relatedContextDetector.js";
@@ -14,7 +14,7 @@ const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-related-det-")
+    path.join(os.tmpdir(), "coding-action-gate-related-det-")
   );
   tempDirs.push(tempDir);
   return tempDir;
@@ -34,23 +34,23 @@ const baseAction = {
 const fileAction = (
   type: "edit_file" | "write_file" | "read_file",
   targetPath: string
-): StepHarborAction =>
+): CodingActionGateAction =>
   ({
     ...baseAction,
     id: `${type}-${targetPath}`,
     type,
     targetPath,
     ...(type === "edit_file" ? { diff: "@@\n-old\n+new\n" } : {})
-  }) as StepHarborAction;
+  }) as CodingActionGateAction;
 
-const runCommandAction = (): StepHarborAction => ({
+const runCommandAction = (): CodingActionGateAction => ({
   ...baseAction,
   id: "run",
   type: "run_command",
   command: "npm test"
 });
 
-const normalize = (action: StepHarborAction, cwd: string) => {
+const normalize = (action: CodingActionGateAction, cwd: string) => {
   const result = normalizeAction(action, { cwd });
 
   if (!result.ok) {
@@ -72,7 +72,7 @@ const setupService = async (cwd: string): Promise<void> => {
 
 const writeActionFile = async (
   cwd: string,
-  action: StepHarborAction
+  action: CodingActionGateAction
 ): Promise<string> => {
   const actionPath = path.join(cwd, "action.json");
 

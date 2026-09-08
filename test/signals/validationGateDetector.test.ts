@@ -6,8 +6,8 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { normalizeAction } from "../../src/actions/normalizeAction.js";
 import { runExecCommand } from "../../src/cli/commands/execCommand.js";
 import { runValidateCommand } from "../../src/cli/commands/validateCommand.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
-import type { StepHarborPolicy } from "../../src/domain/policies.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
+import type { CodingActionGatePolicy } from "../../src/domain/policies.js";
 import { defaultPolicy } from "../../src/policy/defaultPolicy.js";
 import { runGitCommand } from "../../src/git/gitExec.js";
 import { computeSafetySignals } from "../../src/signals/computeSignals.js";
@@ -24,7 +24,9 @@ vi.setConfig({
 });
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-val-gate-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-val-gate-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -53,8 +55,11 @@ const createRepo = async (branch = "feature/test"): Promise<string> => {
   const cwd = await createTempDir();
 
   await runGit(["init", "-b", branch], cwd);
-  await runGit(["config", "user.email", "stepharbor@example.test"], cwd);
-  await runGit(["config", "user.name", "StepHarbor Test"], cwd);
+  await runGit(
+    ["config", "user.email", "coding-action-gate@example.test"],
+    cwd
+  );
+  await runGit(["config", "user.name", "CodingActionGate Test"], cwd);
   await writeFile(path.join(cwd, "README.md"), "# Repo\n", "utf8");
   await runGit(["add", "README.md"], cwd);
   await runGit(["commit", "-m", "initial"], cwd);
@@ -67,7 +72,7 @@ const policyWithValidation = (
     beforeCommitCommands?: string[];
     beforePushCommands?: string[];
   } = {}
-): StepHarborPolicy => ({
+): CodingActionGatePolicy => ({
   ...defaultPolicy,
   protectedBranches: ["main", "master", "production", "release/*"],
   validation: {
@@ -179,7 +184,7 @@ const writePolicy = async (
   return policyPath;
 };
 
-const action = (command: string, cwd: string): StepHarborAction => ({
+const action = (command: string, cwd: string): CodingActionGateAction => ({
   id: `act_${command.replace(/[^a-z0-9]+/gi, "_")}`,
   type: "run_command",
   timestamp: "2026-05-02T00:00:00.000Z",
@@ -188,7 +193,7 @@ const action = (command: string, cwd: string): StepHarborAction => ({
   cwd
 });
 
-const readAction = (cwd: string): StepHarborAction => ({
+const readAction = (cwd: string): CodingActionGateAction => ({
   id: "read",
   type: "read_file",
   timestamp: "2026-05-02T00:00:00.000Z",
@@ -200,7 +205,7 @@ const readAction = (cwd: string): StepHarborAction => ({
 const computeSignals = async (
   command: string,
   cwd: string,
-  policy: StepHarborPolicy,
+  policy: CodingActionGatePolicy,
   providedSignals = {},
   sessionId = "s1"
 ) => {

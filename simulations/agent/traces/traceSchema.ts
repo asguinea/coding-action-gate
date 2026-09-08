@@ -3,7 +3,7 @@ import {
   agentSimulationBaselineOutcomeCategories,
   agentSimulationLoopShapes,
   agentSimulationOutcomeLabels,
-  agentSimulationResponseToStepHarborValues,
+  agentSimulationResponseToCodingActionGateValues,
   agentSimulationScenarioFamilies,
   knownAgentSimulationUncertaintyDriverIds
 } from "../personaScenarioSchema.js";
@@ -54,7 +54,7 @@ export const agentTraceIntegrationModeValues = [
 export const agentTraceEventKindValues = [
   "task_presented",
   "proposed_action",
-  "stepharbor_decision",
+  "codingactiongate_decision",
   "uncertainty_profile_summary",
   "uncertainty_reduction_plan",
   "advisory_router_result",
@@ -70,8 +70,8 @@ export const agentTraceEventKindValues = [
 export const agentTraceActorValues = [
   "persona",
   "coding_agent",
-  "stepharbor_runtime",
-  "stepharbor_uncertainty_advisory",
+  "codingactiongate_runtime",
+  "codingactiongate_uncertainty_advisory",
   "human_reviewer",
   "simulation_harness_future",
   "baseline_evaluator_future"
@@ -299,7 +299,7 @@ const proposedActionEventSchema = traceEventBaseSchema.extend({
   payload: proposedActionPayloadSchema
 });
 
-export const stepHarborDecisionPayloadSchema = z.object({
+export const codingActionGateDecisionPayloadSchema = z.object({
   productionDecision: z.enum(agentTraceProductionDecisionValues),
   primaryReasonCategory: categoryIdSchema,
   supportingSignalCategories: z.array(categoryIdSchema),
@@ -308,9 +308,9 @@ export const stepHarborDecisionPayloadSchema = z.object({
   decisionIsAuthoritative: z.literal(true)
 });
 
-const stepHarborDecisionEventSchema = traceEventBaseSchema.extend({
-  eventKind: z.literal("stepharbor_decision"),
-  payload: stepHarborDecisionPayloadSchema
+const codingActionGateDecisionEventSchema = traceEventBaseSchema.extend({
+  eventKind: z.literal("codingactiongate_decision"),
+  payload: codingActionGateDecisionPayloadSchema
 });
 
 export const uncertaintyProfileSummaryPayloadSchema = z.object({
@@ -356,7 +356,9 @@ const advisoryRouterResultEventSchema = traceEventBaseSchema.extend({
 const agentFollowupActionEventSchema = traceEventBaseSchema.extend({
   eventKind: z.literal("agent_followup_action"),
   payload: z.object({
-    agentResponseCategory: z.enum(agentSimulationResponseToStepHarborValues),
+    agentResponseCategory: z.enum(
+      agentSimulationResponseToCodingActionGateValues
+    ),
     uncertaintyReduced: z.boolean(),
     followupActionCategory: z.enum(agentTraceActionCategoryValues),
     rawActionIncluded: z.literal(false),
@@ -368,7 +370,9 @@ const retryDecisionEventSchema = traceEventBaseSchema.extend({
   eventKind: z.literal("retry_decision"),
   payload: z.object({
     loopShape: z.enum(agentSimulationLoopShapes),
-    agentResponseCategory: z.enum(agentSimulationResponseToStepHarborValues),
+    agentResponseCategory: z.enum(
+      agentSimulationResponseToCodingActionGateValues
+    ),
     retryWouldBeAttempted: z.boolean(),
     retryExecuted: z.literal(false)
   })
@@ -423,7 +427,7 @@ const traceReviewCompletedEventSchema = traceEventBaseSchema.extend({
 export const agentTraceEventSchema = z.discriminatedUnion("eventKind", [
   taskPresentedEventSchema,
   proposedActionEventSchema,
-  stepHarborDecisionEventSchema,
+  codingActionGateDecisionEventSchema,
   uncertaintyProfileSummaryEventSchema,
   uncertaintyReductionPlanEventSchema,
   advisoryRouterResultEventSchema,
@@ -471,8 +475,8 @@ export const agentActionTraceSchema = z.object({
   baselineReadiness: z.object({
     noGuard: baselineSlotSchema,
     policyOnlyGuard: baselineSlotSchema,
-    stepHarborDeterministic: baselineSlotSchema,
-    stepHarborAdvisoryUq: baselineSlotSchema
+    codingActionGateDeterministic: baselineSlotSchema,
+    codingActionGateAdvisoryUq: baselineSlotSchema
   }),
   calibrationReadiness: z.object({
     eligibleForFutureCalibration: z.boolean(),

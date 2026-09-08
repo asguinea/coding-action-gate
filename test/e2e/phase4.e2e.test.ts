@@ -29,7 +29,9 @@ vi.setConfig({
 });
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-p4-e2e-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-p4-e2e-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -58,10 +60,17 @@ const createRepo = async (branch = "feature/e2e"): Promise<string> => {
   const cwd = await createTempDir();
 
   await runGit(["init", "-b", branch], cwd);
-  await runGit(["config", "user.email", "stepharbor@example.test"], cwd);
-  await runGit(["config", "user.name", "StepHarbor Test"], cwd);
+  await runGit(
+    ["config", "user.email", "coding-action-gate@example.test"],
+    cwd
+  );
+  await runGit(["config", "user.name", "CodingActionGate Test"], cwd);
   await writeFile(path.join(cwd, "README.md"), "# Repo\n", "utf8");
-  await writeFile(path.join(cwd, ".gitignore"), ".stepharbor/\n", "utf8");
+  await writeFile(
+    path.join(cwd, ".gitignore"),
+    ".coding-action-gate/\n",
+    "utf8"
+  );
   await runGit(["add", "README.md", ".gitignore"], cwd);
   await runGit(["commit", "-m", "initial"], cwd);
 
@@ -345,7 +354,7 @@ describe("Phase 4 end-to-end Git, validation, and landing flow", () => {
 
     const validationPath = path.join(
       cwd,
-      ".stepharbor/validation/session_s1.jsonl"
+      ".coding-action-gate/validation/session_s1.jsonl"
     );
     const records = await readJsonl(validationPath);
     const serialized = JSON.stringify(records);
@@ -397,7 +406,7 @@ describe("Phase 4 end-to-end Git, validation, and landing flow", () => {
     );
   });
 
-  it("stepharbor exec remains dry-run and validate executes only after authorization", async () => {
+  it("coding-action-gate exec remains dry-run and validate executes only after authorization", async () => {
     const cwd = await createRepo("feature/e2e");
     const execOutput = await exec("git push origin main", cwd);
     const blockedValidationPolicy = path.join(cwd, "block-validation.yml");
@@ -464,7 +473,7 @@ describe("Phase 4 end-to-end Git, validation, and landing flow", () => {
       }
     });
     expect(help.exitCode).toBe(0);
-    expect(help.stdout).toContain("stepharbor validate <kind>");
+    expect(help.stdout).toContain("coding-action-gate validate <kind>");
     expect(help.stdout).toContain("--validation-dir <path>");
     expect(help.stdout).toContain("--timeout-ms <number>");
     expect(help.stdout).toContain("--max-output-bytes <number>");

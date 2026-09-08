@@ -609,7 +609,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     report = {
         "schema_version": "risk-controlled-intervention-batch-9a-stronger-models.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Batch 9A benchmark modeling diagnostics only; not production StepHarbor validation, conformal guarantee, or final report result.",
+        "claim_boundary": "Batch 9A benchmark modeling diagnostics only; not production CodingActionGate validation, conformal guarantee, or final report result.",
         "dataset_paths": {"prefix": str(PREFIX_PATH.relative_to(WORKSPACE)), "repeated_splits": str(REPEATED_SPLITS.relative_to(WORKSPACE)), "schema_lock": str(SCHEMA_LOCK.relative_to(WORKSPACE))},
         "seeds": seeds,
         "models_requested": models,
@@ -660,7 +660,7 @@ def markdown(report: dict[str, Any]) -> str:
     lines = [
         "# Batch 9A Stronger Models and Feature Ablations",
         "",
-        "Preliminary benchmark diagnostics only. These are not production StepHarbor validation results and do not establish conformal or distribution-shift guarantees.",
+        "Preliminary benchmark diagnostics only. These are not production CodingActionGate validation results and do not establish conformal or distribution-shift guarantees.",
         "",
         "## Executive Summary",
         "",
@@ -682,7 +682,7 @@ def markdown(report: dict[str, Any]) -> str:
     lines.extend(["", "## Do stronger models generalize?", ""])
     for key, value in top_configs(report, "auroc", 10):
         lines.append(f"- `{key}`: AUROC `{value.get('test_auroc', {}).get('mean')}`, train/test AUROC gap `{value.get('train_test_auroc_gap', {}).get('mean')}`, overfit flag rate `{value.get('overfit_flag_rate', {}).get('mean')}`")
-    lines.extend(["", "## Reviewer-facing interpretation", "", "Findings are preliminary Batch 9A evidence on the extraction-supported verified subset. Stronger models should be interpreted through repeated-split variance, feature ablations, and overfitting diagnostics.", "", "## Caveats", "", "- No raw semantic text, embeddings, or LLM-judge features are used.", "- The target is a benchmark proxy derived from CodeTraceBench annotations.", "- Unsupported layouts and missing artifact paths remain documented caveats.", "- This is benchmark-level evidence, not production StepHarbor validation.", "", "## Recommended next batch", "", recommendation(report)])
+    lines.extend(["", "## Reviewer-facing interpretation", "", "Findings are preliminary Batch 9A evidence on the extraction-supported verified subset. Stronger models should be interpreted through repeated-split variance, feature ablations, and overfitting diagnostics.", "", "## Caveats", "", "- No raw semantic text, embeddings, or LLM-judge features are used.", "- The target is a benchmark proxy derived from CodeTraceBench annotations.", "- Unsupported layouts and missing artifact paths remain documented caveats.", "- This is benchmark-level evidence, not production CodingActionGate validation.", "", "## Recommended next batch", "", recommendation(report)])
     return "\n".join(lines)
 
 

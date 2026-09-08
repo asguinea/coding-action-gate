@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
 import type { SafetySignalDetectorResult } from "../signals/detectors/index.js";
 import type { DecisionOutput, DecisionPosture } from "../domain/decisions.js";
 import type { DoctorResult } from "../doctor/doctorTypes.js";
@@ -49,12 +49,12 @@ export const recordAnalyticsEvent = async <
       ...(input.cwd !== undefined ? { cwd: input.cwd } : {})
     });
   } catch {
-    // Analytics must never affect StepHarbor command behavior.
+    // Analytics must never affect CodingActionGate command behavior.
   }
 };
 
 const analyticsActionType = (
-  action: NormalizedStepHarborAction
+  action: NormalizedCodingActionGateAction
 ): AnalyticsActionType => {
   if (action.normalized.isGitLikeCommand === true) {
     return "git";
@@ -97,7 +97,7 @@ const riskBucketForDecision = (
 
 export const recordDecisionCreated = async (input: {
   cwd?: string;
-  action: NormalizedStepHarborAction;
+  action: NormalizedCodingActionGateAction;
   decision: DecisionOutput;
   detectorResults?: SafetySignalDetectorResult[];
 }): Promise<void> =>

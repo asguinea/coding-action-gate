@@ -3,8 +3,8 @@ import path from "node:path";
 import { isMap, parseDocument } from "yaml";
 import { ZodError } from "zod";
 import {
-  stepHarborPolicySchema,
-  type StepHarborPolicy
+  codingActionGatePolicySchema,
+  type CodingActionGatePolicy
 } from "../domain/policies.js";
 import { defaultPolicy } from "./defaultPolicy.js";
 import { findPolicyFile } from "./policyDiscovery.js";
@@ -151,8 +151,10 @@ const parseYamlPolicy = (
 const validatePolicy = (
   input: unknown,
   filePath: string
-): StepHarborPolicy | PolicyLoadError => {
-  const result = stepHarborPolicySchema.safeParse(normalizePolicyInput(input));
+): CodingActionGatePolicy | PolicyLoadError => {
+  const result = codingActionGatePolicySchema.safeParse(
+    normalizePolicyInput(input)
+  );
 
   if (result.success) {
     return result.data;
@@ -237,7 +239,7 @@ export const loadPolicy = async (
       ok: false,
       error: createPolicyLoadError(
         "POLICY_FILE_NOT_FOUND",
-        `No StepHarbor policy file found in ${path.resolve(cwd)}`
+        `No CodingActionGate policy file found in ${path.resolve(cwd)}`
       )
     };
   }

@@ -123,7 +123,7 @@ export interface FeedbackBundle {
     nodeVersion: string;
     platform: string;
     arch: string;
-    stepharborVersion: string;
+    codingActionGateVersion: string;
   };
   doctor: Pick<DoctorResult, "ok" | "summary"> & {
     checks: Array<{

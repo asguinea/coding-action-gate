@@ -244,22 +244,24 @@ export const buildLiveEmptyStateHints = (
     case "audit":
       return options.defaultPolicy === true
         ? [
-            'stepharbor exec "git status" --cwd .',
-            "stepharbor doctor --cwd .",
-            "stepharbor init --template node"
+            'coding-action-gate exec "git status" --cwd .',
+            "coding-action-gate doctor --cwd .",
+            "coding-action-gate init --template node"
           ]
         : [
-            'stepharbor exec "git status" --cwd .',
-            "stepharbor doctor --cwd .",
-            "stepharbor read README.md --session-id default --json"
+            'coding-action-gate exec "git status" --cwd .',
+            "coding-action-gate doctor --cwd .",
+            "coding-action-gate read README.md --session-id default --json"
           ];
     case "deferred":
-      return ["stepharbor decide <edit-action.json> --session-id default"];
+      return [
+        "coding-action-gate decide <edit-action.json> --session-id default"
+      ];
     case "observations":
-      return ["stepharbor read README.md --session-id default --json"];
+      return ["coding-action-gate read README.md --session-id default --json"];
     case "validation":
       return [
-        'stepharbor validate other --command "node -e \\"process.exit(0)\\"" --json'
+        'coding-action-gate validate other --command "node -e \\"process.exit(0)\\"" --json'
       ];
   }
 };

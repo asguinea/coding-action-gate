@@ -15,7 +15,9 @@ import { createValidationResultStore } from "../../src/validation/validationResu
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-validate-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-validate-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -76,13 +78,13 @@ describe("validate command", () => {
       type: "validation_command",
       proposedBy: "agent",
       origin: {
-        toolId: "stepharbor-cli"
+        toolId: "coding-action-gate-cli"
       },
       command: "npm test",
       cwd,
       validationKind: "test",
       raw: {
-        source: "stepharbor validate",
+        source: "coding-action-gate validate",
         command: "npm test",
         kind: "test"
       }

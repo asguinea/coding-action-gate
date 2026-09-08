@@ -2,13 +2,13 @@ import { describe, expect, it } from "vitest";
 import { normalizeAction } from "../../src/actions/normalizeAction.js";
 import { parseAndNormalizeAction } from "../../src/actions/parseAction.js";
 import { evaluateDestructiveAction } from "../../src/destructive/destructiveHeuristics.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
-import type { StepHarborPolicy } from "../../src/domain/policies.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
+import type { CodingActionGatePolicy } from "../../src/domain/policies.js";
 import deleteFileFixture from "../../src/fixtures/actions/delete-file.json" with { type: "json" };
 import editFileFixture from "../../src/fixtures/actions/edit-file.json" with { type: "json" };
 import writeFileFixture from "../../src/fixtures/actions/write-file.json" with { type: "json" };
 
-const policy: StepHarborPolicy = {
+const policy: CodingActionGatePolicy = {
   version: "test",
   thresholds: {
     largeDiffFiles: 8,
@@ -127,13 +127,13 @@ describe("evaluateDestructiveAction", () => {
 
   it("classifies targetPaths count above threshold as broad_multi_file_change", () => {
     const editAction = {
-      ...(editFileFixture as unknown as StepHarborAction),
+      ...(editFileFixture as unknown as CodingActionGateAction),
       diffStats: {
         files: 1,
         addedLines: 1,
         deletedLines: 1
       }
-    } as StepHarborAction;
+    } as CodingActionGateAction;
     const normalized = normalizeAction(editAction, { cwd: process.cwd() });
 
     expect(normalized.ok).toBe(true);

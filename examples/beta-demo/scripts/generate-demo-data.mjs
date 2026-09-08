@@ -157,7 +157,7 @@ const runGit = async (args, workdir) => {
   });
 };
 
-const runStepHarbor = async (cliPath, args, workdir, allowedExitCodes) => {
+const runCodingActionGate = async (cliPath, args, workdir, allowedExitCodes) => {
   const result = await runProcess(process.execPath, [cliPath, ...args], {
     cwd: workdir,
     allowedExitCodes
@@ -186,16 +186,16 @@ const copyRepoFixture = async (paths, clean) => {
   });
   await writeFile(
     path.join(paths.workdir, ".env"),
-    "STEPHARBOR_FAKE_DEMO_TOKEN=sk-abcdefghijklmnopqrstuvwxyz1234567890\n",
+    "CODING_ACTION_GATE_FAKE_DEMO_TOKEN=sk-abcdefghijklmnopqrstuvwxyz1234567890\n",
     "utf8"
   );
-  await writeFile(path.join(paths.workdir, ".gitignore"), ".stepharbor/\n", "utf8");
+  await writeFile(path.join(paths.workdir, ".gitignore"), ".coding-action-gate/\n", "utf8");
 };
 
 const initializeGitRepo = async (workdir) => {
   await runGit(["init", "-b", "feature/beta-demo"], workdir);
-  await runGit(["config", "user.email", "stepharbor-demo@example.test"], workdir);
-  await runGit(["config", "user.name", "StepHarbor Beta Demo"], workdir);
+  await runGit(["config", "user.email", "coding-action-gate-demo@example.test"], workdir);
+  await runGit(["config", "user.name", "CodingActionGate Beta Demo"], workdir);
   await runGit(["add", "README.md", "src/service.ts", "src/service.test.ts", "auth/service.ts", ".gitignore"], workdir);
   await runGit(["commit", "-m", "initial beta demo fixture"], workdir);
 };
@@ -222,7 +222,7 @@ export const generateDemoData = async (input = {}) => {
 
   const steps = [];
   const runStep = async (label, args, allowedExitCodes) => {
-    const output = await runStepHarbor(paths.cliPath, args, paths.workdir, allowedExitCodes);
+    const output = await runCodingActionGate(paths.cliPath, args, paths.workdir, allowedExitCodes);
     steps.push({
       label,
       decision: output.decision?.decision,
@@ -279,7 +279,7 @@ export const generateDemoData = async (input = {}) => {
   );
 
   await runStep(
-    "stepharbor exec rm -rf . dry-run",
+    "coding-action-gate exec rm -rf . dry-run",
     ["exec", "rm -rf .", ...base],
     [4]
   );
@@ -317,7 +317,7 @@ export const generateDemoData = async (input = {}) => {
 };
 
 const printSummary = (result) => {
-  console.log("StepHarbor beta demo data generated.");
+  console.log("CodingActionGate beta demo data generated.");
   console.log("");
   console.log(`Workdir: ${result.paths.workdir}`);
   console.log(`Session: ${defaultSessionId}`);
@@ -339,7 +339,7 @@ const printSummary = (result) => {
   console.log("");
   console.log("Or:");
   console.log(`  cd ${result.paths.workdir}`);
-  console.log("  stepharbor ui");
+  console.log("  coding-action-gate ui");
 };
 
 const main = async () => {

@@ -94,8 +94,8 @@ class Batch9HTrajectoryBurdenTests(unittest.TestCase):
         self.assertEqual(out[0]["group"], "all")
 
     def test_claim_checker_catches_forbidden(self):
-        result = claim.check_text("This validates StepHarbor and prevents failures.")
-        self.assertIn("validates StepHarbor", result["forbidden_phrase_hits"])
+        result = claim.check_text("This validates CodingActionGate and prevents failures.")
+        self.assertIn("validates CodingActionGate", result["forbidden_phrase_hits"])
         self.assertIn("prevents failures", result["forbidden_phrase_hits"])
 
     def test_claim_checker_accepts_safe_text(self):

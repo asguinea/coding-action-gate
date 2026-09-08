@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { stepHarborPolicySchema } from "../../src/domain/policies.js";
+import { codingActionGatePolicySchema } from "../../src/domain/policies.js";
 
-describe("StepHarbor policies", () => {
+describe("CodingActionGate policies", () => {
   it("parses a basic policy object", () => {
-    const result = stepHarborPolicySchema.safeParse({
+    const result = codingActionGatePolicySchema.safeParse({
       version: "1",
       workspace: {
         allowedRoots: ["."],
@@ -48,7 +48,7 @@ describe("StepHarbor policies", () => {
   });
 
   it("rejects a policy rule with an invalid decision", () => {
-    const result = stepHarborPolicySchema.safeParse({
+    const result = codingActionGatePolicySchema.safeParse({
       version: "1",
       rules: [
         {

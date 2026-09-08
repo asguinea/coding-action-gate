@@ -478,7 +478,7 @@ def main() -> int:
         "report_working_title": "Risk-Controlled Intervention in Coding-Agent Trajectories",
         "dataset": "NJU-LINK/CodeTraceBench",
         "claim_boundary": (
-            "Batch 0 dataset audit only; not production StepHarbor validation, "
+            "Batch 0 dataset audit only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "generated_at": datetime.now(timezone.utc).isoformat(),

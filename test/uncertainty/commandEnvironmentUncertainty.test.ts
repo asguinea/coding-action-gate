@@ -4,7 +4,7 @@ import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { runDecideCommand } from "../../src/cli/commands/decideCommand.js";
 import { runExecCommand } from "../../src/cli/commands/execCommand.js";
-import type { StepHarborSignals } from "../../src/domain/signals.js";
+import type { CodingActionGateSignals } from "../../src/domain/signals.js";
 import { buildUncertaintyProfile } from "../../src/uncertainty/uncertaintyProfileBuilder.js";
 import { routeUncertainty } from "../../src/uncertainty/uncertaintyRouter.js";
 import safeReadmeEdit from "../../examples/actions/safe-readme-edit.json" with { type: "json" };
@@ -13,7 +13,7 @@ const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-command-env-")
+    path.join(os.tmpdir(), "coding-action-gate-command-env-")
   );
   tempDirs.push(tempDir);
   return tempDir;
@@ -25,10 +25,10 @@ afterEach(async () => {
   );
 });
 
-const profileFor = (signals: StepHarborSignals) =>
+const profileFor = (signals: CodingActionGateSignals) =>
   buildUncertaintyProfile({ signals });
 
-const stepKinds = (signals: StepHarborSignals) =>
+const stepKinds = (signals: CodingActionGateSignals) =>
   profileFor(signals).uncertaintyReductionPlan?.steps.map(
     (step) => step.kind
   ) ?? [];
@@ -73,7 +73,7 @@ describe("command and environment uncertainty", () => {
   });
 
   it("maps unknown package scripts to package script inspection", () => {
-    const signals: StepHarborSignals = {
+    const signals: CodingActionGateSignals = {
       commandRiskScore: "medium",
       commandCategory: "local_write",
       networkExposure: true

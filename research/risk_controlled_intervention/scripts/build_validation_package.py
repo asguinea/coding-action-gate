@@ -235,7 +235,7 @@ def build_validation_report(
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "validation_key": key,
         "claim_boundary": (
-            "Manual validation package only; not production StepHarbor validation, "
+            "Manual validation package only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "trajectory_metadata": {
@@ -289,7 +289,7 @@ def markdown_report(report: dict[str, Any]) -> str:
         "",
         "This package supports manual validation for the risk-controlled intervention report workspace.",
         "",
-        "This is not production StepHarbor validation, not a conformal claim, and not a production statistical guarantee.",
+        "This is not production CodingActionGate validation, not a conformal claim, and not a production statistical guarantee.",
         "",
         "## Trajectory Metadata",
         "",

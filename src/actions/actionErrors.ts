@@ -1,4 +1,4 @@
-import type { StepHarborAction } from "../domain/actions.js";
+import type { CodingActionGateAction } from "../domain/actions.js";
 
 export type ActionParseErrorCode =
   | "ACTION_INVALID_JSON"
@@ -22,7 +22,7 @@ export interface ActionNormalizationError {
 }
 
 export interface NormalizedActionMetadata {
-  actionType: StepHarborAction["type"];
+  actionType: CodingActionGateAction["type"];
   targetPath?: string;
   targetPaths?: string[];
   absoluteTargetPath?: string;
@@ -39,7 +39,7 @@ export interface NormalizedActionMetadata {
   isValidationLikeCommand?: boolean;
 }
 
-export type NormalizedStepHarborAction = StepHarborAction & {
+export type NormalizedCodingActionGateAction = CodingActionGateAction & {
   raw: unknown;
   normalized: NormalizedActionMetadata;
 };
@@ -47,7 +47,7 @@ export type NormalizedStepHarborAction = StepHarborAction & {
 export type ParsedActionResult =
   | {
       ok: true;
-      action: StepHarborAction;
+      action: CodingActionGateAction;
     }
   | {
       ok: false;
@@ -57,7 +57,7 @@ export type ParsedActionResult =
 export type NormalizedActionResult =
   | {
       ok: true;
-      action: NormalizedStepHarborAction;
+      action: NormalizedCodingActionGateAction;
     }
   | {
       ok: false;

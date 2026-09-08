@@ -1,9 +1,12 @@
 import path from "node:path";
 
 import type { AuditRecord } from "../domain/audit.js";
-import type { StepHarborAction } from "../domain/actions.js";
-import type { StepHarborPolicy, PolicyTraceEntry } from "../domain/policies.js";
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { CodingActionGateAction } from "../domain/actions.js";
+import type {
+  CodingActionGatePolicy,
+  PolicyTraceEntry
+} from "../domain/policies.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 import type { DeferredActionRecord } from "../defer/deferredActionTypes.js";
 import type { ValidationResultRecord } from "../validation/validationTypes.js";
 import type { GitStateSummary } from "../uiAdapter/uiAdapterTypes.js";
@@ -20,7 +23,7 @@ import type {
   FeedbackValidationSummary
 } from "./feedbackTypes.js";
 
-const safeSignalKeys: Array<keyof StepHarborSignals> = [
+const safeSignalKeys: Array<keyof CodingActionGateSignals> = [
   "pathSensitivity",
   "commandRiskScore",
   "commandCategory",
@@ -64,15 +67,16 @@ const safeSignalKeys: Array<keyof StepHarborSignals> = [
   "environmentClassification"
 ];
 
-const commandForAction = (action: StepHarborAction): string | undefined =>
-  "command" in action ? action.command : undefined;
+const commandForAction = (
+  action: CodingActionGateAction
+): string | undefined => ("command" in action ? action.command : undefined);
 
 const validationKindForAction = (
-  action: StepHarborAction
+  action: CodingActionGateAction
 ): string | undefined =>
   action.type === "validation_command" ? action.validationKind : undefined;
 
-const targetPathsForAction = (action: StepHarborAction): string[] =>
+const targetPathsForAction = (action: CodingActionGateAction): string[] =>
   "targetPath" in action ? [action.targetPath] : [];
 
 const pathSummaries = (paths: string[]): FeedbackPathSummary[] =>
@@ -111,7 +115,7 @@ export const getDetectorIds = (record: AuditRecord): string[] => {
 };
 
 export const summarizeSignals = (
-  signals: StepHarborSignals | undefined
+  signals: CodingActionGateSignals | undefined
 ): Record<string, unknown> => {
   const summary: Record<string, unknown> = {};
 
@@ -235,7 +239,7 @@ export const summarizeValidationRecord = (
 });
 
 export const summarizePolicy = (
-  policy: StepHarborPolicy,
+  policy: CodingActionGatePolicy,
   source: LoadedPolicySource
 ): FeedbackPolicySummary => ({
   source:

@@ -12,8 +12,8 @@ export const agentBaselineComparisonSchemaVersion =
 export const agentBaselineComparisonStrategyValues = [
   "no_guard",
   "policy_only_guard",
-  "deterministic_stepharbor",
-  "stepharbor_with_advisory_uq"
+  "deterministic_codingactiongate",
+  "codingactiongate_with_advisory_uq"
 ] as const;
 
 export const agentBaselineComparisonSourceValues = [
@@ -102,9 +102,9 @@ export const baselineDecisionDifferenceCategoryValues = [
   "policy_misses_uncertainty",
   "policy_misses_context_gap",
   "policy_misses_freshness_gap",
-  "stepharbor_defers_for_missing_evidence",
-  "stepharbor_escalates_sensitive_action",
-  "stepharbor_blocks_hard_boundary",
+  "codingactiongate_defers_for_missing_evidence",
+  "codingactiongate_escalates_sensitive_action",
+  "codingactiongate_blocks_hard_boundary",
   "advisory_uq_adds_explanation",
   "advisory_uq_adds_reduction_guidance",
   "insufficient_context_to_judge"
@@ -266,7 +266,7 @@ export const agentBaselineComparisonClaimBoundariesSchema = z.object({
   realReviewCompleted: z.literal(false),
   actualRuntimeDecision: z.literal(false),
   realAgentExecution: z.literal(false),
-  realStepHarborExecution: z.literal(false),
+  realCodingActionGateExecution: z.literal(false),
   realValidationResult: z.literal(false),
   realWorldResult: z.literal(false),
   calibrationDatasetCreated: z.literal(false),
@@ -300,17 +300,17 @@ export const baselineComparisonRecordSchema = z.object({
     policy_only_guard: strategyOutcomeSchema.extend({
       strategyKind: z.literal("policy_only_guard")
     }),
-    deterministic_stepharbor: strategyOutcomeSchema.extend({
-      strategyKind: z.literal("deterministic_stepharbor")
+    deterministic_codingactiongate: strategyOutcomeSchema.extend({
+      strategyKind: z.literal("deterministic_codingactiongate")
     }),
-    stepharbor_with_advisory_uq: advisoryStrategyOutcomeSchema.extend({
-      strategyKind: z.literal("stepharbor_with_advisory_uq")
+    codingactiongate_with_advisory_uq: advisoryStrategyOutcomeSchema.extend({
+      strategyKind: z.literal("codingactiongate_with_advisory_uq")
     })
   }),
   decisionComparison: z.object({
     noGuardWouldProceed: z.enum(baselineBooleanCategoryValues),
     policyOnlyWouldIntervene: z.enum(baselineBooleanCategoryValues),
-    deterministicStepHarborDecision: z.enum(
+    deterministicCodingActionGateDecision: z.enum(
       baselineSyntheticDecisionCategoryValues
     ),
     advisoryUqDecision: z.enum(baselineSyntheticDecisionCategoryValues),
@@ -327,7 +327,7 @@ export const baselineComparisonRecordSchema = z.object({
     ),
     reductionStepsRelevant: z.array(z.enum(uncertaintyReductionStepKinds)),
     policyOnlyCapturesUncertainty: z.enum(baselineBooleanCategoryValues),
-    deterministicStepHarborCapturesUncertainty: z.enum(
+    deterministicCodingActionGateCapturesUncertainty: z.enum(
       baselineBooleanCategoryValues
     ),
     advisoryUqAddsUsefulMetadata: z.enum(baselineBooleanCategoryValues),
@@ -341,11 +341,11 @@ export const baselineComparisonRecordSchema = z.object({
   safetyComparison: z.object({
     unsafeProceedRiskNoGuard: z.enum(baselineRiskCategoryValues),
     unsafeProceedRiskPolicyOnly: z.enum(baselineRiskCategoryValues),
-    unsafeProceedRiskDeterministicStepHarbor: z.enum(
+    unsafeProceedRiskDeterministicCodingActionGate: z.enum(
       baselineRiskCategoryValues
     ),
     unsafeProceedRiskAdvisoryUq: z.enum(baselineRiskCategoryValues),
-    unsafePreventedByStepHarbor: z.enum(baselineBooleanCategoryValues),
+    unsafePreventedByCodingActionGate: z.enum(baselineBooleanCategoryValues),
     hardBoundaryCaptured: z.enum(baselineBooleanCategoryValues),
     prematureActionPrevented: z.enum(baselineBooleanCategoryValues),
     sensitiveActionRoutedToReview: z.enum(baselineBooleanCategoryValues),
@@ -354,7 +354,9 @@ export const baselineComparisonRecordSchema = z.object({
   frictionComparison: z.object({
     noGuardFriction: z.enum(baselineFrictionCategoryValues),
     policyOnlyFriction: z.enum(baselineFrictionCategoryValues),
-    deterministicStepHarborFriction: z.enum(baselineFrictionCategoryValues),
+    deterministicCodingActionGateFriction: z.enum(
+      baselineFrictionCategoryValues
+    ),
     advisoryUqFriction: z.enum(baselineFrictionCategoryValues),
     deferFrictionCategory: z.enum(baselineFrictionCategoryValues),
     escalateFrictionCategory: z.enum(baselineFrictionCategoryValues),
@@ -364,7 +366,9 @@ export const baselineComparisonRecordSchema = z.object({
   }),
   coverageComparison: z.object({
     coveredByPolicyOnly: z.enum(baselineBooleanCategoryValues),
-    coveredByDeterministicStepHarbor: z.enum(baselineBooleanCategoryValues),
+    coveredByDeterministicCodingActionGate: z.enum(
+      baselineBooleanCategoryValues
+    ),
     coveredByAdvisoryUq: z.enum(baselineBooleanCategoryValues),
     missingCoverageCategories: z.array(categoryIdSchema),
     futureCoverageNeed: z.enum(baselineCoverageNeedCategoryValues),

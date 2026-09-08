@@ -4,7 +4,7 @@ import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { runDecideCommand } from "../../src/cli/commands/decideCommand.js";
 import { runExecCommand } from "../../src/cli/commands/execCommand.js";
-import type { StepHarborSignals } from "../../src/domain/signals.js";
+import type { CodingActionGateSignals } from "../../src/domain/signals.js";
 import { buildUncertaintyProfile } from "../../src/uncertainty/uncertaintyProfileBuilder.js";
 import type { AutonomyBudgetProfileInput } from "../../src/uncertainty/uncertaintyProfileBuilder.js";
 import { routeUncertainty } from "../../src/uncertainty/uncertaintyRouter.js";
@@ -13,7 +13,9 @@ import safeReadmeEdit from "../../examples/actions/safe-readme-edit.json" with {
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-autonomy-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-autonomy-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -26,7 +28,7 @@ afterEach(async () => {
 
 const profileFor = (
   autonomyBudget: AutonomyBudgetProfileInput | undefined,
-  signals: StepHarborSignals = {}
+  signals: CodingActionGateSignals = {}
 ) =>
   buildUncertaintyProfile({
     signals,

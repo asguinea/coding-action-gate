@@ -73,7 +73,7 @@ def run_deciles(score_rows: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "schema_version": "risk-controlled-intervention-repeated-score-deciles.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Repeated score-ranking diagnostic only; not production StepHarbor guarantees.",
+        "claim_boundary": "Repeated score-ranking diagnostic only; not production CodingActionGate guarantees.",
         "decile_results": results,
     }
 

@@ -37,7 +37,7 @@ export const realRepoTrialIntakePacketSchema = z.object({
   repoSizeCategory: z.enum(realRepoTrialRepoSizeCategories),
   languageCategories: z.array(realRepoTrialCategoryIdSchema),
   frameworkCategories: z.array(realRepoTrialCategoryIdSchema).optional(),
-  stepharborVersion: z.string().min(1).optional(),
+  codingActionGateVersion: z.string().min(1).optional(),
   privacyReview: z.object({
     reviewed: z.boolean(),
     safeToSummarize: z.boolean(),

@@ -11,7 +11,7 @@ import {
 } from "../../simulations/agent/fixtures/fixtureSchema.js";
 import {
   agentSimulationLoopShapes,
-  agentSimulationResponseToStepHarborValues,
+  agentSimulationResponseToCodingActionGateValues,
   knownAgentSimulationUncertaintyDriverIds,
   validateAgentSimulationMatrixManifest,
   validateAgentSimulationPersona,
@@ -195,7 +195,7 @@ describe("agent simulation runner", () => {
 
     for (const run of builtRuns) {
       expect(run.claimBoundaries.actualRuntimeDecision).toBe(false);
-      expect(run.claimBoundaries.realStepHarborExecution).toBe(false);
+      expect(run.claimBoundaries.realCodingActionGateExecution).toBe(false);
       expect(run.notes.join(" ")).toContain("Scripted category output");
     }
   });
@@ -278,7 +278,7 @@ describe("agent simulation runner", () => {
     for (const run of await loadRuns()) {
       loopShapes.add(run.loopShape);
       expect(agentSimulationLoopShapes).toContain(run.loopShape);
-      expect(agentSimulationResponseToStepHarborValues).toContain(
+      expect(agentSimulationResponseToCodingActionGateValues).toContain(
         run.scriptedAgentResponse
       );
       expect([
@@ -342,8 +342,8 @@ describe("agent simulation runner", () => {
       for (const slot of [
         run.baselineReadiness.noGuard,
         run.baselineReadiness.policyOnlyGuard,
-        run.baselineReadiness.stepHarborDeterministic,
-        run.baselineReadiness.stepHarborAdvisoryUq
+        run.baselineReadiness.codingActionGateDeterministic,
+        run.baselineReadiness.codingActionGateAdvisoryUq
       ]) {
         expect(agentTraceBaselineStatusValues).toContain(slot.status);
         expect(slot.status).not.toBe("not_applicable");
@@ -393,7 +393,7 @@ describe("agent simulation runner", () => {
       expect(run.claimBoundaries).toEqual({
         actualRuntimeDecision: false,
         realAgentExecution: false,
-        realStepHarborExecution: false,
+        realCodingActionGateExecution: false,
         realValidationResult: false,
         realWorldResult: false,
         conformalGuarantee: false

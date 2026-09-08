@@ -262,7 +262,7 @@ export const agentCalibrationRecordClaimBoundariesSchema = z.object({
   realCalibrationRecord: z.literal(false),
   realReviewedTrace: z.literal(false),
   realAgentExecution: z.literal(false),
-  realStepHarborExecution: z.literal(false),
+  realCodingActionGateExecution: z.literal(false),
   realValidationResult: z.literal(false),
   realWorldResult: z.literal(false),
   calibrationDatasetCreated: z.literal(false),
@@ -356,7 +356,7 @@ export const calibrationRecordSchema = z.object({
   }),
   coverageLabels: z.object({
     coveredByPolicyOnly: z.enum(agentCalibrationCoverageCategoryValues),
-    coveredByDeterministicStepHarbor: z.enum(
+    coveredByDeterministicCodingActionGate: z.enum(
       agentCalibrationCoverageCategoryValues
     ),
     coveredByAdvisoryUq: z.enum(agentCalibrationCoverageCategoryValues),

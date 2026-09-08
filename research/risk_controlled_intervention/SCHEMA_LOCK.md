@@ -2,7 +2,7 @@
 
 This schema lock covers the tiny sampled CodeTraceBench prefix-preview pipeline for the offline intervention workspace.
 
-This is not production StepHarbor validation. It does not claim StepHarbor is conformal and does not claim production statistical guarantees.
+This is not production CodingActionGate validation. It does not claim CodingActionGate is conformal and does not claim production statistical guarantees.
 
 ## Artifact Archive Format
 
@@ -70,7 +70,7 @@ Batch 3 pilot extraction did not change the locked prefix schema. It did expose 
 
 ## Prefix Extraction Schema v0.2
 
-Batch 4 hardens parser coverage for the bounded 50-artifact pilot while preserving the target, privacy, and no-future-leakage rules above. The schema remains pre-modeling infrastructure only: no production StepHarbor validation, no conformal claim, and no production statistical guarantee.
+Batch 4 hardens parser coverage for the bounded 50-artifact pilot while preserving the target, privacy, and no-future-leakage rules above. The schema remains pre-modeling infrastructure only: no production CodingActionGate validation, no conformal claim, and no production statistical guarantee.
 
 Newly supported parser adapters:
 
@@ -101,11 +101,11 @@ Batch 6 preserves `Prefix Extraction Schema v0.2`. No v0.3 parser assumption is 
 
 The verified extraction uses the same supported layout families, target construction rule, privacy rule, and no-future-leakage rule documented above. Verified-scale outputs are sharded to reduce single-file failure risk, but this packaging change does not change the prefix schema.
 
-The verified dry run remains pre-modeling infrastructure only: no production StepHarbor validation, no conformal claim, and no production statistical guarantee. Later conformal risk-control experiments must use calibration data for threshold selection before any allowed-bad-step risk statement is made.
+The verified dry run remains pre-modeling infrastructure only: no production CodingActionGate validation, no conformal claim, and no production statistical guarantee. Later conformal risk-control experiments must use calibration data for threshold selection before any allowed-bad-step risk statement is made.
 
 ## Prefix Extraction Schema v0.3
 
-Batch 6.5 adds one verified-scale parser adapter after machine clustering of unsupported verified layouts. This remains pre-modeling infrastructure only: no production StepHarbor validation, no conformal claim, and no production statistical guarantee.
+Batch 6.5 adds one verified-scale parser adapter after machine clustering of unsupported verified layouts. This remains pre-modeling infrastructure only: no production CodingActionGate validation, no conformal claim, and no production statistical guarantee.
 
 Newly supported layout family:
 
@@ -134,7 +134,7 @@ This schema still supports later conformal risk-control experiments by producing
 
 ## Prefix Extraction Schema v0.4
 
-Batch 6.75 makes one narrow parser fix for an already-supported layout. It does not add a speculative parser family. This remains pre-modeling infrastructure only: no production StepHarbor validation, no conformal claim, and no production statistical guarantee.
+Batch 6.75 makes one narrow parser fix for an already-supported layout. It does not add a speculative parser family. This remains pre-modeling infrastructure only: no production CodingActionGate validation, no conformal claim, and no production statistical guarantee.
 
 Changed existing adapter:
 

@@ -1,6 +1,6 @@
 import path from "node:path";
 
-export const defaultDeferredActionDir = ".stepharbor/deferred";
+export const defaultDeferredActionDir = ".coding-action-gate/deferred";
 export const defaultDeferredActionSessionId = "default";
 
 export const normalizeDeferredActionSessionId = (

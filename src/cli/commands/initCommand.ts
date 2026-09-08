@@ -70,7 +70,7 @@ const assertCwdExists = async (cwd: string): Promise<CliError | undefined> => {
 
 export const resolveInitOutputPath = (cwd: string, out?: string): string =>
   out === undefined
-    ? path.resolve(cwd, "stepharbor.policy.yml")
+    ? path.resolve(cwd, "coding-action-gate.policy.yml")
     : path.isAbsolute(out)
       ? path.resolve(out)
       : path.resolve(cwd, out);
@@ -80,7 +80,7 @@ export const formatInitHuman = (output: InitCommandOutput): string => {
 
   return (
     [
-      "StepHarbor policy initialized",
+      "CodingActionGate policy initialized",
       "",
       "Template:",
       `  ${output.template}`,
@@ -90,8 +90,8 @@ export const formatInitHuman = (output: InitCommandOutput): string => {
       "",
       "Next steps:",
       "  1. Review the generated policy.",
-      "  2. Run: stepharbor doctor",
-      "  3. Run: stepharbor ui --cwd ."
+      "  2. Run: coding-action-gate doctor",
+      "  3. Run: coding-action-gate ui --cwd ."
     ].join("\n") + "\n"
   );
 };
@@ -205,7 +205,7 @@ export const runInitCliCommand = async (
       io.stdout.write(`${JSON.stringify(errorOutput, null, 2)}\n`);
     } else {
       io.stderr.write(
-        `StepHarbor error [${result.error.code}]: ${result.error.message}\n`
+        `CodingActionGate error [${result.error.code}]: ${result.error.message}\n`
       );
     }
 

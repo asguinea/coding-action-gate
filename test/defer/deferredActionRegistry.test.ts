@@ -11,7 +11,7 @@ import {
   recordDeferredDecision
 } from "../../src/defer/deferredActionRegistry.js";
 import { resolveDeferredActionLogPath } from "../../src/defer/deferredActionPaths.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
 import { createFileObservationStore } from "../../src/observations/fileObservationStore.js";
 import { defaultPolicy } from "../../src/policy/defaultPolicy.js";
 
@@ -19,7 +19,7 @@ const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-defer-reg-")
+    path.join(os.tmpdir(), "coding-action-gate-defer-reg-")
   );
   tempDirs.push(tempDir);
 
@@ -35,7 +35,7 @@ afterEach(async () => {
 const editAction = (
   targetPath = "README.md",
   id = "edit-readme"
-): StepHarborAction => ({
+): CodingActionGateAction => ({
   id,
   type: "edit_file",
   timestamp: "2026-05-01T10:00:00.000Z",
@@ -49,7 +49,7 @@ const editAction = (
   }
 });
 
-const readAction = (): StepHarborAction => ({
+const readAction = (): CodingActionGateAction => ({
   id: "read-readme",
   type: "read_file",
   timestamp: "2026-05-01T10:00:00.000Z",
@@ -57,7 +57,7 @@ const readAction = (): StepHarborAction => ({
   targetPath: "README.md"
 });
 
-const normalize = (action: StepHarborAction, cwd = process.cwd()) => {
+const normalize = (action: CodingActionGateAction, cwd = process.cwd()) => {
   const result = normalizeAction(action, { cwd });
 
   if (!result.ok) {

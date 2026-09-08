@@ -15,9 +15,9 @@ export interface AnalyticsCommandOptions {
 }
 
 export const analyticsCommandHelp = `Usage:
-  stepharbor analytics
-  stepharbor analytics summary [--json] [--cwd <path>]
-  stepharbor analytics clear --yes [--cwd <path>]
+  coding-action-gate analytics
+  coding-action-gate analytics summary [--json] [--cwd <path>]
+  coding-action-gate analytics clear --yes [--cwd <path>]
 
 Local analytics commands:
   summary   Summarize local product-behavior analytics.
@@ -29,12 +29,12 @@ commands, raw paths, environment variables, secrets, repo names, or validation
 logs.
 
 Recording can be disabled for a command or shell with:
-  STEPHARBOR_ANALYTICS=0
+  CODING_ACTION_GATE_ANALYTICS=0
 `;
 
-const clearWithoutConfirmationText = `This will delete local StepHarbor analytics events only.
+const clearWithoutConfirmationText = `This will delete local CodingActionGate analytics events only.
 It will not delete audit logs, deferred actions, observations, validation state, or policy.
-Run \`stepharbor analytics clear --yes\` to confirm.
+Run \`coding-action-gate analytics clear --yes\` to confirm.
 `;
 
 export const runAnalyticsCommand = async (
@@ -69,7 +69,7 @@ export const runAnalyticsCommand = async (
     ...(options.cwd !== undefined ? { cwd: options.cwd } : {})
   });
   io.stdout.write(
-    `Cleared local StepHarbor analytics events at ${analyticsStorageRelativePath}.\n` +
+    `Cleared local CodingActionGate analytics events at ${analyticsStorageRelativePath}.\n` +
       "Audit logs, deferred actions, observations, validation state, and policy were not changed.\n"
   );
 

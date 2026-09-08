@@ -1,5 +1,5 @@
 import type { DecisionPosture } from "../domain/decisions.js";
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 import {
   clampScore,
   combineDimensionScores,
@@ -23,7 +23,7 @@ import {
 import { buildUncertaintyReductionPlan } from "./uncertaintyReductionPlan.js";
 
 export interface BuildUncertaintyProfileInput {
-  signals?: StepHarborSignals;
+  signals?: CodingActionGateSignals;
   decision?: {
     decision: DecisionPosture;
   };
@@ -109,13 +109,15 @@ const updateDimension = (
   dimensions[dimension] = next;
 };
 
-const hasReviewableSensitiveSurface = (signals: StepHarborSignals): boolean =>
+const hasReviewableSensitiveSurface = (
+  signals: CodingActionGateSignals
+): boolean =>
   signals.pathSensitivity === "high" ||
   signals.pathSensitivity === "critical" ||
   signals.matchedSensitivePathLevel === "high" ||
   signals.matchedSensitivePathLevel === "critical";
 
-const hasSecretSurface = (signals: StepHarborSignals): boolean =>
+const hasSecretSurface = (signals: CodingActionGateSignals): boolean =>
   signals.secretPathMatch === true ||
   signals.secretPatternMatch === true ||
   signals.entropyAnomaly === true ||
@@ -125,7 +127,9 @@ const hasSecretSurface = (signals: StepHarborSignals): boolean =>
   signals.secretTouch === "probable" ||
   signals.secretTouch === "confirmed";
 
-const hasMissingSensitiveContext = (signals: StepHarborSignals): boolean =>
+const hasMissingSensitiveContext = (
+  signals: CodingActionGateSignals
+): boolean =>
   signals.targetFileReadRecently === false ||
   (signals.relatedTestsFound === true && signals.relatedTestsRead === false) ||
   (signals.contextCompletenessScore !== undefined &&
@@ -134,13 +138,17 @@ const hasMissingSensitiveContext = (signals: StepHarborSignals): boolean =>
   signals.targetFileFreshness === "stale" ||
   signals.targetFileFreshness === "missing";
 
-const hasAvailableSensitiveContext = (signals: StepHarborSignals): boolean =>
+const hasAvailableSensitiveContext = (
+  signals: CodingActionGateSignals
+): boolean =>
   signals.targetFileReadRecently === true ||
   signals.relatedTestsRead === true ||
   (signals.contextCompletenessScore !== undefined &&
     signals.contextCompletenessScore >= 0.7);
 
-const hasMissingSensitiveValidation = (signals: StepHarborSignals): boolean =>
+const hasMissingSensitiveValidation = (
+  signals: CodingActionGateSignals
+): boolean =>
   (signals.validationRequired === true ||
     signals.requiresValidation === true) &&
   (signals.validationStatus === undefined ||
@@ -149,7 +157,7 @@ const hasMissingSensitiveValidation = (signals: StepHarborSignals): boolean =>
     signals.validationStatus === "running" ||
     signals.validationStatus === "unknown");
 
-const hasGitStateEvidence = (signals: StepHarborSignals): boolean =>
+const hasGitStateEvidence = (signals: CodingActionGateSignals): boolean =>
   signals.repoIntegrityStatus !== undefined ||
   signals.branchRisk !== undefined ||
   signals.currentBranch !== undefined ||
@@ -157,13 +165,15 @@ const hasGitStateEvidence = (signals: StepHarborSignals): boolean =>
   signals.hasUncommittedChanges !== undefined ||
   signals.hasUntrackedFiles !== undefined;
 
-const hasWorkspaceBoundaryEvidence = (signals: StepHarborSignals): boolean =>
+const hasWorkspaceBoundaryEvidence = (
+  signals: CodingActionGateSignals
+): boolean =>
   signals.workspaceBoundaryViolation === true ||
   signals.workspaceBoundaryStatus === "inside" ||
   signals.workspaceBoundaryStatus === "outside" ||
   signals.workspaceBoundaryStatus === "not_applicable";
 
-const hasRecoveryEvidence = (signals: StepHarborSignals): boolean =>
+const hasRecoveryEvidence = (signals: CodingActionGateSignals): boolean =>
   hasGitStateEvidence(signals) ||
   hasWorkspaceBoundaryEvidence(signals) ||
   signals.validationStatus === "passed" ||
@@ -171,23 +181,23 @@ const hasRecoveryEvidence = (signals: StepHarborSignals): boolean =>
   signals.currentFileHash !== undefined ||
   signals.lastReadHash !== undefined;
 
-const isCriticalRecoveryRisk = (signals: StepHarborSignals): boolean =>
+const isCriticalRecoveryRisk = (signals: CodingActionGateSignals): boolean =>
   signals.destructiveSeverity === "critical" ||
   (signals.destructiveScore !== undefined && signals.destructiveScore >= 0.8) ||
   signals.commandRiskScore === "critical" ||
   signals.workspaceBoundaryViolation === true;
 
-const isDeleteOperation = (signals: StepHarborSignals): boolean =>
+const isDeleteOperation = (signals: CodingActionGateSignals): boolean =>
   signals.destructiveSubtype?.toLowerCase().includes("delete") === true ||
   signals.destructiveSubtype?.toLowerCase().includes("clean") === true;
 
-const isOverwriteOperation = (signals: StepHarborSignals): boolean =>
+const isOverwriteOperation = (signals: CodingActionGateSignals): boolean =>
   signals.destructiveSubtype?.toLowerCase().includes("overwrite") === true ||
   signals.destructiveSubtype?.toLowerCase().includes("reset") === true;
 
 const mapContextSignals = (
   dimensions: UncertaintyDimensionsRecord,
-  signals: StepHarborSignals
+  signals: CodingActionGateSignals
 ): void => {
   if (signals.targetFileReadRecently === false) {
     updateDimension(dimensions, "context", {
@@ -252,7 +262,7 @@ const mapContextSignals = (
 
 const mapFreshnessSignals = (
   dimensions: UncertaintyDimensionsRecord,
-  signals: StepHarborSignals
+  signals: CodingActionGateSignals
 ): void => {
   switch (signals.targetFileFreshness) {
     case "fresh":
@@ -304,7 +314,7 @@ const mapFreshnessSignals = (
 
 const mapValidationSignals = (
   dimensions: UncertaintyDimensionsRecord,
-  signals: StepHarborSignals
+  signals: CodingActionGateSignals
 ): void => {
   if (signals.validationRequired === false) {
     updateDimension(dimensions, "validation", {
@@ -388,7 +398,7 @@ const mapValidationSignals = (
 
 const mapCommandSignals = (
   dimensions: UncertaintyDimensionsRecord,
-  signals: StepHarborSignals
+  signals: CodingActionGateSignals
 ): void => {
   switch (signals.commandRiskScore) {
     case "critical":
@@ -531,7 +541,7 @@ const mapCommandSignals = (
 
 const mapSensitivitySignals = (
   dimensions: UncertaintyDimensionsRecord,
-  signals: StepHarborSignals
+  signals: CodingActionGateSignals
 ): void => {
   if (signals.pathSensitivity === "critical") {
     updateDimension(dimensions, "sensitivity", {
@@ -647,7 +657,7 @@ const mapSensitivitySignals = (
 
 const mapWorkspaceBoundarySignals = (
   dimensions: UncertaintyDimensionsRecord,
-  signals: StepHarborSignals
+  signals: CodingActionGateSignals
 ): void => {
   if (signals.workspaceBoundaryViolation === true) {
     updateDimension(dimensions, "workspace_boundary", {
@@ -692,7 +702,7 @@ const mapWorkspaceBoundarySignals = (
 
 const mapGitWorkflowSignals = (
   dimensions: UncertaintyDimensionsRecord,
-  signals: StepHarborSignals
+  signals: CodingActionGateSignals
 ): void => {
   if (signals.forcePush === true) {
     updateDimension(dimensions, "git_workflow", {
@@ -805,7 +815,7 @@ const mapGitWorkflowSignals = (
 
 const mapEnvironmentSignals = (
   dimensions: UncertaintyDimensionsRecord,
-  signals: StepHarborSignals
+  signals: CodingActionGateSignals
 ): void => {
   switch (signals.environmentClassification) {
     case "production":
@@ -956,7 +966,7 @@ const mapEnvironmentSignals = (
 
 const mapRecoverySignals = (
   dimensions: UncertaintyDimensionsRecord,
-  signals: StepHarborSignals
+  signals: CodingActionGateSignals
 ): void => {
   if (hasGitStateEvidence(signals)) {
     updateDimension(dimensions, "recovery", {
@@ -1069,7 +1079,7 @@ const hasAutonomyBudgetInput = (
 
 const mapAutonomyBudgetSignals = (
   dimensions: UncertaintyDimensionsRecord,
-  signals: StepHarborSignals,
+  signals: CodingActionGateSignals,
   autonomyBudget: AutonomyBudgetProfileInput | undefined
 ): void => {
   const status =
@@ -1337,7 +1347,7 @@ const mapAutonomyBudgetSignals = (
 
 const mapProvenanceSignals = (
   dimensions: UncertaintyDimensionsRecord,
-  signals: StepHarborSignals
+  signals: CodingActionGateSignals
 ): void => {
   switch (signals.delegationProvenance) {
     case "untrusted":

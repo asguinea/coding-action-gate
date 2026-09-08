@@ -326,7 +326,7 @@ def schema_checks(schema_text: str) -> list[dict[str, Any]]:
         ),
         check(
             "claim boundary preserved",
-            all(term in schema_text for term in ("not production StepHarbor validation", "does not claim StepHarbor is conformal", "does not claim production statistical guarantees")),
+            all(term in schema_text for term in ("not production CodingActionGate validation", "does not claim CodingActionGate is conformal", "does not claim production statistical guarantees")),
             "claim boundary terms",
             "no production validation / no conformal claim / no production guarantees",
             critical=True,
@@ -463,7 +463,7 @@ def run_quality_gate(
         "schema_version": "risk-controlled-intervention-pilot-quality-gate.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "claim_boundary": (
-            "Batch 5 automated pilot QA only; not production StepHarbor validation, "
+            "Batch 5 automated pilot QA only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "decision": decision,
@@ -493,7 +493,7 @@ def gate_markdown(report: dict[str, Any]) -> str:
         "",
         "Automated pre-modeling QA for the bounded CodeTraceBench pilot extraction.",
         "",
-        "This is not production StepHarbor validation, not a conformal claim, and not a production statistical guarantee.",
+        "This is not production CodingActionGate validation, not a conformal claim, and not a production statistical guarantee.",
         "",
         f"## Decision: `{report['decision']}`",
         "",

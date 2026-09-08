@@ -15,7 +15,9 @@ const tempDirs: string[] = [];
 const repoRoot = process.cwd();
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-e2e-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-e2e-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };

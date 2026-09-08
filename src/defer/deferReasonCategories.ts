@@ -1,5 +1,5 @@
 import type { PolicyRule } from "../domain/policies.js";
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 import type { DeferReasonCategory } from "./deferTypes.js";
 
 const includesConditionValue = (
@@ -39,14 +39,14 @@ export const hasContextCompletenessDeferRule = (rules: PolicyRule[]): boolean =>
   rules.some((rule) => isContextCompletenessDeferRule(rule));
 
 export const isMetadataOnlyObservation = (
-  signals: StepHarborSignals
+  signals: CodingActionGateSignals
 ): boolean =>
   signals.targetFileFreshness === "unknown" &&
   signals.readBeforeWriteReason === "Latest observation is metadata-only.";
 
 export const classifyDeferReason = (
   matchedRules: PolicyRule[],
-  signals: StepHarborSignals
+  signals: CodingActionGateSignals
 ): DeferReasonCategory => {
   const hasReducibleDefer = hasReducibleDeferRule(matchedRules);
 

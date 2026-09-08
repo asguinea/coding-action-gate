@@ -190,7 +190,7 @@ def main() -> int:
     audit_report = {
         "schema_version": "risk-controlled-intervention-pilot-split-audit.v1",
         "claim_boundary": (
-            "Pilot split scaffolding only; not production StepHarbor validation, "
+            "Pilot split scaffolding only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "generated_at": payload["generated_at"],

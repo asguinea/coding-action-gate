@@ -473,7 +473,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     report = {
         "schema_version": "risk-controlled-intervention-batch-9b-label-target-ablations.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Batch 9B target-ablation diagnostics only; not production StepHarbor validation, conformal guarantee, or final report result.",
+        "claim_boundary": "Batch 9B target-ablation diagnostics only; not production CodingActionGate validation, conformal guarantee, or final report result.",
         "dataset_paths": {"prefix": str(PREFIX_PATH.relative_to(WORKSPACE)), "repeated_splits": str(REPEATED_SPLITS.relative_to(WORKSPACE)), "schema_lock": str(SCHEMA_LOCK.relative_to(WORKSPACE))},
         "target_definitions": {"next_step_bad": "next_step_incorrect OR next_step_unuseful", "next_step_incorrect": "incorrect next step only", "next_step_unuseful": "unuseful next step only"},
         "target_prevalence_and_overlap": prevalence,
@@ -553,7 +553,7 @@ def markdown(report: dict[str, Any]) -> str:
     lines = [
         "# Batch 9B Label and Target Ablations",
         "",
-        "Preliminary benchmark diagnostics only. These are not production StepHarbor validation results and do not establish conformal or distribution-shift guarantees.",
+        "Preliminary benchmark diagnostics only. These are not production CodingActionGate validation results and do not establish conformal or distribution-shift guarantees.",
         "",
         "## Target Prevalence and Overlap",
         "",
@@ -629,7 +629,7 @@ def markdown(report: dict[str, Any]) -> str:
             val = report["aggregate_metrics"].get(key, {})
             if val:
                 lines.append(f"| `{key}` | `{fmt(metric_mean(val, 'test_auroc'))}` | `{fmt(metric_mean(val, 'test_average_precision'))}` | `{fmt(metric_mean(val, 'test_ap_lift_ratio'), 2)}` | `{fmt(metric_mean(val, 'top_10pct_target_positive_capture'))}` | `{fmt(metric_mean(val, 'overfit_flag_rate'))}` |")
-    lines.extend(["", "## Reviewer-facing interpretation", "", "- Preliminary Batch 9B evidence suggests the combined target mixes a larger incorrect-label component with a sparse unuseful-label component.", "- Non-position process-history features retain signal for all targets, weakening a pure prefix-length explanation.", "- Stronger tree models improve ranking but show larger train/test gaps, especially on sparse unuseful labels.", "", "## Caveats", "", "- Target labels are benchmark annotations and remain proxy outcomes.", "- Unuseful labels are sparse relative to incorrect labels; AP must be interpreted with prevalence and AP lift.", "- Label overlap is absent at the next-step row level but exists at the trajectory level.", "- Repeated split variance remains material.", "- No raw semantic text, embeddings, or LLM judges are used.", "- This is benchmark-level evidence only, not production StepHarbor validation.", "", "## Recommended next batch", "", "Recommend Batch 9C early-intervention/failure-propagation analysis unless target-ablation review identifies a label problem that must be corrected first."])
+    lines.extend(["", "## Reviewer-facing interpretation", "", "- Preliminary Batch 9B evidence suggests the combined target mixes a larger incorrect-label component with a sparse unuseful-label component.", "- Non-position process-history features retain signal for all targets, weakening a pure prefix-length explanation.", "- Stronger tree models improve ranking but show larger train/test gaps, especially on sparse unuseful labels.", "", "## Caveats", "", "- Target labels are benchmark annotations and remain proxy outcomes.", "- Unuseful labels are sparse relative to incorrect labels; AP must be interpreted with prevalence and AP lift.", "- Label overlap is absent at the next-step row level but exists at the trajectory level.", "- Repeated split variance remains material.", "- No raw semantic text, embeddings, or LLM judges are used.", "- This is benchmark-level evidence only, not production CodingActionGate validation.", "", "## Recommended next batch", "", "Recommend Batch 9C early-intervention/failure-propagation analysis unless target-ablation review identifies a label problem that must be corrected first."])
     return "\n".join(lines)
 
 

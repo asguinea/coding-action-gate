@@ -1,22 +1,22 @@
 {
-  "name": "stepharbor",
+  "name": "coding-action-gate",
   "version": "0.1.0",
   "description": "Runtime authorization layer for agentic coding.",
   "author": "Alejandro Sanchez Guinea",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/asguinea/stepharbor.git"
+    "url": "git+https://github.com/asguinea/coding-action-gate.git"
   },
-  "homepage": "https://github.com/asguinea/stepharbor#readme",
+  "homepage": "https://github.com/asguinea/coding-action-gate#readme",
   "bugs": {
-    "url": "https://github.com/asguinea/stepharbor/issues"
+    "url": "https://github.com/asguinea/coding-action-gate/issues"
   },
   "private": true,
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "stepharbor": "dist/cli/cli.js"
+    "coding-action-gate": "dist/cli/cli.js"
   },
   "files": [
     "dist",
@@ -25,7 +25,7 @@
     "examples/policies",
     "docs",
     "!**/.DS_Store",
-    "!**/.stepharbor/**",
+    "!**/.coding-action-gate/**",
     "!**/node_modules/**",
     "!**/*.log",
     "LICENSE",

@@ -1,6 +1,6 @@
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
-import type { StepHarborPolicy } from "../domain/policies.js";
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
+import type { CodingActionGatePolicy } from "../domain/policies.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 import { isProtectedBranch } from "./gitBranchProtection.js";
 import {
   classifyGitCommand,
@@ -11,7 +11,7 @@ import { getGitState } from "./gitStateReader.js";
 import type { GitState } from "./gitTypes.js";
 
 export const isGitWorkflowAction = (
-  action: NormalizedStepHarborAction
+  action: NormalizedCodingActionGateAction
 ): boolean =>
   action.type === "git_command" ||
   (action.type === "run_command" &&
@@ -21,7 +21,7 @@ export const isGitWorkflowAction = (
 
 const repoIntegrityStatus = (
   gitState: GitState
-): NonNullable<StepHarborSignals["repoIntegrityStatus"]> => {
+): NonNullable<CodingActionGateSignals["repoIntegrityStatus"]> => {
   if (!gitState.isGitRepo) {
     return "not_git_repo";
   }
@@ -45,7 +45,7 @@ const computeBranchRisk = (input: {
   protectedBranch: boolean | undefined;
   directMainlineCommit: boolean | undefined;
   directMainlinePush: boolean | undefined;
-}): NonNullable<StepHarborSignals["branchRisk"]> => {
+}): NonNullable<CodingActionGateSignals["branchRisk"]> => {
   const { gitState, classification } = input;
 
   if (!gitState.isGitRepo) {
@@ -95,7 +95,7 @@ const computeBranchRisk = (input: {
 
 const workflowReason = (input: {
   gitState: GitState;
-  branchRisk: NonNullable<StepHarborSignals["branchRisk"]>;
+  branchRisk: NonNullable<CodingActionGateSignals["branchRisk"]>;
   directMainlineCommit: boolean;
   directMainlinePush: boolean;
   classification: GitCommandClassification | undefined;
@@ -138,10 +138,10 @@ const workflowReason = (input: {
 };
 
 export const computeGitWorkflowSignals = async (input: {
-  action: NormalizedStepHarborAction;
-  policy: StepHarborPolicy;
+  action: NormalizedCodingActionGateAction;
+  policy: CodingActionGatePolicy;
   cwd?: string;
-}): Promise<StepHarborSignals> => {
+}): Promise<CodingActionGateSignals> => {
   if (!isGitWorkflowAction(input.action)) {
     return {};
   }

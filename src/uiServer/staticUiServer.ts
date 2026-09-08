@@ -69,7 +69,7 @@ const applyStaticHeaders = (
   response.setHeader("Content-Type", contentType);
   response.setHeader("X-Content-Type-Options", "nosniff");
   response.setHeader("Cache-Control", "no-store");
-  response.setHeader("X-StepHarbor-Read-Only", "true");
+  response.setHeader("X-Coding-Action-Gate-Read-Only", "true");
 };
 
 const sendText = (
@@ -159,7 +159,7 @@ const listen = (
       reject(
         new UiServerError(
           "UI_SERVER_START_ERROR",
-          `Failed to start StepHarbor static UI server: ${error.message}`,
+          `Failed to start CodingActionGate static UI server: ${error.message}`,
           500
         )
       );
@@ -173,7 +173,7 @@ const listen = (
         reject(
           new UiServerError(
             "UI_SERVER_START_ERROR",
-            "Failed to determine StepHarbor static UI server address.",
+            "Failed to determine CodingActionGate static UI server address.",
             500
           )
         );
@@ -224,7 +224,7 @@ export const createStaticUiServer = (
       if (!(await staticUiDistExists(distDir))) {
         throw new UiServerError(
           "UI_SERVER_START_ERROR",
-          "StepHarbor UI build was not found.",
+          "CodingActionGate UI build was not found.",
           500
         );
       }
@@ -243,7 +243,7 @@ export const createStaticUiServer = (
               "Access-Control-Allow-Methods",
               "GET, HEAD, OPTIONS"
             );
-            response.setHeader("X-StepHarbor-Read-Only", "true");
+            response.setHeader("X-Coding-Action-Gate-Read-Only", "true");
             response.end();
             return;
           }

@@ -153,8 +153,8 @@ describe("agent baseline comparisons", () => {
     expect(agentBaselineComparisonStrategyValues).toEqual([
       "no_guard",
       "policy_only_guard",
-      "deterministic_stepharbor",
-      "stepharbor_with_advisory_uq"
+      "deterministic_codingactiongate",
+      "codingactiongate_with_advisory_uq"
     ]);
     expect(comparisons.length).toBeGreaterThanOrEqual(5);
     expect(comparisons.length).toBeLessThanOrEqual(8);
@@ -224,10 +224,10 @@ describe("agent baseline comparisons", () => {
       }
 
       expect(
-        comparison.strategies.stepharbor_with_advisory_uq.advisoryOnly
+        comparison.strategies.codingactiongate_with_advisory_uq.advisoryOnly
       ).toBe(true);
       expect(
-        comparison.strategies.stepharbor_with_advisory_uq.authoritative
+        comparison.strategies.codingactiongate_with_advisory_uq.authoritative
       ).toBe(false);
     }
   });
@@ -403,8 +403,8 @@ describe("agent baseline comparisons", () => {
     expect(metrics.strategyCoverage).toEqual([
       "no_guard",
       "policy_only_guard",
-      "deterministic_stepharbor",
-      "stepharbor_with_advisory_uq"
+      "deterministic_codingactiongate",
+      "codingactiongate_with_advisory_uq"
     ]);
     expect(metrics.syntheticPolicyMissCount).toBeGreaterThan(0);
     expect(metrics.syntheticDeferAddedValueCount).toBeGreaterThan(0);
@@ -454,10 +454,10 @@ describe("agent baseline comparisons", () => {
       comparison!.comparedArtifact.reviewId
     );
     expect(built.claimBoundaries.actualRuntimeDecision).toBe(false);
-    expect(built.claimBoundaries.realStepHarborExecution).toBe(false);
-    expect(built.strategies.stepharbor_with_advisory_uq.authoritative).toBe(
-      false
-    );
+    expect(built.claimBoundaries.realCodingActionGateExecution).toBe(false);
+    expect(
+      built.strategies.codingactiongate_with_advisory_uq.authoritative
+    ).toBe(false);
   });
 
   it("enforces exact safety, privacy, and claim-boundary flags", async () => {
@@ -511,7 +511,7 @@ describe("agent baseline comparisons", () => {
         realReviewCompleted: false,
         actualRuntimeDecision: false,
         realAgentExecution: false,
-        realStepHarborExecution: false,
+        realCodingActionGateExecution: false,
         realValidationResult: false,
         realWorldResult: false,
         calibrationDatasetCreated: false,

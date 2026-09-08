@@ -21,7 +21,7 @@ const fixturesRoot = path.join(
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-ob-report-")
+    path.join(os.tmpdir(), "coding-action-gate-ob-report-")
   );
   tempDirs.push(tempDir);
   return tempDir;
@@ -101,10 +101,10 @@ const forbiddenStrings = [
 ];
 
 const forbiddenClaims = [
-  "StepHarbor is benchmark-proven",
-  "StepHarbor achieves 100% real-world accuracy",
-  "StepHarbor prevents all agentic coding failures",
-  "StepHarbor has been validated across real-world repositories"
+  "CodingActionGate is benchmark-proven",
+  "CodingActionGate achieves 100% real-world accuracy",
+  "CodingActionGate prevents all agentic coding failures",
+  "CodingActionGate has been validated across real-world repositories"
 ];
 
 describe("Opportunity Benchmark report and evidence table", () => {

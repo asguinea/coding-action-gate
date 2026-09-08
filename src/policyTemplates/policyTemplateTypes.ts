@@ -1,11 +1,11 @@
-import type { StepHarborPolicy } from "../domain/policies.js";
+import type { CodingActionGatePolicy } from "../domain/policies.js";
 
 export type PolicyTemplateName = "basic" | "node" | "strict" | "monorepo-lite";
 
 export interface PolicyTemplate {
   name: PolicyTemplateName;
   description: string;
-  policy: StepHarborPolicy;
+  policy: CodingActionGatePolicy;
 }
 
 export interface RenderPolicyTemplateOptions {

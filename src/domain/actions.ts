@@ -114,7 +114,7 @@ export type ValidationCommandAction = z.infer<
   typeof validationCommandActionSchema
 >;
 
-export const stepHarborActionSchema = z.discriminatedUnion("type", [
+export const codingActionGateActionSchema = z.discriminatedUnion("type", [
   readFileActionSchema,
   writeFileActionSchema,
   editFileActionSchema,
@@ -124,4 +124,6 @@ export const stepHarborActionSchema = z.discriminatedUnion("type", [
   validationCommandActionSchema
 ]);
 
-export type StepHarborAction = z.infer<typeof stepHarborActionSchema>;
+export type CodingActionGateAction = z.infer<
+  typeof codingActionGateActionSchema
+>;

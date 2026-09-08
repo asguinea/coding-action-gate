@@ -119,7 +119,9 @@ describe("agent action trace schema", () => {
     expect(agentTraceEventKindValues).toContain("proposed_action");
     expect(agentTraceEventKindValues).toContain("advisory_router_result");
     expect(agentTraceActorValues).toContain("coding_agent");
-    expect(agentTraceActorValues).toContain("stepharbor_uncertainty_advisory");
+    expect(agentTraceActorValues).toContain(
+      "codingactiongate_uncertainty_advisory"
+    );
     expect(agentTraceAutonomyModeValues).toContain("semi_autonomous");
     expect(agentTraceIntegrationModeValues).toContain("manual_transcription");
     expect(agentTraceProductionDecisionValues).toEqual([
@@ -232,10 +234,10 @@ describe("agent action trace schema", () => {
     }
   });
 
-  it("validates StepHarbor production and advisory decision summaries", async () => {
+  it("validates CodingActionGate production and advisory decision summaries", async () => {
     for (const trace of await loadExampleTraces()) {
       const productionDecisionEvents = trace.traceEvents.filter(
-        (event) => event.eventKind === "stepharbor_decision"
+        (event) => event.eventKind === "codingactiongate_decision"
       );
       const advisoryEvents = trace.traceEvents.filter(
         (event) => event.eventKind === "advisory_router_result"
@@ -245,7 +247,7 @@ describe("agent action trace schema", () => {
       expect(advisoryEvents.length).toBeGreaterThan(0);
 
       for (const event of productionDecisionEvents) {
-        if (event.eventKind !== "stepharbor_decision") {
+        if (event.eventKind !== "codingactiongate_decision") {
           continue;
         }
 

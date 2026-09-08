@@ -22,7 +22,7 @@ export const createAuditTimeline = (
   title.textContent = "Audit Timeline";
   const subtitle = document.createElement("p");
   subtitle.textContent =
-    "Chronological StepHarbor decisions from audit records.";
+    "Chronological CodingActionGate decisions from audit records.";
   header.append(title, subtitle);
 
   const sortedRecords = sortAuditRecordsDescending(records);

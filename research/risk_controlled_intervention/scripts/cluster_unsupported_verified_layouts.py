@@ -490,7 +490,7 @@ def main() -> int:
         "schema_version": "risk-controlled-intervention-unsupported-verified-layout-clusters.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "claim_boundary": (
-            "Batch 6.5 unsupported-layout clustering only; not production StepHarbor validation, "
+            "Batch 6.5 unsupported-layout clustering only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "summary": {

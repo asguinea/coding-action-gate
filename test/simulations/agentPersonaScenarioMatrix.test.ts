@@ -8,7 +8,7 @@ import {
   agentSimulationLoopShapes,
   agentSimulationOutcomeLabels,
   agentSimulationResearchHypothesisCategories,
-  agentSimulationResponseToStepHarborValues,
+  agentSimulationResponseToCodingActionGateValues,
   agentSimulationScenarioFamilies,
   agentSimulationScenarioContainsForbiddenRawString,
   agentSimulationTraceEventValues,
@@ -127,7 +127,9 @@ describe("agent persona and scenario simulation matrix", () => {
       expect(persona.schemaVersion).toBe(agentSimulationPersonaSchemaVersion);
       expect(persona.personaId).toMatch(/^[a-z][a-z0-9_]*$/);
       expect(persona.displayName).toBeTruthy();
-      expect(persona.relevantStepHarborConcerns.length).toBeGreaterThan(0);
+      expect(persona.relevantCodingActionGateConcerns.length).toBeGreaterThan(
+        0
+      );
       expect(persona.privacyNotes).toBeTruthy();
     }
 
@@ -150,7 +152,9 @@ describe("agent persona and scenario simulation matrix", () => {
         /^[a-z0-9]+(?:[-_][a-z0-9]+)*[-_]\d{3}$/
       );
       expect(scenario.personaIds.length).toBeGreaterThan(0);
-      expect(scenario.stepHarborInterceptionPoints.length).toBeGreaterThan(0);
+      expect(
+        scenario.codingActionGateInterceptionPoints.length
+      ).toBeGreaterThan(0);
       expect(scenario.expectedUncertaintyDimensions.length).toBeGreaterThan(0);
       expect(scenario.expectedUncertaintyDrivers.length).toBeGreaterThan(0);
       expect(scenario.expectedReductionStepKinds.length).toBeGreaterThan(0);
@@ -257,8 +261,8 @@ describe("agent persona and scenario simulation matrix", () => {
       expect(agentSimulationLoopShapes).toContain(
         scenario.expectedAgentLoopShape
       );
-      expect(agentSimulationResponseToStepHarborValues).toContain(
-        scenario.expectedAgentResponseToStepHarbor
+      expect(agentSimulationResponseToCodingActionGateValues).toContain(
+        scenario.expectedAgentResponseToCodingActionGate
       );
       expect(agentSimulationResearchHypothesisCategories).toContain(
         scenario.researchHypothesisCategory

@@ -18,7 +18,9 @@ const fakeToken = "sk-abcdefghijklmnopqrstuvwxyz1234567890";
 const envSentinel = "ENV_SENTINEL_SHOULD_NOT_LEAK";
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-read-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-read-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -81,11 +83,11 @@ describe("read command", () => {
       type: "read_file",
       proposedBy: "agent",
       origin: {
-        toolId: "stepharbor-cli"
+        toolId: "coding-action-gate-cli"
       },
       targetPath: "src/file.ts",
       raw: {
-        source: "stepharbor read",
+        source: "coding-action-gate read",
         targetPath: "src/file.ts",
         metadataOnly: true
       }
@@ -380,7 +382,7 @@ describe("read command", () => {
     const result = await captureCli(["read", "--help"]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("stepharbor read <path>");
+    expect(result.stdout).toContain("coding-action-gate read <path>");
   });
 
   it("does not alter decide or exec behavior", async () => {

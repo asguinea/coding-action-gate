@@ -13,8 +13,8 @@ OUT_JSON = PACKAGE / "package_claim_boundary_check.json"
 OUT_MD = PACKAGE / "package_claim_boundary_check.md"
 
 FORBIDDEN = [
-    "stepharbor validated",
-    "validated stepharbor",
+    "codingactiongate validated",
+    "validated codingactiongate",
     "production validated",
     "production guarantee",
     "conformal guarantee",

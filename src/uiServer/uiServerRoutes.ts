@@ -106,7 +106,7 @@ export const handleUiServerRoute = async (
         statusCode: 200,
         body: {
           ok: true,
-          service: "stepharbor-ui-api",
+          service: "coding-action-gate-ui-api",
           readOnly: true
         }
       };

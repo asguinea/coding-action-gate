@@ -388,7 +388,7 @@ def main() -> int:
         "schema_version": "risk-controlled-intervention-uncovered-deep-inspection.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "claim_boundary": (
-            "Batch 5.5 focused uncovered-case inspection only; not production StepHarbor validation, "
+            "Batch 5.5 focused uncovered-case inspection only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "summary": summary,

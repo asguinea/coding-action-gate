@@ -131,7 +131,7 @@ describe("real-repo trial findings", () => {
     expect(() =>
       validateRealRepoTrialFindings({
         ...findings,
-        stepharborVersion: "/Users/example/private-repo"
+        codingActionGateVersion: "/Users/example/private-repo"
       })
     ).toThrow(/forbidden raw-looking value/);
   });

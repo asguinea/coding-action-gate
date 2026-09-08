@@ -37,7 +37,7 @@ def run_thresholds(score_rows: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "schema_version": "risk-controlled-intervention-repeated-relative-risk.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Repeated relative-risk diagnostics only; not production StepHarbor guarantees.",
+        "claim_boundary": "Repeated relative-risk diagnostics only; not production CodingActionGate guarantees.",
         "target_fractions": list(TARGET_FRACTIONS),
         "threshold_results": results,
     }

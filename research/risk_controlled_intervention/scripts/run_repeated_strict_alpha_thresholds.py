@@ -34,7 +34,7 @@ def run_thresholds(score_rows: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "schema_version": "risk-controlled-intervention-repeated-strict-alpha.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Repeated strict-alpha diagnostics only; not production StepHarbor guarantees.",
+        "claim_boundary": "Repeated strict-alpha diagnostics only; not production CodingActionGate guarantees.",
         "alpha_values": list(ALPHAS),
         "thresholding_variants": list(VARIANTS),
         "threshold_results": results,

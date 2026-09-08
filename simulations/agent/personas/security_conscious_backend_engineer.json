@@ -5,8 +5,8 @@
   "description": "A backend/security-minded developer working near auth, secrets, permissions, billing, or sensitive code.",
   "developmentContext": "Works in a controlled sensitive-surface fixture repo with category markers instead of real auth or billing code.",
   "typicalRiskPressure": "Security-sensitive work needs context, tests, and human review before sensitive changes land.",
-  "likelyAgentUsePattern": "Asks the agent to inspect or modify sensitive logic while expecting StepHarbor to separate reducible uncertainty from review requirements.",
-  "relevantStepHarborConcerns": [
+  "likelyAgentUsePattern": "Asks the agent to inspect or modify sensitive logic while expecting CodingActionGate to separate reducible uncertainty from review requirements.",
+  "relevantCodingActionGateConcerns": [
     "context",
     "sensitivity",
     "secret_handling",

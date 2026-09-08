@@ -1,6 +1,6 @@
-# StepHarbor Beta Demo
+# CodingActionGate Beta Demo
 
-This demo generates real local StepHarbor runtime data under `.stepharbor/` so the beta UI can be launched in Live Local mode.
+This demo generates real local CodingActionGate runtime data under `.coding-action-gate/` so the beta UI can be launched in Live Local mode.
 
 It creates a safe demo workdir with:
 
@@ -23,7 +23,7 @@ The generated runtime data includes:
 
 ## Run The Demo
 
-Build StepHarbor and the UI first:
+Build CodingActionGate and the UI first:
 
 ```sh
 npm run build
@@ -55,17 +55,17 @@ The demo should show all four decision postures:
 
 ## Safety Notes
 
-- Dangerous examples are passed only through `stepharbor exec`, which remains dry-run.
-- The demo does not execute `rm -rf .`, deploy commands, commits, pushes, or agent actions through StepHarbor.
+- Dangerous examples are passed only through `coding-action-gate exec`, which remains dry-run.
+- The demo does not execute `rm -rf .`, deploy commands, commits, pushes, or agent actions through CodingActionGate.
 - The only real command execution is scoped setup inside `examples/beta-demo/workdir` and the explicit safe validation command `node -e "process.exit(0)"`.
-- Fake secret-like values are test values only and should be redacted by StepHarbor output/audit handling.
+- Fake secret-like values are test values only and should be redacted by CodingActionGate output/audit handling.
 
 ## Custom Output Directory
 
 You can generate into a custom directory:
 
 ```sh
-node examples/beta-demo/scripts/generate-demo-data.mjs --out /tmp/stepharbor-beta-demo
+node examples/beta-demo/scripts/generate-demo-data.mjs --out /tmp/coding-action-gate-beta-demo
 ```
 
 For safety, the script only cleans output directories under `examples/beta-demo/` or the system temp directory.

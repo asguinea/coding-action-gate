@@ -21,7 +21,7 @@ REPORTS = [
 ]
 
 FORBIDDEN = [
-    "validates stepharbor",
+    "validates codingactiongate",
     "production validated",
     "production guarantee",
     "guarantees safety",

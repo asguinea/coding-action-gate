@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
 
 import { normalizeAction } from "../../src/actions/normalizeAction.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
 import { classifyLandingAction } from "../../src/landing/landingActionClassifier.js";
 
 const normalize = (command: string) => {
-  const action: StepHarborAction = {
+  const action: CodingActionGateAction = {
     id: "act",
     type: "run_command",
     timestamp: "2026-05-02T00:00:00.000Z",

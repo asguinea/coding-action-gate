@@ -230,7 +230,7 @@ def build_report(use_hf_listing: bool, do_download: bool) -> dict[str, Any]:
         "schema_version": "risk-controlled-intervention-missing-artifact-recovery.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "claim_boundary": (
-            "Batch 6.75 missing artifact recovery only; not production StepHarbor validation, "
+            "Batch 6.75 missing artifact recovery only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "hf_listing": {"used": repo_files is not None, "error": listing_error},

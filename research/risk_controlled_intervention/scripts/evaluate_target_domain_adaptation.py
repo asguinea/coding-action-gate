@@ -572,7 +572,7 @@ def main() -> int:
             handle.write(json.dumps(row, sort_keys=True) + "\n")
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Benchmark target-domain adaptation diagnostics only; not pure held-out generalization, production StepHarbor validation, conformal guarantee, safety guarantee, arbitrary distribution-shift guarantee, causal prevention claim, or final report result.",
+        "claim_boundary": "Benchmark target-domain adaptation diagnostics only; not pure held-out generalization, production CodingActionGate validation, conformal guarantee, safety guarantee, arbitrary distribution-shift guarantee, causal prevention claim, or final report result.",
         "input_files_used": {
             "policy_set": str(POLICY_SET_PATH.relative_to(WORKSPACE)),
             "batch9d_report": str(BATCH9D_REPORT.relative_to(WORKSPACE)),

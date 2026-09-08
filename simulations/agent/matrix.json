@@ -59,9 +59,9 @@
     "provenance": 2
   },
   "literatureGroundingCategoriesUsed": [
+    "codingactiongate_opportunity_map",
     "cora_pre_action_risk_control",
     "riscoset_code_uq",
-    "stepharbor_opportunity_map",
     "swe_agent_aci",
     "swe_bench_realistic_tasks",
     "swe_contextbench_context_reuse"

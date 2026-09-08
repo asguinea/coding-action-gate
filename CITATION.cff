@@ -1,11 +1,11 @@
 cff-version: 1.2.0
 message: "If you use this software, cite the software version and commit you used."
-title: StepHarbor
+title: CodingActionGate
 type: software
 version: 0.1.0
 authors:
   - given-names: Alejandro
     family-names: Sanchez Guinea
-repository-code: "https://github.com/asguinea/stepharbor"
-url: "https://github.com/asguinea/stepharbor"
+repository-code: "https://github.com/asguinea/coding-action-gate"
+url: "https://github.com/asguinea/coding-action-gate"
 license: Apache-2.0

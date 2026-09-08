@@ -1,4 +1,4 @@
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 import type {
   FileFreshnessStatus,
   FileObservationRecord
@@ -65,7 +65,7 @@ const strongestFreshnessResult = (
 
 export const buildReadBeforeWriteSignals = (
   results: ReadBeforeWriteFreshnessInput[]
-): StepHarborSignals => {
+): CodingActionGateSignals => {
   if (results.length === 0) {
     return {};
   }

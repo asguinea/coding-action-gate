@@ -1,6 +1,6 @@
 # Uncertainty Model Foundation
 
-Batch 10A.1 introduced the foundation for StepHarbor's uncertainty-aware authorization layer. Batch 10A.2 enriched the deterministic uncertainty profile mapping from existing signals. Batch 10A.3 added structured uncertainty reduction plans as metadata. Batch 10A.4 adds a non-authoritative uncertainty router module. Batches 10A.5 through 10A.8 deepen command, environment, sensitivity, recovery, and autonomy/budget uncertainty in the advisory layer. Batch 10A.9 adds local-only uncertainty analytics categories. Later batches can use this foundation when improving DEFER, ESCALATE, dashboard visibility, and benchmark evidence.
+Batch 10A.1 introduced the foundation for CodingActionGate's uncertainty-aware authorization layer. Batch 10A.2 enriched the deterministic uncertainty profile mapping from existing signals. Batch 10A.3 added structured uncertainty reduction plans as metadata. Batch 10A.4 adds a non-authoritative uncertainty router module. Batches 10A.5 through 10A.8 deepen command, environment, sensitivity, recovery, and autonomy/budget uncertainty in the advisory layer. Batch 10A.9 adds local-only uncertainty analytics categories. Later batches can use this foundation when improving DEFER, ESCALATE, dashboard visibility, and benchmark evidence.
 
 This is deterministic, explainable uncertainty management. It is not Bayesian uncertainty, probabilistic confidence, statistical calibration, formal verification, or a guarantee that an action is safe.
 
@@ -67,7 +67,7 @@ Default dimension values are intentionally conservative and simple:
 - `evidence: []`
 - `missingEvidence: []`
 
-The default reducibility is `reducible` because most uncertainty in StepHarbor's current model represents missing evidence that a later fetch, read, validation run, or state check may reduce.
+The default reducibility is `reducible` because most uncertainty in CodingActionGate's current model represents missing evidence that a later fetch, read, validation run, or state check may reduce.
 
 ## Scores And Levels
 
@@ -108,7 +108,7 @@ The profile must not include raw source code, raw diffs, raw commands, raw file 
 
 ## Current Builder Scope
 
-The Batch 10A.2 builder maps only existing StepHarbor signals into the profile. It does not add new safety detectors or fragile inference.
+The Batch 10A.2 builder maps only existing CodingActionGate signals into the profile. It does not add new safety detectors or fragile inference.
 
 Current mappings include:
 
@@ -285,7 +285,7 @@ Reduction plans do not read or expose secrets. Secret-related drivers produce `s
 
 ## Recovery Uncertainty
 
-Batch 10A.7 models recovery uncertainty in the advisory uncertainty layer. Recovery uncertainty represents whether StepHarbor has enough evidence that a risky action can be reversed or recovered from responsibly. It is not a guarantee of rollback.
+Batch 10A.7 models recovery uncertainty in the advisory uncertainty layer. Recovery uncertainty represents whether CodingActionGate has enough evidence that a risky action can be reversed or recovered from responsibly. It is not a guarantee of rollback.
 
 Destructive operations with unknown recovery state increase recovery uncertainty. Existing evidence such as Git state, worktree cleanliness, validation results, target-file hashes, or workspace boundary checks can lower recovery uncertainty, but it does not automatically make an action safe.
 
@@ -338,7 +338,7 @@ The advisory router remains non-authoritative. Production routing remains unchan
 
 ## Uncertainty Analytics
 
-Batch 10A.9 adds local-only uncertainty analytics categories. These use the existing `.stepharbor/analytics/events.jsonl` store and respect the existing opt-out values: `STEPHARBOR_ANALYTICS=0`, `STEPHARBOR_ANALYTICS=false`, and `STEPHARBOR_ANALYTICS=off`.
+Batch 10A.9 adds local-only uncertainty analytics categories. These use the existing `.coding-action-gate/analytics/events.jsonl` store and respect the existing opt-out values: `CODING_ACTION_GATE_ANALYTICS=0`, `CODING_ACTION_GATE_ANALYTICS=false`, and `CODING_ACTION_GATE_ANALYTICS=off`.
 
 Uncertainty analytics record only category-level metadata: schema versions, levels, score buckets, impact, reducibility, dimension names, limited top-driver IDs, reduction step kinds, counts, booleans, and advisory router recommendations. They do not record raw uncertainty profiles, raw reduction plans, or raw router results wholesale.
 
@@ -352,7 +352,7 @@ These events are intended to help understand local uncertainty patterns such as 
 | `uncertainty_reduction_plan_created`        | schema version, reduction step kinds, step count, expected next decision, limited top drivers                                                               | raw plan steps with raw values, commands, package scripts, paths, URLs, secrets, validation logs             |
 | `uncertainty_router_recommendation_created` | schema version, advisory recommendation, deterministic confidence label, safe rationale IDs, driver counts, plan availability, limited top drivers          | raw router result, raw driver source values, prompts, commands, paths, branch names, repo names, secrets     |
 
-`stepharbor analytics summary` includes additive uncertainty aggregates when these events exist, including event counts, overall-level counts, top-driver counts, router recommendation counts, and reduction-step-kind counts.
+`coding-action-gate analytics summary` includes additive uncertainty aggregates when these events exist, including event counts, overall-level counts, top-driver counts, router recommendation counts, and reduction-step-kind counts.
 
 ## Phase 10A Readiness Status
 
@@ -361,7 +361,7 @@ Phase 10A introduces the deterministic, advisory uncertainty foundation. The unc
 | Component                                | Implemented in 10A | Production-authoritative? | Notes                                                                                              |
 | ---------------------------------------- | ------------------ | ------------------------- | -------------------------------------------------------------------------------------------------- |
 | UncertaintyProfile                       | yes                | no                        | Stable schema `uncertainty-profile.v1`; includes every supported dimension.                        |
-| Signal mapping                           | yes                | no                        | Maps existing deterministic StepHarbor signals to privacy-safe category IDs.                       |
+| Signal mapping                           | yes                | no                        | Maps existing deterministic CodingActionGate signals to privacy-safe category IDs.                 |
 | Reduction plan                           | yes                | no                        | Stable schema `uncertainty-reduction-plan.v1`; metadata-only steps, no execution.                  |
 | Advisory router                          | yes                | no                        | Stable schema `uncertainty-router-result.v1`; recommends only.                                     |
 | Command/environment uncertainty          | yes                | no                        | Deepens command and deploy/release/publish representation without executing commands.              |

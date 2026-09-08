@@ -1,4 +1,4 @@
-import type { StepHarborSignals } from "../../src/domain/signals.js";
+import type { CodingActionGateSignals } from "../../src/domain/signals.js";
 import type {
   AutonomyBudgetProfileInput,
   BuildUncertaintyProfileInput
@@ -42,8 +42,8 @@ export const categoryIdsForScenario = (
 };
 
 const mergeSignals = (
-  signals: StepHarborSignals,
-  update: StepHarborSignals
+  signals: CodingActionGateSignals,
+  update: CodingActionGateSignals
 ): void => {
   Object.assign(signals, update);
 };
@@ -60,7 +60,7 @@ export const buildSyntheticProfileInput = (
   fixtures: OpportunityBenchmarkFixture[]
 ): BuildUncertaintyProfileInput => {
   const categories = new Set(categoryIdsForScenario(scenario, fixtures));
-  const signals: StepHarborSignals = {};
+  const signals: CodingActionGateSignals = {};
   const autonomyBudget: AutonomyBudgetProfileInput = {};
 
   if (categories.has("target_file_not_observed")) {

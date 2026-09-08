@@ -17,10 +17,10 @@ export interface PolicyCommandOptions {
 }
 
 export const policyCommandHelp = `Usage:
-  stepharbor policy
-  stepharbor policy show [--policy <path>] [--cwd <path>] [--json]
-  stepharbor policy validate [--policy <path>] [--cwd <path>] [--json]
-  stepharbor policy explain [--policy <path>] [--cwd <path>] [--json]
+  coding-action-gate policy
+  coding-action-gate policy show [--policy <path>] [--cwd <path>] [--json]
+  coding-action-gate policy validate [--policy <path>] [--cwd <path>] [--json]
+  coding-action-gate policy explain [--policy <path>] [--cwd <path>] [--json]
 
 Read-only policy commands:
   show       Show effective policy source and sanitized section summary.
@@ -46,7 +46,7 @@ const formatPolicyShow = (
   const show = result as ReturnType<typeof createPolicyShowResult>;
   const summary = show.summary;
   const lines = [
-    "StepHarbor Policy",
+    "CodingActionGate Policy",
     "",
     `Source: ${show.source.label} (${show.source.kind})`,
     `Version: ${summary.version}`,
@@ -156,7 +156,7 @@ export const runPolicyCommand = async (
     const source = summarizePolicyErrorSource(policyResult.error, cwd);
     const message = [
       `Policy could not be loaded from ${source.label}.`,
-      "Run `stepharbor policy validate` for schema and YAML details."
+      "Run `coding-action-gate policy validate` for schema and YAML details."
     ].join("\n");
 
     if (options.json === true) {

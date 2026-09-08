@@ -14,7 +14,9 @@ import runCommandFixture from "../../src/fixtures/actions/run-command.json" with
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-action-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-action-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };

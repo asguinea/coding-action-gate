@@ -16,7 +16,9 @@ import { loadPolicy } from "../../src/policy/loadPolicy.js";
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-init-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-init-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -55,14 +57,14 @@ afterEach(async () => {
 });
 
 describe("init command", () => {
-  it("writes default stepharbor.policy.yml", async () => {
+  it("writes default coding-action-gate.policy.yml", async () => {
     const cwd = await createTempDir();
 
     const result = await runCliCaptured(["init", "--cwd", cwd]);
-    const policyPath = path.join(cwd, "stepharbor.policy.yml");
+    const policyPath = path.join(cwd, "coding-action-gate.policy.yml");
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("StepHarbor policy initialized");
+    expect(result.stdout).toContain("CodingActionGate policy initialized");
     await expect(access(policyPath)).resolves.toBeUndefined();
     await expect(
       loadPolicy({ explicitPath: policyPath })
@@ -82,7 +84,7 @@ describe("init command", () => {
       "node"
     ]);
     const content = await readFile(
-      path.join(cwd, "stepharbor.policy.yml"),
+      path.join(cwd, "coding-action-gate.policy.yml"),
       "utf8"
     );
 
@@ -93,7 +95,7 @@ describe("init command", () => {
 
   it("writes a custom output path", async () => {
     const cwd = await createTempDir();
-    const out = "config/stepharbor.yml";
+    const out = "config/coding-action-gate.yml";
 
     const result = await runCliCaptured(["init", "--cwd", cwd, "--out", out]);
     const policyPath = path.join(cwd, out);
@@ -104,7 +106,7 @@ describe("init command", () => {
 
   it("fails if file exists without force", async () => {
     const cwd = await createTempDir();
-    const policyPath = path.join(cwd, "stepharbor.policy.yml");
+    const policyPath = path.join(cwd, "coding-action-gate.policy.yml");
     await writeFile(policyPath, "version: 0.1\n", "utf8");
 
     const result = await runCliCaptured(["init", "--cwd", cwd]);
@@ -115,7 +117,7 @@ describe("init command", () => {
 
   it("overwrites with force", async () => {
     const cwd = await createTempDir();
-    const policyPath = path.join(cwd, "stepharbor.policy.yml");
+    const policyPath = path.join(cwd, "coding-action-gate.policy.yml");
     await writeFile(policyPath, "version: old\n", "utf8");
 
     const result = await runCliCaptured([
@@ -186,7 +188,7 @@ describe("init command", () => {
 
     expect(result.exitCode).toBe(0);
     expect(parsed.ok).toBe(true);
-    expect(parsed.path).toBe(path.join(cwd, "stepharbor.policy.yml"));
+    expect(parsed.path).toBe(path.join(cwd, "coding-action-gate.policy.yml"));
     expect(parsed.template).toBe("node");
   });
 
@@ -196,14 +198,14 @@ describe("init command", () => {
     const result = await runCliCaptured(["init", "--cwd", cwd]);
 
     expect(result.stdout).toContain("Next steps:");
-    expect(result.stdout).toContain("Run: stepharbor doctor");
+    expect(result.stdout).toContain("Run: coding-action-gate doctor");
   });
 
   it("init --help includes templates and options", async () => {
     const result = await runCliCaptured(["init", "--help"]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("stepharbor init [options]");
+    expect(result.stdout).toContain("coding-action-gate init [options]");
     expect(result.stdout).toContain("--template <name>");
     expect(result.stdout).toContain("basic, node, strict, monorepo-lite");
     expect(result.stdout).toContain("--force");
@@ -211,7 +213,7 @@ describe("init command", () => {
 
   it("generated policy can be used by doctor", async () => {
     const cwd = await createTempDir();
-    const policyPath = path.join(cwd, "stepharbor.policy.yml");
+    const policyPath = path.join(cwd, "coding-action-gate.policy.yml");
     await runCliCaptured(["init", "--cwd", cwd]);
 
     const result = await runCliCaptured([
@@ -232,9 +234,12 @@ describe("init command", () => {
 
     await runCliCaptured(["init", "--cwd", cwd]);
     const entries = await readdir(cwd);
-    const runtimeEntries = await readdir(path.join(cwd, ".stepharbor"));
+    const runtimeEntries = await readdir(path.join(cwd, ".coding-action-gate"));
 
-    expect(entries.sort()).toEqual([".stepharbor", "stepharbor.policy.yml"]);
+    expect(entries.sort()).toEqual([
+      ".coding-action-gate",
+      "coding-action-gate.policy.yml"
+    ]);
     expect(runtimeEntries).toEqual(["analytics"]);
   });
 

@@ -274,7 +274,7 @@ export const agentResearchArtifactPackageClaimBoundariesSchema = z.object({
   realReviewedTrace: z.literal(false),
   actualRuntimeDecision: z.literal(false),
   realAgentExecution: z.literal(false),
-  realStepHarborExecution: z.literal(false),
+  realCodingActionGateExecution: z.literal(false),
   realValidationResult: z.literal(false),
   realWorldResult: z.literal(false),
   calibrationDatasetCreated: z.literal(false),

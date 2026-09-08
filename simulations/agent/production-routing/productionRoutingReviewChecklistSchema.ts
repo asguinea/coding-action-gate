@@ -126,7 +126,7 @@ export const productionRoutingReviewBoundaryStatementValues = [
   "no_approval_granted",
   "no_release_approved",
   "no_runtime_integration_approved",
-  "deterministic_stepharbor_decisions_remain_authoritative",
+  "deterministic_codingactiongate_decisions_remain_authoritative",
   "deterministic_safety_overrides_cannot_be_overridden_by_calibrated_advisory_signals",
   "phase_17_real_agent_evidence_required"
 ] as const;

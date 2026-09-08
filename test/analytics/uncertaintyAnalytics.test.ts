@@ -19,11 +19,11 @@ import { routeUncertainty } from "../../src/uncertainty/uncertaintyRouter.js";
 import safeReadmeEdit from "../../examples/actions/safe-readme-edit.json" with { type: "json" };
 
 const tempDirs: string[] = [];
-const originalAnalyticsEnv = process.env.STEPHARBOR_ANALYTICS;
+const originalAnalyticsEnv = process.env.CODING_ACTION_GATE_ANALYTICS;
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-uncertainty-analytics-")
+    path.join(os.tmpdir(), "coding-action-gate-uncertainty-analytics-")
   );
   tempDirs.push(tempDir);
   return tempDir;
@@ -46,9 +46,9 @@ const writeAction = async (
 
 afterEach(async () => {
   if (originalAnalyticsEnv === undefined) {
-    delete process.env.STEPHARBOR_ANALYTICS;
+    delete process.env.CODING_ACTION_GATE_ANALYTICS;
   } else {
-    process.env.STEPHARBOR_ANALYTICS = originalAnalyticsEnv;
+    process.env.CODING_ACTION_GATE_ANALYTICS = originalAnalyticsEnv;
   }
 
   await Promise.all(
@@ -211,7 +211,7 @@ describe("uncertainty analytics", () => {
   it("respects analytics opt-out for uncertainty helpers", async () => {
     const cwd = await createTempDir();
 
-    process.env.STEPHARBOR_ANALYTICS = "off";
+    process.env.CODING_ACTION_GATE_ANALYTICS = "off";
     await recordUncertaintyProfileCreated({
       cwd,
       profile: profile()

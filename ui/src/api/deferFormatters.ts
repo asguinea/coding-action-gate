@@ -96,7 +96,7 @@ export const buildReadCommandFromFetchStep = (
     (step.type === "read_file" || step.type === "read_related_tests") &&
     step.target !== undefined
   ) {
-    return `stepharbor read ${shellArg(step.target)} --session-id ${shellArg(
+    return `coding-action-gate read ${shellArg(step.target)} --session-id ${shellArg(
       sessionId
     )}`;
   }
@@ -113,12 +113,12 @@ export const buildValidationCommandFromFetchStep = (
   }
 
   if (step.command !== undefined && step.command.trim().length > 0) {
-    return `stepharbor validate other --command ${shellArg(
+    return `coding-action-gate validate other --command ${shellArg(
       step.command
     )} --session-id ${shellArg(sessionId)}`;
   }
 
-  return `stepharbor validate ${
+  return `coding-action-gate validate ${
     step.validationKind ?? "<kind>"
   } --session-id ${shellArg(sessionId)}`;
 };
@@ -128,7 +128,7 @@ export const buildRetryCommand = (
   sessionId = "default"
 ): string | null =>
   deferredActionId !== undefined && deferredActionId.length > 0
-    ? `stepharbor retry ${shellArg(deferredActionId)} --session-id ${shellArg(
+    ? `coding-action-gate retry ${shellArg(deferredActionId)} --session-id ${shellArg(
         sessionId
       )}`
     : null;

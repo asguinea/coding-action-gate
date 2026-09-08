@@ -68,7 +68,7 @@ def build_manifest() -> dict[str, Any]:
         "freeze_timestamp": datetime.now(timezone.utc).isoformat(),
         "git_commit_hash": git_commit_hash(),
         "claim_boundary": (
-            "Batch 5 pilot freeze only; not production StepHarbor validation, "
+            "Batch 5 pilot freeze only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "scripts_used": [

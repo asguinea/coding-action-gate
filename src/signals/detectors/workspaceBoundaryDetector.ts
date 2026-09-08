@@ -1,20 +1,18 @@
 import path from "node:path";
-import type { NormalizedStepHarborAction } from "../../actions/actionErrors.js";
-import type { StepHarborSignals } from "../../domain/signals.js";
+import type { NormalizedCodingActionGateAction } from "../../actions/actionErrors.js";
+import type { CodingActionGateSignals } from "../../domain/signals.js";
 import { findPathsOutsideWorkspaceRoots } from "../../workspace/workspaceBoundary.js";
 import { resolveWorkspaceRoots } from "../../workspace/workspaceRoots.js";
 import type { SafetySignalInput } from "../signalContext.js";
 import type { SafetySignalDetector } from "./baseDetector.js";
 
-const fileMutationActionTypes = new Set<NormalizedStepHarborAction["type"]>([
-  "write_file",
-  "edit_file",
-  "delete_file"
-]);
+const fileMutationActionTypes = new Set<
+  NormalizedCodingActionGateAction["type"]
+>(["write_file", "edit_file", "delete_file"]);
 
-const readOnlyFileActionTypes = new Set<NormalizedStepHarborAction["type"]>([
-  "read_file"
-]);
+const readOnlyFileActionTypes = new Set<
+  NormalizedCodingActionGateAction["type"]
+>(["read_file"]);
 
 const actionMutatesFilesystem = (
   input: SafetySignalInput
@@ -54,14 +52,14 @@ const collectTargetPaths = (input: SafetySignalInput): string[] => {
   return Array.from(new Set(paths));
 };
 
-const notApplicable = (reason: string): StepHarborSignals => ({
+const notApplicable = (reason: string): CodingActionGateSignals => ({
   workspaceBoundaryStatus: "not_applicable",
   workspaceBoundaryReason: reason
 });
 
 export const workspaceBoundaryDetector: SafetySignalDetector = {
   id: "workspace-boundary",
-  compute: (input): StepHarborSignals => {
+  compute: (input): CodingActionGateSignals => {
     const mutatesFilesystem = actionMutatesFilesystem(input);
 
     if (mutatesFilesystem !== true) {

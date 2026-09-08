@@ -21,7 +21,7 @@ DEFAULT_FILES = [
 ]
 
 FORBIDDEN = [
-    "validates StepHarbor",
+    "validates CodingActionGate",
     "production validated",
     "production guarantee",
     "conformal guarantee",

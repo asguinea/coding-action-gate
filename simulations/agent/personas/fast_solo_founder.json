@@ -6,7 +6,7 @@
   "developmentContext": "Works in a small controlled product-like fixture repo where speed competes with context and validation.",
   "typicalRiskPressure": "Launch pressure can lead to edits before reading target files or checking related tests.",
   "likelyAgentUsePattern": "Asks for feature additions and fast fixes, then wants the agent to land changes with minimal interruption.",
-  "relevantStepHarborConcerns": [
+  "relevantCodingActionGateConcerns": [
     "context",
     "freshness",
     "git_workflow",

@@ -16,7 +16,7 @@ vi.setConfig({
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-git-state-")
+    path.join(os.tmpdir(), "coding-action-gate-git-state-")
   );
   tempDirs.push(tempDir);
   return tempDir;
@@ -46,8 +46,11 @@ const createCommittedRepo = async (): Promise<string> => {
   const cwd = await createTempDir();
 
   await runGit(["init"], cwd);
-  await runGit(["config", "user.email", "stepharbor@example.test"], cwd);
-  await runGit(["config", "user.name", "StepHarbor Test"], cwd);
+  await runGit(
+    ["config", "user.email", "coding-action-gate@example.test"],
+    cwd
+  );
+  await runGit(["config", "user.name", "CodingActionGate Test"], cwd);
   await writeFile(path.join(cwd, "README.md"), "# Repo\n", "utf8");
   await runGit(["add", "README.md"], cwd);
   await runGit(["commit", "-m", "initial"], cwd);

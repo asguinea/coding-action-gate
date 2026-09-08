@@ -19,7 +19,7 @@ PROTOCOL = utils.REPORTS_DIR / "repeated_split_protocol_recommendation.json"
 OUTPUT_JSON = utils.REPORTS_DIR / "risk_diagnostics_summary.json"
 OUTPUT_MD = utils.REPORTS_DIR / "risk_diagnostics_summary.md"
 
-SUMMARY_STATEMENT = "These diagnostics refine the benchmark risk-control setup. They are not production StepHarbor guarantees and do not establish validity under arbitrary distribution shift."
+SUMMARY_STATEMENT = "These diagnostics refine the benchmark risk-control setup. They are not production CodingActionGate guarantees and do not establish validity under arbitrary distribution shift."
 
 
 def best_rows_by_alpha(strict: dict[str, Any], split: str = "test") -> list[dict[str, Any]]:

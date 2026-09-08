@@ -132,7 +132,7 @@ def build_audit(rows: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "schema_version": "risk-controlled-intervention-calibration-test-mismatch.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Batch 8.5 mismatch diagnostic only; not production StepHarbor guarantees.",
+        "claim_boundary": "Batch 8.5 mismatch diagnostic only; not production CodingActionGate guarantees.",
         "scope": "Frozen v0.4 extraction-supported verified subset only.",
         "split_prevalence": prevalence,
         "calibration_test_base_risk_gap": (test_risk - cal_risk) if cal_risk is not None and test_risk is not None else None,

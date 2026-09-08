@@ -35,7 +35,7 @@ export const policyTraceEntrySchema = z.object({
 
 export type PolicyTraceEntry = z.infer<typeof policyTraceEntrySchema>;
 
-export const stepHarborPolicySchema = z.object({
+export const codingActionGatePolicySchema = z.object({
   version: z.string().min(1),
   workspace: z
     .object({
@@ -74,4 +74,6 @@ export const stepHarborPolicySchema = z.object({
   rules: z.array(policyRuleSchema).optional()
 });
 
-export type StepHarborPolicy = z.infer<typeof stepHarborPolicySchema>;
+export type CodingActionGatePolicy = z.infer<
+  typeof codingActionGatePolicySchema
+>;

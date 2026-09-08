@@ -13,13 +13,13 @@ import { runDecideCommand } from "../../src/cli/commands/decideCommand.js";
 import { runExecCommand } from "../../src/cli/commands/execCommand.js";
 import { startUiCommand } from "../../src/cli/commands/uiCommand.js";
 import { runRetryCommand } from "../../src/cli/commands/retryCommand.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
 
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-analytics-cli-")
+    path.join(os.tmpdir(), "coding-action-gate-analytics-cli-")
   );
   tempDirs.push(tempDir);
   return tempDir;
@@ -79,7 +79,7 @@ const getAvailablePort = async (): Promise<number> =>
 
 const writeActionFile = async (
   cwd: string,
-  action: StepHarborAction,
+  action: CodingActionGateAction,
   fileName = "action.json"
 ): Promise<string> => {
   const actionPath = path.join(cwd, fileName);
@@ -302,8 +302,8 @@ describe("analytics CLI events", () => {
 
   it("keeps command behavior working when analytics is disabled", async () => {
     const cwd = await createTempDir();
-    const previous = process.env["STEPHARBOR_ANALYTICS"];
-    process.env["STEPHARBOR_ANALYTICS"] = "0";
+    const previous = process.env["CODING_ACTION_GATE_ANALYTICS"];
+    process.env["CODING_ACTION_GATE_ANALYTICS"] = "0";
 
     try {
       const result = await captureCli([
@@ -319,9 +319,9 @@ describe("analytics CLI events", () => {
       ).rejects.toThrow();
     } finally {
       if (previous === undefined) {
-        delete process.env["STEPHARBOR_ANALYTICS"];
+        delete process.env["CODING_ACTION_GATE_ANALYTICS"];
       } else {
-        process.env["STEPHARBOR_ANALYTICS"] = previous;
+        process.env["CODING_ACTION_GATE_ANALYTICS"] = previous;
       }
     }
   });

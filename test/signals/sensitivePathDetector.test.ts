@@ -4,7 +4,7 @@ import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { normalizeAction } from "../../src/actions/normalizeAction.js";
 import { runDecideCommand } from "../../src/cli/commands/decideCommand.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
 import { defaultPolicy } from "../../src/policy/defaultPolicy.js";
 import { computeSafetySignals } from "../../src/signals/computeSignals.js";
 import { sensitivePathDetector } from "../../src/signals/detectors/sensitivePathDetector.js";
@@ -12,7 +12,9 @@ import { sensitivePathDetector } from "../../src/signals/detectors/sensitivePath
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-path-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-path-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -23,7 +25,7 @@ afterEach(async () => {
   );
 });
 
-const editAction = (targetPath: string): StepHarborAction => ({
+const editAction = (targetPath: string): CodingActionGateAction => ({
   id: `action-${targetPath.replace(/\W+/g, "-")}`,
   type: "edit_file",
   timestamp: "2026-04-30T08:00:00.000Z",
@@ -36,7 +38,7 @@ const editAction = (targetPath: string): StepHarborAction => ({
   }
 });
 
-const deleteAction = (targetPath: string): StepHarborAction => ({
+const deleteAction = (targetPath: string): CodingActionGateAction => ({
   id: `action-${targetPath.replace(/\W+/g, "-")}`,
   type: "delete_file",
   timestamp: "2026-04-30T08:00:00.000Z",
@@ -44,7 +46,7 @@ const deleteAction = (targetPath: string): StepHarborAction => ({
   targetPath
 });
 
-const commandAction = (): StepHarborAction => ({
+const commandAction = (): CodingActionGateAction => ({
   id: "action-command",
   type: "run_command",
   timestamp: "2026-04-30T08:00:00.000Z",
@@ -52,7 +54,7 @@ const commandAction = (): StepHarborAction => ({
   command: "npm test"
 });
 
-const normalize = (action: StepHarborAction, cwd = process.cwd()) => {
+const normalize = (action: CodingActionGateAction, cwd = process.cwd()) => {
   const normalized = normalizeAction(action, { cwd });
 
   if (!normalized.ok) {
@@ -64,7 +66,7 @@ const normalize = (action: StepHarborAction, cwd = process.cwd()) => {
 
 const writeAction = async (
   cwd: string,
-  action: StepHarborAction
+  action: CodingActionGateAction
 ): Promise<string> => {
   const actionPath = path.join(cwd, "action.json");
 

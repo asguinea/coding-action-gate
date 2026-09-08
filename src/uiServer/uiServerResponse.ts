@@ -24,7 +24,7 @@ export const sendJson = (
   response.setHeader("Content-Type", "application/json; charset=utf-8");
   response.setHeader("X-Content-Type-Options", "nosniff");
   response.setHeader("Cache-Control", "no-store");
-  response.setHeader("X-StepHarbor-Read-Only", "true");
+  response.setHeader("X-Coding-Action-Gate-Read-Only", "true");
   response.end(headOnly ? undefined : `${JSON.stringify(body)}\n`);
 };
 
@@ -39,7 +39,7 @@ export const sendOptions = (
   response.setHeader("Access-Control-Allow-Headers", "Content-Type");
   response.setHeader("X-Content-Type-Options", "nosniff");
   response.setHeader("Cache-Control", "no-store");
-  response.setHeader("X-StepHarbor-Read-Only", "true");
+  response.setHeader("X-Coding-Action-Gate-Read-Only", "true");
   response.end();
 };
 
@@ -50,7 +50,7 @@ export const toSafeUiServerError = (error: unknown): UiServerError => {
 
   return new UiServerError(
     "UI_ADAPTER_ERROR",
-    "StepHarbor UI adapter failed to read runtime data.",
+    "CodingActionGate UI adapter failed to read runtime data.",
     500
   );
 };

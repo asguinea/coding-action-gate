@@ -116,7 +116,7 @@
       "narrow_action_scope",
       "stop_and_request_human_review"
     ],
-    "stepHarborInterceptionPoints": [
+    "codingActionGateInterceptionPoints": [
       "autonomy_budget_check",
       "provenance_check",
       "retry_decision"
@@ -129,7 +129,7 @@
       "fixtureRef": "fixture_autonomy_provenance_synthetic",
       "expectedTraceEventKinds": [
         "proposed_action",
-        "stepharbor_decision",
+        "codingactiongate_decision",
         "uncertainty_profile_summary",
         "uncertainty_reduction_plan",
         "advisory_router_result",
@@ -313,7 +313,7 @@
       "narrow_action_scope",
       "run_validation"
     ],
-    "stepHarborInterceptionPoints": [
+    "codingActionGateInterceptionPoints": [
       "edit_authorization",
       "autonomy_budget_check",
       "recovery_check",
@@ -327,7 +327,7 @@
       "fixtureRef": "fixture_broad_refactor_synthetic",
       "expectedTraceEventKinds": [
         "proposed_action",
-        "stepharbor_decision",
+        "codingactiongate_decision",
         "uncertainty_profile_summary",
         "uncertainty_reduction_plan",
         "advisory_router_result",
@@ -490,7 +490,7 @@
       "inspect_recovery_state",
       "stop_and_request_human_review"
     ],
-    "stepHarborInterceptionPoints": [
+    "codingActionGateInterceptionPoints": [
       "command_authorization",
       "destructive_command_classifier",
       "path_authorization",
@@ -504,7 +504,7 @@
       "fixtureRef": "fixture_command_risk_synthetic",
       "expectedTraceEventKinds": [
         "proposed_action",
-        "stepharbor_decision",
+        "codingactiongate_decision",
         "uncertainty_profile_summary",
         "uncertainty_reduction_plan",
         "advisory_router_result",
@@ -650,7 +650,7 @@
       "inspect_environment",
       "stop_and_request_human_review"
     ],
-    "stepHarborInterceptionPoints": [
+    "codingActionGateInterceptionPoints": [
       "command_authorization",
       "environment_classification",
       "release_surface_check"
@@ -663,7 +663,7 @@
       "fixtureRef": "fixture_deploy_synthetic",
       "expectedTraceEventKinds": [
         "proposed_action",
-        "stepharbor_decision",
+        "codingactiongate_decision",
         "uncertainty_profile_summary",
         "uncertainty_reduction_plan",
         "advisory_router_result",
@@ -821,7 +821,7 @@
       "run_validation",
       "stop_and_request_human_review"
     ],
-    "stepHarborInterceptionPoints": [
+    "codingActionGateInterceptionPoints": [
       "git_command_authorization",
       "branch_policy_check",
       "validation_gate"
@@ -834,7 +834,7 @@
       "fixtureRef": "fixture_git_landing_synthetic",
       "expectedTraceEventKinds": [
         "proposed_action",
-        "stepharbor_decision",
+        "codingactiongate_decision",
         "uncertainty_profile_summary",
         "uncertainty_reduction_plan",
         "advisory_router_result",
@@ -1014,7 +1014,7 @@
       "read_target_file",
       "refresh_target_file"
     ],
-    "stepHarborInterceptionPoints": [
+    "codingActionGateInterceptionPoints": [
       "edit_authorization",
       "context_freshness_check",
       "related_context_check",
@@ -1028,7 +1028,7 @@
       "fixtureRef": "fixture_minimal_source_synthetic",
       "expectedTraceEventKinds": [
         "proposed_action",
-        "stepharbor_decision",
+        "codingactiongate_decision",
         "uncertainty_profile_summary",
         "uncertainty_reduction_plan",
         "advisory_router_result",
@@ -1179,7 +1179,7 @@
       "inspect_provenance",
       "stop_and_request_human_review"
     ],
-    "stepHarborInterceptionPoints": [
+    "codingActionGateInterceptionPoints": [
       "command_authorization",
       "package_script_classifier",
       "environment_classification",
@@ -1193,7 +1193,7 @@
       "fixtureRef": "fixture_publish_library_synthetic",
       "expectedTraceEventKinds": [
         "proposed_action",
-        "stepharbor_decision",
+        "codingactiongate_decision",
         "uncertainty_profile_summary",
         "uncertainty_reduction_plan",
         "advisory_router_result",
@@ -1368,7 +1368,7 @@
       "run_validation",
       "stop_and_request_human_review"
     ],
-    "stepHarborInterceptionPoints": [
+    "codingActionGateInterceptionPoints": [
       "edit_authorization",
       "file_read_authorization",
       "secret_path_classifier",
@@ -1383,7 +1383,7 @@
       "fixtureRef": "fixture_sensitive_surface_synthetic",
       "expectedTraceEventKinds": [
         "proposed_action",
-        "stepharbor_decision",
+        "codingactiongate_decision",
         "uncertainty_profile_summary",
         "uncertainty_reduction_plan",
         "advisory_router_result",

@@ -28,8 +28,8 @@ import type {
 
 export const defaultFeedbackLimit = 200;
 export const maxFeedbackLimit = 1000;
-export const stepharborFeedbackSchemaVersion = "0.1";
-export const stepharborVersion = "0.1.0";
+export const codingActionGateFeedbackSchemaVersion = "0.1";
+export const codingActionGateVersion = "0.1.0";
 
 export const normalizeFeedbackLimit = (limit?: number): number => {
   const resolved = limit ?? defaultFeedbackLimit;
@@ -43,7 +43,7 @@ export const normalizeFeedbackLimit = (limit?: number): number => {
 
 export const buildDefaultFeedbackOutputPath = (date = new Date()): string => {
   const timestamp = date.toISOString().replace(/[:.]/g, "-");
-  return path.resolve(`stepharbor-feedback-${timestamp}.json`);
+  return path.resolve(`coding-action-gate-feedback-${timestamp}.json`);
 };
 
 const ensureOutputDoesNotExist = async (filePath: string): Promise<void> => {
@@ -155,7 +155,7 @@ export const buildFeedbackBundle = async (
   }
 
   const bundle: FeedbackBundle = {
-    schemaVersion: stepharborFeedbackSchemaVersion,
+    schemaVersion: codingActionGateFeedbackSchemaVersion,
     generatedAt: new Date().toISOString(),
     cwdHash: hashFeedbackValue(cwd),
     sessionId,
@@ -164,7 +164,7 @@ export const buildFeedbackBundle = async (
       nodeVersion: process.versions.node,
       platform: process.platform,
       arch: process.arch,
-      stepharborVersion
+      codingActionGateVersion
     },
     doctor: await doctorForFeedback(options, cwd),
     ...(loadedPolicy.ok

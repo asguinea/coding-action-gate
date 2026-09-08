@@ -1,4 +1,4 @@
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
 
 export type LandingActionScope =
   | "before_commit"
@@ -7,7 +7,7 @@ export type LandingActionScope =
   | "unknown";
 
 export const classifyLandingAction = (
-  action: NormalizedStepHarborAction
+  action: NormalizedCodingActionGateAction
 ): LandingActionScope => {
   const isGitLike =
     action.type === "git_command" ||

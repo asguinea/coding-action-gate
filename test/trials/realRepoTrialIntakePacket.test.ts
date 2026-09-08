@@ -16,7 +16,7 @@ const validPacket = (): RealRepoTrialIntakePacket => ({
   repoSizeCategory: "small",
   languageCategories: ["typescript"],
   frameworkCategories: ["node"],
-  stepharborVersion: "category_version_placeholder",
+  codingActionGateVersion: "category_version_placeholder",
   privacyReview: {
     reviewed: true,
     safeToSummarize: true,
@@ -95,7 +95,7 @@ describe("real-repo trial intake packet schema", () => {
     expect(() =>
       validateRealRepoTrialIntakePacket({
         ...packet,
-        stepharborVersion: "/Users/example/private-repo"
+        codingActionGateVersion: "/Users/example/private-repo"
       })
     ).toThrow(/forbidden raw-looking value/);
   });

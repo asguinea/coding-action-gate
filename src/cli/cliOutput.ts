@@ -1,5 +1,5 @@
 import type { AuditLoggerResult } from "../audit/auditErrors.js";
-import type { StepHarborDecision } from "../decision/decisionErrors.js";
+import type { CodingActionGateDecision } from "../decision/decisionErrors.js";
 import type { DeferredEvidenceRequirement } from "../defer/deferredActionTypes.js";
 import type { LoadedPolicySource } from "../policy/policyErrors.js";
 import { redactObject } from "../redaction/redactObject.js";
@@ -56,7 +56,7 @@ export interface CliSuccessOutput {
         executed: false;
         reason: string;
       };
-  decision: StepHarborDecision;
+  decision: CodingActionGateDecision;
   policySource: LoadedPolicySource;
   audit:
     | {
@@ -86,7 +86,7 @@ const formatAudit = (audit: CliSuccessOutput["audit"]): string =>
   audit.written ? audit.path : "not written";
 
 const expectedRetryNextAction = (
-  decision: StepHarborDecision["decision"]
+  decision: CodingActionGateDecision["decision"]
 ): string => {
   switch (decision) {
     case "PROCEED":
@@ -104,12 +104,12 @@ export const formatHumanSuccess = (output: CliSuccessOutput): string => {
   const lines: string[] = [];
 
   if (output.dryRun === true && output.executed === false) {
-    lines.push("StepHarbor exec dry-run: command was NOT executed.");
+    lines.push("CodingActionGate exec dry-run: command was NOT executed.");
   }
 
   if (output.retry !== undefined) {
     lines.push(
-      "StepHarbor retry: original action was NOT executed.",
+      "CodingActionGate retry: original action was NOT executed.",
       `Deferred action: ${output.retry.deferredActionId}`,
       `Evidence: ${output.retry.evidenceSatisfied ? "satisfied" : "missing"}`
     );
@@ -118,7 +118,7 @@ export const formatHumanSuccess = (output: CliSuccessOutput): string => {
   if (output.validation !== undefined) {
     if (output.validation.executed) {
       lines.push(
-        `StepHarbor validation: ${redactString(output.validation.command).value}`,
+        `CodingActionGate validation: ${redactString(output.validation.command).value}`,
         `Authorization decision: ${output.decision.decision}`,
         `Validation status: ${output.validation.status}`,
         `Exit code: ${output.validation.exitCode}`,
@@ -127,7 +127,7 @@ export const formatHumanSuccess = (output: CliSuccessOutput): string => {
       );
     } else {
       lines.push(
-        "StepHarbor validation: command was NOT executed.",
+        "CodingActionGate validation: command was NOT executed.",
         `Authorization decision: ${output.decision.decision}`,
         `Reason: ${redactString(output.validation.reason).value}`
       );
@@ -147,7 +147,7 @@ export const formatHumanSuccess = (output: CliSuccessOutput): string => {
   }
 
   lines.push(
-    `StepHarbor decision: ${output.decision.decision}`,
+    `CodingActionGate decision: ${output.decision.decision}`,
     `Reason: ${redactString(output.decision.reason).value}`,
     `Policy source: ${formatPolicySource(output.policySource)}`,
     `Audit: ${formatAudit(output.audit)}`
@@ -295,7 +295,7 @@ export const formatHumanSuccess = (output: CliSuccessOutput): string => {
 export const formatHumanError = (error: CliError): string => {
   const redacted = redactObject(error).value;
 
-  return `StepHarbor error [${redacted.code}]: ${redacted.message}\n`;
+  return `CodingActionGate error [${redacted.code}]: ${redacted.message}\n`;
 };
 
 export const auditOutputFromResult = (

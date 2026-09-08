@@ -25,7 +25,7 @@ const errorMessageFor = (error: unknown): string =>
 export const renderApp = async (mount: HTMLElement): Promise<void> => {
   const loading = document.createElement("p");
   loading.className = "loading";
-  loading.textContent = "Loading StepHarbor runtime summary...";
+  loading.textContent = "Loading CodingActionGate runtime summary...";
   mount.replaceChildren(loading);
 
   let source: RuntimeDataSource = getInitialRuntimeDataSource();

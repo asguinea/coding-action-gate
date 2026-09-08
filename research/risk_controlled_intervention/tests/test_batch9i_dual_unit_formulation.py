@@ -54,11 +54,11 @@ class Batch9IDualUnitTests(unittest.TestCase):
 
     def test_claim_checker_catches_forbidden_phrase(self):
         with tempfile.NamedTemporaryFile("w+", suffix=".md") as handle:
-            handle.write("This production guarantee validates StepHarbor.")
+            handle.write("This production guarantee validates CodingActionGate.")
             handle.flush()
             result = self.claim.check_file(Path(handle.name))
         self.assertIn("production guarantee", result["forbidden_phrase_hits"])
-        self.assertIn("validates StepHarbor", result["forbidden_phrase_hits"])
+        self.assertIn("validates CodingActionGate", result["forbidden_phrase_hits"])
 
 
 

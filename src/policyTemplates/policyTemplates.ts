@@ -1,6 +1,6 @@
 import {
-  stepHarborPolicySchema,
-  type StepHarborPolicy
+  codingActionGatePolicySchema,
+  type CodingActionGatePolicy
 } from "../domain/policies.js";
 import { defaultPolicy } from "../policy/defaultPolicy.js";
 import type {
@@ -11,9 +11,9 @@ import type {
 const protectedBranches = ["main", "master", "production", "release/*"];
 
 const createPolicyTemplate = (
-  overrides: Omit<Partial<StepHarborPolicy>, "version" | "rules"> = {}
-): StepHarborPolicy =>
-  stepHarborPolicySchema.parse({
+  overrides: Omit<Partial<CodingActionGatePolicy>, "version" | "rules"> = {}
+): CodingActionGatePolicy =>
+  codingActionGatePolicySchema.parse({
     ...defaultPolicy,
     ...overrides,
     version: defaultPolicy.version,

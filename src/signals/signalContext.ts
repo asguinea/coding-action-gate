@@ -1,6 +1,6 @@
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
-import type { StepHarborPolicy } from "../domain/policies.js";
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
+import type { CodingActionGatePolicy } from "../domain/policies.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 
 export interface SafetySignalContext {
   cwd?: string;
@@ -17,8 +17,8 @@ export interface SafetySignalContext {
 }
 
 export interface SafetySignalInput {
-  action: NormalizedStepHarborAction;
-  policy: StepHarborPolicy;
-  providedSignals?: StepHarborSignals;
+  action: NormalizedCodingActionGateAction;
+  policy: CodingActionGatePolicy;
+  providedSignals?: CodingActionGateSignals;
   context?: SafetySignalContext;
 }

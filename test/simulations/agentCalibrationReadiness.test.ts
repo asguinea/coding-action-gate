@@ -160,7 +160,7 @@ const exactClaimBoundaries = {
   realHumanAdjudication: false,
   realReviewerAssigned: false,
   realAgentExecution: false,
-  realStepHarborExecution: false,
+  realCodingActionGateExecution: false,
   realValidationResult: false,
   realWorldResult: false,
   calibrationDatasetCreated: false,

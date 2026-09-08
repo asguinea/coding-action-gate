@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 
 import { normalizeAction } from "../../src/actions/normalizeAction.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
 import { classifyLandingAction } from "../../src/validation/landingActionClassifier.js";
 
-const normalize = (action: StepHarborAction) => {
+const normalize = (action: CodingActionGateAction) => {
   const result = normalizeAction(action, { cwd: process.cwd() });
 
   if (!result.ok) {
@@ -14,7 +14,7 @@ const normalize = (action: StepHarborAction) => {
   return result.action;
 };
 
-const commandAction = (command: string): StepHarborAction => ({
+const commandAction = (command: string): CodingActionGateAction => ({
   id: "act",
   type: "run_command",
   timestamp: "2026-05-02T00:00:00.000Z",

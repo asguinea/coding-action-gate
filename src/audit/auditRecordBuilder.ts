@@ -1,22 +1,22 @@
 import { randomBytes } from "node:crypto";
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
-import type { StepHarborAction } from "../domain/actions.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
+import type { CodingActionGateAction } from "../domain/actions.js";
 import {
   auditRecordSchema,
   type ApprovalStatus,
   type AuditRecord
 } from "../domain/audit.js";
-import type { StepHarborSignals } from "../domain/signals.js";
-import type { StepHarborDecision } from "../decision/decisionErrors.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
+import type { CodingActionGateDecision } from "../decision/decisionErrors.js";
 import { redactAuditPayload } from "../redaction/redactAuditPayload.js";
 import { computeAuditRecordHash } from "./auditHash.js";
 
 export interface BuildAuditRecordInput {
-  action: StepHarborAction | NormalizedStepHarborAction;
+  action: CodingActionGateAction | NormalizedCodingActionGateAction;
   rawAction?: unknown;
   normalizedAction?: unknown;
-  decision: StepHarborDecision;
-  signals?: StepHarborSignals;
+  decision: CodingActionGateDecision;
+  signals?: CodingActionGateSignals;
   session?: {
     sessionId?: string;
     userId?: string;
@@ -34,8 +34,8 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
 
 const hasNormalizedMetadata = (
-  action: StepHarborAction | NormalizedStepHarborAction
-): action is NormalizedStepHarborAction => {
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
+): action is NormalizedCodingActionGateAction => {
   const normalized = "normalized" in action ? action.normalized : undefined;
 
   return isRecord(normalized) && typeof normalized["actionType"] === "string";
@@ -49,21 +49,21 @@ const generateDecisionId = (timestamp: string): string => {
 };
 
 const approvalStatusForDecision = (
-  decision: StepHarborDecision
+  decision: CodingActionGateDecision
 ): ApprovalStatus =>
   decision.decision === "ESCALATE" ? "pending" : "not_required";
 
 const dedupe = (values: string[]): string[] => Array.from(new Set(values));
 
 const actionTargetPath = (
-  action: StepHarborAction | NormalizedStepHarborAction
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
 ): string | undefined =>
   "targetPath" in action && typeof action.targetPath === "string"
     ? action.targetPath
     : undefined;
 
 const extractTargetPaths = (
-  action: StepHarborAction | NormalizedStepHarborAction
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
 ): string[] | undefined => {
   const paths: string[] = [];
 
@@ -97,8 +97,8 @@ const extractTargetPaths = (
 };
 
 const stripNormalizedMetadata = (
-  action: StepHarborAction | NormalizedStepHarborAction
-): StepHarborAction => {
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
+): CodingActionGateAction => {
   if (!hasNormalizedMetadata(action)) {
     return action;
   }
@@ -107,7 +107,7 @@ const stripNormalizedMetadata = (
 
   delete baseAction["normalized"];
 
-  return baseAction as StepHarborAction;
+  return baseAction as CodingActionGateAction;
 };
 
 const optionalSessionFields = (

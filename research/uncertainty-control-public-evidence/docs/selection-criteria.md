@@ -1,6 +1,6 @@
 # Evidence Thesis and Selection Criteria
 
-StepHarbor is one instantiation of the broader uncertainty-aware control-plane thesis; this folder does not modify StepHarbor runtime behavior.
+CodingActionGate is one instantiation of the broader uncertainty-aware control-plane thesis; this folder does not modify CodingActionGate runtime behavior.
 
 Reliable AI requires an uncertainty-aware control plane.
 
@@ -160,4 +160,4 @@ The v0 catalogue excludes or deprioritizes:
 
 ## Claim Boundaries
 
-This evidence map is a source-grounded inventory for later research planning. It does not validate the control-plane thesis, validate StepHarbor, prove production reliability, provide statistical assurances, provide conformal or CRC assurances, establish deployment evidence, replace pilots, or claim uncertainty causes every AI mistake.
+This evidence map is a source-grounded inventory for later research planning. It does not validate the control-plane thesis, validate CodingActionGate, prove production reliability, provide statistical assurances, provide conformal or CRC assurances, establish deployment evidence, replace pilots, or claim uncertainty causes every AI mistake.

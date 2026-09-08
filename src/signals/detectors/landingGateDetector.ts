@@ -4,12 +4,16 @@ import { getGitState } from "../../git/gitStateReader.js";
 import { classifyLandingAction } from "../../landing/landingActionClassifier.js";
 import { computeLandingRisk } from "../../landing/landingRisk.js";
 import { computeValidationGateSignals } from "../../validation/validationGateDetector.js";
-import type { StepHarborSignals } from "../../domain/signals.js";
+import type { CodingActionGateSignals } from "../../domain/signals.js";
 import type { SafetySignalDetector } from "./baseDetector.js";
 
 export const landingGateDetector: SafetySignalDetector = {
   id: "landing-gate",
-  compute: async ({ action, policy, context }): Promise<StepHarborSignals> => {
+  compute: async ({
+    action,
+    policy,
+    context
+  }): Promise<CodingActionGateSignals> => {
     const classification = classifyLandingAction(action);
 
     if (!classification.landingAction) {

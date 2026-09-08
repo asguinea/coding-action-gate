@@ -180,7 +180,7 @@ describe("Codex-like action adapter", () => {
       expect(action.actionCategory).toBe(
         input.codexLikeAction.proposedOperationCategory
       );
-      expect(action.stepHarborActionKind).toBe(
+      expect(action.codingActionGateActionKind).toBe(
         input.codexLikeAction.proposedOperationCategory
       );
       expect(action.actionIntentCategory).toBe(
@@ -216,11 +216,11 @@ describe("Codex-like action adapter", () => {
         fixtures
       });
 
-      for (const interceptionPoint of scenario.stepHarborInterceptionPoints) {
+      for (const interceptionPoint of scenario.codingActionGateInterceptionPoints) {
         expect(action.expectedInterceptionPoints).toContain(interceptionPoint);
       }
 
-      for (const interceptionPoint of fixture.stepHarborInterceptionPoints) {
+      for (const interceptionPoint of fixture.codingActionGateInterceptionPoints) {
         expect(action.expectedInterceptionPoints).toContain(interceptionPoint);
       }
 
@@ -279,7 +279,7 @@ describe("Codex-like action adapter", () => {
       );
       expect(agentTraceActionCategoryValues).toContain(action.actionCategory);
       expect(agentTraceActionCategoryValues).toContain(
-        action.stepHarborActionKind
+        action.codingActionGateActionKind
       );
       expect(agentTraceActionIntentCategoryValues).toContain(
         action.actionIntentCategory

@@ -1,9 +1,9 @@
-# StepHarbor Policy Templates
+# CodingActionGate Policy Templates
 
-`stepharbor init` writes a starter `stepharbor.policy.yml` for a project.
+`coding-action-gate init` writes a starter `coding-action-gate.policy.yml` for a project.
 
 ```sh
-stepharbor init --template node
+coding-action-gate init --template node
 ```
 
 The command is non-destructive by default. It fails when the output policy already exists unless `--force` is provided.
@@ -12,7 +12,7 @@ The command is non-destructive by default. It fails when the output policy alrea
 
 ### basic
 
-Use for an individual project where you want StepHarbor safety rules without required validation gates.
+Use for an individual project where you want CodingActionGate safety rules without required validation gates.
 
 - Validation before commit: disabled
 - Validation before push: disabled
@@ -45,4 +45,4 @@ Use for simple repositories with `apps/*` and `packages/*`.
 
 ## Boundaries
 
-Templates reuse StepHarbor default policy rules. They do not change enforcement behavior in code, add policy editing UI, inspect package manifests, fetch remote templates, or create `.stepharbor/` runtime data.
+Templates reuse CodingActionGate default policy rules. They do not change enforcement behavior in code, add policy editing UI, inspect package manifests, fetch remote templates, or create `.coding-action-gate/` runtime data.

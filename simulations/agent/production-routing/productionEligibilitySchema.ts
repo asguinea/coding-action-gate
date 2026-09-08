@@ -90,7 +90,7 @@ export const productionFallbackCategoryValues = [
 ] as const;
 
 export const productionFallbackTargetCategoryValues = [
-  "deterministic_stepharbor",
+  "deterministic_codingactiongate",
   "defer",
   "escalate",
   "block",
@@ -450,7 +450,7 @@ export const buildSyntheticProductionRoutingEligibility = (input?: {
         fallbackTargetCategory:
           category === "uncertainty_too_high_fallback_to_defer_or_escalate"
             ? "defer"
-            : "deterministic_stepharbor"
+            : "deterministic_codingactiongate"
       }))
     },
     humanApprovalRequirements: {

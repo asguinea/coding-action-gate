@@ -37,7 +37,7 @@ const findById = <T>(
 
 const decisionToSynthetic = (
   decision: AgentSimulationRun["productionDecisionCategory"]
-): BaselineComparisonRecord["decisionComparison"]["deterministicStepHarborDecision"] => {
+): BaselineComparisonRecord["decisionComparison"]["deterministicCodingActionGateDecision"] => {
   if (decision === "PROCEED") {
     return "proceed";
   }
@@ -58,7 +58,7 @@ const decisionToSynthetic = (
 };
 
 const outcomeForDecision = (
-  decision: BaselineComparisonRecord["decisionComparison"]["deterministicStepHarborDecision"]
+  decision: BaselineComparisonRecord["decisionComparison"]["deterministicCodingActionGateDecision"]
 ): BaselineComparisonRecord["strategies"]["no_guard"]["syntheticOutcomeCategory"] => {
   if (decision === "defer") {
     return "defer_guides_recovery";
@@ -150,8 +150,8 @@ export const buildBaselineComparisonRecord = (
           blockAddedValue === "yes" ? "moderate" : "low",
         evidenceBasisCategory: "scenario_expectation"
       },
-      deterministic_stepharbor: {
-        strategyKind: "deterministic_stepharbor",
+      deterministic_codingactiongate: {
+        strategyKind: "deterministic_codingactiongate",
         syntheticDecisionCategory: deterministicDecision,
         syntheticOutcomeCategory: outcomeForDecision(deterministicDecision),
         expectedRiskCategory: blockAddedValue === "yes" ? "low" : "medium",
@@ -159,8 +159,8 @@ export const buildBaselineComparisonRecord = (
           deterministicDecision === "escalate" ? "high" : "moderate",
         evidenceBasisCategory: "synthetic_run_metadata"
       },
-      stepharbor_with_advisory_uq: {
-        strategyKind: "stepharbor_with_advisory_uq",
+      codingactiongate_with_advisory_uq: {
+        strategyKind: "codingactiongate_with_advisory_uq",
         syntheticDecisionCategory: advisoryDecision,
         syntheticOutcomeCategory: outcomeForDecision(advisoryDecision),
         expectedRiskCategory: blockAddedValue === "yes" ? "low" : "medium",
@@ -178,7 +178,7 @@ export const buildBaselineComparisonRecord = (
     decisionComparison: {
       noGuardWouldProceed: "yes",
       policyOnlyWouldIntervene: blockAddedValue === "yes" ? "yes" : "no",
-      deterministicStepHarborDecision: deterministicDecision,
+      deterministicCodingActionGateDecision: deterministicDecision,
       advisoryUqDecision: advisoryDecision,
       policyOnlyMissedUncertainty: policyMissesUncertainty,
       deferAddedValue,
@@ -186,11 +186,11 @@ export const buildBaselineComparisonRecord = (
       blockAddedValue,
       decisionDifferenceCategory:
         blockAddedValue === "yes"
-          ? "stepharbor_blocks_hard_boundary"
+          ? "codingactiongate_blocks_hard_boundary"
           : deferAddedValue === "yes"
-            ? "stepharbor_defers_for_missing_evidence"
+            ? "codingactiongate_defers_for_missing_evidence"
             : escalationAddedValue === "yes"
-              ? "stepharbor_escalates_sensitive_action"
+              ? "codingactiongate_escalates_sensitive_action"
               : "advisory_uq_adds_explanation"
     },
     uncertaintyComparison: {
@@ -198,7 +198,7 @@ export const buildBaselineComparisonRecord = (
       uncertaintyDriversRelevant: run.uncertaintyDrivers,
       reductionStepsRelevant: run.reductionStepKinds,
       policyOnlyCapturesUncertainty: "no",
-      deterministicStepHarborCapturesUncertainty: "partially",
+      deterministicCodingActionGateCapturesUncertainty: "partially",
       advisoryUqAddsUsefulMetadata: "yes",
       uncertaintyReductionExpected: deferAddedValue,
       uncertaintyComparisonCategory: "advisory_adds_reduction_guidance",
@@ -208,9 +208,9 @@ export const buildBaselineComparisonRecord = (
     safetyComparison: {
       unsafeProceedRiskNoGuard: blockAddedValue === "yes" ? "critical" : "high",
       unsafeProceedRiskPolicyOnly: blockAddedValue === "yes" ? "low" : "medium",
-      unsafeProceedRiskDeterministicStepHarbor: "low",
+      unsafeProceedRiskDeterministicCodingActionGate: "low",
       unsafeProceedRiskAdvisoryUq: "low",
-      unsafePreventedByStepHarbor: blockAddedValue,
+      unsafePreventedByCodingActionGate: blockAddedValue,
       hardBoundaryCaptured: blockAddedValue,
       prematureActionPrevented: deferAddedValue,
       sensitiveActionRoutedToReview: escalationAddedValue,
@@ -224,7 +224,7 @@ export const buildBaselineComparisonRecord = (
     frictionComparison: {
       noGuardFriction: "none",
       policyOnlyFriction: blockAddedValue === "yes" ? "moderate" : "low",
-      deterministicStepHarborFriction:
+      deterministicCodingActionGateFriction:
         deterministicDecision === "escalate" ? "high" : "moderate",
       advisoryUqFriction: advisoryDecision === "escalate" ? "high" : "moderate",
       deferFrictionCategory:
@@ -242,7 +242,7 @@ export const buildBaselineComparisonRecord = (
     },
     coverageComparison: {
       coveredByPolicyOnly: blockAddedValue === "yes" ? "yes" : "partially",
-      coveredByDeterministicStepHarbor: "yes",
+      coveredByDeterministicCodingActionGate: "yes",
       coveredByAdvisoryUq: "yes",
       missingCoverageCategories: labels.includes("missing_coverage")
         ? ["scope_recovery_explanation"]
@@ -323,7 +323,7 @@ export const buildBaselineComparisonRecord = (
       realReviewCompleted: false,
       actualRuntimeDecision: false,
       realAgentExecution: false,
-      realStepHarborExecution: false,
+      realCodingActionGateExecution: false,
       realValidationResult: false,
       realWorldResult: false,
       calibrationDatasetCreated: false,

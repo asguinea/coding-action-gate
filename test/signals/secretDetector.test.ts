@@ -5,8 +5,8 @@ import { afterEach, describe, expect, it } from "vitest";
 import { normalizeAction } from "../../src/actions/normalizeAction.js";
 import { runDecideCommand } from "../../src/cli/commands/decideCommand.js";
 import { runExecCommand } from "../../src/cli/commands/execCommand.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
-import type { StepHarborSignals } from "../../src/domain/signals.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
+import type { CodingActionGateSignals } from "../../src/domain/signals.js";
 import { defaultPolicy } from "../../src/policy/defaultPolicy.js";
 import { computeSafetySignals } from "../../src/signals/computeSignals.js";
 import { secretDetector } from "../../src/signals/detectors/secretDetector.js";
@@ -15,7 +15,9 @@ const tempDirs: string[] = [];
 const fakeLongSecret = "abcdefghijklmnopqrstuvwxyz1234567890";
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-secret-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-secret-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -26,7 +28,7 @@ afterEach(async () => {
   );
 });
 
-const readAction = (targetPath: string): StepHarborAction => ({
+const readAction = (targetPath: string): CodingActionGateAction => ({
   id: `read-${targetPath.replace(/\W+/g, "-")}`,
   type: "read_file",
   timestamp: "2026-04-30T08:00:00.000Z",
@@ -37,7 +39,7 @@ const readAction = (targetPath: string): StepHarborAction => ({
 const editAction = (
   targetPath: string,
   diff = "@@ -1,1 +1,1 @@\n-old\n+new\n"
-): StepHarborAction => ({
+): CodingActionGateAction => ({
   id: `edit-${targetPath.replace(/\W+/g, "-")}`,
   type: "edit_file",
   timestamp: "2026-04-30T08:00:00.000Z",
@@ -54,7 +56,7 @@ const editAction = (
 const writeAction = (
   targetPath: string,
   content: string
-): StepHarborAction => ({
+): CodingActionGateAction => ({
   id: `write-${targetPath.replace(/\W+/g, "-")}`,
   type: "write_file",
   timestamp: "2026-04-30T08:00:00.000Z",
@@ -63,7 +65,7 @@ const writeAction = (
   content
 });
 
-const commandAction = (command: string): StepHarborAction => ({
+const commandAction = (command: string): CodingActionGateAction => ({
   id: `command-${command.replace(/\W+/g, "-")}`,
   type: "run_command",
   timestamp: "2026-04-30T08:00:00.000Z",
@@ -71,7 +73,7 @@ const commandAction = (command: string): StepHarborAction => ({
   command
 });
 
-const normalize = (action: StepHarborAction, cwd = process.cwd()) => {
+const normalize = (action: CodingActionGateAction, cwd = process.cwd()) => {
   const normalized = normalizeAction(action, { cwd });
 
   if (!normalized.ok) {
@@ -81,15 +83,17 @@ const normalize = (action: StepHarborAction, cwd = process.cwd()) => {
   return normalized.action;
 };
 
-const computeSecretSignals = (action: StepHarborAction): StepHarborSignals =>
+const computeSecretSignals = (
+  action: CodingActionGateAction
+): CodingActionGateSignals =>
   secretDetector.compute({
     action: normalize(action),
     policy: defaultPolicy
-  }) as StepHarborSignals;
+  }) as CodingActionGateSignals;
 
 const writeActionFile = async (
   cwd: string,
-  action: StepHarborAction
+  action: CodingActionGateAction
 ): Promise<string> => {
   const actionPath = path.join(cwd, "action.json");
 
@@ -269,7 +273,7 @@ describe("secretDetector", () => {
       computeSecretSignals(
         writeAction(
           "README.md",
-          "StepHarbor is a runtime authorization layer for agentic coding."
+          "CodingActionGate is a runtime authorization layer for agentic coding."
         )
       )
     ).toMatchObject({

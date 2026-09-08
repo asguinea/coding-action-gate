@@ -6,7 +6,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { normalizeAction } from "../../src/actions/normalizeAction.js";
 import { runExecCommand } from "../../src/cli/commands/execCommand.js";
 import { cliExitCodes, exitCodeForDecision } from "../../src/cli/exitCodes.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
 import { defaultPolicy } from "../../src/policy/defaultPolicy.js";
 import { computeSafetySignals } from "../../src/signals/computeSignals.js";
 import { commandRiskDetector } from "../../src/signals/detectors/commandRiskDetector.js";
@@ -15,7 +15,9 @@ import readFileFixture from "../../src/fixtures/actions/read-file.json" with { t
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-cmd-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-cmd-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -26,7 +28,7 @@ afterEach(async () => {
   );
 });
 
-const commandAction = (command: string): StepHarborAction => ({
+const commandAction = (command: string): CodingActionGateAction => ({
   id: `action-${command.replace(/\W+/g, "-")}`,
   type: "run_command",
   timestamp: "2026-04-30T08:00:00.000Z",
@@ -71,7 +73,7 @@ const exists = async (filePath: string): Promise<boolean> => {
 describe("commandRiskDetector", () => {
   it("only applies to command-like actions", () => {
     const normalized = normalizeAction(
-      readFileFixture as unknown as StepHarborAction
+      readFileFixture as unknown as CodingActionGateAction
     );
 
     expect(normalized.ok).toBe(true);

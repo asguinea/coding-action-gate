@@ -22,7 +22,9 @@ import { createStaticUiServer } from "../../src/uiServer/staticUiServer.js";
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-ui-cli-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-ui-cli-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -104,7 +106,7 @@ const writeUiDistFixture = async (cwd: string): Promise<void> => {
   await mkdir(assetsDir, { recursive: true });
   await writeFile(
     path.join(distDir, "index.html"),
-    '<!doctype html><html><body><div id="app">StepHarbor</div></body></html>',
+    '<!doctype html><html><body><div id="app">CodingActionGate</div></body></html>',
     "utf8"
   );
   await writeFile(path.join(assetsDir, "app.js"), "console.log('ok');", "utf8");
@@ -244,7 +246,9 @@ describe("ui command helpers", () => {
       const body = (await response.json()) as Record<string, unknown>;
 
       expect(response.status).toBe(200);
-      expect(response.headers.get("x-stepharbor-read-only")).toBe("true");
+      expect(response.headers.get("x-coding-action-gate-read-only")).toBe(
+        "true"
+      );
       expect(body).toMatchObject({
         ok: true,
         readOnly: true
@@ -271,7 +275,7 @@ describe("ui command helpers", () => {
     }
 
     try {
-      expect(result.outputText).toContain("StepHarbor UI beta");
+      expect(result.outputText).toContain("CodingActionGate UI beta");
       expect(result.outputText).toContain("API is read-only.");
       expect(result.outputText).toContain("UI is read-only.");
       expect(result.outputText).toContain("API is localhost-only.");
@@ -298,17 +302,17 @@ describe("ui command helpers", () => {
   });
 
   it("parses explicit policy for ui command", () => {
-    expect(parseUiArgs(["--policy", "stepharbor.policy.yml"])).toEqual({
+    expect(parseUiArgs(["--policy", "coding-action-gate.policy.yml"])).toEqual({
       ok: true,
       options: {
-        policy: "stepharbor.policy.yml"
+        policy: "coding-action-gate.policy.yml"
       }
     });
   });
 
   it("startup self-check reports policy loaded", async () => {
     const cwd = await createTempDir();
-    const policyPath = path.join(cwd, "stepharbor.policy.yml");
+    const policyPath = path.join(cwd, "coding-action-gate.policy.yml");
     const policy = renderPolicyTemplate("basic");
 
     if (policy === null) {
@@ -483,7 +487,9 @@ describe("ui command helpers", () => {
     try {
       expect(result.outputText).toContain("UI build not found:");
       expect(result.outputText).toContain("npm run ui:build");
-      expect(result.outputText).toContain("stepharbor ui --no-ui-server");
+      expect(result.outputText).toContain(
+        "coding-action-gate ui --no-ui-server"
+      );
     } finally {
       await result.started.stop();
     }
@@ -491,7 +497,7 @@ describe("ui command helpers", () => {
 
   it("passes explicit policy to UI server policy endpoint", async () => {
     const cwd = await createTempDir();
-    const policyPath = path.join(cwd, "stepharbor.policy.yml");
+    const policyPath = path.join(cwd, "coding-action-gate.policy.yml");
     const policy = renderPolicyTemplate("node");
 
     if (policy === null) {
@@ -606,8 +612,8 @@ describe("ui command helpers", () => {
       }
     );
 
-    await waitFor(() => stdout.includes("StepHarbor UI beta"));
-    expect(stdout).toContain("StepHarbor UI beta");
+    await waitFor(() => stdout.includes("CodingActionGate UI beta"));
+    expect(stdout).toContain("CodingActionGate UI beta");
     signals.emit("SIGINT");
 
     await expect(runPromise).resolves.toBe(0);
@@ -631,8 +637,10 @@ describe("static UI server", () => {
       const text = await response.text();
 
       expect(response.status).toBe(200);
-      expect(response.headers.get("x-stepharbor-read-only")).toBe("true");
-      expect(text).toContain("StepHarbor");
+      expect(response.headers.get("x-coding-action-gate-read-only")).toBe(
+        "true"
+      );
+      expect(text).toContain("CodingActionGate");
     } finally {
       await server.stop();
     }
@@ -652,7 +660,7 @@ describe("static UI server", () => {
       const text = await response.text();
 
       expect(response.status).toBe(200);
-      expect(text).toContain("StepHarbor");
+      expect(text).toContain("CodingActionGate");
       expect(text).not.toContain("app.js");
     } finally {
       await server.stop();

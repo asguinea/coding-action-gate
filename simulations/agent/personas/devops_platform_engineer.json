@@ -6,7 +6,7 @@
   "developmentContext": "Works with local fixture repos that contain inert deployment and workflow markers rather than real infrastructure.",
   "typicalRiskPressure": "Operational urgency can make ambiguous environment or publish surfaces look like ordinary commands.",
   "likelyAgentUsePattern": "Asks the agent to update workflows, prepare releases, or classify package scripts before execution.",
-  "relevantStepHarborConcerns": [
+  "relevantCodingActionGateConcerns": [
     "command",
     "environment",
     "git_workflow",

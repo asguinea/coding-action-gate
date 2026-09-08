@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { parseAndNormalizeAction } from "../../src/actions/parseAction.js";
 import { buildAuditRecord } from "../../src/audit/auditRecordBuilder.js";
-import type { StepHarborDecision } from "../../src/decision/decisionErrors.js";
+import type { CodingActionGateDecision } from "../../src/decision/decisionErrors.js";
 import editFileFixture from "../../src/fixtures/actions/edit-file.json" with { type: "json" };
 
 const normalizedEditAction = () => {
@@ -17,8 +17,8 @@ const normalizedEditAction = () => {
 };
 
 const decision = (
-  posture: StepHarborDecision["decision"]
-): StepHarborDecision => ({
+  posture: CodingActionGateDecision["decision"]
+): CodingActionGateDecision => ({
   decision: posture,
   reason: `${posture} reason`,
   matchedPolicies: [

@@ -5,7 +5,7 @@ import { appendAuditRecord } from "../../audit/auditLogger.js";
 import { buildAuditRecord } from "../../audit/auditRecordBuilder.js";
 import { decide } from "../../decision/decisionEngine.js";
 import type {
-  StepHarborAction,
+  CodingActionGateAction,
   ValidationKind as ActionValidationKind
 } from "../../domain/actions.js";
 import { loadPolicy } from "../../policy/loadPolicy.js";
@@ -49,7 +49,7 @@ export type ValidateCommandResult =
     };
 
 type ValidationCommandAction = Extract<
-  StepHarborAction,
+  CodingActionGateAction,
   { type: "validation_command" }
 >;
 
@@ -134,13 +134,13 @@ export const buildValidationAction = (
     timestamp,
     proposedBy: "agent",
     origin: {
-      toolId: "stepharbor-cli"
+      toolId: "coding-action-gate-cli"
     },
     command,
     cwd: options.cwd,
     validationKind: kind as ActionValidationKind,
     raw: {
-      source: "stepharbor validate",
+      source: "coding-action-gate validate",
       command,
       kind
     }

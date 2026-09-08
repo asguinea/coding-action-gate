@@ -102,7 +102,7 @@ class Batch6VerifiedScaleTests(unittest.TestCase):
         }
         schema_text = (
             "Prefix Extraction Schema v0.2 mini_swe_mini_traj mini_swe_generic_traj_json terminus_episode "
-            "swe_agent_traj openhands_events openhands_tensorblock not production StepHarbor validation does not claim StepHarbor is conformal "
+            "swe_agent_traj openhands_events openhands_tensorblock not production CodingActionGate validation does not claim CodingActionGate is conformal "
             "does not claim production statistical guarantees Privacy Rule For Derived JSONL must not store full raw action text "
             "No target-step action text future labels calibration-based threshold selection {0.05, 0.10, 0.20}"
         )

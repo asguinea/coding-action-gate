@@ -9,7 +9,7 @@ const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-doctor-cli-")
+    path.join(os.tmpdir(), "coding-action-gate-doctor-cli-")
   );
   tempDirs.push(tempDir);
   return tempDir;
@@ -80,21 +80,21 @@ describe("doctor command", () => {
     ]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("StepHarbor doctor");
+    expect(result.stdout).toContain("CodingActionGate doctor");
     expect(result.stdout).toContain("Summary:");
     expect(result.stdout).toContain("Next steps:");
-    expect(result.stdout).toContain("stepharbor init");
-    expect(result.stdout).toContain('stepharbor exec "echo hello"');
-    expect(result.stdout).toContain("stepharbor help defer");
-    expect(result.stdout).toContain("stepharbor ui");
-    expect(result.stdout).toContain("stepharbor help install");
+    expect(result.stdout).toContain("coding-action-gate init");
+    expect(result.stdout).toContain('coding-action-gate exec "echo hello"');
+    expect(result.stdout).toContain("coding-action-gate help defer");
+    expect(result.stdout).toContain("coding-action-gate ui");
+    expect(result.stdout).toContain("coding-action-gate help install");
   });
 
   it("doctor --help includes key options", async () => {
     const result = await runCliCaptured(["doctor", "--help"]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("stepharbor doctor [options]");
+    expect(result.stdout).toContain("coding-action-gate doctor [options]");
     expect(result.stdout).toContain("--check-api-port <number>");
     expect(result.stdout).toContain("--skip-port-check");
   });

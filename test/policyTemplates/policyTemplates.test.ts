@@ -15,7 +15,7 @@ const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-templates-")
+    path.join(os.tmpdir(), "coding-action-gate-templates-")
   );
   tempDirs.push(tempDir);
   return tempDir;
@@ -119,7 +119,7 @@ describe("policy templates", () => {
     const tempDir = await createTempDir();
     const nested = path.join(tempDir, "config");
     await mkdir(nested);
-    const policyPath = path.join(nested, "stepharbor.policy.yml");
+    const policyPath = path.join(nested, "coding-action-gate.policy.yml");
     await writeFile(policyPath, renderPolicyTemplate("basic") ?? "", "utf8");
 
     const result = await loadPolicy({ explicitPath: policyPath });

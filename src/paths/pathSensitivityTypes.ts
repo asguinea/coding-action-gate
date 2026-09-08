@@ -1,7 +1,7 @@
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 
 export type PathSensitivityLevel = Exclude<
-  NonNullable<StepHarborSignals["pathSensitivity"]>,
+  NonNullable<CodingActionGateSignals["pathSensitivity"]>,
   "unknown"
 >;
 
@@ -14,7 +14,7 @@ export interface SensitivePathMatch {
 }
 
 export interface PathSensitivityClassification {
-  pathSensitivity: NonNullable<StepHarborSignals["pathSensitivity"]>;
+  pathSensitivity: NonNullable<CodingActionGateSignals["pathSensitivity"]>;
   pathSensitivityReason?: string;
   matchedSensitivePath?: string;
   matchedSensitivePathLevel?: SensitivePathPatternLevel;

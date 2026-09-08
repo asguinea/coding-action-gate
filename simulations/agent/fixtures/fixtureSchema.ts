@@ -259,7 +259,7 @@ export const agentSimulationFixtureSchema = z.object({
   expectedReductionStepKinds: z
     .array(z.enum(uncertaintyReductionStepKinds))
     .min(1),
-  stepHarborInterceptionPoints: z.array(categoryIdSchema).min(1),
+  codingActionGateInterceptionPoints: z.array(categoryIdSchema).min(1),
   futureTraceCompatibility: z.object({
     compatibleTraceSchemaVersion: z.literal(agentActionTraceSchemaVersion),
     supportsSyntheticExamples: z.literal(true),

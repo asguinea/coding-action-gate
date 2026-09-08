@@ -1,4 +1,4 @@
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 import type {
   LandingRiskInput,
   LandingRiskResult,
@@ -15,7 +15,7 @@ const isStagingCommand = (command: string): boolean =>
 
 const environmentForDeploy = (
   command: string
-): StepHarborSignals["environmentClassification"] => {
+): CodingActionGateSignals["environmentClassification"] => {
   if (isProductionCommand(command)) {
     return "production";
   }

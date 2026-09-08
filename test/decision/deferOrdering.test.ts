@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { parseAndNormalizeAction } from "../../src/actions/parseAction.js";
 import { decide } from "../../src/decision/decisionEngine.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
 import { defaultPolicy } from "../../src/policy/defaultPolicy.js";
 
-const normalize = (action: StepHarborAction) => {
+const normalize = (action: CodingActionGateAction) => {
   const result = parseAndNormalizeAction(action, { cwd: process.cwd() });
 
   if (!result.ok) {
@@ -17,7 +17,7 @@ const normalize = (action: StepHarborAction) => {
 const fileAction = (
   type: "edit_file" | "delete_file" | "read_file",
   targetPath: string
-): StepHarborAction =>
+): CodingActionGateAction =>
   ({
     id: `${type}-${targetPath}`,
     type,
@@ -25,9 +25,9 @@ const fileAction = (
     proposedBy: "agent",
     targetPath,
     ...(type === "edit_file" ? { diff: "@@\n-old\n+new\n" } : {})
-  }) as StepHarborAction;
+  }) as CodingActionGateAction;
 
-const runCommandAction = (command: string): StepHarborAction => ({
+const runCommandAction = (command: string): CodingActionGateAction => ({
   id: `cmd-${command}`,
   type: "run_command",
   timestamp: "2026-04-30T10:00:00.000Z",

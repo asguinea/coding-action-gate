@@ -40,7 +40,7 @@ def run_repeated_scoring(rows: list[dict[str, Any]], splits: dict[str, Any], sch
     report = {
         "schema_version": "risk-controlled-intervention-repeated-baselines.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Repeated lightweight benchmark scoring only; not production StepHarbor validation or guarantees.",
+        "claim_boundary": "Repeated lightweight benchmark scoring only; not production CodingActionGate validation or guarantees.",
         "scope": "Frozen v0.4 extraction-supported verified subset only.",
         "seeds": splits["seeds"],
         "score_file": str(utils.REPEATED_SCORES_PATH.relative_to(utils.WORKSPACE)),

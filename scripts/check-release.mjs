@@ -12,7 +12,7 @@ const ignored = new Set([
   ".venv",
   "__pycache__",
   "coverage",
-  ".stepharbor",
+  ".coding-action-gate",
   "reproduction",
   ".reproduction-build",
   "workdir"

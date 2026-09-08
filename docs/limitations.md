@@ -1,6 +1,6 @@
 # Limitations and threat model
 
-StepHarbor is a research and development prototype. Its rules inspect proposed actions and available evidence. It does not isolate processes, mediate all filesystem access, or prevent an agent from bypassing its integration.
+CodingActionGate is a research and development prototype. Its rules inspect proposed actions and available evidence. It does not isolate processes, mediate all filesystem access, or prevent an agent from bypassing its integration.
 
 ## Execution boundary
 
@@ -8,7 +8,7 @@ StepHarbor is a research and development prototype. Its rules inspect proposed a
 
 Command detection uses heuristics rather than a complete shell interpreter. Aliases, nested interpreters, obfuscation, filesystem races, and changes between authorization and execution can invalidate assumptions. Secret detection covers known patterns and cannot guarantee that all sensitive content is recognized.
 
-Runtime records and exported feedback are local data. Inspect them before sharing. Known synthetic token strings in tests exercise redaction; never replace them with live credentials. Optional local analytics can be disabled with `STEPHARBOR_ANALYTICS=0`.
+Runtime records and exported feedback are local data. Inspect them before sharing. Known synthetic token strings in tests exercise redaction; never replace them with live credentials. Optional local analytics can be disabled with `CODING_ACTION_GATE_ANALYTICS=0`.
 
 ## Evidence boundary
 

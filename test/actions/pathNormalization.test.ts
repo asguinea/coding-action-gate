@@ -7,7 +7,9 @@ import { normalizePathForAction } from "../../src/actions/pathNormalization.js";
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-path-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-path-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };

@@ -60,7 +60,7 @@ export const workspaceBoundaryStatusSchema = z.enum([
   "not_applicable"
 ]);
 
-export const stepHarborSignalsSchema = z.object({
+export const codingActionGateSignalsSchema = z.object({
   pathSensitivity: riskLevelSchema.optional(),
   pathSensitivityReason: z.string().min(1).optional(),
   matchedSensitivePath: z.string().min(1).optional(),
@@ -180,4 +180,6 @@ export const stepHarborSignalsSchema = z.object({
   delegationProvenance: delegationProvenanceSchema.optional()
 });
 
-export type StepHarborSignals = z.infer<typeof stepHarborSignalsSchema>;
+export type CodingActionGateSignals = z.infer<
+  typeof codingActionGateSignalsSchema
+>;

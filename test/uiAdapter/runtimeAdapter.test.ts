@@ -21,7 +21,7 @@ const timestamp = "2026-05-02T00:00:00.000Z";
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-ui-adapter-")
+    path.join(os.tmpdir(), "coding-action-gate-ui-adapter-")
   );
   tempDirs.push(tempDir);
   return tempDir;
@@ -158,7 +158,10 @@ describe("runtime UI adapter readers", () => {
 
   it("readAuditRecords reads JSONL audit records and respects limit", async () => {
     const cwd = await createTempDir();
-    const filePath = path.join(cwd, ".stepharbor/audit/decisions.jsonl");
+    const filePath = path.join(
+      cwd,
+      ".coding-action-gate/audit/decisions.jsonl"
+    );
 
     await writeJsonl(filePath, [
       auditRecord("one"),
@@ -183,7 +186,10 @@ describe("runtime UI adapter readers", () => {
 
   it("readLatestAuditRecord returns the last valid audit record", async () => {
     const cwd = await createTempDir();
-    const filePath = path.join(cwd, ".stepharbor/audit/decisions.jsonl");
+    const filePath = path.join(
+      cwd,
+      ".coding-action-gate/audit/decisions.jsonl"
+    );
 
     await writeJsonl(
       filePath,
@@ -203,7 +209,10 @@ describe("runtime UI adapter readers", () => {
       readDeferredActions({ cwd, sessionId: "s1" })
     ).resolves.toEqual([]);
 
-    const filePath = path.join(cwd, ".stepharbor/deferred/session_s1.jsonl");
+    const filePath = path.join(
+      cwd,
+      ".coding-action-gate/deferred/session_s1.jsonl"
+    );
     await writeJsonl(filePath, [deferredRecord("def_one")]);
 
     const records = await readDeferredActions({ cwd, sessionId: "s1" });
@@ -225,7 +234,7 @@ describe("runtime UI adapter readers", () => {
 
     const filePath = path.join(
       cwd,
-      ".stepharbor/observations/session_s1.jsonl"
+      ".coding-action-gate/observations/session_s1.jsonl"
     );
     await writeJsonl(filePath, [observationRecord("obs_one")]);
 
@@ -246,7 +255,10 @@ describe("runtime UI adapter readers", () => {
       readValidationRecords({ cwd, sessionId: "s1" })
     ).resolves.toEqual([]);
 
-    const filePath = path.join(cwd, ".stepharbor/validation/session_s1.jsonl");
+    const filePath = path.join(
+      cwd,
+      ".coding-action-gate/validation/session_s1.jsonl"
+    );
     await writeJsonl(filePath, [validationRecord("val_one")]);
 
     const records = await readValidationRecords({ cwd, sessionId: "s1" });
@@ -271,7 +283,10 @@ describe("runtime UI adapter readers", () => {
 
   it("adapter functions do not mutate data files", async () => {
     const cwd = await createTempDir();
-    const filePath = path.join(cwd, ".stepharbor/validation/session_s1.jsonl");
+    const filePath = path.join(
+      cwd,
+      ".coding-action-gate/validation/session_s1.jsonl"
+    );
 
     await writeJsonl(filePath, [validationRecord("val_one")]);
 
@@ -286,22 +301,22 @@ describe("runtime UI adapter readers", () => {
     const cwd = await createTempDir();
 
     await writeJsonl(
-      path.join(cwd, ".stepharbor/audit/decisions.jsonl"),
+      path.join(cwd, ".coding-action-gate/audit/decisions.jsonl"),
       [auditRecord("one")],
       ["not-json", JSON.stringify({ id: "invalid" })]
     );
     await writeJsonl(
-      path.join(cwd, ".stepharbor/deferred/session_s1.jsonl"),
+      path.join(cwd, ".coding-action-gate/deferred/session_s1.jsonl"),
       [deferredRecord("def_one")],
       ["not-json", JSON.stringify({ id: "invalid" })]
     );
     await writeJsonl(
-      path.join(cwd, ".stepharbor/observations/session_s1.jsonl"),
+      path.join(cwd, ".coding-action-gate/observations/session_s1.jsonl"),
       [observationRecord("obs_one")],
       ["not-json", JSON.stringify({ id: "invalid" })]
     );
     await writeJsonl(
-      path.join(cwd, ".stepharbor/validation/session_s1.jsonl"),
+      path.join(cwd, ".coding-action-gate/validation/session_s1.jsonl"),
       [validationRecord("val_one")],
       ["not-json", JSON.stringify({ id: "invalid" })]
     );

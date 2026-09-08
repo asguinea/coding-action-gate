@@ -7,7 +7,7 @@ interface PackageJson {
 const require = createRequire(import.meta.url);
 const packageJson = require("../package.json") as PackageJson;
 
-export const stepharborVersion = packageJson.version;
+export const codingActionGateVersion = packageJson.version;
 
-export const formatStepHarborVersion = (): string =>
-  `StepHarbor ${stepharborVersion}`;
+export const formatCodingActionGateVersion = (): string =>
+  `CodingActionGate ${codingActionGateVersion}`;

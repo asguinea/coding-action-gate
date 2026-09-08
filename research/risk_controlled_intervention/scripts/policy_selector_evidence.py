@@ -144,7 +144,7 @@ def build_evidence_bundle(reports_dir: Path = REPORTS_DIR) -> dict[str, Any]:
         "reports_used": {name: str(path) for name, path in required.items()},
         "optional_reports_used": {name: str(optional[name]) for name in optional_reports},
         "schema_version": "Prefix Extraction Schema v0.4",
-        "claim_boundary": "benchmark-level CodeTraceBench-derived evidence only; not production StepHarbor validation; not a production guarantee; not causal prevention",
+        "claim_boundary": "benchmark-level CodeTraceBench-derived evidence only; not production CodingActionGate validation; not a production guarantee; not causal prevention",
         "target_prevalence": batch9b.get("target_prevalence_and_overlap", {}),
         "base_risk": metric(batch9a.get("aggregate_metrics", {}).get("gradient_boosting::all_structured", {}), "calibration_base_risk") or 0.052,
         "best_iid_ranker": top_config(batch9a.get("aggregate_metrics", {}), "test_average_precision"),

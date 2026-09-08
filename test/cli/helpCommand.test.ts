@@ -70,19 +70,19 @@ describe("help command", () => {
     expect(result.exitCode).toBe(0);
     expect(result.stdout).toContain("read-before-write");
     expect(result.stdout).toContain("missing related context");
-    expect(result.stdout).toContain("stepharbor read");
-    expect(result.stdout).toContain("stepharbor retry");
+    expect(result.stdout).toContain("coding-action-gate read");
+    expect(result.stdout).toContain("coding-action-gate retry");
   });
 
   it("explains policy without editing it", async () => {
     const result = await captureCli(["help", "policy"]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("stepharbor.policy.yml");
+    expect(result.stdout).toContain("coding-action-gate.policy.yml");
     expect(result.stdout).toContain("does not edit policy");
-    expect(result.stdout).toContain("stepharbor policy show");
-    expect(result.stdout).toContain("stepharbor policy validate");
-    expect(result.stdout).toContain("stepharbor policy explain");
+    expect(result.stdout).toContain("coding-action-gate policy show");
+    expect(result.stdout).toContain("coding-action-gate policy validate");
+    expect(result.stdout).toContain("coding-action-gate policy explain");
     expect(result.stdout).toContain("read-only");
     expect(result.stdout).toContain("basic");
     expect(result.stdout).toContain("node");
@@ -95,14 +95,14 @@ describe("help command", () => {
 
     expect(result.exitCode).toBe(0);
     expect(result.stdout).toContain("local-first");
-    expect(result.stdout).toContain(".stepharbor/analytics/");
+    expect(result.stdout).toContain(".coding-action-gate/analytics/");
     expect(result.stdout).toContain("read-only");
     expect(result.stdout).toContain("No remote telemetry is sent");
-    expect(result.stdout).toContain("STEPHARBOR_ANALYTICS=0");
+    expect(result.stdout).toContain("CODING_ACTION_GATE_ANALYTICS=0");
     expect(result.stdout).toContain("redacted");
     expect(result.stdout).toContain("dry-run only");
-    expect(result.stdout).toContain("stepharbor analytics summary");
-    expect(result.stdout).toContain("stepharbor analytics clear --yes");
+    expect(result.stdout).toContain("coding-action-gate analytics summary");
+    expect(result.stdout).toContain("coding-action-gate analytics clear --yes");
   });
 
   it("explains local analytics commands and privacy", async () => {
@@ -110,20 +110,22 @@ describe("help command", () => {
 
     expect(result.exitCode).toBe(0);
     expect(result.stdout).toContain("local-only");
-    expect(result.stdout).toContain(".stepharbor/analytics/events.jsonl");
+    expect(result.stdout).toContain(
+      ".coding-action-gate/analytics/events.jsonl"
+    );
     expect(result.stdout).toContain("No remote telemetry is sent");
     expect(result.stdout).toContain("raw paths");
     expect(result.stdout).toContain("raw commands");
-    expect(result.stdout).toContain("stepharbor analytics summary");
-    expect(result.stdout).toContain("stepharbor analytics clear --yes");
-    expect(result.stdout).toContain("STEPHARBOR_ANALYTICS=0");
+    expect(result.stdout).toContain("coding-action-gate analytics summary");
+    expect(result.stdout).toContain("coding-action-gate analytics clear --yes");
+    expect(result.stdout).toContain("CODING_ACTION_GATE_ANALYTICS=0");
   });
 
   it("explains installed and source UI behavior", async () => {
     const result = await captureCli(["help", "ui"]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("stepharbor ui");
+    expect(result.stdout).toContain("coding-action-gate ui");
     expect(result.stdout).toContain("read-only");
     expect(result.stdout).toContain("ui/dist");
     expect(result.stdout).toContain("npm run ui:build");
@@ -135,10 +137,10 @@ describe("help command", () => {
     expect(result.exitCode).toBe(0);
     expect(result.stdout).toContain("npm pack");
     expect(result.stdout).toContain("npm install -g ./<tarball>");
-    expect(result.stdout).toContain("stepharbor --version");
-    expect(result.stdout).toContain("stepharbor doctor");
-    expect(result.stdout).toContain("npm uninstall -g stepharbor");
-    expect(result.stdout).toContain(".stepharbor/");
+    expect(result.stdout).toContain("coding-action-gate --version");
+    expect(result.stdout).toContain("coding-action-gate doctor");
+    expect(result.stdout).toContain("npm uninstall -g coding-action-gate");
+    expect(result.stdout).toContain(".coding-action-gate/");
     expect(result.stdout).toContain("npm run smoke:install is mandatory");
     expect(result.stdout).toContain("clean machine or fresh VM");
   });
@@ -147,12 +149,12 @@ describe("help command", () => {
     const result = await captureCli(["help", "first-run"]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("stepharbor --version");
-    expect(result.stdout).toContain("stepharbor doctor");
-    expect(result.stdout).toContain("stepharbor init");
-    expect(result.stdout).toContain('stepharbor exec "echo hello"');
-    expect(result.stdout).toContain("stepharbor ui");
-    expect(result.stdout).toContain("stepharbor export-feedback");
+    expect(result.stdout).toContain("coding-action-gate --version");
+    expect(result.stdout).toContain("coding-action-gate doctor");
+    expect(result.stdout).toContain("coding-action-gate init");
+    expect(result.stdout).toContain('coding-action-gate exec "echo hello"');
+    expect(result.stdout).toContain("coding-action-gate ui");
+    expect(result.stdout).toContain("coding-action-gate export-feedback");
   });
 
   it("reports unknown help topics with available topics", async () => {

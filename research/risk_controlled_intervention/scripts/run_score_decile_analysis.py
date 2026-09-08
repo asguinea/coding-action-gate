@@ -74,7 +74,7 @@ def run_decile_analysis(rows: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "schema_version": "risk-controlled-intervention-score-deciles.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Batch 8.5 ranking diagnostic only; not production StepHarbor guarantees.",
+        "claim_boundary": "Batch 8.5 ranking diagnostic only; not production CodingActionGate guarantees.",
         "scope": "Frozen v0.4 extraction-supported verified subset only.",
         "score_validation": validation,
         "decile_results": results,

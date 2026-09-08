@@ -223,15 +223,15 @@ describe("live data formatters", () => {
   it("buildLiveEmptyStateHints returns useful CLI suggestions", () => {
     expect(buildLiveEmptyStateHints("audit")).toEqual(
       expect.arrayContaining([
-        'stepharbor exec "git status" --cwd .',
-        "stepharbor doctor --cwd ."
+        'coding-action-gate exec "git status" --cwd .',
+        "coding-action-gate doctor --cwd ."
       ])
     );
     expect(
       buildLiveEmptyStateHints("audit", { defaultPolicy: true })
-    ).toContain("stepharbor init --template node");
+    ).toContain("coding-action-gate init --template node");
     expect(buildLiveEmptyStateHints("validation")[0]).toContain(
-      "stepharbor validate"
+      "coding-action-gate validate"
     );
   });
 

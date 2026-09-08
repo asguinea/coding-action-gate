@@ -239,7 +239,7 @@ describe("agent safety override and fallback rules schema", () => {
       ...safetyOverrideCategoryValues
     ]);
     for (const override of overrides) {
-      expect(override.currentAuthority).toBe("deterministic_stepharbor");
+      expect(override.currentAuthority).toBe("deterministic_codingactiongate");
       expect(override.calibratedLayerMayOverride).toBe(false);
       expect(override.advisoryLayerMayOverride).toBe(false);
       expect(override.fallbackDecisionCategory).toMatch(

@@ -68,7 +68,7 @@ export const agentSimulationLoopShapes = [
   "mixed_multi_step"
 ] as const;
 
-export const agentSimulationResponseToStepHarborValues = [
+export const agentSimulationResponseToCodingActionGateValues = [
   "follows_reduction_plan",
   "ignores_reduction_plan",
   "proposes_safer_alternative",
@@ -79,7 +79,7 @@ export const agentSimulationResponseToStepHarborValues = [
 
 export const agentSimulationTraceEventValues = [
   "proposed_action",
-  "stepharbor_decision",
+  "codingactiongate_decision",
   "reduction_plan",
   "agent_followup_action",
   "retry_decision",
@@ -115,7 +115,7 @@ export const agentSimulationLiteratureGroundingCategories = [
   "cora_pre_action_risk_control",
   "riscoset_code_uq",
   "conformal_risk_control_future_work",
-  "stepharbor_opportunity_map"
+  "codingactiongate_opportunity_map"
 ] as const;
 
 export const phase12SimulationOnlyUncertaintyDriverIds = [] as const;
@@ -244,7 +244,7 @@ export const agentSimulationPersonaSchema = z.object({
   developmentContext: z.string().min(1),
   typicalRiskPressure: z.string().min(1),
   likelyAgentUsePattern: z.string().min(1),
-  relevantStepHarborConcerns: z.array(categoryIdSchema).min(1),
+  relevantCodingActionGateConcerns: z.array(categoryIdSchema).min(1),
   expectedSimulationValue: z.string().min(1),
   privacyNotes: z.string().min(1)
 });
@@ -265,8 +265,8 @@ export const agentSimulationScenarioSchema = z.object({
   fixtureRepoType: categoryIdSchema,
   expectedAgentBehavior: z.string().min(1),
   expectedAgentLoopShape: z.enum(agentSimulationLoopShapes),
-  expectedAgentResponseToStepHarbor: z.enum(
-    agentSimulationResponseToStepHarborValues
+  expectedAgentResponseToCodingActionGate: z.enum(
+    agentSimulationResponseToCodingActionGateValues
   ),
   traceEventsExpected: z.array(z.enum(agentSimulationTraceEventValues)).min(1),
   proposedActionCategories: z.array(categoryIdSchema).min(1),
@@ -285,8 +285,8 @@ export const agentSimulationScenarioSchema = z.object({
   baselineExpectations: z.object({
     noGuard: baselineExpectationSchema,
     policyOnlyGuard: baselineExpectationSchema,
-    stepHarborDeterministic: baselineExpectationSchema,
-    stepHarborAdvisoryUq: baselineExpectationSchema
+    codingActionGateDeterministic: baselineExpectationSchema,
+    codingActionGateAdvisoryUq: baselineExpectationSchema
   }),
   productHypothesis: z.string().min(1),
   researchHypothesisCategory: z.enum(
@@ -294,7 +294,7 @@ export const agentSimulationScenarioSchema = z.object({
   ),
   researchHypothesisSummary: z.string().min(1),
   literatureGrounding: literatureGroundingSchema,
-  stepHarborInterceptionPoints: z.array(categoryIdSchema).min(1),
+  codingActionGateInterceptionPoints: z.array(categoryIdSchema).min(1),
   safety: scenarioSafetySchema,
   privacyConstraints: z.array(z.string().min(1)).min(1),
   outOfScopeNotes: z.array(z.string().min(1)).min(1)

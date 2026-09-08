@@ -112,62 +112,62 @@
       {
         "fallbackCategory": "missing_eligibility_record",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "failed_eligibility",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "missing_score",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "stale_score",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "missing_threshold",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "stale_threshold",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "missing_calibration_dataset",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "stale_calibration_dataset",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "distribution_shift",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "policy_conflict",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "unsupported_action_category",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "incomplete_evidence",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "uncertainty_above_approved_scope",
@@ -326,7 +326,7 @@
     "no_cli_api_ui_surface_added",
     "no_scores_thresholds_alpha_calibration_conformal_crc_added",
     "no_statistical_guarantee",
-    "deterministic_stepharbor_decisions_remain_authoritative",
+    "deterministic_codingactiongate_decisions_remain_authoritative",
     "phase_17_real_agent_evidence_required"
   ],
   "notes": [

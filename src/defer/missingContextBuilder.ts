@@ -1,5 +1,5 @@
 import type { MissingContextEntry } from "../domain/common.js";
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 import type { DeferReasonCategory } from "./deferTypes.js";
 
 const withTarget = (
@@ -13,7 +13,7 @@ const withTarget = (
 export const buildMissingContext = (
   category: DeferReasonCategory,
   target: string | undefined,
-  signals: StepHarborSignals = {}
+  signals: CodingActionGateSignals = {}
 ): MissingContextEntry[] => {
   switch (category) {
     case "target_file_never_read":

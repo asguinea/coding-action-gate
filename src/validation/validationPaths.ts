@@ -2,7 +2,7 @@ import path from "node:path";
 
 import type { ValidationStoreOptions } from "./validationTypes.js";
 
-export const defaultValidationDir = ".stepharbor/validation";
+export const defaultValidationDir = ".coding-action-gate/validation";
 export const defaultValidationSessionId = "default";
 
 export const normalizeValidationSessionId = (sessionId?: string): string => {

@@ -1,6 +1,6 @@
-# StepHarbor First Run
+# CodingActionGate First Run
 
-StepHarbor is a runtime authorization layer for agentic coding. It evaluates proposed actions before execution and returns one of four decisions:
+CodingActionGate is a runtime authorization layer for agentic coding. It evaluates proposed actions before execution and returns one of four decisions:
 
 - `PROCEED`: the action may execute immediately.
 - `DEFER`: the action is not authorized yet because evidence or context is missing, stale, or incomplete.
@@ -14,11 +14,11 @@ DEFER does not mean failure. DEFER means the agent may continue autonomously, bu
 For local preview tarball installs:
 
 ```sh
-stepharbor --version
-stepharbor doctor
+coding-action-gate --version
+coding-action-gate doctor
 ```
 
-Installed `stepharbor` should work from any repository. From a source checkout, use:
+Installed `coding-action-gate` should work from any repository. From a source checkout, use:
 
 ```sh
 npm run build
@@ -37,18 +37,18 @@ npm run ui:build
 Create a starter policy in a repository:
 
 ```sh
-stepharbor init --template node
-stepharbor doctor
+coding-action-gate init --template node
+coding-action-gate doctor
 ```
 
-This writes `stepharbor.policy.yml`. It does not edit existing project files other than the requested policy output.
+This writes `coding-action-gate.policy.yml`. It does not edit existing project files other than the requested policy output.
 
 Inspect and validate the effective policy:
 
 ```sh
-stepharbor policy show
-stepharbor policy validate
-stepharbor policy explain
+coding-action-gate policy show
+coding-action-gate policy validate
+coding-action-gate policy explain
 ```
 
 See [policy.md](policy.md) for policy visibility and practical behavior notes.
@@ -57,16 +57,16 @@ For local preview evaluation on actual repositories, follow [real-repo-trial.md]
 
 ## Try A Safe Dry-Run
 
-`stepharbor exec` remains dry-run only. It authorizes a command but does not execute it:
+`coding-action-gate exec` remains dry-run only. It authorizes a command but does not execute it:
 
 ```sh
-stepharbor exec "echo hello"
+coding-action-gate exec "echo hello"
 ```
 
 For action JSON files, use:
 
 ```sh
-stepharbor decide <actionFile> --json --no-audit
+coding-action-gate decide <actionFile> --json --no-audit
 ```
 
 ## Gather Context And Retry
@@ -74,9 +74,9 @@ stepharbor decide <actionFile> --json --no-audit
 If an edit is deferred because of missing or stale context, read the relevant files and retry the deferred action:
 
 ```sh
-stepharbor read src/foo.ts
-stepharbor read test/foo.test.ts
-stepharbor retry <deferredActionId>
+coding-action-gate read src/foo.ts
+coding-action-gate read test/foo.test.ts
+coding-action-gate retry <deferredActionId>
 ```
 
 The retry may then `PROCEED`, `ESCALATE`, or `BLOCK` depending on the evidence.
@@ -84,7 +84,7 @@ The retry may then `PROCEED`, `ESCALATE`, or `BLOCK` depending on the evidence.
 ## Launch The Dashboard
 
 ```sh
-stepharbor ui
+coding-action-gate ui
 ```
 
 The dashboard is localhost-only and read-only. It can show local audit records, deferred actions, observations, validation state, Git state, and policy visibility where available. It cannot approve actions, retry actions, edit files, run commands, mutate policy, or send telemetry.
@@ -100,7 +100,7 @@ npm run ui:build
 Export a sanitized local feedback bundle when requested:
 
 ```sh
-stepharbor export-feedback --out stepharbor-feedback.json
+coding-action-gate export-feedback --out coding-action-gate-feedback.json
 ```
 
 The export is local-only and redacts supported secret-like values and sensitive fields.
@@ -108,30 +108,30 @@ The export is local-only and redacts supported secret-like values and sensitive 
 ## Uninstall
 
 ```sh
-npm uninstall -g stepharbor
+npm uninstall -g coding-action-gate
 ```
 
 ## Reset Local State
 
-StepHarbor stores local runtime state under `.stepharbor/` in the repository where commands run. Remove it only when intentionally deleting local StepHarbor state:
+CodingActionGate stores local runtime state under `.coding-action-gate/` in the repository where commands run. Remove it only when intentionally deleting local CodingActionGate state:
 
 ```sh
-rm -rf .stepharbor
+rm -rf .coding-action-gate
 ```
 
-This deletes local audit records, deferred-action records, file observations, and validation evidence. It does not remove `stepharbor.policy.yml`.
+This deletes local audit records, deferred-action records, file observations, and validation evidence. It does not remove `coding-action-gate.policy.yml`.
 
 ## Security And Privacy
 
-- StepHarbor is local-first.
-- Local analytics is stored under `.stepharbor/analytics/`.
+- CodingActionGate is local-first.
+- Local analytics is stored under `.coding-action-gate/analytics/`.
 - No remote telemetry exists in this phase.
 - Analytics records product-behavior events, not source code, file contents, diffs, raw commands, raw paths, environment variables, secrets, repo names, or validation logs.
-- Inspect local analytics with `stepharbor analytics summary`.
-- Clear local analytics events only with `stepharbor analytics clear --yes`; this does not clear audit logs, deferred actions, observations, validation state, or policy.
-- Disable local analytics with `STEPHARBOR_ANALYTICS=0`.
+- Inspect local analytics with `coding-action-gate analytics summary`.
+- Clear local analytics events only with `coding-action-gate analytics clear --yes`; this does not clear audit logs, deferred actions, observations, validation state, or policy.
+- Disable local analytics with `CODING_ACTION_GATE_ANALYTICS=0`.
 - Analytics does not replace audit logs.
-- `stepharbor exec` is dry-run only.
+- `coding-action-gate exec` is dry-run only.
 - The dashboard API is localhost-only and read-only.
 - The dashboard has no mutation endpoints.
 - Secret-like values and sensitive data are redacted in CLI and audit output where supported.
@@ -139,12 +139,12 @@ This deletes local audit records, deferred-action records, file observations, an
 ## More Help
 
 ```sh
-stepharbor help
-stepharbor help decisions
-stepharbor help defer
-stepharbor help policy
-stepharbor help security
-stepharbor help ui
-stepharbor help install
-stepharbor help analytics
+coding-action-gate help
+coding-action-gate help decisions
+coding-action-gate help defer
+coding-action-gate help policy
+coding-action-gate help security
+coding-action-gate help ui
+coding-action-gate help install
+coding-action-gate help analytics
 ```

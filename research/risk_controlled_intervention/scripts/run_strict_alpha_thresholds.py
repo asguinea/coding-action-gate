@@ -50,7 +50,7 @@ def run_strict_alpha(rows: list[dict[str, Any]], alphas: tuple[float, ...] = ALP
     return {
         "schema_version": "risk-controlled-intervention-strict-alpha.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Batch 8.5 diagnostic thresholding only; not production StepHarbor validation or guarantees.",
+        "claim_boundary": "Batch 8.5 diagnostic thresholding only; not production CodingActionGate validation or guarantees.",
         "scope": "Frozen v0.4 extraction-supported verified subset only.",
         "alpha_values": list(alphas),
         "thresholding_variants": list(VARIANTS),

@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { normalizeAction } from "../../src/actions/normalizeAction.js";
 import { classifyCommandRisk } from "../../src/commands/commandRiskClassifier.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
 
-const commandAction = (command: string): StepHarborAction => ({
+const commandAction = (command: string): CodingActionGateAction => ({
   id: `action-${command.replace(/\W+/g, "-")}`,
   type: "run_command",
   timestamp: "2026-04-30T08:00:00.000Z",

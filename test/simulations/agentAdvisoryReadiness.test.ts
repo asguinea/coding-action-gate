@@ -368,7 +368,7 @@ describe("agent advisory readiness summary schema", () => {
         "conformal_guarantee_exists",
         "risk_is_controlled_at_alpha",
         "real_world_validation_exists",
-        "stepharbor_is_production_grade_calibrated_routing"
+        "codingactiongate_is_production_grade_calibrated_routing"
       ])
     );
   });

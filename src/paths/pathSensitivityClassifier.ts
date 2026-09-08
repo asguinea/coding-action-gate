@@ -1,5 +1,5 @@
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
-import type { StepHarborPolicy } from "../domain/policies.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
+import type { CodingActionGatePolicy } from "../domain/policies.js";
 import {
   pathPatternMatches,
   normalizePathForSensitivity
@@ -68,7 +68,7 @@ const hasStringArray = (value: unknown): value is string[] =>
   Array.isArray(value) && value.every((item) => typeof item === "string");
 
 export const collectClassifiablePaths = (
-  action: NormalizedStepHarborAction
+  action: NormalizedCodingActionGateAction
 ): string[] => {
   const candidates: string[] = [];
   const normalized = action.normalized;
@@ -105,7 +105,7 @@ export const collectClassifiablePaths = (
 };
 
 const patternsFromPolicy = (
-  policy: StepHarborPolicy
+  policy: CodingActionGatePolicy
 ): Record<SensitivePathPatternLevel, string[]> => ({
   critical:
     policy.sensitivePaths?.critical ?? defaultSensitivePathPatterns.critical,
@@ -115,7 +115,7 @@ const patternsFromPolicy = (
 
 const classifyMatches = (
   paths: string[],
-  policy: StepHarborPolicy
+  policy: CodingActionGatePolicy
 ): SensitivePathMatch[] => {
   const patternsByLevel = patternsFromPolicy(policy);
   const matches: SensitivePathMatch[] = [];
@@ -138,8 +138,8 @@ const classifyMatches = (
 };
 
 export const classifyPathSensitivity = (
-  action: NormalizedStepHarborAction,
-  policy: StepHarborPolicy
+  action: NormalizedCodingActionGateAction,
+  policy: CodingActionGatePolicy
 ): PathSensitivityClassification => {
   const paths = collectClassifiablePaths(action);
 

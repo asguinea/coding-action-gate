@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { stepHarborActionSchema } from "./actions.js";
+import { codingActionGateActionSchema } from "./actions.js";
 import {
   fetchPlanStepSchema,
   isoTimestampSchema,
@@ -7,7 +7,7 @@ import {
 } from "./common.js";
 import { decisionPostureSchema } from "./decisions.js";
 import { policyTraceEntrySchema } from "./policies.js";
-import { stepHarborSignalsSchema } from "./signals.js";
+import { codingActionGateSignalsSchema } from "./signals.js";
 
 export const approvalStatusSchema = z.enum([
   "not_required",
@@ -27,13 +27,13 @@ export const auditRecordSchema = z.object({
   userId: z.string().min(1).optional(),
   repoId: z.string().min(1).optional(),
   workspaceId: z.string().min(1).optional(),
-  action: stepHarborActionSchema,
+  action: codingActionGateActionSchema,
   rawAction: z.unknown().optional(),
   normalizedAction: z.unknown().optional(),
   targetPaths: z.array(z.string().min(1)).optional(),
   decision: decisionPostureSchema,
   reason: z.string().min(1),
-  signals: stepHarborSignalsSchema.optional(),
+  signals: codingActionGateSignalsSchema.optional(),
   policyTrace: z.array(policyTraceEntrySchema).optional(),
   evidence: z.record(z.unknown()).optional(),
   missingContext: z.array(missingContextEntrySchema).optional(),

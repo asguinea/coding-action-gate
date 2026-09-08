@@ -2,22 +2,22 @@
 
 ## Purpose
 
-Batch 17.1 defines the generic protocol for representing future coding-agent proposed actions before StepHarbor authorization in controlled, disposable, privacy-safe environments.
+Batch 17.1 defines the generic protocol for representing future coding-agent proposed actions before CodingActionGate authorization in controlled, disposable, privacy-safe environments.
 
 This protocol defines how future proposed actions should be represented; it does not integrate with a real agent, capture real traces, execute actions, or create calibration data.
 
 ## Why Proposed Actions Must Be Captured Before Execution
 
-Future controlled Phase 17 sessions need a normalized proposal envelope so StepHarbor can evaluate an intended action before anything runs or mutates a workspace.
+Future controlled Phase 17 sessions need a normalized proposal envelope so CodingActionGate can evaluate an intended action before anything runs or mutates a workspace.
 
 The protocol records category-only action type, intent, risk, target, evidence state, workspace boundary, sensitivity, validation state, git state, environment, proposed execution category, payload policy, and timestamp category.
 
-## Relationship To StepHarbor Authorization
+## Relationship To CodingActionGate Authorization
 
 The future adapter contract is proposal-first and authorization-first:
 
 - Proposed actions must be authorized before execution.
-- StepHarbor decision categories remain `PROCEED`, `DEFER`, `ESCALATE`, and `BLOCK`.
+- CodingActionGate decision categories remain `PROCEED`, `DEFER`, `ESCALATE`, and `BLOCK`.
 - Proposed action capture does not imply execution.
 - `BLOCK` stops execution.
 - `DEFER` requires evidence gathering before retry.
@@ -25,7 +25,7 @@ The future adapter contract is proposal-first and authorization-first:
 - `PROCEED` only allows execution inside current deterministic policy.
 - Future calibrated/advisory signals are not authoritative now.
 
-Deterministic StepHarbor decisions remain authoritative.
+Deterministic CodingActionGate decisions remain authoritative.
 
 In short, proposed action capture does not imply execution.
 

@@ -3,10 +3,10 @@ import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { normalizeAction } from "../../src/actions/normalizeAction.js";
-import type { NormalizedStepHarborAction } from "../../src/actions/actionErrors.js";
+import type { NormalizedCodingActionGateAction } from "../../src/actions/actionErrors.js";
 import { runDecideCommand } from "../../src/cli/commands/decideCommand.js";
 import { runReadCommand } from "../../src/cli/commands/readCommand.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
 import { defaultPolicy } from "../../src/policy/defaultPolicy.js";
 import { createFileObservationStore } from "../../src/observations/fileObservationStore.js";
 import { computeSafetySignals } from "../../src/signals/computeSignals.js";
@@ -16,7 +16,9 @@ const tempDirs: string[] = [];
 const envSentinel = "RBW_SENTINEL_SHOULD_NOT_LEAK";
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-rbw-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-rbw-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -31,7 +33,7 @@ const baseAction = (
   type: "edit_file" | "write_file" | "delete_file" | "read_file",
   targetPath: string,
   overrides: Record<string, unknown> = {}
-): StepHarborAction =>
+): CodingActionGateAction =>
   ({
     id: `act_${type}`,
     type,
@@ -42,9 +44,9 @@ const baseAction = (
       source: "test"
     },
     ...overrides
-  }) as StepHarborAction;
+  }) as CodingActionGateAction;
 
-const commandAction = (): StepHarborAction => ({
+const commandAction = (): CodingActionGateAction => ({
   id: "act_run",
   type: "run_command",
   timestamp: "2026-04-30T10:00:00.000Z",
@@ -56,9 +58,9 @@ const commandAction = (): StepHarborAction => ({
 });
 
 const normalize = (
-  action: StepHarborAction,
+  action: CodingActionGateAction,
   cwd: string
-): NormalizedStepHarborAction => {
+): NormalizedCodingActionGateAction => {
   const result = normalizeAction(action, { cwd });
 
   if (!result.ok) {
@@ -69,17 +71,17 @@ const normalize = (
 };
 
 const normalizeWithTargets = (
-  action: StepHarborAction,
+  action: CodingActionGateAction,
   cwd: string,
   targetPaths: string[]
-): NormalizedStepHarborAction =>
+): NormalizedCodingActionGateAction =>
   ({
     ...normalize(action, cwd),
     targetPaths
-  }) as unknown as NormalizedStepHarborAction;
+  }) as unknown as NormalizedCodingActionGateAction;
 
 const computeSignals = (
-  action: NormalizedStepHarborAction,
+  action: NormalizedCodingActionGateAction,
   options: {
     cwd: string;
     sessionId?: string;
@@ -139,7 +141,7 @@ const recordObservation = async (
 
 const writeAction = async (
   cwd: string,
-  action: StepHarborAction
+  action: CodingActionGateAction
 ): Promise<string> => {
   const actionPath = path.join(cwd, `action-${action.type}.json`);
 
@@ -495,7 +497,7 @@ describe("readBeforeWriteDetector", () => {
     }
   });
 
-  it("after stepharbor read records observation, decide on safe edit returns PROCEED", async () => {
+  it("after coding-action-gate read records observation, decide on safe edit returns PROCEED", async () => {
     const cwd = await createTempDir();
 
     await writeFile(path.join(cwd, "hello.ts"), "const x = 1;\n", "utf8");

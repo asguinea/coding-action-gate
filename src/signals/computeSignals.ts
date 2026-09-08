@@ -1,6 +1,6 @@
 import {
-  stepHarborSignalsSchema,
-  type StepHarborSignals
+  codingActionGateSignalsSchema,
+  type CodingActionGateSignals
 } from "../domain/signals.js";
 import {
   defaultSafetySignalDetectors,
@@ -17,9 +17,9 @@ import { mergeSignals } from "./signalMerging.js";
 export type SafetySignalResult =
   | {
       ok: true;
-      signals: StepHarborSignals;
-      computedSignals: StepHarborSignals;
-      providedSignals?: StepHarborSignals;
+      signals: CodingActionGateSignals;
+      computedSignals: CodingActionGateSignals;
+      providedSignals?: CodingActionGateSignals;
       detectorResults: SafetySignalDetectorResult[];
     }
   | {
@@ -32,9 +32,9 @@ export interface ComputeSafetySignalOptions {
 }
 
 const mergeComputedSignals = (
-  current: StepHarborSignals,
-  next: StepHarborSignals
-): StepHarborSignals => mergeSignals(next, current);
+  current: CodingActionGateSignals,
+  next: CodingActionGateSignals
+): CodingActionGateSignals => mergeSignals(next, current);
 
 export const computeSafetySignals = async (
   input: SafetySignalInput,
@@ -42,12 +42,12 @@ export const computeSafetySignals = async (
 ): Promise<SafetySignalResult> => {
   try {
     const detectors = options.detectors ?? defaultSafetySignalDetectors;
-    let computedSignals: StepHarborSignals = {};
+    let computedSignals: CodingActionGateSignals = {};
     const detectorResults: SafetySignalDetectorResult[] = [];
 
     for (const detector of detectors) {
       try {
-        const detectorSignals = stepHarborSignalsSchema.parse(
+        const detectorSignals = codingActionGateSignalsSchema.parse(
           await detector.compute(input)
         );
 
@@ -89,7 +89,7 @@ export const computeSafetySignals = async (
       computedSignals,
       ...(input.providedSignals !== undefined
         ? {
-            providedSignals: stepHarborSignalsSchema.parse(
+            providedSignals: codingActionGateSignalsSchema.parse(
               input.providedSignals
             )
           }

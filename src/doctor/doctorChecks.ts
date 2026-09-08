@@ -95,7 +95,7 @@ export const checkNodeVersion = async (): Promise<DoctorCheck> => {
       id: "node-version",
       label: "Node version",
       status: "pass",
-      message: `Node ${version} satisfies StepHarbor's supported runtime (>=20).`,
+      message: `Node ${version} satisfies CodingActionGate's supported runtime (>=20).`,
       details: {
         version,
         required: ">=20"
@@ -107,7 +107,7 @@ export const checkNodeVersion = async (): Promise<DoctorCheck> => {
     id: "node-version",
     label: "Node version",
     status: "fail",
-    message: `Node ${version} is below StepHarbor's supported runtime (>=20).`,
+    message: `Node ${version} is below CodingActionGate's supported runtime (>=20).`,
     remediation: "Install Node.js 20 or newer.",
     details: {
       version,
@@ -140,7 +140,7 @@ export const checkGitAvailable = async (): Promise<DoctorCheck> => {
       status: "warn",
       message: "git is not available on PATH.",
       remediation:
-        "Install git or run StepHarbor in an environment with git available."
+        "Install git or run CodingActionGate in an environment with git available."
     };
   }
 };
@@ -198,7 +198,7 @@ export const checkPolicyLoad = async (
         remediation:
           policy !== undefined
             ? "Fix the explicit policy path or policy file."
-            : "Add a valid StepHarbor policy file or use the default policy.",
+            : "Add a valid CodingActionGate policy file or use the default policy.",
         details: {
           code: result.error.code,
           path: result.error.path
@@ -216,7 +216,7 @@ export const checkPolicyLoad = async (
         status: "warn",
         message: "No project policy discovered; default policy will be used.",
         remediation:
-          "Add a StepHarbor policy file for project-specific behavior.",
+          "Add a CodingActionGate policy file for project-specific behavior.",
         details: {
           source: result.source.type,
           version: result.policy.version
@@ -242,14 +242,14 @@ export const checkPolicyLoad = async (
 };
 
 export const checkRuntimeDirs = async (cwd: string): Promise<DoctorCheck> => {
-  const dirPath = path.join(cwd, ".stepharbor");
+  const dirPath = path.join(cwd, ".coding-action-gate");
 
   if (await fileExists(dirPath)) {
     return {
       id: "runtime-dirs",
-      label: ".stepharbor runtime directory",
+      label: ".coding-action-gate runtime directory",
       status: "pass",
-      message: ".stepharbor runtime directory exists.",
+      message: ".coding-action-gate runtime directory exists.",
       details: {
         path: dirPath
       }
@@ -258,11 +258,11 @@ export const checkRuntimeDirs = async (cwd: string): Promise<DoctorCheck> => {
 
   return {
     id: "runtime-dirs",
-    label: ".stepharbor runtime directory",
+    label: ".coding-action-gate runtime directory",
     status: "info",
-    message: ".stepharbor runtime directory does not exist yet.",
+    message: ".coding-action-gate runtime directory does not exist yet.",
     remediation:
-      "Run StepHarbor commands or npm run demo:beta to generate runtime data.",
+      "Run CodingActionGate commands or npm run demo:beta to generate runtime data.",
     details: {
       path: dirPath
     }
@@ -290,7 +290,7 @@ export const checkAuditStore = async (cwd: string): Promise<DoctorCheck> => {
     status: "info",
     message: "No audit log found yet.",
     remediation:
-      "Run stepharbor decide, exec, read, retry, or validate to write audit records.",
+      "Run coding-action-gate decide, exec, read, retry, or validate to write audit records.",
     details: {
       path: auditPath
     }
@@ -356,7 +356,7 @@ export const checkApiPortAvailable = async (
       id: "api-port-available",
       label: "API port available",
       status: "pass",
-      message: `127.0.0.1:${port} is available for stepharbor ui.`,
+      message: `127.0.0.1:${port} is available for coding-action-gate ui.`,
       details: {
         host: "127.0.0.1",
         port
@@ -370,7 +370,7 @@ export const checkApiPortAvailable = async (
     status: "warn",
     message: `127.0.0.1:${port} is already in use or cannot be bound.`,
     remediation:
-      "Choose another port with --api-port when running stepharbor ui.",
+      "Choose another port with --api-port when running coding-action-gate ui.",
     details: {
       host: "127.0.0.1",
       port
@@ -388,21 +388,21 @@ export const skippedApiPortCheck = (): DoctorCheck => ({
   }
 });
 
-export const checkStepHarborRuntime = async (): Promise<DoctorCheck> => {
+export const checkCodingActionGateRuntime = async (): Promise<DoctorCheck> => {
   const version = await runGitCommand(["--version"]);
 
   return {
-    id: "stepharbor-runtime",
-    label: "StepHarbor command health",
+    id: "coding-action-gate-runtime",
+    label: "CodingActionGate command health",
     status: "pass",
-    message: "StepHarbor doctor runtime is available.",
+    message: "CodingActionGate doctor runtime is available.",
     details: {
       gitProbeAvailable: version.ok
     }
   };
 };
 
-export const checkStepHarborUiReady = (
+export const checkCodingActionGateUiReady = (
   uiBuild: DoctorCheck,
   policy: DoctorCheck,
   cwd: DoctorCheck
@@ -414,19 +414,20 @@ export const checkStepHarborUiReady = (
 
   if (ready) {
     return {
-      id: "stepharbor-ui-ready",
-      label: "StepHarbor UI ready",
+      id: "coding-action-gate-ui-ready",
+      label: "CodingActionGate UI ready",
       status: "pass",
-      message: "StepHarbor UI can be launched for this project.",
-      remediation: "Run `stepharbor ui --cwd .` to inspect local runtime state."
+      message: "CodingActionGate UI can be launched for this project.",
+      remediation:
+        "Run `coding-action-gate ui --cwd .` to inspect local runtime state."
     };
   }
 
   return {
-    id: "stepharbor-ui-ready",
-    label: "StepHarbor UI ready",
+    id: "coding-action-gate-ui-ready",
+    label: "CodingActionGate UI ready",
     status: "warn",
-    message: "StepHarbor UI is not fully ready yet.",
+    message: "CodingActionGate UI is not fully ready yet.",
     remediation:
       "For source checkouts, run `npm run build && npm run ui:build`; for installed beta packages, reinstall a tarball that includes ui/dist."
   };
@@ -478,7 +479,7 @@ export const buildDoctorChecks = async (
       policyCheck.check,
       {
         id: "runtime-dirs",
-        label: ".stepharbor runtime directory",
+        label: ".coding-action-gate runtime directory",
         status: "info",
         message: "Runtime directory check skipped because cwd is unavailable."
       },
@@ -508,14 +509,14 @@ export const buildDoctorChecks = async (
     );
   }
 
-  checks.push(await checkStepHarborRuntime());
+  checks.push(await checkCodingActionGateRuntime());
   const policy = checks.find((check) => check.id === "policy-load") ?? {
     id: "policy-load",
     label: "Policy load",
     status: "fail",
     message: "Policy check did not run."
   };
-  checks.push(checkStepHarborUiReady(uiBuild, policy, cwdCheck));
+  checks.push(checkCodingActionGateUiReady(uiBuild, policy, cwdCheck));
 
   return checks;
 };

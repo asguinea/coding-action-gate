@@ -8,7 +8,9 @@ import { runGitCommand } from "../../src/git/gitExec.js";
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-git-exec-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-git-exec-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -34,15 +36,20 @@ describe("runGitCommand", () => {
   it("returns a structured error for command failures", async () => {
     const cwd = await createTempDir();
 
-    const result = await runGitCommand(["not-a-real-stepharbor-subcommand"], {
-      cwd
-    });
+    const result = await runGitCommand(
+      ["not-a-real-coding-action-gate-subcommand"],
+      {
+        cwd
+      }
+    );
 
     expect(result.ok).toBe(false);
 
     if (!result.ok) {
       expect(result.error.code).toBe("GIT_COMMAND_FAILED");
-      expect(result.error.args).toEqual(["not-a-real-stepharbor-subcommand"]);
+      expect(result.error.args).toEqual([
+        "not-a-real-coding-action-gate-subcommand"
+      ]);
       expect(result.error.cwd).toBe(cwd);
       expect(result.error.exitCode).toBeGreaterThan(0);
     }

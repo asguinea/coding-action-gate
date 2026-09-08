@@ -184,7 +184,7 @@ def markdown(report: dict[str, Any]) -> str:
         "",
         "Full verified-split dry-run extraction using the locked v0.2 schema.",
         "",
-        "This is infrastructure and data validation only. It is not production StepHarbor validation, not a conformal claim, and not a production statistical guarantee.",
+        "This is infrastructure and data validation only. It is not production CodingActionGate validation, not a conformal claim, and not a production statistical guarantee.",
         "",
         "## Summary",
         "",
@@ -215,7 +215,7 @@ def main() -> int:
         "schema_version": "risk-controlled-intervention-prefix-verified.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "claim_boundary": (
-            "Batch 6 verified extraction dry run only; not production StepHarbor validation, "
+            "Batch 6 verified extraction dry run only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "processed_shards": shard_manifest,

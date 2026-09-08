@@ -10,7 +10,9 @@ import readFileFixture from "../../src/fixtures/actions/read-file.json" with { t
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-cli-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-cli-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -88,7 +90,7 @@ describe("decide command", () => {
     ]);
 
     expect(result.exitCode).toBe(cliExitCodes.success);
-    expect(result.stdout).toContain("StepHarbor decision: PROCEED");
+    expect(result.stdout).toContain("CodingActionGate decision: PROCEED");
     expect(result.stderr).toBe("");
   });
 
@@ -118,7 +120,7 @@ describe("decide command", () => {
     ]);
 
     expect(result.exitCode).toBe(cliExitCodes.defer);
-    expect(result.stdout).toContain("StepHarbor decision: DEFER");
+    expect(result.stdout).toContain("CodingActionGate decision: DEFER");
     expect(result.stdout).toContain("Read should be deferred in this test.");
   });
 
@@ -336,6 +338,6 @@ describe("decide command", () => {
     const result = await captureCli(["decide", "--help"]);
 
     expect(result.exitCode).toBe(cliExitCodes.success);
-    expect(result.stdout).toContain("stepharbor decide <actionFile>");
+    expect(result.stdout).toContain("coding-action-gate decide <actionFile>");
   });
 });

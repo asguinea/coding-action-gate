@@ -23,7 +23,7 @@ FILES = [
 ]
 
 FORBIDDEN = [
-    "validates stepharbor",
+    "validates codingactiongate",
     "production validated",
     "production guarantee",
     "conformal guarantee",

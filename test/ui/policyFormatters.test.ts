@@ -36,10 +36,10 @@ describe("policy UI formatters", () => {
     expect(
       summarizePolicySource({
         type: "discovered",
-        path: "/repo/stepharbor.policy.yml",
+        path: "/repo/coding-action-gate.policy.yml",
         version: "0.1"
       })
-    ).toContain("discovered (/repo/stepharbor.policy.yml)");
+    ).toContain("discovered (/repo/coding-action-gate.policy.yml)");
     expect(
       summarizePolicySource({
         type: "explicit",

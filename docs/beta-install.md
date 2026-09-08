@@ -1,23 +1,23 @@
-# StepHarbor Beta Install
+# CodingActionGate Beta Install
 
-This guide is for local preview tarball installs. StepHarbor is local-only in this phase: it does not publish remote telemetry, mutate dashboard state, or execute `stepharbor exec` commands.
+This guide is for local preview tarball installs. CodingActionGate is local-only in this phase: it does not publish remote telemetry, mutate dashboard state, or execute `coding-action-gate exec` commands.
 
-StepHarbor records local-only product-behavior analytics under `.stepharbor/analytics/events.jsonl` for beta calibration. It does not record source code, file contents, diffs, raw commands, raw paths, environment variables, secrets, repo names, or validation logs. Disable future analytics recording with:
+CodingActionGate records local-only product-behavior analytics under `.coding-action-gate/analytics/events.jsonl` for beta calibration. It does not record source code, file contents, diffs, raw commands, raw paths, environment variables, secrets, repo names, or validation logs. Disable future analytics recording with:
 
 ```sh
-STEPHARBOR_ANALYTICS=0
+CODING_ACTION_GATE_ANALYTICS=0
 ```
 
-Inspect local aggregates with `stepharbor analytics summary`. Clear local analytics events only with `stepharbor analytics clear --yes`; this does not clear audit logs, deferred actions, observations, validation state, or policy. Analytics does not replace audit logs.
+Inspect local aggregates with `coding-action-gate analytics summary`. Clear local analytics events only with `coding-action-gate analytics clear --yes`; this does not clear audit logs, deferred actions, observations, validation state, or policy. Analytics does not replace audit logs.
 
-After installation, see [first-run.md](first-run.md) or run `stepharbor help first-run` for a concise first-run flow.
+After installation, see [first-run.md](first-run.md) or run `coding-action-gate help first-run` for a concise first-run flow.
 
 Policy visibility and validation are documented in [policy.md](policy.md). The installed CLI includes read-only policy commands:
 
 ```sh
-stepharbor policy show
-stepharbor policy validate
-stepharbor policy explain
+coding-action-gate policy show
+coding-action-gate policy validate
+coding-action-gate policy explain
 ```
 
 For real repository evaluation, follow [real-repo-trial.md](limitations.md) and use [beta-feedback-template.md](../CONTRIBUTING.md).
@@ -26,11 +26,11 @@ For real repository evaluation, follow [real-repo-trial.md](limitations.md) and 
 
 - Node.js 20 or newer.
 - npm from a current Node 20 installation.
-- Git on `PATH` for Git-state checks. StepHarbor still runs without Git, but `stepharbor doctor` will warn and Git workflow signals will be limited.
+- Git on `PATH` for Git-state checks. CodingActionGate still runs without Git, but `coding-action-gate doctor` will warn and Git workflow signals will be limited.
 
 ## Build A Tarball
 
-From the StepHarbor source checkout:
+From the CodingActionGate source checkout:
 
 ```sh
 npm install
@@ -39,12 +39,12 @@ npm run ui:build
 npm pack
 ```
 
-The local preview tarball is named like `stepharbor-0.1.0.tgz`. Beta packages should include compiled CLI files plus built dashboard assets in `ui/dist`.
+The local preview tarball is named like `coding-action-gate-0.1.0.tgz`. Beta packages should include compiled CLI files plus built dashboard assets in `ui/dist`.
 
 ## Install From Tarball
 
 ```sh
-npm install -g ./stepharbor-0.1.0.tgz
+npm install -g ./coding-action-gate-0.1.0.tgz
 ```
 
 Use the actual tarball name printed by `npm pack`.
@@ -52,9 +52,9 @@ Use the actual tarball name printed by `npm pack`.
 Verify the installed CLI:
 
 ```sh
-stepharbor --version
-stepharbor --help
-stepharbor doctor
+coding-action-gate --version
+coding-action-gate --help
+coding-action-gate doctor
 ```
 
 ## Initialize A Repository
@@ -62,35 +62,35 @@ stepharbor doctor
 From a project repository:
 
 ```sh
-stepharbor init --template node
-stepharbor doctor
+coding-action-gate init --template node
+coding-action-gate doctor
 ```
 
-`stepharbor init` writes `stepharbor.policy.yml`. With local analytics enabled, it may also record an `init_run` event under `.stepharbor/analytics/`; it does not create audit, deferred, validation, or observation state.
+`coding-action-gate init` writes `coding-action-gate.policy.yml`. With local analytics enabled, it may also record an `init_run` event under `.coding-action-gate/analytics/`; it does not create audit, deferred, validation, or observation state.
 
 ## First Guarded Decision
 
 Use a safe decision-only dry run. This authorizes an example action and does not edit files:
 
 ```sh
-stepharbor decide "$(npm root -g)/stepharbor/examples/actions/safe-readme-edit.json" \
-  --policy "$(npm root -g)/stepharbor/examples/policies/proceed-only.policy.yml" \
+coding-action-gate decide "$(npm root -g)/coding-action-gate/examples/actions/safe-readme-edit.json" \
+  --policy "$(npm root -g)/coding-action-gate/examples/policies/proceed-only.policy.yml" \
   --cwd . \
   --json \
   --no-audit
 ```
 
-For your own repository, pass an action JSON generated by your agent integration. `stepharbor decide` only evaluates the action; it does not apply it.
+For your own repository, pass an action JSON generated by your agent integration. `coding-action-gate decide` only evaluates the action; it does not apply it.
 
 ## Launch The Dashboard
 
 ```sh
-stepharbor ui
+coding-action-gate ui
 ```
 
 The dashboard and API are localhost-only and read-only. The UI cannot execute actions.
 
-Private beta tarball packages include `ui/dist` so `stepharbor ui` can serve the dashboard from an installed package. When running from a source checkout, rebuild the dashboard after UI changes:
+Private beta tarball packages include `ui/dist` so `coding-action-gate ui` can serve the dashboard from an installed package. When running from a source checkout, rebuild the dashboard after UI changes:
 
 ```sh
 npm run ui:build
@@ -99,28 +99,28 @@ npm run ui:build
 If you only need the read-only local API:
 
 ```sh
-stepharbor ui --no-ui-server
+coding-action-gate ui --no-ui-server
 ```
 
 ## Uninstall
 
 ```sh
-npm uninstall -g stepharbor
+npm uninstall -g coding-action-gate
 ```
 
-## Reset Local StepHarbor State
+## Reset Local CodingActionGate State
 
-StepHarbor stores local runtime state under `.stepharbor/` in the project where commands run. To reset that local state:
+CodingActionGate stores local runtime state under `.coding-action-gate/` in the project where commands run. To reset that local state:
 
 ```sh
-rm -rf .stepharbor
+rm -rf .coding-action-gate
 ```
 
-This deletes local audit records, deferred-action records, file observations, and validation evidence for that repository. It does not remove `stepharbor.policy.yml`.
+This deletes local audit records, deferred-action records, file observations, and validation evidence for that repository. It does not remove `coding-action-gate.policy.yml`.
 
 ## Troubleshooting
 
-`stepharbor: command not found`
+`coding-action-gate: command not found`
 
 Check npm's global bin directory:
 
@@ -132,7 +132,7 @@ Make sure that directory is on `PATH`, or run the installed bin through your npm
 
 Permission errors during global install
 
-Prefer a user-owned Node/npm installation through a version manager. Avoid running StepHarbor with elevated privileges.
+Prefer a user-owned Node/npm installation through a version manager. Avoid running CodingActionGate with elevated privileges.
 
 UI build missing
 
@@ -146,10 +146,10 @@ For tarball installs, reinstall from a package that includes `ui/dist`.
 
 Policy file not found
 
-Run `stepharbor init` in the project, or pass the exact policy path:
+Run `coding-action-gate init` in the project, or pass the exact policy path:
 
 ```sh
-stepharbor doctor --policy ./stepharbor.policy.yml
+coding-action-gate doctor --policy ./coding-action-gate.policy.yml
 ```
 
 Installed package cannot find bundled assets
@@ -170,6 +170,6 @@ Maintainers can run the installability smoke test from the source checkout:
 npm run smoke:install
 ```
 
-It builds StepHarbor, builds the dashboard, packs the npm tarball, installs it into a temporary directory, verifies package contents and package size, then runs installed `stepharbor --version`, `stepharbor version`, `stepharbor --help`, `stepharbor doctor`, `stepharbor ui --help`, and a safe `stepharbor decide` command.
+It builds CodingActionGate, builds the dashboard, packs the npm tarball, installs it into a temporary directory, verifies package contents and package size, then runs installed `coding-action-gate --version`, `coding-action-gate version`, `coding-action-gate --help`, `coding-action-gate doctor`, `coding-action-gate ui --help`, and a safe `coding-action-gate decide` command.
 
 `npm run smoke:install` is mandatory before sharing any local preview tarball. A manual install on a second clean machine or fresh VM is also recommended before sharing with beta users.

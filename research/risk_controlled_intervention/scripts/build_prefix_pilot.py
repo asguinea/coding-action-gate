@@ -210,7 +210,7 @@ def audit_markdown(report: dict[str, Any]) -> str:
         "",
         "Bounded pilot extraction over selected verified CodeTraceBench artifacts.",
         "",
-        "This is extraction and evaluation scaffolding only. It is not production StepHarbor validation, not a conformal claim, and not a production statistical guarantee.",
+        "This is extraction and evaluation scaffolding only. It is not production CodingActionGate validation, not a conformal claim, and not a production statistical guarantee.",
         "",
         "## Summary",
         "",
@@ -272,7 +272,7 @@ def main() -> int:
         "report_working_title": "Risk-Controlled Intervention in Coding-Agent Trajectories",
         "dataset": "NJU-LINK/CodeTraceBench",
         "claim_boundary": (
-            "Batch 4 hardened bounded pilot extraction only; not production StepHarbor validation, "
+            "Batch 4 hardened bounded pilot extraction only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "generated_at": datetime.now(timezone.utc).isoformat(),

@@ -1,9 +1,9 @@
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 import { redactObject } from "./redactObject.js";
 import type { RedactionOptions, RedactionResult } from "./redactionTypes.js";
 
 export const shouldRedactForSignals = (
-  signals: StepHarborSignals | undefined
+  signals: CodingActionGateSignals | undefined
 ): boolean =>
   signals?.secretTouch === "possible" ||
   signals?.secretTouch === "probable" ||
@@ -11,7 +11,7 @@ export const shouldRedactForSignals = (
 
 export const redactAuditPayload = <T>(
   input: T,
-  signals?: StepHarborSignals,
+  signals?: CodingActionGateSignals,
   options: RedactionOptions = {}
 ): RedactionResult<T> => {
   void signals;

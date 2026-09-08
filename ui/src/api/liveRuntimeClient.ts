@@ -37,7 +37,8 @@ const importMetaEnv = (
 ).env;
 
 export const defaultLiveRuntimeApiUrl =
-  importMetaEnv?.["VITE_STEPHARBOR_API_URL"] ?? "http://127.0.0.1:17373";
+  importMetaEnv?.["VITE_CODING_ACTION_GATE_API_URL"] ??
+  "http://127.0.0.1:17373";
 
 export const defaultLiveRuntimeTimeoutMs = 5000;
 
@@ -264,7 +265,7 @@ const requestJson = async (
       isRecord(body["error"]) &&
       typeof body["error"]["message"] === "string"
         ? body["error"]["message"]
-        : `StepHarbor UI API request failed with HTTP ${response.status}.`;
+        : `CodingActionGate UI API request failed with HTTP ${response.status}.`;
 
     throw new RuntimeDataError(message, response.status);
   }

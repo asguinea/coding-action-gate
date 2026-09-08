@@ -1,4 +1,4 @@
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 
 export type GitCommandCategory =
   | "git_read"
@@ -208,7 +208,7 @@ export const classifyGitCommand = (
 
 export const gitCommandSignals = (
   classification: GitCommandClassification | undefined
-): StepHarborSignals => {
+): CodingActionGateSignals => {
   if (classification === undefined) {
     return {};
   }

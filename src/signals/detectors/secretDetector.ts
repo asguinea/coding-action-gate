@@ -1,5 +1,5 @@
-import type { NormalizedStepHarborAction } from "../../actions/actionErrors.js";
-import type { StepHarborSignals } from "../../domain/signals.js";
+import type { NormalizedCodingActionGateAction } from "../../actions/actionErrors.js";
+import type { CodingActionGateSignals } from "../../domain/signals.js";
 import { collectClassifiablePaths } from "../../paths/pathSensitivityClassifier.js";
 import { normalizePathForSensitivity } from "../../paths/pathPatternMatching.js";
 import { classifySecretPath } from "../../secrets/secretPathClassifier.js";
@@ -19,13 +19,11 @@ const touchRank: Record<SecretTouch, number> = {
   confirmed: 3
 };
 
-const fileMutationActionTypes = new Set<NormalizedStepHarborAction["type"]>([
-  "write_file",
-  "edit_file",
-  "delete_file"
-]);
+const fileMutationActionTypes = new Set<
+  NormalizedCodingActionGateAction["type"]
+>(["write_file", "edit_file", "delete_file"]);
 
-const commandActionTypes = new Set<NormalizedStepHarborAction["type"]>([
+const commandActionTypes = new Set<NormalizedCodingActionGateAction["type"]>([
   "run_command",
   "git_command",
   "validation_command"
@@ -42,7 +40,7 @@ const strongestTouch = (values: SecretTouch[]): SecretTouch =>
   );
 
 const confidenceForPathAction = (
-  actionType: NormalizedStepHarborAction["type"],
+  actionType: NormalizedCodingActionGateAction["type"],
   finding: SecretPathFinding
 ): SecretTouch => {
   if (finding.confidence === "possible") {
@@ -61,7 +59,7 @@ const confidenceForPathAction = (
 };
 
 const collectCommandPathCandidates = (
-  action: NormalizedStepHarborAction
+  action: NormalizedCodingActionGateAction
 ): string[] => {
   if (!commandActionTypes.has(action.type)) {
     return [];
@@ -99,7 +97,7 @@ const addRawStrings = (sources: SecretScanSource[], raw: unknown): void => {
 };
 
 const collectScanSources = (
-  action: NormalizedStepHarborAction
+  action: NormalizedCodingActionGateAction
 ): SecretScanSource[] => {
   const sources: SecretScanSource[] = [];
 
@@ -138,7 +136,7 @@ const collectScanSources = (
 
 export const secretDetector: SafetySignalDetector = {
   id: "secret-detector",
-  compute: ({ action }): StepHarborSignals => {
+  compute: ({ action }): CodingActionGateSignals => {
     const touchValues: SecretTouch[] = ["none"];
     const matchedPatternNames = new Set<string>();
     let secretPathMatch = false;
@@ -244,7 +242,7 @@ export const secretDetector: SafetySignalDetector = {
 
     const secretTouch = strongestTouch(touchValues);
     const matchedSecretPatterns = Array.from(matchedPatternNames);
-    const signals: StepHarborSignals = {
+    const signals: CodingActionGateSignals = {
       secretTouch,
       secretPathMatch,
       secretPatternMatch,

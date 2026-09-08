@@ -4,7 +4,7 @@ import { resolveWorkspaceRoots } from "../../src/workspace/workspaceRoots.js";
 
 describe("resolveWorkspaceRoots", () => {
   it("resolves roots from context.workspaceRoots", () => {
-    const cwd = path.resolve("/tmp/stepharbor-root-context");
+    const cwd = path.resolve("/tmp/coding-action-gate-root-context");
 
     expect(
       resolveWorkspaceRoots({
@@ -23,7 +23,7 @@ describe("resolveWorkspaceRoots", () => {
   });
 
   it("resolves roots from policy.workspace.allowedRoots", () => {
-    const cwd = path.resolve("/tmp/stepharbor-root-policy");
+    const cwd = path.resolve("/tmp/coding-action-gate-root-policy");
 
     expect(
       resolveWorkspaceRoots({
@@ -41,7 +41,7 @@ describe("resolveWorkspaceRoots", () => {
   });
 
   it("resolves relative policy roots against cwd", () => {
-    const cwd = path.resolve("/tmp/stepharbor-root-relative");
+    const cwd = path.resolve("/tmp/coding-action-gate-root-relative");
 
     expect(
       resolveWorkspaceRoots({
@@ -59,7 +59,7 @@ describe("resolveWorkspaceRoots", () => {
   });
 
   it("falls back to cwd", () => {
-    const cwd = path.resolve("/tmp/stepharbor-root-fallback");
+    const cwd = path.resolve("/tmp/coding-action-gate-root-fallback");
 
     expect(
       resolveWorkspaceRoots({

@@ -5,7 +5,7 @@ import { afterEach, describe, expect, it } from "vitest";
 
 import { normalizeAction } from "../../src/actions/normalizeAction.js";
 import { runExecCommand } from "../../src/cli/commands/execCommand.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
 import { defaultPolicy } from "../../src/policy/defaultPolicy.js";
 import { runGitCommand } from "../../src/git/gitExec.js";
 import { computeSafetySignals } from "../../src/signals/computeSignals.js";
@@ -13,7 +13,9 @@ import { computeSafetySignals } from "../../src/signals/computeSignals.js";
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-git-flow-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-git-flow-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -46,8 +48,11 @@ const createRepo = async (branch = "main"): Promise<string> => {
   const cwd = await createTempDir();
 
   await runGit(["init", "-b", branch], cwd);
-  await runGit(["config", "user.email", "stepharbor@example.test"], cwd);
-  await runGit(["config", "user.name", "StepHarbor Test"], cwd);
+  await runGit(
+    ["config", "user.email", "coding-action-gate@example.test"],
+    cwd
+  );
+  await runGit(["config", "user.name", "CodingActionGate Test"], cwd);
   await writeFile(path.join(cwd, "README.md"), "# Repo\n", "utf8");
   await runGit(["add", "README.md"], cwd);
   await runGit(["commit", "-m", "initial"], cwd);
@@ -55,7 +60,7 @@ const createRepo = async (branch = "main"): Promise<string> => {
   return cwd;
 };
 
-const gitAction = (command: string, cwd: string): StepHarborAction => ({
+const gitAction = (command: string, cwd: string): CodingActionGateAction => ({
   id: `act_${command.replace(/[^a-z0-9]+/gi, "_")}`,
   type: "run_command",
   timestamp: "2026-05-02T00:00:00.000Z",

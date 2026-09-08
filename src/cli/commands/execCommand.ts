@@ -5,7 +5,7 @@ import { recordDecisionCreated } from "../../analytics/analyticsRecorder.js";
 import { appendAuditRecord } from "../../audit/auditLogger.js";
 import { buildAuditRecord } from "../../audit/auditRecordBuilder.js";
 import { decide } from "../../decision/decisionEngine.js";
-import type { StepHarborAction } from "../../domain/actions.js";
+import type { CodingActionGateAction } from "../../domain/actions.js";
 import { loadPolicy } from "../../policy/loadPolicy.js";
 import { computeSafetySignals } from "../../signals/computeSignals.js";
 import { createCliError, type CliError } from "../cliErrors.js";
@@ -36,7 +36,10 @@ export type ExecCommandResult =
       error: CliError;
     };
 
-type ExecRunCommandAction = Extract<StepHarborAction, { type: "run_command" }>;
+type ExecRunCommandAction = Extract<
+  CodingActionGateAction,
+  { type: "run_command" }
+>;
 
 const generateActionId = (timestamp: string): string => {
   const safeTimestamp = timestamp.replace(/[^0-9A-Za-z]/g, "");
@@ -70,12 +73,12 @@ export const buildExecAction = (
     timestamp,
     proposedBy: "agent",
     origin: {
-      toolId: "stepharbor-cli"
+      toolId: "coding-action-gate-cli"
     },
     command,
     cwd: options.cwd,
     raw: {
-      source: "stepharbor exec",
+      source: "coding-action-gate exec",
       command
     }
   };

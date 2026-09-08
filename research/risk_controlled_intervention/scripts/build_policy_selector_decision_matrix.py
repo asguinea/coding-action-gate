@@ -134,7 +134,7 @@ def generate_decision_matrix() -> dict[str, Any]:
         rows.append({**scenario, "selection": selection})
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "benchmark-level CodeTraceBench-derived method selection; not production StepHarbor validation; not a production guarantee; not causal prevention",
+        "claim_boundary": "benchmark-level CodeTraceBench-derived method selection; not production CodingActionGate validation; not a production guarantee; not causal prevention",
         "scenarios": rows,
         "evidence_reports_used": evidence["reports_used"],
     }
@@ -144,7 +144,7 @@ def markdown(report: dict[str, Any]) -> str:
     lines = [
         "# Batch 9G Policy Selector Decision Matrix",
         "",
-        "Benchmark-level cost-aware selector diagnostics on CodeTraceBench-derived trajectories. This is not production StepHarbor validation, not a production guarantee, and not causal prevention.",
+        "Benchmark-level cost-aware selector diagnostics on CodeTraceBench-derived trajectories. This is not production CodingActionGate validation, not a production guarantee, and not causal prevention.",
         "",
         "| scenario | recommended policy | model | feature set | calibration rule | row deferral | trajectory deferral | bad-row capture | first-failure coverage | no safe recommendation |",
         "|---|---|---|---|---|---:|---:|---:|---:|---|",

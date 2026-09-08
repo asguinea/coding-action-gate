@@ -299,7 +299,7 @@ def build_audit(prepared: dict[str, Any], schema: dict[str, Any], splits: dict[s
         "schema_version": "risk-controlled-intervention-model-feature-preparation.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "claim_boundary": (
-            "Batch 7 feature preparation only; not production StepHarbor validation, "
+            "Batch 7 feature preparation only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "scope": "Frozen Prefix Extraction Schema v0.4 extraction-supported verified subset only.",

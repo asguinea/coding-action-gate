@@ -219,7 +219,7 @@ const hasFailed = (checks: UiStartupCheck[]): boolean =>
 
 const firstFailureMessage = (checks: UiStartupCheck[]): string =>
   checks.find((check) => check.status === "FAIL")?.message ??
-  "StepHarbor UI startup self-check failed.";
+  "CodingActionGate UI startup self-check failed.";
 
 export const runUiStartupSelfCheck = async (
   options: UiCommandOptions
@@ -336,18 +336,18 @@ export const runUiStartupSelfCheck = async (
   }
 
   if (cwdOk) {
-    const runtimeDir = path.join(cwd, ".stepharbor");
+    const runtimeDir = path.join(cwd, ".coding-action-gate");
     checks.push(
       (await fileExists(runtimeDir))
         ? {
             status: "PASS",
             label: "runtime data",
-            message: ".stepharbor runtime data exists"
+            message: ".coding-action-gate runtime data exists"
           }
         : {
             status: "WARN",
             label: "runtime data",
-            message: "no .stepharbor runtime data found yet"
+            message: "no .coding-action-gate runtime data found yet"
           }
     );
     checks.push(
@@ -394,7 +394,7 @@ export const runUiStartupSelfCheck = async (
 export const formatUiCommandOutput = (started: UiCommandStarted): string => {
   const modeLabel = started.mode === "live" ? "Live Local" : "Mock Demo";
   const lines = [
-    "StepHarbor UI beta",
+    "CodingActionGate UI beta",
     "",
     "Project:",
     `  cwd: ${started.cwd}`,
@@ -441,7 +441,7 @@ export const formatUiCommandOutput = (started: UiCommandStarted): string => {
         "  npm run ui:build",
         "",
         "Or start only the API:",
-        "  stepharbor ui --no-ui-server"
+        "  coding-action-gate ui --no-ui-server"
       );
     }
 
@@ -485,7 +485,7 @@ const toCliUiServerError = (error: unknown): CliError => {
   const message =
     error instanceof Error && error.message.length > 0
       ? error.message
-      : "Failed to start StepHarbor UI.";
+      : "Failed to start CodingActionGate UI.";
 
   return createCliError("CLI_UI_SERVER_ERROR", message);
 };

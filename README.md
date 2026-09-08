@@ -1,8 +1,8 @@
-# StepHarbor
+# CodingActionGate
 
 **Inspect an agent's next action before it runs.**
 
-StepHarbor is a local authorization toolkit for coding agents. It combines explicit policies, workspace checks, file observations, validation evidence, and an audit trail to decide how a proposed action should proceed.
+CodingActionGate is a local authorization toolkit for coding agents. It combines explicit policies, workspace checks, file observations, validation evidence, and an audit trail to decide how a proposed action should proceed.
 
 | Decision   | Meaning                                                 |
 | ---------- | ------------------------------------------------------- |
@@ -18,8 +18,8 @@ The TypeScript runtime includes a CLI and a read-only dashboard. A separate Pyth
 Requires Node.js 24 LTS, npm, and Git. Python 3.13 is needed only for the controller experiments. No API key or paid service is required for the quick start.
 
 ```sh
-git clone https://github.com/asguinea/stepharbor.git
-cd stepharbor
+git clone https://github.com/asguinea/coding-action-gate.git
+cd coding-action-gate
 npm ci
 npm run build
 node dist/cli/cli.js --version
@@ -29,7 +29,7 @@ node dist/cli/cli.js decide examples/actions/safe-readme-edit.json --policy exam
 The example returns `PROCEED`. Authorization does not apply the proposed edit.
 
 ```sh
-# Generate stepharbor.policy.yml in a project you own.
+# Generate coding-action-gate.policy.yml in a project you own.
 node dist/cli/cli.js init --template node
 node dist/cli/cli.js doctor
 
@@ -39,7 +39,7 @@ npm run demo:beta
 node dist/cli/cli.js ui --cwd examples/beta-demo/workdir
 
 # Export local diagnostic summaries for inspection.
-node dist/cli/cli.js export-feedback --cwd . --out stepharbor-feedback.json
+node dist/cli/cli.js export-feedback --cwd . --out coding-action-gate-feedback.json
 ```
 
 See [first run](docs/first-run.md), [policy configuration](docs/policy.md), and [architecture](docs/architecture.md).

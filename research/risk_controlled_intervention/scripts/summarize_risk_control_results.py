@@ -20,7 +20,7 @@ FEATURE_AUDIT = REPORTS_DIR / "model_feature_preparation_audit.json"
 OUTPUT_JSON = REPORTS_DIR / "risk_control_summary.json"
 OUTPUT_MD = REPORTS_DIR / "risk_control_summary.md"
 
-SUMMARY_STATEMENT = "These are calibration-based benchmark results on CodeTraceBench-derived trajectories, not production StepHarbor guarantees."
+SUMMARY_STATEMENT = "These are calibration-based benchmark results on CodeTraceBench-derived trajectories, not production CodingActionGate guarantees."
 
 
 def load_json(path: Path) -> dict[str, Any]:

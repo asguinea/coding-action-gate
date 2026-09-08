@@ -1,6 +1,6 @@
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 
-export type SecretTouch = NonNullable<StepHarborSignals["secretTouch"]>;
+export type SecretTouch = NonNullable<CodingActionGateSignals["secretTouch"]>;
 
 export type SecretConfidence = Exclude<SecretTouch, "none" | "unknown">;
 

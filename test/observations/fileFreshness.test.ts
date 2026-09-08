@@ -8,7 +8,9 @@ import { createFileObservationStore } from "../../src/observations/fileObservati
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-fresh-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-fresh-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };

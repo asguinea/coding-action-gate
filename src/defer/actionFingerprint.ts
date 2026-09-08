@@ -1,14 +1,14 @@
 import { createHash } from "node:crypto";
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
 import { tokenizeCommand } from "../actions/commandNormalization.js";
-import type { StepHarborAction } from "../domain/actions.js";
+import type { CodingActionGateAction } from "../domain/actions.js";
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
 
 const hasNormalizedMetadata = (
-  action: StepHarborAction | NormalizedStepHarborAction
-): action is NormalizedStepHarborAction =>
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
+): action is NormalizedCodingActionGateAction =>
   "normalized" in action &&
   isRecord(action.normalized) &&
   typeof action.normalized["actionType"] === "string";
@@ -42,12 +42,12 @@ export const stableCanonicalJson = (value: unknown): string =>
   JSON.stringify(canonicalize(value));
 
 const getActionType = (
-  action: StepHarborAction | NormalizedStepHarborAction
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
 ): string =>
   hasNormalizedMetadata(action) ? action.normalized.actionType : action.type;
 
 export const actionTargetPathsForDeferral = (
-  action: StepHarborAction | NormalizedStepHarborAction
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
 ): string[] => {
   const paths: string[] = [];
 
@@ -85,7 +85,7 @@ export const actionTargetPathsForDeferral = (
 };
 
 const normalizedCommand = (
-  action: StepHarborAction | NormalizedStepHarborAction
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
 ): string | undefined => {
   if (
     hasNormalizedMetadata(action) &&
@@ -100,7 +100,7 @@ const normalizedCommand = (
 };
 
 export const actionCommandExecutableForDeferral = (
-  action: StepHarborAction | NormalizedStepHarborAction
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
 ): string | undefined => {
   if (
     hasNormalizedMetadata(action) &&
@@ -115,15 +115,15 @@ export const actionCommandExecutableForDeferral = (
 };
 
 const actionDiffStats = (
-  action: StepHarborAction | NormalizedStepHarborAction
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
 ): unknown => ("diffStats" in action ? action.diffStats : undefined);
 
 const validationKind = (
-  action: StepHarborAction | NormalizedStepHarborAction
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
 ): unknown => ("validationKind" in action ? action.validationKind : undefined);
 
 const fingerprintPayload = (
-  action: StepHarborAction | NormalizedStepHarborAction
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
 ): Record<string, unknown> => ({
   actionType: getActionType(action),
   targetPaths: actionTargetPathsForDeferral(action),
@@ -133,15 +133,15 @@ const fingerprintPayload = (
 });
 
 export const fingerprintAction = (
-  action: StepHarborAction | NormalizedStepHarborAction
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
 ): string =>
   createHash("sha256")
     .update(stableCanonicalJson(fingerprintPayload(action)))
     .digest("hex");
 
 const hasOverlappingTarget = (
-  left: StepHarborAction | NormalizedStepHarborAction,
-  right: StepHarborAction | NormalizedStepHarborAction
+  left: CodingActionGateAction | NormalizedCodingActionGateAction,
+  right: CodingActionGateAction | NormalizedCodingActionGateAction
 ): boolean => {
   const leftTargets = new Set(actionTargetPathsForDeferral(left));
 
@@ -151,8 +151,8 @@ const hasOverlappingTarget = (
 };
 
 export const areActionsSimilarForDeferral = (
-  left: StepHarborAction | NormalizedStepHarborAction,
-  right: StepHarborAction | NormalizedStepHarborAction
+  left: CodingActionGateAction | NormalizedCodingActionGateAction,
+  right: CodingActionGateAction | NormalizedCodingActionGateAction
 ): boolean => {
   if (fingerprintAction(left) === fingerprintAction(right)) {
     return true;

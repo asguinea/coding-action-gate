@@ -10,7 +10,9 @@ import {
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-related-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-related-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };

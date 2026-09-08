@@ -5,7 +5,7 @@
   "proposedBy": "agent",
   "origin": {
     "agentId": "phase2-example-agent",
-    "provider": "stepharbor-example",
+    "provider": "coding-action-gate-example",
     "toolId": "read_file"
   },
   "targetPath": ".env",

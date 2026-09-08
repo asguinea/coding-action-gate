@@ -43,7 +43,7 @@
   "deterministicSafetyOverrides": [
     {
       "overrideCategory": "secret_or_credential_access",
-      "currentAuthority": "deterministic_stepharbor",
+      "currentAuthority": "deterministic_codingactiongate",
       "calibratedLayerMayOverride": false,
       "advisoryLayerMayOverride": false,
       "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
@@ -52,7 +52,7 @@
     },
     {
       "overrideCategory": "workspace_escape",
-      "currentAuthority": "deterministic_stepharbor",
+      "currentAuthority": "deterministic_codingactiongate",
       "calibratedLayerMayOverride": false,
       "advisoryLayerMayOverride": false,
       "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
@@ -61,7 +61,7 @@
     },
     {
       "overrideCategory": "dangerous_command",
-      "currentAuthority": "deterministic_stepharbor",
+      "currentAuthority": "deterministic_codingactiongate",
       "calibratedLayerMayOverride": false,
       "advisoryLayerMayOverride": false,
       "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
@@ -70,7 +70,7 @@
     },
     {
       "overrideCategory": "destructive_file_action",
-      "currentAuthority": "deterministic_stepharbor",
+      "currentAuthority": "deterministic_codingactiongate",
       "calibratedLayerMayOverride": false,
       "advisoryLayerMayOverride": false,
       "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
@@ -79,7 +79,7 @@
     },
     {
       "overrideCategory": "production_deploy",
-      "currentAuthority": "deterministic_stepharbor",
+      "currentAuthority": "deterministic_codingactiongate",
       "calibratedLayerMayOverride": false,
       "advisoryLayerMayOverride": false,
       "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
@@ -88,7 +88,7 @@
     },
     {
       "overrideCategory": "protected_branch_operation",
-      "currentAuthority": "deterministic_stepharbor",
+      "currentAuthority": "deterministic_codingactiongate",
       "calibratedLayerMayOverride": false,
       "advisoryLayerMayOverride": false,
       "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
@@ -97,7 +97,7 @@
     },
     {
       "overrideCategory": "validation_failure",
-      "currentAuthority": "deterministic_stepharbor",
+      "currentAuthority": "deterministic_codingactiongate",
       "calibratedLayerMayOverride": false,
       "advisoryLayerMayOverride": false,
       "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": true,
@@ -106,7 +106,7 @@
     },
     {
       "overrideCategory": "validation_bypass_or_no_verify",
-      "currentAuthority": "deterministic_stepharbor",
+      "currentAuthority": "deterministic_codingactiongate",
       "calibratedLayerMayOverride": false,
       "advisoryLayerMayOverride": false,
       "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
@@ -115,7 +115,7 @@
     },
     {
       "overrideCategory": "publish_or_release_action",
-      "currentAuthority": "deterministic_stepharbor",
+      "currentAuthority": "deterministic_codingactiongate",
       "calibratedLayerMayOverride": false,
       "advisoryLayerMayOverride": false,
       "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
@@ -124,7 +124,7 @@
     },
     {
       "overrideCategory": "policy_block",
-      "currentAuthority": "deterministic_stepharbor",
+      "currentAuthority": "deterministic_codingactiongate",
       "calibratedLayerMayOverride": false,
       "advisoryLayerMayOverride": false,
       "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
@@ -133,7 +133,7 @@
     },
     {
       "overrideCategory": "explicit_user_or_policy_forbidden_action",
-      "currentAuthority": "deterministic_stepharbor",
+      "currentAuthority": "deterministic_codingactiongate",
       "calibratedLayerMayOverride": false,
       "advisoryLayerMayOverride": false,
       "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
@@ -142,7 +142,7 @@
     },
     {
       "overrideCategory": "private_data_exposure_risk",
-      "currentAuthority": "deterministic_stepharbor",
+      "currentAuthority": "deterministic_codingactiongate",
       "calibratedLayerMayOverride": false,
       "advisoryLayerMayOverride": false,
       "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": true,
@@ -498,7 +498,7 @@
     "no_cli_api_ui_surface_added",
     "no_scores_thresholds_alpha_calibration_conformal_crc_added",
     "no_statistical_guarantee",
-    "deterministic_stepharbor_decisions_remain_authoritative",
+    "deterministic_codingactiongate_decisions_remain_authoritative",
     "deterministic_safety_overrides_cannot_be_overridden_by_calibrated_advisory_signals",
     "phase_17_real_agent_evidence_required"
   ],

@@ -9,10 +9,10 @@ import {
 } from "../../src/analytics/index.js";
 
 const createTempDir = async (): Promise<string> =>
-  mkdtemp(path.join(os.tmpdir(), "stepharbor-analytics-summary-"));
+  mkdtemp(path.join(os.tmpdir(), "coding-action-gate-analytics-summary-"));
 
 const writeEvents = async (cwd: string, lines: string[]): Promise<void> => {
-  const analyticsDir = path.join(cwd, ".stepharbor", "analytics");
+  const analyticsDir = path.join(cwd, ".coding-action-gate", "analytics");
   await mkdir(analyticsDir, { recursive: true });
   await writeFile(
     path.join(analyticsDir, "events.jsonl"),
@@ -102,7 +102,7 @@ describe("analytics summary", () => {
     expect(summary.deferResolution.resolved).toBe(1);
     expect(summary.commandUsage.doctor_run).toBe(1);
     expect(summary.commandUsage.ui_launched).toBe(1);
-    expect(output).toContain("StepHarbor Local Analytics Summary");
+    expect(output).toContain("CodingActionGate Local Analytics Summary");
     expect(output).toContain("- Events: 5");
     expect(output).toContain("- decision_created: 2");
     expect(output).toContain("- PROCEED: 1");

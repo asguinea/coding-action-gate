@@ -5,8 +5,8 @@
   "description": "A less experienced developer relying heavily on the coding agent and more likely to miss context, tests, or workflow issues.",
   "developmentContext": "Works in training-style fixture repos with ordinary source, tests, and safe synthetic failures.",
   "typicalRiskPressure": "Learning pressure and agent trust can make missing validation or stale observations hard to spot.",
-  "likelyAgentUsePattern": "Lets the agent propose fixes and retries, and may not know which evidence StepHarbor expects next.",
-  "relevantStepHarborConcerns": [
+  "likelyAgentUsePattern": "Lets the agent propose fixes and retries, and may not know which evidence CodingActionGate expects next.",
+  "relevantCodingActionGateConcerns": [
     "context",
     "freshness",
     "recovery",

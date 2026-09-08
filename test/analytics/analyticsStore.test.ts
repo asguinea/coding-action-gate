@@ -13,7 +13,7 @@ const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-analytics-")
+    path.join(os.tmpdir(), "coding-action-gate-analytics-")
   );
   tempDirs.push(tempDir);
   return tempDir;
@@ -23,21 +23,21 @@ const withAnalyticsEnv = async (
   value: string | undefined,
   fn: () => Promise<void>
 ): Promise<void> => {
-  const previous = process.env["STEPHARBOR_ANALYTICS"];
+  const previous = process.env["CODING_ACTION_GATE_ANALYTICS"];
 
   if (value === undefined) {
-    delete process.env["STEPHARBOR_ANALYTICS"];
+    delete process.env["CODING_ACTION_GATE_ANALYTICS"];
   } else {
-    process.env["STEPHARBOR_ANALYTICS"] = value;
+    process.env["CODING_ACTION_GATE_ANALYTICS"] = value;
   }
 
   try {
     await fn();
   } finally {
     if (previous === undefined) {
-      delete process.env["STEPHARBOR_ANALYTICS"];
+      delete process.env["CODING_ACTION_GATE_ANALYTICS"];
     } else {
-      process.env["STEPHARBOR_ANALYTICS"] = previous;
+      process.env["CODING_ACTION_GATE_ANALYTICS"] = previous;
     }
   }
 };
@@ -49,7 +49,7 @@ afterEach(async () => {
 });
 
 describe("analytics store", () => {
-  it("writes append-only JSONL events under .stepharbor/analytics", async () => {
+  it("writes append-only JSONL events under .coding-action-gate/analytics", async () => {
     const cwd = await createTempDir();
 
     await recordAnalyticsEvent({
@@ -70,7 +70,7 @@ describe("analytics store", () => {
     const events = await readAnalyticsEvents({ cwd });
 
     expect(resolveAnalyticsEventsPath({ cwd })).toBe(
-      path.join(cwd, ".stepharbor", "analytics", "events.jsonl")
+      path.join(cwd, ".coding-action-gate", "analytics", "events.jsonl")
     );
     expect(events).toHaveLength(1);
     expect(events[0]).toMatchObject({

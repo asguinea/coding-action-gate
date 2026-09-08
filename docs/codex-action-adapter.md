@@ -4,7 +4,7 @@
 
 Batch 12.4 defines a Codex-like action adapter schema and deterministic mapping layer for future Phase 12 simulations. The adapter converts category-only proposed action descriptions into normalized proposed actions that can later populate `proposed_action` trace events.
 
-This is a schema/mapping layer, not real Codex integration. It does not call Codex, does not run agents, does not parse raw agent output, does not execute commands, does not create traces, does not run StepHarbor decisions, and does not validate performance.
+This is a schema/mapping layer, not real Codex integration. It does not call Codex, does not run agents, does not parse raw agent output, does not execute commands, does not create traces, does not run CodingActionGate decisions, and does not validate performance.
 
 ## Data Boundaries
 
@@ -12,8 +12,8 @@ The adapter separates four concepts:
 
 - raw agent output: out of scope for this batch and not stored,
 - category-only adapter input: safe metadata describing a proposed operation, intent, target, scope, and risk surface,
-- normalized proposed action: deterministic StepHarbor-compatible categories plus expected uncertainty and interception metadata,
-- future StepHarbor runtime action: a later runtime object outside this batch.
+- normalized proposed action: deterministic CodingActionGate-compatible categories plus expected uncertainty and interception metadata,
+- future CodingActionGate runtime action: a later runtime object outside this batch.
 
 Adapter inputs exclude raw Codex output, raw prompts, raw commands, raw diffs, raw source code, raw logs, paths, secrets, environment values, deployment targets, and private data.
 
@@ -37,4 +37,4 @@ Diagnostics do not include raw prompts, raw commands, raw paths, raw source code
 
 Batch 12.4 defines schema, examples, and pure deterministic mapping only. It does not provide real Codex integration, real coding-agent execution, completed simulation evidence, real-environment validation, benchmark proof of real-environment performance, conformal risk control, statistical assurances, sandboxing, enterprise readiness, production safety guarantees, public disclosure approval, or legal/IP conclusions.
 
-StepHarbor remains non-conformal, and the uncertainty router remains advisory and non-authoritative.
+CodingActionGate remains non-conformal, and the uncertainty router remains advisory and non-authoritative.

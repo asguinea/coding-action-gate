@@ -12,7 +12,7 @@ import type {
 import type { DecisionPosture } from "../domain/decisions.js";
 
 export const analyticsStorageRelativePath =
-  ".stepharbor/analytics/events.jsonl";
+  ".coding-action-gate/analytics/events.jsonl";
 
 const eventTypeOrder = [
   "decision_created",
@@ -386,7 +386,7 @@ export const formatAnalyticsSummary = (summary: AnalyticsSummary): string => {
   ) {
     return [
       "No local analytics events found.",
-      "Run StepHarbor commands in this workspace to generate local product-behavior analytics.",
+      "Run CodingActionGate commands in this workspace to generate local product-behavior analytics.",
       "",
       "Status:",
       `- Local analytics: ${summary.status.localAnalytics}`,
@@ -395,7 +395,7 @@ export const formatAnalyticsSummary = (summary: AnalyticsSummary): string => {
   }
 
   const lines = [
-    "StepHarbor Local Analytics Summary",
+    "CodingActionGate Local Analytics Summary",
     "",
     "Status:",
     `- Local analytics: ${summary.status.localAnalytics}`,

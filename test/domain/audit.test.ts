@@ -31,7 +31,7 @@ describe("audit records", () => {
       }
     ],
     evidence: {
-      workspaceRoot: "/workspace/stepharbor"
+      workspaceRoot: "/workspace/coding-action-gate"
     },
     missingContext: [],
     fetchPlan: [],

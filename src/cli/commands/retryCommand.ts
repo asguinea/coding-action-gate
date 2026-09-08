@@ -7,7 +7,7 @@ import {
 import { appendAuditRecord } from "../../audit/auditLogger.js";
 import { buildAuditRecord } from "../../audit/auditRecordBuilder.js";
 import { decide } from "../../decision/decisionEngine.js";
-import type { StepHarborDecision } from "../../decision/decisionErrors.js";
+import type { CodingActionGateDecision } from "../../decision/decisionErrors.js";
 import { evaluateDeferredEvidence } from "../../defer/deferredEvidence.js";
 import { createDeferredActionRegistry } from "../../defer/deferredActionRegistry.js";
 import type {
@@ -15,8 +15,8 @@ import type {
   DeferredEvidenceRequirement
 } from "../../defer/deferredActionTypes.js";
 import {
-  stepHarborActionSchema,
-  type StepHarborAction
+  codingActionGateActionSchema,
+  type CodingActionGateAction
 } from "../../domain/actions.js";
 import { decisionOutputSchema } from "../../domain/decisions.js";
 import { loadPolicy } from "../../policy/loadPolicy.js";
@@ -62,8 +62,10 @@ const buildSession = (options: RetryCommandOptions) => ({
 
 const parseOriginalAction = (
   record: DeferredActionRecord
-): { ok: true; action: StepHarborAction } | { ok: false; error: CliError } => {
-  const parsed = stepHarborActionSchema.safeParse(record.originalAction);
+):
+  | { ok: true; action: CodingActionGateAction }
+  | { ok: false; error: CliError } => {
+  const parsed = codingActionGateActionSchema.safeParse(record.originalAction);
 
   if (!parsed.success) {
     return {
@@ -84,7 +86,7 @@ const parseOriginalAction = (
 
 const missingEvidenceDecision = (
   record: DeferredActionRecord
-): StepHarborDecision =>
+): CodingActionGateDecision =>
   decisionOutputSchema.parse({
     decision: "DEFER",
     reason: "Deferred action evidence is still missing.",
@@ -236,7 +238,7 @@ export const runRetryCommand = async (
     evidenceSatisfied
   );
 
-  let decision: StepHarborDecision;
+  let decision: CodingActionGateDecision;
   let signalResult:
     | Awaited<ReturnType<typeof computeSafetySignals>>
     | undefined;

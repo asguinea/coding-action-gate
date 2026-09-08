@@ -53,7 +53,7 @@ def run_relative_risk(rows: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "schema_version": "risk-controlled-intervention-relative-risk.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Batch 8.5 relative-risk diagnostics only; not production StepHarbor guarantees.",
+        "claim_boundary": "Batch 8.5 relative-risk diagnostics only; not production CodingActionGate guarantees.",
         "scope": "Frozen v0.4 extraction-supported verified subset only.",
         "target_fractions": list(TARGET_FRACTIONS),
         "thresholding_variants": list(VARIANTS),

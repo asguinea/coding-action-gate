@@ -28,7 +28,7 @@ describe("secret entropy detection", () => {
   it("does not flag normal README text", () => {
     expect(
       detectEntropyAnomaly(
-        "StepHarbor is a runtime authorization layer for agentic coding."
+        "CodingActionGate is a runtime authorization layer for agentic coding."
       )
     ).toBeUndefined();
   });

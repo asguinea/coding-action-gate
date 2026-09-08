@@ -1,13 +1,13 @@
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
-import type { StepHarborPolicy } from "../domain/policies.js";
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
+import type { CodingActionGatePolicy } from "../domain/policies.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 import {
   resolveDestructiveThresholds,
   type DestructiveThresholds
 } from "./destructiveThresholds.js";
 
 type DestructiveSeverity = NonNullable<
-  StepHarborSignals["destructiveSeverity"]
+  CodingActionGateSignals["destructiveSeverity"]
 >;
 
 interface DestructiveFinding {
@@ -29,7 +29,7 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null && !Array.isArray(value);
 
 const readNumericMetadata = (
-  action: NormalizedStepHarborAction,
+  action: NormalizedCodingActionGateAction,
   key: string
 ): number | undefined => {
   const directValue = (action as unknown as Record<string, unknown>)[key];
@@ -45,7 +45,7 @@ const readNumericMetadata = (
   return undefined;
 };
 
-const targetPathCount = (action: NormalizedStepHarborAction): number => {
+const targetPathCount = (action: NormalizedCodingActionGateAction): number => {
   const counts = [
     action.normalized.targetPaths?.length,
     action.normalized.absoluteTargetPaths?.length,
@@ -91,7 +91,7 @@ const chooseMostSevereFinding = (
 
 const findingToSignals = (
   finding: DestructiveFinding | undefined
-): StepHarborSignals => {
+): CodingActionGateSignals => {
   if (finding === undefined) {
     return {
       destructiveOperation: false
@@ -108,7 +108,7 @@ const findingToSignals = (
 };
 
 const evaluateWriteFile = (
-  action: Extract<NormalizedStepHarborAction, { type: "write_file" }>,
+  action: Extract<NormalizedCodingActionGateAction, { type: "write_file" }>,
   thresholds: DestructiveThresholds
 ): DestructiveFinding[] => {
   const findings: DestructiveFinding[] = [];
@@ -156,7 +156,7 @@ const evaluateWriteFile = (
 };
 
 const evaluateEditFile = (
-  action: Extract<NormalizedStepHarborAction, { type: "edit_file" }>,
+  action: Extract<NormalizedCodingActionGateAction, { type: "edit_file" }>,
   thresholds: DestructiveThresholds
 ): DestructiveFinding[] => {
   const findings: DestructiveFinding[] = [];
@@ -219,7 +219,7 @@ const evaluateEditFile = (
 };
 
 const evaluateMultiPath = (
-  action: NormalizedStepHarborAction,
+  action: NormalizedCodingActionGateAction,
   thresholds: DestructiveThresholds
 ): DestructiveFinding[] => {
   const count = targetPathCount(action);
@@ -239,9 +239,9 @@ const evaluateMultiPath = (
 };
 
 export const evaluateDestructiveAction = (
-  action: NormalizedStepHarborAction,
-  policy: StepHarborPolicy
-): StepHarborSignals => {
+  action: NormalizedCodingActionGateAction,
+  policy: CodingActionGatePolicy
+): CodingActionGateSignals => {
   const thresholds = resolveDestructiveThresholds(policy);
 
   if (action.type === "delete_file") {

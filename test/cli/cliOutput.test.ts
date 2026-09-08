@@ -46,7 +46,9 @@ const output: CliSuccessOutput = {
 
 describe("CLI output formatting", () => {
   it("formats human-readable success output", () => {
-    expect(formatHumanSuccess(output)).toContain("StepHarbor decision: DEFER");
+    expect(formatHumanSuccess(output)).toContain(
+      "CodingActionGate decision: DEFER"
+    );
     expect(formatHumanSuccess(output)).toContain("Missing context:");
     expect(formatHumanSuccess(output)).toContain("Fetch plan:");
     expect(formatHumanSuccess(output)).toContain("Risk if proceeding:");

@@ -31,7 +31,7 @@ const listen = (
       reject(
         new UiServerError(
           "UI_SERVER_START_ERROR",
-          `Failed to start StepHarbor UI server: ${error.message}`,
+          `Failed to start CodingActionGate UI server: ${error.message}`,
           500
         )
       );
@@ -45,7 +45,7 @@ const listen = (
         reject(
           new UiServerError(
             "UI_SERVER_START_ERROR",
-            "Failed to determine StepHarbor UI server address.",
+            "Failed to determine CodingActionGate UI server address.",
             500
           )
         );

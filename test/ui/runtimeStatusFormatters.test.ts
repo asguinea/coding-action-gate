@@ -102,7 +102,7 @@ describe("runtime status formatters", () => {
       baseData({
         policySource: {
           type: "explicit",
-          path: "/tmp/stepharbor.policy.yml",
+          path: "/tmp/coding-action-gate.policy.yml",
           version: "0.1"
         }
       })
@@ -112,7 +112,7 @@ describe("runtime status formatters", () => {
       expect.arrayContaining([
         expect.objectContaining({
           label: "Policy source",
-          value: "explicit: /tmp/stepharbor.policy.yml"
+          value: "explicit: /tmp/coding-action-gate.policy.yml"
         }),
         expect.objectContaining({
           label: "Policy version",
@@ -157,7 +157,7 @@ describe("runtime status formatters", () => {
 
   it("suggests init when default policy is active", () => {
     expect(defaultPolicyEmptyStateHint({ type: "default" })).toContain(
-      "stepharbor init --template node"
+      "coding-action-gate init --template node"
     );
     expect(defaultPolicyEmptyStateHint({ type: "explicit" })).toEqual([]);
   });

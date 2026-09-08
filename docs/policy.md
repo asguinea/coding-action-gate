@@ -1,20 +1,20 @@
-# StepHarbor Policy
+# CodingActionGate Policy
 
-StepHarbor policy is read-only enforcement configuration. It tells StepHarbor how to interpret workspace boundaries, sensitive paths, command risk, validation gates, Git workflow risk, and landing/deploy/publish behavior before an action is authorized.
+CodingActionGate policy is read-only enforcement configuration. It tells CodingActionGate how to interpret workspace boundaries, sensitive paths, command risk, validation gates, Git workflow risk, and landing/deploy/publish behavior before an action is authorized.
 
 ## Default And Project Policy
 
-If no project policy is found, StepHarbor uses the bundled default policy. In a repository, project policy is usually stored as:
+If no project policy is found, CodingActionGate uses the bundled default policy. In a repository, project policy is usually stored as:
 
 ```sh
-stepharbor.policy.yml
+coding-action-gate.policy.yml
 ```
 
-Decision commands and policy visibility commands use the same policy loading path, so `stepharbor decide`, `stepharbor exec`, `stepharbor policy show`, `stepharbor policy validate`, and `stepharbor policy explain` should agree on the effective policy.
+Decision commands and policy visibility commands use the same policy loading path, so `coding-action-gate decide`, `coding-action-gate exec`, `coding-action-gate policy show`, `coding-action-gate policy validate`, and `coding-action-gate policy explain` should agree on the effective policy.
 
 ## Templates
 
-Starter templates are available through `stepharbor init`:
+Starter templates are available through `coding-action-gate init`:
 
 - `basic`
 - `node`
@@ -24,7 +24,7 @@ Starter templates are available through `stepharbor init`:
 Example:
 
 ```sh
-stepharbor init --template node
+coding-action-gate init --template node
 ```
 
 ## Inspect Policy
@@ -32,19 +32,19 @@ stepharbor init --template node
 Show the effective policy source and sanitized section summary:
 
 ```sh
-stepharbor policy show
+coding-action-gate policy show
 ```
 
 Validate the effective policy:
 
 ```sh
-stepharbor policy validate
+coding-action-gate policy validate
 ```
 
 Explain practical behavior:
 
 ```sh
-stepharbor policy explain
+coding-action-gate policy explain
 ```
 
 All policy commands are read-only. They do not edit policy, approve actions, override decisions, mutate configuration, or send telemetry.
@@ -80,6 +80,6 @@ Policy commands do not:
 - send remote telemetry
 - control local analytics recording
 
-Local analytics is controlled with `STEPHARBOR_ANALYTICS=0|false|off`, not policy.
+Local analytics is controlled with `CODING_ACTION_GATE_ANALYTICS=0|false|off`, not policy.
 
-For real repository evaluation, run `stepharbor policy validate` and `stepharbor policy explain` before the trial scenarios in [real-repo-trial.md](limitations.md).
+For real repository evaluation, run `coding-action-gate policy validate` and `coding-action-gate policy explain` before the trial scenarios in [real-repo-trial.md](limitations.md).

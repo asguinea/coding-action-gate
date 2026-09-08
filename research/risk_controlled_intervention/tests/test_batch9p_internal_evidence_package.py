@@ -37,11 +37,11 @@ class Batch9PInternalEvidencePackageTests(unittest.TestCase):
 
     def test_claim_checker_catches_forbidden_unsupported_claims(self):
         with tempfile.NamedTemporaryFile("w+", suffix=".md") as handle:
-            handle.write("StepHarbor validated. This is safe to deploy.")
+            handle.write("CodingActionGate validated. This is safe to deploy.")
             handle.flush()
             hits = self.checker.forbidden_hits(Path(handle.name).read_text())
         phrases = {hit["phrase"] for hit in hits}
-        self.assertIn("stepharbor validated", phrases)
+        self.assertIn("codingactiongate validated", phrases)
         self.assertIn("safe to deploy", phrases)
 
 

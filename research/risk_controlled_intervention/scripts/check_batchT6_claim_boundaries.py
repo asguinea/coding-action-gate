@@ -21,7 +21,7 @@ FILES = [
     "batch_T6_infeasibility_diagnosis.md",
 ]
 FORBIDDEN = [
-    "validates stepharbor",
+    "validates codingactiongate",
     "production validated",
     "production guarantee",
     "conformal guarantee",

@@ -12,7 +12,9 @@ import { cliExitCodes } from "../../src/cli/exitCodes.js";
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-exec-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-exec-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -88,12 +90,12 @@ describe("exec command", () => {
       type: "run_command",
       proposedBy: "agent",
       origin: {
-        toolId: "stepharbor-cli"
+        toolId: "coding-action-gate-cli"
       },
       command: "npm test",
       cwd,
       raw: {
-        source: "stepharbor exec",
+        source: "coding-action-gate exec",
         command: "npm test"
       }
     });
@@ -111,9 +113,9 @@ describe("exec command", () => {
 
     expect(result.exitCode).toBe(cliExitCodes.success);
     expect(result.stdout).toContain(
-      "StepHarbor exec dry-run: command was NOT executed."
+      "CodingActionGate exec dry-run: command was NOT executed."
     );
-    expect(result.stdout).toContain("StepHarbor decision: PROCEED");
+    expect(result.stdout).toContain("CodingActionGate decision: PROCEED");
   });
 
   it("can return DEFER using a policy matching action_type", async () => {
@@ -141,7 +143,7 @@ describe("exec command", () => {
     ]);
 
     expect(result.exitCode).toBe(cliExitCodes.defer);
-    expect(result.stdout).toContain("StepHarbor decision: DEFER");
+    expect(result.stdout).toContain("CodingActionGate decision: DEFER");
   });
 
   it("can return ESCALATE using a policy matching is_git_like_command", async () => {
@@ -169,7 +171,7 @@ describe("exec command", () => {
     ]);
 
     expect(result.exitCode).toBe(cliExitCodes.escalate);
-    expect(result.stdout).toContain("StepHarbor decision: ESCALATE");
+    expect(result.stdout).toContain("CodingActionGate decision: ESCALATE");
   });
 
   it("can return BLOCK using a policy matching command_executable", async () => {
@@ -197,7 +199,7 @@ describe("exec command", () => {
     ]);
 
     expect(result.exitCode).toBe(cliExitCodes.block);
-    expect(result.stdout).toContain("StepHarbor decision: BLOCK");
+    expect(result.stdout).toContain("CodingActionGate decision: BLOCK");
   });
 
   it("writes an audit record by default", async () => {
@@ -372,7 +374,7 @@ describe("exec command", () => {
     const result = await captureCli(["exec", "--help"]);
 
     expect(result.exitCode).toBe(cliExitCodes.success);
-    expect(result.stdout).toContain('stepharbor exec "<command>"');
+    expect(result.stdout).toContain('coding-action-gate exec "<command>"');
   });
 
   it("does not execute the command", async () => {

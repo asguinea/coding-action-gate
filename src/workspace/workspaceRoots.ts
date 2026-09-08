@@ -1,9 +1,9 @@
 import path from "node:path";
-import type { StepHarborPolicy } from "../domain/policies.js";
+import type { CodingActionGatePolicy } from "../domain/policies.js";
 import type { SafetySignalContext } from "../signals/signalContext.js";
 
 export interface ResolveWorkspaceRootsInput {
-  policy?: StepHarborPolicy;
+  policy?: CodingActionGatePolicy;
   context?: SafetySignalContext;
 }
 

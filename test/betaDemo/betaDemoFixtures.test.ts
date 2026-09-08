@@ -17,7 +17,7 @@ const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-beta-demo-")
+    path.join(os.tmpdir(), "coding-action-gate-beta-demo-")
   );
   tempDirs.push(tempDir);
   return tempDir;
@@ -33,7 +33,7 @@ const readJson = async (filePath: string): Promise<string> =>
   readFile(filePath, "utf8");
 
 describe("beta demo fixtures", () => {
-  it("beta demo action fixtures are valid StepHarbor actions", async () => {
+  it("beta demo action fixtures are valid CodingActionGate actions", async () => {
     for (const fileName of [
       "proceed-readme-edit.json",
       "defer-service-edit.json",
@@ -89,7 +89,7 @@ describe("beta demo fixtures", () => {
     );
   });
 
-  it("demo script routes dangerous examples through stepharbor exec", async () => {
+  it("demo script routes dangerous examples through coding-action-gate exec", async () => {
     const script = await readFile(scriptPath, "utf8");
 
     expect(script).toContain('"exec", "rm -rf ."');
@@ -128,7 +128,7 @@ describe("beta demo fixtures", () => {
     expect(content).toContain(
       "node dist/cli/cli.js ui --cwd examples/beta-demo/workdir"
     );
-    expect(content).toContain("stepharbor exec");
+    expect(content).toContain("coding-action-gate exec");
     expect(content).toContain("dry-run");
   });
 });

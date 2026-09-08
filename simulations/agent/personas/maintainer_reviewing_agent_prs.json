@@ -6,7 +6,7 @@
   "developmentContext": "Works with fixture pull-request categories, sanitized provenance markers, and landing-flow metadata.",
   "typicalRiskPressure": "Review throughput pressure can hide unverified generated output or unsafe landing flows.",
   "likelyAgentUsePattern": "Uses the agent to inspect generated changes, prepare commits, or resolve review feedback.",
-  "relevantStepHarborConcerns": [
+  "relevantCodingActionGateConcerns": [
     "git_workflow",
     "provenance",
     "sensitivity",

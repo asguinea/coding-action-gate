@@ -192,7 +192,7 @@ def run_thresholding(rows: list[dict[str, Any]]) -> tuple[dict[str, Any], list[d
         "schema_version": "risk-controlled-intervention-risk-thresholds.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "claim_boundary": (
-            "Batch 8 calibration-based benchmark thresholding only; not production StepHarbor validation, "
+            "Batch 8 calibration-based benchmark thresholding only; not production CodingActionGate validation, "
             "not a production conformal claim, and not a production statistical guarantee."
         ),
         "scope": "Frozen v0.4 extraction-supported verified subset only.",

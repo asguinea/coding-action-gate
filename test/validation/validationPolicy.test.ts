@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import type { StepHarborPolicy } from "../../src/domain/policies.js";
+import type { CodingActionGatePolicy } from "../../src/domain/policies.js";
 import {
   getValidationCommands,
   getValidationPolicyForAction
@@ -8,7 +8,7 @@ import {
 
 describe("validation policy helpers", () => {
   it("returns beforeCommit commands", () => {
-    const policy: StepHarborPolicy = {
+    const policy: CodingActionGatePolicy = {
       version: "test",
       validation: {
         beforeCommit: {
@@ -25,7 +25,7 @@ describe("validation policy helpers", () => {
   });
 
   it("returns beforePush commands", () => {
-    const policy: StepHarborPolicy = {
+    const policy: CodingActionGatePolicy = {
       version: "test",
       validation: {
         beforePush: {
@@ -51,7 +51,7 @@ describe("validation policy helpers", () => {
   });
 
   it("keeps required true when commands are missing", () => {
-    const policy: StepHarborPolicy = {
+    const policy: CodingActionGatePolicy = {
       version: "test",
       validation: {
         beforeCommit: {
@@ -67,7 +67,7 @@ describe("validation policy helpers", () => {
   });
 
   it("returns validation policy by supported action or target", () => {
-    const policy: StepHarborPolicy = {
+    const policy: CodingActionGatePolicy = {
       version: "test",
       validation: {
         beforeCommit: {

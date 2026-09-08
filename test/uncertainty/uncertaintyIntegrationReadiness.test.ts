@@ -23,7 +23,7 @@ import {
 } from "../../src/analytics/index.js";
 import { runDecideCommand } from "../../src/cli/commands/decideCommand.js";
 import { runExecCommand } from "../../src/cli/commands/execCommand.js";
-import type { StepHarborSignals } from "../../src/domain/signals.js";
+import type { CodingActionGateSignals } from "../../src/domain/signals.js";
 import {
   buildUncertaintyProfile,
   type AutonomyBudgetProfileInput
@@ -38,19 +38,21 @@ import { uncertaintyRouterResultSchemaVersion } from "../../src/uncertainty/unce
 import safeReadmeEdit from "../../examples/actions/safe-readme-edit.json" with { type: "json" };
 
 const tempDirs: string[] = [];
-const originalAnalyticsEnv = process.env.STEPHARBOR_ANALYTICS;
+const originalAnalyticsEnv = process.env.CODING_ACTION_GATE_ANALYTICS;
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-uq-ready-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-uq-ready-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
 
 afterEach(async () => {
   if (originalAnalyticsEnv === undefined) {
-    delete process.env.STEPHARBOR_ANALYTICS;
+    delete process.env.CODING_ACTION_GATE_ANALYTICS;
   } else {
-    process.env.STEPHARBOR_ANALYTICS = originalAnalyticsEnv;
+    process.env.CODING_ACTION_GATE_ANALYTICS = originalAnalyticsEnv;
   }
 
   await Promise.all(
@@ -87,7 +89,7 @@ const expectNoRawStrings = (content: string): void => {
 };
 
 const multiSignalInput = (): {
-  signals: StepHarborSignals;
+  signals: CodingActionGateSignals;
   autonomyBudget: AutonomyBudgetProfileInput;
 } => ({
   signals: {
@@ -361,15 +363,15 @@ describe("Phase 10A uncertainty integration readiness", () => {
   it("respects uncertainty analytics opt-out and skips malformed summary lines", async () => {
     const cwd = await createTempDir();
 
-    process.env.STEPHARBOR_ANALYTICS = "0";
+    process.env.CODING_ACTION_GATE_ANALYTICS = "0";
     await recordUncertaintyProfileCreated({
       cwd,
       profile: buildMultiSignalProfile()
     });
     expect(await readAnalyticsEvents({ cwd })).toEqual([]);
 
-    delete process.env.STEPHARBOR_ANALYTICS;
-    const analyticsDir = path.join(cwd, ".stepharbor", "analytics");
+    delete process.env.CODING_ACTION_GATE_ANALYTICS;
+    const analyticsDir = path.join(cwd, ".coding-action-gate", "analytics");
     await mkdir(analyticsDir, { recursive: true });
     await writeFile(
       path.join(analyticsDir, "events.jsonl"),

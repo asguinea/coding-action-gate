@@ -11,10 +11,10 @@ const repoRoot = path.resolve(
 const packageJsonPath = path.join(repoRoot, "package.json");
 const packageJson = JSON.parse(await readFile(packageJsonPath, "utf8"));
 const packageName = packageJson.name;
-const expectedVersion = `StepHarbor ${packageJson.version}`;
+const expectedVersion = `CodingActionGate ${packageJson.version}`;
 
 const excludedPackagePaths = [
-  ".stepharbor/",
+  ".coding-action-gate/",
   "node_modules/",
   "coverage/",
   "dist/src/",
@@ -124,8 +124,8 @@ const assertPackageContents = (pack) => {
   }
 };
 
-const runCli = async (stepharborBin, args, options = {}) => {
-  const result = await execFileAsync(stepharborBin, args, options);
+const runCli = async (codingActionGateBin, args, options = {}) => {
+  const result = await execFileAsync(codingActionGateBin, args, options);
 
   return result.stdout.trim();
 };
@@ -134,7 +134,9 @@ let tempRoot;
 let success = false;
 
 try {
-  tempRoot = await mkdtemp(path.join(os.tmpdir(), "stepharbor-install-smoke-"));
+  tempRoot = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-install-smoke-")
+  );
   const packDir = path.join(tempRoot, "pack");
   const depPackDir = path.join(tempRoot, "dependency-packs");
   const installDir = path.join(tempRoot, "install");
@@ -217,11 +219,13 @@ try {
     "utf8"
   );
 
-  const stepharborBin = path.join(
+  const codingActionGateBin = path.join(
     installDir,
     "node_modules",
     ".bin",
-    process.platform === "win32" ? "stepharbor.cmd" : "stepharbor"
+    process.platform === "win32"
+      ? "coding-action-gate.cmd"
+      : "coding-action-gate"
   );
   const installedPackageRoot = path.join(
     installDir,
@@ -241,10 +245,10 @@ try {
     "proceed-only.policy.yml"
   );
 
-  const versionOutput = await runCli(stepharborBin, ["--version"], {
+  const versionOutput = await runCli(codingActionGateBin, ["--version"], {
     cwd: projectDir
   });
-  const versionCommandOutput = await runCli(stepharborBin, ["version"], {
+  const versionCommandOutput = await runCli(codingActionGateBin, ["version"], {
     cwd: projectDir
   });
 
@@ -257,33 +261,33 @@ try {
     );
   }
 
-  const helpOutput = await runCli(stepharborBin, ["--help"], {
+  const helpOutput = await runCli(codingActionGateBin, ["--help"], {
     cwd: projectDir
   });
-  if (!helpOutput.includes("stepharbor decide <actionFile>")) {
+  if (!helpOutput.includes("coding-action-gate decide <actionFile>")) {
     throw new Error("Installed CLI help did not include decide command.");
   }
 
   const doctorOutput = await runCli(
-    stepharborBin,
+    codingActionGateBin,
     ["doctor", "--cwd", projectDir],
     {
       cwd: projectDir
     }
   );
-  if (!doctorOutput.includes("StepHarbor doctor")) {
+  if (!doctorOutput.includes("CodingActionGate doctor")) {
     throw new Error("Installed doctor command did not print doctor output.");
   }
 
-  const uiHelpOutput = await runCli(stepharborBin, ["ui", "--help"], {
+  const uiHelpOutput = await runCli(codingActionGateBin, ["ui", "--help"], {
     cwd: projectDir
   });
-  if (!uiHelpOutput.includes("stepharbor ui [options]")) {
+  if (!uiHelpOutput.includes("coding-action-gate ui [options]")) {
     throw new Error("Installed ui --help did not print UI help.");
   }
 
   const decisionOutput = await runCli(
-    stepharborBin,
+    codingActionGateBin,
     [
       "decide",
       actionFile,

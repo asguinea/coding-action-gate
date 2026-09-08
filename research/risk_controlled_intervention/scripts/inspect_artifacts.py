@@ -500,7 +500,7 @@ def markdown_report(report: dict[str, Any]) -> str:
         "",
         "Batch 1 artifact schema sampling for `NJU-LINK/CodeTraceBench`.",
         "",
-        "This is not production StepHarbor validation, not a conformal claim, and not a production statistical guarantee.",
+        "This is not production CodingActionGate validation, not a conformal claim, and not a production statistical guarantee.",
         "",
         "## Summary",
         "",
@@ -557,7 +557,7 @@ def main() -> int:
         "report_working_title": "Risk-Controlled Intervention in Coding-Agent Trajectories",
         "dataset": "NJU-LINK/CodeTraceBench",
         "claim_boundary": (
-            "Batch 1 artifact schema sampling only; not production StepHarbor validation, "
+            "Batch 1 artifact schema sampling only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "generated_at": datetime.now(timezone.utc).isoformat(),

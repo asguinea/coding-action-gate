@@ -11,7 +11,7 @@ const now = "2026-05-06T12:00:00.000Z";
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-feedback-cli-")
+    path.join(os.tmpdir(), "coding-action-gate-feedback-cli-")
   );
   tempDirs.push(tempDir);
   return tempDir;
@@ -97,7 +97,9 @@ describe("export-feedback command", () => {
     ]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("StepHarbor feedback export created:");
+    expect(result.stdout).toContain(
+      "CodingActionGate feedback export created:"
+    );
     expect(result.stdout).toContain(out);
     await expect(readFile(out, "utf8")).resolves.toContain('"redacted": true');
   });
@@ -172,7 +174,9 @@ describe("export-feedback command", () => {
     const result = await runCliCaptured(["export-feedback", "--help"]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("stepharbor export-feedback [options]");
+    expect(result.stdout).toContain(
+      "coding-action-gate export-feedback [options]"
+    );
     expect(result.stdout).toContain("--out <path>");
     expect(result.stdout).toContain("--limit <number>");
   });

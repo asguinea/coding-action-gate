@@ -1,7 +1,7 @@
 import path from "node:path";
 import type { ObservationStoreOptions } from "./fileObservationTypes.js";
 
-export const defaultObservationDir = ".stepharbor/observations";
+export const defaultObservationDir = ".coding-action-gate/observations";
 export const defaultObservationSessionId = "default";
 
 export const normalizeObservationSessionId = (sessionId?: string): string => {

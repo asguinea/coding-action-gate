@@ -219,32 +219,32 @@
       {
         "fallbackCategory": "insufficient_evidence_fallback_to_deterministic",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "distribution_shift_fallback_to_deterministic",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "missing_score_fallback_to_deterministic",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "stale_calibration_fallback_to_deterministic",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "threshold_unavailable_fallback_to_deterministic",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "policy_conflict_fallback_to_deterministic",
         "fallbackRequired": true,
-        "fallbackTargetCategory": "deterministic_stepharbor"
+        "fallbackTargetCategory": "deterministic_codingactiongate"
       },
       {
         "fallbackCategory": "uncertainty_too_high_fallback_to_defer_or_escalate",

@@ -269,8 +269,8 @@
       "strategiesRepresented": [
         "no_guard",
         "policy_only_guard",
-        "deterministic_stepharbor",
-        "stepharbor_with_advisory_uq"
+        "deterministic_codingactiongate",
+        "codingactiongate_with_advisory_uq"
       ],
       "syntheticMetricsOnly": true,
       "rawBaselineIncluded": false,
@@ -282,8 +282,8 @@
       "strategiesRepresented": [
         "no_guard",
         "policy_only_guard",
-        "deterministic_stepharbor",
-        "stepharbor_with_advisory_uq"
+        "deterministic_codingactiongate",
+        "codingactiongate_with_advisory_uq"
       ],
       "syntheticMetricsOnly": true,
       "rawBaselineIncluded": false,
@@ -434,7 +434,7 @@
     "realReviewedTrace": false,
     "actualRuntimeDecision": false,
     "realAgentExecution": false,
-    "realStepHarborExecution": false,
+    "realCodingActionGateExecution": false,
     "realValidationResult": false,
     "realWorldResult": false,
     "calibrationDatasetCreated": false,

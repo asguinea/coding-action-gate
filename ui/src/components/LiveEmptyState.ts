@@ -6,7 +6,7 @@ import {
 const titleForResource = (resourceType: LiveEmptyStateResource): string => {
   switch (resourceType) {
     case "audit":
-      return "No StepHarbor decisions found yet.";
+      return "No CodingActionGate decisions found yet.";
     case "deferred":
       return "No deferred actions found yet.";
     case "observations":

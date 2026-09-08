@@ -1,7 +1,7 @@
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
 import type { DecisionOutput } from "../domain/decisions.js";
 import type { PolicyRule } from "../domain/policies.js";
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 import {
   classifyDeferReason,
   hasReducibleDeferRule
@@ -29,7 +29,7 @@ export type DeferDecisionDetails = Pick<
 };
 
 const targetPathForAction = (
-  action: NormalizedStepHarborAction
+  action: NormalizedCodingActionGateAction
 ): string | undefined => action.normalized.relativeTargetPath;
 
 const isPendingEscalation = (matchedRules: PolicyRule[]): boolean =>
@@ -41,14 +41,14 @@ const isTargetFreshnessCategory = (category: DeferReasonCategory): boolean =>
   category === "target_file_missing" ||
   category === "metadata_only_observation";
 
-const isSensitiveOrDestructive = (signals: StepHarborSignals): boolean =>
+const isSensitiveOrDestructive = (signals: CodingActionGateSignals): boolean =>
   signals.pathSensitivity === "high" ||
   signals.pathSensitivity === "critical" ||
   signals.destructiveOperation === true;
 
 const expectedNextDecisionForCategory = (
   category: DeferReasonCategory,
-  signals: StepHarborSignals
+  signals: CodingActionGateSignals
 ): ExpectedNextDecision => {
   if (isTargetFreshnessCategory(category)) {
     return isSensitiveOrDestructive(signals) ? "ESCALATE" : "PROCEED";
@@ -152,7 +152,7 @@ const buildRequiredNextSteps = (
 const appendRelatedTestMissingContext = (
   missingContext: MissingContextEntry[],
   category: DeferReasonCategory,
-  signals: StepHarborSignals
+  signals: CodingActionGateSignals
 ): MissingContextEntry[] => {
   if (
     category === "context_incomplete" ||
@@ -182,7 +182,7 @@ const appendRelatedTestMissingContext = (
 const appendRelatedTestFetchPlan = (
   fetchPlan: FetchPlanStep[],
   category: DeferReasonCategory,
-  signals: StepHarborSignals
+  signals: CodingActionGateSignals
 ): FetchPlanStep[] => {
   if (
     category === "context_incomplete" ||
@@ -211,8 +211,8 @@ const appendRelatedTestFetchPlan = (
 
 export const buildDeferDecisionDetails = (
   matchedRules: PolicyRule[],
-  action: NormalizedStepHarborAction,
-  signals: StepHarborSignals
+  action: NormalizedCodingActionGateAction,
+  signals: CodingActionGateSignals
 ): DeferDecisionDetails => {
   const category = classifyDeferReason(matchedRules, signals);
   const target = targetPathForAction(action);

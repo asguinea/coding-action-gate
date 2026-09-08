@@ -33,10 +33,10 @@ const captureCli = async (
 };
 
 const createTempDir = async (): Promise<string> =>
-  mkdtemp(path.join(os.tmpdir(), "stepharbor-policy-command-"));
+  mkdtemp(path.join(os.tmpdir(), "coding-action-gate-policy-command-"));
 
 const writePolicy = async (cwd: string, yaml: string): Promise<string> => {
-  const policyPath = path.join(cwd, "stepharbor.policy.yml");
+  const policyPath = path.join(cwd, "coding-action-gate.policy.yml");
   await writeFile(policyPath, yaml);
 
   return policyPath;
@@ -77,9 +77,9 @@ describe("policy command", () => {
 
     expect(result.exitCode).toBe(0);
     expect(result.stderr).toBe("");
-    expect(result.stdout).toContain("stepharbor policy show");
-    expect(result.stdout).toContain("stepharbor policy validate");
-    expect(result.stdout).toContain("stepharbor policy explain");
+    expect(result.stdout).toContain("coding-action-gate policy show");
+    expect(result.stdout).toContain("coding-action-gate policy validate");
+    expect(result.stdout).toContain("coding-action-gate policy explain");
     expect(result.stdout).toContain("Read-only policy commands");
   });
 
@@ -105,7 +105,9 @@ describe("policy command", () => {
     const result = await captureCli(["policy", "show", "--cwd", cwd]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("Source: stepharbor.policy.yml (project)");
+    expect(result.stdout).toContain(
+      "Source: coding-action-gate.policy.yml (project)"
+    );
     expect(result.stdout).toContain(".env");
     expect(result.stdout).toContain("secrets/**");
     expect(result.stdout).toContain("auth/**");
@@ -135,7 +137,7 @@ describe("policy command", () => {
     expect(defaultResult.stdout).toContain("bundled default policy");
     expect(projectResult.exitCode).toBe(0);
     expect(projectResult.stdout).toContain("Policy validation: PASS");
-    expect(projectResult.stdout).toContain("stepharbor.policy.yml");
+    expect(projectResult.stdout).toContain("coding-action-gate.policy.yml");
   });
 
   it("reports malformed YAML without a stack trace", async () => {
@@ -172,7 +174,7 @@ describe("policy command", () => {
     const result = await captureCli(["policy", "explain", "--cwd", cwd]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("StepHarbor Policy Explanation");
+    expect(result.stdout).toContain("CodingActionGate Policy Explanation");
     expect(result.stdout).toContain("Workspace boundaries");
     expect(result.stdout).toContain("Sensitive paths");
     expect(result.stdout).toContain("Validation gates");
@@ -191,7 +193,9 @@ describe("policy command", () => {
     const result = await captureCli(["policy", "explain", "--cwd", cwd]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("Source: stepharbor.policy.yml (project)");
+    expect(result.stdout).toContain(
+      "Source: coding-action-gate.policy.yml (project)"
+    );
     expect(result.stdout).toContain("Workspace boundaries");
     expect(result.stdout).toContain("Sensitive paths");
   });
@@ -237,7 +241,7 @@ rules:
     expect(json.exitCode).toBe(0);
     expect(JSON.parse(json.stdout)).toMatchObject({
       source: {
-        label: "stepharbor.policy.yml"
+        label: "coding-action-gate.policy.yml"
       }
     });
     expect(json.stdout).not.toContain(secretValue);

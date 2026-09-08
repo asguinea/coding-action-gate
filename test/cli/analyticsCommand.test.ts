@@ -33,10 +33,10 @@ const captureCli = async (
 };
 
 const createTempDir = async (): Promise<string> =>
-  mkdtemp(path.join(os.tmpdir(), "stepharbor-analytics-command-"));
+  mkdtemp(path.join(os.tmpdir(), "coding-action-gate-analytics-command-"));
 
 const eventPath = (cwd: string): string =>
-  path.join(cwd, ".stepharbor", "analytics", "events.jsonl");
+  path.join(cwd, ".coding-action-gate", "analytics", "events.jsonl");
 
 const writeAnalyticsFile = async (
   cwd: string,
@@ -67,12 +67,14 @@ describe("analytics command", () => {
 
     expect(result.exitCode).toBe(0);
     expect(result.stderr).toBe("");
-    expect(result.stdout).toContain("stepharbor analytics summary");
-    expect(result.stdout).toContain("stepharbor analytics clear --yes");
+    expect(result.stdout).toContain("coding-action-gate analytics summary");
+    expect(result.stdout).toContain("coding-action-gate analytics clear --yes");
     expect(result.stdout).toContain("local-only");
-    expect(result.stdout).toContain(".stepharbor/analytics/events.jsonl");
+    expect(result.stdout).toContain(
+      ".coding-action-gate/analytics/events.jsonl"
+    );
     expect(result.stdout).toContain("remote telemetry");
-    expect(result.stdout).toContain("STEPHARBOR_ANALYTICS=0");
+    expect(result.stdout).toContain("CODING_ACTION_GATE_ANALYTICS=0");
   });
 
   it("prints a helpful message when no events exist", async () => {
@@ -81,7 +83,9 @@ describe("analytics command", () => {
 
     expect(result.exitCode).toBe(0);
     expect(result.stdout).toContain("No local analytics events found");
-    expect(result.stdout).toContain(".stepharbor/analytics/events.jsonl");
+    expect(result.stdout).toContain(
+      ".coding-action-gate/analytics/events.jsonl"
+    );
   });
 
   it("summarizes local analytics events", async () => {
@@ -110,7 +114,7 @@ describe("analytics command", () => {
     const result = await captureCli(["analytics", "summary", "--cwd", cwd]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("StepHarbor Local Analytics Summary");
+    expect(result.stdout).toContain("CodingActionGate Local Analytics Summary");
     expect(result.stdout).toContain("- Events: 4");
     expect(result.stdout).toContain("- decision_created: 1");
     expect(result.stdout).toContain("- BLOCK: 1");
@@ -159,7 +163,9 @@ describe("analytics command", () => {
     const content = await readFile(eventPath(cwd), "utf8");
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("Run `stepharbor analytics clear --yes`");
+    expect(result.stdout).toContain(
+      "Run `coding-action-gate analytics clear --yes`"
+    );
     expect(content).toContain("doctor_run");
   });
 
@@ -168,19 +174,26 @@ describe("analytics command", () => {
     await writeAnalyticsFile(cwd, [
       event("doctor_run", { result: "passed", checkCounts: {} })
     ]);
-    await mkdir(path.join(cwd, ".stepharbor", "audit"), { recursive: true });
-    await mkdir(path.join(cwd, ".stepharbor", "deferred"), { recursive: true });
-    await mkdir(path.join(cwd, ".stepharbor", "validation"), {
+    await mkdir(path.join(cwd, ".coding-action-gate", "audit"), {
       recursive: true
     });
-    await mkdir(path.join(cwd, ".stepharbor", "observations"), {
+    await mkdir(path.join(cwd, ".coding-action-gate", "deferred"), {
+      recursive: true
+    });
+    await mkdir(path.join(cwd, ".coding-action-gate", "validation"), {
+      recursive: true
+    });
+    await mkdir(path.join(cwd, ".coding-action-gate", "observations"), {
       recursive: true
     });
     await writeFile(
-      path.join(cwd, ".stepharbor", "audit", "audit.jsonl"),
+      path.join(cwd, ".coding-action-gate", "audit", "audit.jsonl"),
       "keep\n"
     );
-    await writeFile(path.join(cwd, "stepharbor.policy.yml"), "version: 1\n");
+    await writeFile(
+      path.join(cwd, "coding-action-gate.policy.yml"),
+      "version: 1\n"
+    );
 
     const result = await captureCli([
       "analytics",
@@ -192,30 +205,30 @@ describe("analytics command", () => {
 
     expect(result.exitCode).toBe(0);
     expect(result.stdout).toContain(
-      "Cleared local StepHarbor analytics events"
+      "Cleared local CodingActionGate analytics events"
     );
     await expect(access(eventPath(cwd))).rejects.toThrow();
     await expect(
-      access(path.join(cwd, ".stepharbor", "audit", "audit.jsonl"))
+      access(path.join(cwd, ".coding-action-gate", "audit", "audit.jsonl"))
     ).resolves.toBeUndefined();
     await expect(
-      access(path.join(cwd, ".stepharbor", "deferred"))
+      access(path.join(cwd, ".coding-action-gate", "deferred"))
     ).resolves.toBeUndefined();
     await expect(
-      access(path.join(cwd, ".stepharbor", "validation"))
+      access(path.join(cwd, ".coding-action-gate", "validation"))
     ).resolves.toBeUndefined();
     await expect(
-      access(path.join(cwd, ".stepharbor", "observations"))
+      access(path.join(cwd, ".coding-action-gate", "observations"))
     ).resolves.toBeUndefined();
     await expect(
-      access(path.join(cwd, "stepharbor.policy.yml"))
+      access(path.join(cwd, "coding-action-gate.policy.yml"))
     ).resolves.toBeUndefined();
   });
 
   it("allows summary and clear while recording is disabled", async () => {
     const cwd = await createTempDir();
-    const previous = process.env["STEPHARBOR_ANALYTICS"];
-    process.env["STEPHARBOR_ANALYTICS"] = "0";
+    const previous = process.env["CODING_ACTION_GATE_ANALYTICS"];
+    process.env["CODING_ACTION_GATE_ANALYTICS"] = "0";
 
     try {
       await writeAnalyticsFile(cwd, [
@@ -238,9 +251,9 @@ describe("analytics command", () => {
       await expect(access(eventPath(cwd))).rejects.toThrow();
     } finally {
       if (previous === undefined) {
-        delete process.env["STEPHARBOR_ANALYTICS"];
+        delete process.env["CODING_ACTION_GATE_ANALYTICS"];
       } else {
-        process.env["STEPHARBOR_ANALYTICS"] = previous;
+        process.env["CODING_ACTION_GATE_ANALYTICS"] = previous;
       }
     }
   });

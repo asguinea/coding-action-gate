@@ -813,7 +813,7 @@ def markdown(report: dict[str, Any]) -> str:
         "- Unuseful labels are sparse.",
         "- Repeated split variance remains material.",
         "- No raw semantic text, embeddings, or LLM judges are used.",
-        "- Benchmark-level evidence only; not production StepHarbor validation.",
+        "- Benchmark-level evidence only; not production CodingActionGate validation.",
         "",
         "## Recommended next batch",
         "",
@@ -907,7 +907,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     report = {
         "schema_version": "risk-controlled-intervention-batch-9c-early-intervention.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Offline benchmark intervention-opportunity diagnostics only; not production StepHarbor validation, not a conformal production guarantee, and not causal prevention.",
+        "claim_boundary": "Offline benchmark intervention-opportunity diagnostics only; not production CodingActionGate validation, not a conformal production guarantee, and not causal prevention.",
         "dataset_paths": {"prefix": str(PREFIX_PATH.relative_to(WORKSPACE)), "repeated_splits": str(REPEATED_SPLITS.relative_to(WORKSPACE)), "schema_lock": str(SCHEMA_LOCK.relative_to(WORKSPACE))},
         "score_output_paths_used": [str(BATCH9B_SCORES.relative_to(WORKSPACE)), str(BATCH9A_SCORES.relative_to(WORKSPACE)) if BATCH9A_SCORES.exists() else None],
         "selected_policy_configurations": ["::".join(config) for config in requested_configs],

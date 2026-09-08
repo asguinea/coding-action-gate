@@ -22,7 +22,7 @@ REPORTS_TO_CHECK = [
 ]
 
 FORBIDDEN = [
-    "validates stepharbor",
+    "validates codingactiongate",
     "production validated",
     "production guarantee",
     "guarantees safety",

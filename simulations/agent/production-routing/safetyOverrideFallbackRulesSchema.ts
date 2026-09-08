@@ -127,7 +127,7 @@ export const safetyOverrideFallbackBoundaryStatementValues = [
   "no_cli_api_ui_surface_added",
   "no_scores_thresholds_alpha_calibration_conformal_crc_added",
   "no_statistical_guarantee",
-  "deterministic_stepharbor_decisions_remain_authoritative",
+  "deterministic_codingactiongate_decisions_remain_authoritative",
   "deterministic_safety_overrides_cannot_be_overridden_by_calibrated_advisory_signals",
   "phase_17_real_agent_evidence_required"
 ] as const;
@@ -281,7 +281,7 @@ export const safetyOverrideFallbackRulesSchema = z.object({
     .array(
       z.object({
         overrideCategory: z.enum(safetyOverrideCategoryValues),
-        currentAuthority: z.literal("deterministic_stepharbor"),
+        currentAuthority: z.literal("deterministic_codingactiongate"),
         calibratedLayerMayOverride: z.literal(false),
         advisoryLayerMayOverride: z.literal(false),
         requiresHumanApprovalToProceedIfProceedingIsEverAllowed: z.boolean(),
@@ -536,7 +536,7 @@ export const buildSafetyOverrideFallbackRules = (input?: {
     deterministicSafetyOverrides: safetyOverrideCategoryValues.map(
       (category) => ({
         overrideCategory: category,
-        currentAuthority: "deterministic_stepharbor",
+        currentAuthority: "deterministic_codingactiongate",
         calibratedLayerMayOverride: false,
         advisoryLayerMayOverride: false,
         requiresHumanApprovalToProceedIfProceedingIsEverAllowed:
@@ -813,7 +813,7 @@ export const validateSafetyOverrideFallbackRulesBoundaries = (
     record.deterministicSafetyOverrides.length === 0 ||
     record.deterministicSafetyOverrides.some(
       (override) =>
-        override.currentAuthority !== "deterministic_stepharbor" ||
+        override.currentAuthority !== "deterministic_codingactiongate" ||
         override.calibratedLayerMayOverride ||
         override.advisoryLayerMayOverride
     ) ||

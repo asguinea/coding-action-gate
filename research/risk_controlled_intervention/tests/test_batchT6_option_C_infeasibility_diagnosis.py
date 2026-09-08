@@ -29,7 +29,7 @@ class BatchT6OptionCInfeasibilityDiagnosisTests(unittest.TestCase):
 
     def test_claim_boundary_checker_catches_forbidden_phrase(self):
         checker = load_script("check_t6", "check_batchT6_claim_boundaries.py")
-        hits, _ = checker.check_text("This validates StepHarbor and gives a production guarantee.")
+        hits, _ = checker.check_text("This validates CodingActionGate and gives a production guarantee.")
         self.assertGreaterEqual(len(hits), 2)
 
 

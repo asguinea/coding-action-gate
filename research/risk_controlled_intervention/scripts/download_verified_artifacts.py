@@ -210,7 +210,7 @@ def main() -> int:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "dataset": REPO_ID,
         "claim_boundary": (
-            "Batch 6 verified artifact caching only; not production StepHarbor validation, "
+            "Batch 6 verified artifact caching only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "selection": {"split": "verified", "limit": args.limit, "seed": args.seed, "manifest_only": args.manifest_only},

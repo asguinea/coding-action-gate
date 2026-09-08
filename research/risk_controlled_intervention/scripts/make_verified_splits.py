@@ -125,7 +125,7 @@ def main() -> int:
         "schema_version": "risk-controlled-intervention-verified-split-audit.v1",
         "generated_at": payload["generated_at"],
         "claim_boundary": (
-            "Batch 6 verified split scaffolding only; not production StepHarbor validation, "
+            "Batch 6 verified split scaffolding only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "seed": args.seed,

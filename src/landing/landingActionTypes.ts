@@ -1,4 +1,4 @@
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 
 export const landingActionTypeValues = [
   "commit",
@@ -28,16 +28,16 @@ export interface LandingRiskInput {
   forcePush?: boolean;
   hookBypass?: boolean;
   isDirtyWorktree?: boolean;
-  validationStatus?: StepHarborSignals["validationStatus"];
+  validationStatus?: CodingActionGateSignals["validationStatus"];
 }
 
 export interface LandingRiskResult {
-  landingRisk: NonNullable<StepHarborSignals["landingRisk"]>;
+  landingRisk: NonNullable<CodingActionGateSignals["landingRisk"]>;
   landingReason: string;
   requiresValidation?: boolean;
   requiresCleanWorktree?: boolean;
   requiresHumanApproval?: boolean;
-  deploymentRisk?: NonNullable<StepHarborSignals["deploymentRisk"]>;
-  releaseRisk?: NonNullable<StepHarborSignals["releaseRisk"]>;
-  environmentClassification?: StepHarborSignals["environmentClassification"];
+  deploymentRisk?: NonNullable<CodingActionGateSignals["deploymentRisk"]>;
+  releaseRisk?: NonNullable<CodingActionGateSignals["releaseRisk"]>;
+  environmentClassification?: CodingActionGateSignals["environmentClassification"];
 }

@@ -24,7 +24,9 @@ const tempDirs: string[] = [];
 const fakeToken = "sk-abcdefghijklmnopqrstuvwxyz1234567890";
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-feedback-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-feedback-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -205,7 +207,7 @@ const writeRuntimeData = async (cwd: string): Promise<void> => {
   await writeJsonl(resolveValidationLogPath({ cwd }), [validationRecord()]);
   await writeJsonl(resolveObservationLogPath({ cwd }), [observationRecord()]);
   await writeFile(
-    path.join(cwd, "stepharbor.policy.yml"),
+    path.join(cwd, "coding-action-gate.policy.yml"),
     "version: 0.1\nprotected_branches:\n  - main\n",
     "utf8"
   );
@@ -255,7 +257,7 @@ describe("feedback exporter", () => {
     expect(bundle.environment).toMatchObject({
       nodeVersion: expect.any(String),
       platform: expect.any(String),
-      stepharborVersion: expect.any(String)
+      codingActionGateVersion: expect.any(String)
     });
     expect(
       bundle.doctor.summary.pass + bundle.doctor.summary.warn

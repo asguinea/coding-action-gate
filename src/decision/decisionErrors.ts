@@ -1,6 +1,6 @@
 import type { DecisionOutput } from "../domain/decisions.js";
 
-export type StepHarborDecision = DecisionOutput;
+export type CodingActionGateDecision = DecisionOutput;
 
 export type DecisionEngineErrorCode =
   | "DECISION_INVALID_INPUT"
@@ -15,7 +15,7 @@ export interface DecisionEngineError {
 export type DecisionEngineResult =
   | {
       ok: true;
-      decision: StepHarborDecision;
+      decision: CodingActionGateDecision;
     }
   | {
       ok: false;

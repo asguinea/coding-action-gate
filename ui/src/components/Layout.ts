@@ -6,7 +6,7 @@ export const createLayout = (content: HTMLElement): HTMLElement => {
   header.className = "app-header";
 
   const title = document.createElement("h1");
-  title.textContent = "StepHarbor";
+  title.textContent = "CodingActionGate";
 
   const subtitle = document.createElement("p");
   subtitle.textContent = "Runtime authorization layer for agentic coding";

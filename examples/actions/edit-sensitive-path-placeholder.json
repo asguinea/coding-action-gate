@@ -5,7 +5,7 @@
   "proposedBy": "agent",
   "origin": {
     "agentId": "example-agent",
-    "provider": "stepharbor-example",
+    "provider": "coding-action-gate-example",
     "toolId": "apply_patch"
   },
   "targetPath": "auth/service.ts",

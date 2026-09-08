@@ -1,7 +1,7 @@
 import path from "node:path";
 import type { ZodIssue } from "zod";
 
-import type { StepHarborPolicy, PolicyRule } from "../domain/policies.js";
+import type { CodingActionGatePolicy, PolicyRule } from "../domain/policies.js";
 import { redactString } from "../redaction/redactString.js";
 import type { LoadedPolicySource, PolicyLoadError } from "./policyErrors.js";
 
@@ -118,7 +118,7 @@ export const summarizePolicyErrorSource = (
   };
 };
 
-const presentSections = (policy: StepHarborPolicy): string[] =>
+const presentSections = (policy: CodingActionGatePolicy): string[] =>
   [
     ["workspace", policy.workspace],
     ["protectedBranches", policy.protectedBranches],
@@ -152,7 +152,7 @@ const safeRuleIds = (values: string[] = []): string[] =>
   values.map((value) => redactString(value).value).sort();
 
 export const summarizePolicy = (
-  policy: StepHarborPolicy
+  policy: CodingActionGatePolicy
 ): PolicySectionSummary => {
   const rules = policy.rules ?? [];
   const sensitivePaths = policy.sensitivePaths ?? {};
@@ -268,7 +268,7 @@ export const summarizePolicyValidationError = (
 });
 
 export const createPolicyShowResult = (
-  policy: StepHarborPolicy,
+  policy: CodingActionGatePolicy,
   source: LoadedPolicySource,
   cwd: string
 ): PolicyShowResult => ({
@@ -278,14 +278,14 @@ export const createPolicyShowResult = (
 });
 
 export const explainPolicy = (
-  policy: StepHarborPolicy,
+  policy: CodingActionGatePolicy,
   source: LoadedPolicySource,
   cwd: string
 ): string[] => {
   const summary = summarizePolicy(policy);
   const sourceSummary = summarizePolicySource(source, cwd);
   const lines = [
-    "StepHarbor Policy Explanation",
+    "CodingActionGate Policy Explanation",
     "",
     `Source: ${sourceSummary.label} (${sourceSummary.kind})`,
     `Policy version: ${summary.version}`,
@@ -343,7 +343,7 @@ export const explainPolicy = (
   );
 
   lines.push(
-    "- Analytics: local analytics is not controlled by policy in this batch; use STEPHARBOR_ANALYTICS=0 to disable recording."
+    "- Analytics: local analytics is not controlled by policy in this batch; use CODING_ACTION_GATE_ANALYTICS=0 to disable recording."
   );
 
   return lines;

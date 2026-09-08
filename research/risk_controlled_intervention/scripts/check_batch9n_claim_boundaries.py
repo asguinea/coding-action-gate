@@ -21,7 +21,7 @@ REPORTS = [
     "batch_9n_research_assessment.md",
 ]
 FORBIDDEN = [
-    "validates stepharbor",
+    "validates codingactiongate",
     "production validated",
     "production guarantee",
     "guarantees safety",

@@ -17,13 +17,15 @@ import type {
   DeferredActionRecord,
   DeferredEvidenceRequirement
 } from "../../src/defer/deferredActionTypes.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
 import { defaultPolicy } from "../../src/policy/defaultPolicy.js";
 
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-retry-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-retry-")
+  );
   tempDirs.push(tempDir);
 
   return tempDir;
@@ -43,7 +45,7 @@ const baseAction = {
 const editAction = (
   targetPath = "README.md",
   id = `edit-${targetPath}`
-): StepHarborAction => ({
+): CodingActionGateAction => ({
   ...baseAction,
   id,
   type: "edit_file",
@@ -56,14 +58,14 @@ const editAction = (
   }
 });
 
-const runCommandAction = (command: string): StepHarborAction => ({
+const runCommandAction = (command: string): CodingActionGateAction => ({
   ...baseAction,
   id: "run-command",
   type: "run_command",
   command
 });
 
-const readFileAction = (targetPath: string): StepHarborAction => ({
+const readFileAction = (targetPath: string): CodingActionGateAction => ({
   ...baseAction,
   id: `read-${targetPath}`,
   type: "read_file",
@@ -72,7 +74,7 @@ const readFileAction = (targetPath: string): StepHarborAction => ({
 
 const writeActionFile = async (
   cwd: string,
-  action: StepHarborAction,
+  action: CodingActionGateAction,
   fileName = "action.json"
 ): Promise<string> => {
   const actionPath = path.join(cwd, fileName);
@@ -82,7 +84,7 @@ const writeActionFile = async (
   return actionPath;
 };
 
-const normalize = (action: StepHarborAction, cwd: string) => {
+const normalize = (action: CodingActionGateAction, cwd: string) => {
   const result = normalizeAction(action, { cwd });
 
   if (!result.ok) {
@@ -94,7 +96,7 @@ const normalize = (action: StepHarborAction, cwd: string) => {
 
 const recordDeferredAction = async (
   cwd: string,
-  action: StepHarborAction,
+  action: CodingActionGateAction,
   options: {
     sessionId?: string;
     deferDir?: string;
@@ -168,7 +170,7 @@ const expectOk = async <T extends { ok: boolean }>(
 
 const manualRecord = (
   overrides: Partial<DeferredActionRecord> & {
-    originalAction: StepHarborAction;
+    originalAction: CodingActionGateAction;
     requiredEvidence?: DeferredEvidenceRequirement[];
   }
 ): DeferredActionRecord => ({
@@ -622,7 +624,7 @@ describe("retry command", () => {
     expect(exitCode).toBe(cliExitCodes.defer);
     expect(stderr).toBe("");
     expect(stdout).toContain(
-      "StepHarbor retry: original action was NOT executed."
+      "CodingActionGate retry: original action was NOT executed."
     );
   });
 

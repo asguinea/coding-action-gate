@@ -139,7 +139,7 @@ export const normalizedAgentProposedActionSchema = z.object({
   actionIntentCategory: z.enum(agentTraceActionIntentCategoryValues),
   targetCategory: z.enum(agentTraceTargetCategoryValues),
   scopeCategory: z.enum(codexLikeScopeCategories),
-  stepHarborActionKind: z.enum(agentTraceActionCategoryValues),
+  codingActionGateActionKind: z.enum(agentTraceActionCategoryValues),
   expectedInterceptionPoints: z.array(categoryIdSchema),
   expectedProductionDecisionCategory: normalizedDecisionCategorySchema,
   expectedAdvisoryDecisionCategory: normalizedDecisionCategorySchema,

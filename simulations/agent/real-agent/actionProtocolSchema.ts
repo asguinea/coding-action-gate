@@ -106,7 +106,7 @@ export const actionProtocolBoundaryStatementValues = [
   "no_production_advisory_calibrated_routing_enabled",
   "no_scores_thresholds_alpha_calibration_conformal_crc_added",
   "no_statistical_guarantee",
-  "deterministic_stepharbor_decisions_remain_authoritative",
+  "deterministic_codingactiongate_decisions_remain_authoritative",
   "phase_16_gate_still_does_not_pass"
 ] as const;
 

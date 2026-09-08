@@ -1,5 +1,5 @@
 import type { FetchPlanStep } from "../domain/common.js";
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 import type { DeferReasonCategory } from "./deferTypes.js";
 
 const readFileStep = (
@@ -21,7 +21,7 @@ const runValidationStep = (reason: string): FetchPlanStep => ({
 export const buildFetchPlan = (
   category: DeferReasonCategory,
   target: string | undefined,
-  signals: StepHarborSignals = {}
+  signals: CodingActionGateSignals = {}
 ): FetchPlanStep[] => {
   switch (category) {
     case "target_file_never_read":

@@ -1,7 +1,7 @@
 import { z } from "zod";
 import {
   agentSimulationLoopShapes,
-  agentSimulationResponseToStepHarborValues,
+  agentSimulationResponseToCodingActionGateValues,
   agentSimulationScenarioFamilies,
   knownAgentSimulationUncertaintyDriverIds
 } from "../personaScenarioSchema.js";
@@ -100,7 +100,7 @@ const baselineSlotSchema = z.object({
 export const agentSimulationRunClaimBoundarySchema = z.object({
   actualRuntimeDecision: z.literal(false),
   realAgentExecution: z.literal(false),
-  realStepHarborExecution: z.literal(false),
+  realCodingActionGateExecution: z.literal(false),
   realValidationResult: z.literal(false),
   realWorldResult: z.literal(false),
   conformalGuarantee: z.literal(false)
@@ -118,7 +118,9 @@ export const agentSimulationRunSchema = z.object({
   scenarioFamily: z.enum(agentSimulationScenarioFamilies),
   taskPromptCategory: categoryIdSchema,
   loopShape: z.enum(agentSimulationLoopShapes),
-  scriptedAgentResponse: z.enum(agentSimulationResponseToStepHarborValues),
+  scriptedAgentResponse: z.enum(
+    agentSimulationResponseToCodingActionGateValues
+  ),
   productionDecisionCategory: z.enum(normalizedDecisionCategoryValues),
   advisoryDecisionCategory: z.enum(normalizedDecisionCategoryValues),
   uncertaintyDimensions: z.array(z.enum(uncertaintyDimensions)).min(1),
@@ -136,8 +138,8 @@ export const agentSimulationRunSchema = z.object({
   baselineReadiness: z.object({
     noGuard: baselineSlotSchema,
     policyOnlyGuard: baselineSlotSchema,
-    stepHarborDeterministic: baselineSlotSchema,
-    stepHarborAdvisoryUq: baselineSlotSchema
+    codingActionGateDeterministic: baselineSlotSchema,
+    codingActionGateAdvisoryUq: baselineSlotSchema
   }),
   calibrationReadiness: z.object({
     eligibleForFutureCalibration: z.boolean(),
@@ -165,7 +167,9 @@ export const agentSimulationRunBuildInputSchema = z.object({
   runId: runIdSchema,
   adapterInputId: actionInputIdSchema,
   loopShape: z.enum(agentSimulationLoopShapes),
-  scriptedAgentResponse: z.enum(agentSimulationResponseToStepHarborValues),
+  scriptedAgentResponse: z.enum(
+    agentSimulationResponseToCodingActionGateValues
+  ),
   outcomeCategory: z.enum(agentTraceOutcomeCategoryValues).optional(),
   taskCompletedCategory: z
     .enum(agentTraceTaskCompletedCategoryValues)

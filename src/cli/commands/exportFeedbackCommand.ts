@@ -27,7 +27,7 @@ const toFeedbackCliError = (error: unknown): CliError => {
   const message =
     error instanceof Error && error.message.length > 0
       ? error.message
-      : "Failed to export StepHarbor feedback.";
+      : "Failed to export CodingActionGate feedback.";
 
   if (message.startsWith("Feedback output already exists:")) {
     return createCliError("CLI_FEEDBACK_OUTPUT_EXISTS", message);
@@ -40,7 +40,7 @@ export const formatExportFeedbackHuman = (
   output: FeedbackCommandOutput
 ): string =>
   [
-    "StepHarbor feedback export created:",
+    "CodingActionGate feedback export created:",
     `  ${output.path}`,
     "",
     "Included:",
@@ -97,7 +97,7 @@ export const runExportFeedbackCommand = async (
       io.stdout.write(`${JSON.stringify(errorOutput, null, 2)}\n`);
     } else {
       io.stderr.write(
-        `StepHarbor error [${result.error.code}]: ${result.error.message}\n`
+        `CodingActionGate error [${result.error.code}]: ${result.error.message}\n`
       );
     }
 

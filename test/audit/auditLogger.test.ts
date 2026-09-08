@@ -11,13 +11,15 @@ import { resolveAuditLogPath } from "../../src/audit/auditPaths.js";
 import { buildAuditRecord } from "../../src/audit/auditRecordBuilder.js";
 import { decide } from "../../src/decision/decisionEngine.js";
 import { defaultPolicy } from "../../src/policy/defaultPolicy.js";
-import type { StepHarborDecision } from "../../src/decision/decisionErrors.js";
+import type { CodingActionGateDecision } from "../../src/decision/decisionErrors.js";
 import editFileFixture from "../../src/fixtures/actions/edit-file.json" with { type: "json" };
 
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-audit-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-audit-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -40,7 +42,7 @@ const normalizedEditAction = () => {
   return result.action;
 };
 
-const decision = (reason: string): StepHarborDecision => ({
+const decision = (reason: string): CodingActionGateDecision => ({
   decision: "PROCEED",
   reason,
   matchedPolicies: [],

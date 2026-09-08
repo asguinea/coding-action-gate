@@ -1,6 +1,6 @@
 # Opportunity Benchmark
 
-Phase 10B turns the StepHarbor Opportunity Map for agentic coding failures into a safe, reproducible benchmark suite.
+Phase 10B turns the CodingActionGate Opportunity Map for agentic coding failures into a safe, reproducible benchmark suite.
 
 Batch 10B.1 created the initial inert scenario matrix. Batch 10B.2 added safe synthetic fixtures for those scenarios. Batch 10B.3 added a non-executing local benchmark runner v1. Batch 10B.4 added local metric computation over runner output. Batch 10B.5 adds explicit local evidence report helpers and docs. These batches do not add dashboard, API endpoint, remote telemetry, or production-routing integration.
 

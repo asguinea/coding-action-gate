@@ -1,4 +1,4 @@
-import type { StepHarborPolicy } from "../domain/policies.js";
+import type { CodingActionGatePolicy } from "../domain/policies.js";
 
 export interface DestructiveThresholds {
   largeDiffFiles: number;
@@ -21,7 +21,7 @@ export const defaultDestructiveThresholds: DestructiveThresholds = {
 };
 
 export const resolveDestructiveThresholds = (
-  policy: StepHarborPolicy
+  policy: CodingActionGatePolicy
 ): DestructiveThresholds => ({
   ...defaultDestructiveThresholds,
   ...(policy.thresholds?.largeDiffFiles !== undefined

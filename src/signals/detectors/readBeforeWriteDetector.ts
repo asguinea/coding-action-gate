@@ -1,5 +1,5 @@
 import path from "node:path";
-import type { NormalizedStepHarborAction } from "../../actions/actionErrors.js";
+import type { NormalizedCodingActionGateAction } from "../../actions/actionErrors.js";
 import { buildReadBeforeWriteSignals } from "../../context/readBeforeWriteSignals.js";
 import type { ReadBeforeWriteFreshnessInput } from "../../context/readBeforeWriteTypes.js";
 import { checkFileFreshness } from "../../observations/fileFreshness.js";
@@ -7,17 +7,17 @@ import { collectClassifiablePaths } from "../../paths/pathSensitivityClassifier.
 import { classifySecretPath } from "../../secrets/secretPathClassifier.js";
 import type { SafetySignalDetector } from "./baseDetector.js";
 
-const mutatingFileActionTypes = new Set<NormalizedStepHarborAction["type"]>([
-  "edit_file",
-  "write_file",
-  "delete_file"
-]);
+const mutatingFileActionTypes = new Set<
+  NormalizedCodingActionGateAction["type"]
+>(["edit_file", "write_file", "delete_file"]);
 
-const isMutatingFileAction = (action: NormalizedStepHarborAction): boolean =>
-  mutatingFileActionTypes.has(action.type);
+const isMutatingFileAction = (
+  action: NormalizedCodingActionGateAction
+): boolean => mutatingFileActionTypes.has(action.type);
 
-const collectMutationTargets = (action: NormalizedStepHarborAction): string[] =>
-  collectClassifiablePaths(action);
+const collectMutationTargets = (
+  action: NormalizedCodingActionGateAction
+): string[] => collectClassifiablePaths(action);
 
 const secretSkippedFreshness = (
   targetPath: string,

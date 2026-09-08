@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import type { StepHarborSignals } from "../../src/domain/signals.js";
+import type { CodingActionGateSignals } from "../../src/domain/signals.js";
 import { buildUncertaintyProfile } from "../../src/uncertainty/uncertaintyProfileBuilder.js";
 import { uncertaintyDimensions } from "../../src/uncertainty/uncertaintyTypes.js";
 
-const profileFor = (signals: StepHarborSignals) =>
+const profileFor = (signals: CodingActionGateSignals) =>
   buildUncertaintyProfile({ signals });
 
 describe("uncertainty signal mapping", () => {

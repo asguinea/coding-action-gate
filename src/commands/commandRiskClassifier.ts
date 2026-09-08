@@ -1,4 +1,4 @@
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
 import {
   cloudMutationVerbs,
   databaseMutationPattern,
@@ -13,18 +13,18 @@ import type {
 } from "./commandRiskTypes.js";
 
 type CommandAction = Extract<
-  NormalizedStepHarborAction,
+  NormalizedCodingActionGateAction,
   { type: "run_command" | "git_command" | "validation_command" }
 >;
 
-const commandActionTypes = new Set<NormalizedStepHarborAction["type"]>([
+const commandActionTypes = new Set<NormalizedCodingActionGateAction["type"]>([
   "run_command",
   "git_command",
   "validation_command"
 ]);
 
 export const isCommandLikeAction = (
-  action: NormalizedStepHarborAction
+  action: NormalizedCodingActionGateAction
 ): action is CommandAction => commandActionTypes.has(action.type);
 
 const includesOption = (tokens: string[], option: string): boolean =>
@@ -271,7 +271,7 @@ const classifyPackageManager = (
 };
 
 export const classifyCommandRisk = (
-  action: NormalizedStepHarborAction
+  action: NormalizedCodingActionGateAction
 ): CommandRiskClassification | undefined => {
   if (!isCommandLikeAction(action)) {
     return undefined;

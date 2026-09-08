@@ -1,6 +1,6 @@
 # Public Evidence Map v0
 
-StepHarbor is one instantiation of the broader uncertainty-aware control-plane thesis; this folder does not modify StepHarbor runtime behavior.
+CodingActionGate is one instantiation of the broader uncertainty-aware control-plane thesis; this folder does not modify CodingActionGate runtime behavior.
 
 Reliable AI requires an uncertainty-aware control plane. The control plane converts uncertainty signals into explicit operational decisions: PROCEED, DEFER, ESCALATE, or BLOCK.
 
@@ -46,4 +46,4 @@ Many AI mistakes occur in situations where uncertainty should be explicitly mana
 
 ## Boundary
 
-This v0 map is an evidence inventory only. It includes no simulator, no benchmark runner, no model calls, no dataset download, no dataset preprocessing, no calibration, no statistical assurance method, no conformal or CRC assurance method, no runtime routing, and no StepHarbor authorization change.
+This v0 map is an evidence inventory only. It includes no simulator, no benchmark runner, no model calls, no dataset download, no dataset preprocessing, no calibration, no statistical assurance method, no conformal or CRC assurance method, no runtime routing, and no CodingActionGate authorization change.

@@ -6,7 +6,7 @@
   "developmentContext": "Works in a local controlled fixture repo and tends to delegate multi-step implementation judgment to the agent.",
   "typicalRiskPressure": "Speed and scope pressure can hide missing context, weak validation, and unclear rollback state.",
   "likelyAgentUsePattern": "Prompts the agent to make broad changes quickly, accepts proposed edits, and may retry after interruptions.",
-  "relevantStepHarborConcerns": [
+  "relevantCodingActionGateConcerns": [
     "autonomy_budget",
     "broad_refactor",
     "context",

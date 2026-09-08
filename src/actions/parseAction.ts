@@ -1,7 +1,7 @@
 import { ZodError } from "zod";
 import {
-  stepHarborActionSchema,
-  type StepHarborAction
+  codingActionGateActionSchema,
+  type CodingActionGateAction
 } from "../domain/actions.js";
 import {
   createActionParseError,
@@ -14,7 +14,7 @@ import {
 } from "./normalizeAction.js";
 
 export const parseAction = (input: unknown): ParsedActionResult => {
-  const result = stepHarborActionSchema.safeParse(input);
+  const result = codingActionGateActionSchema.safeParse(input);
 
   if (result.success) {
     return {
@@ -62,7 +62,7 @@ export const parseAndNormalizeAction = (
     return parsed;
   }
 
-  const actionWithRaw: StepHarborAction =
+  const actionWithRaw: CodingActionGateAction =
     parsed.action.raw === undefined
       ? {
           ...parsed.action,

@@ -1,6 +1,6 @@
 # Uncertainty-Control Public Evidence
 
-This folder is for the broader uncertainty-aware control-plane thesis. StepHarbor is one instantiation of the broader uncertainty-aware control-plane thesis; this folder does not modify StepHarbor runtime behavior.
+This folder is for the broader uncertainty-aware control-plane thesis. CodingActionGate is one instantiation of the broader uncertainty-aware control-plane thesis; this folder does not modify CodingActionGate runtime behavior.
 
 Reliable AI requires an uncertainty-aware control plane. The control plane converts uncertainty signals into explicit operational decisions: PROCEED, DEFER, ESCALATE, or BLOCK.
 
@@ -19,4 +19,4 @@ Many AI mistakes occur in situations where uncertainty should be explicitly mana
 
 ## Boundary
 
-This package is a public-evidence inventory. It does not add model calls, dataset downloads, dataset preprocessing, calibration, conformal prediction, conformal risk control, production routing, advisory routing authority, CLI commands, API endpoints, UI surfaces, telemetry behavior, or StepHarbor authorization behavior.
+This package is a public-evidence inventory. It does not add model calls, dataset downloads, dataset preprocessing, calibration, conformal prediction, conformal risk control, production routing, advisory routing authority, CLI commands, API endpoints, UI surfaces, telemetry behavior, or CodingActionGate authorization behavior.

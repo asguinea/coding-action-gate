@@ -49,7 +49,7 @@ const requiredFields = [
 
 const forbiddenOverclaims = [
   "control plane has been validated",
-  "StepHarbor has been validated",
+  "CodingActionGate has been validated",
   "production reliability is proven",
   "statistical guarantees exist",
   "conformal guarantee",

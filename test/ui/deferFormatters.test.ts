@@ -56,7 +56,7 @@ describe("DEFER UI formatters", () => {
         },
         "s1"
       )
-    ).toBe("stepharbor read README.md --session-id s1");
+    ).toBe("coding-action-gate read README.md --session-id s1");
   });
 
   it("buildReadCommandFromFetchStep handles read_related_tests", () => {
@@ -69,12 +69,12 @@ describe("DEFER UI formatters", () => {
         },
         "s1"
       )
-    ).toBe("stepharbor read src/service.test.ts --session-id s1");
+    ).toBe("coding-action-gate read src/service.test.ts --session-id s1");
   });
 
   it("buildRetryCommand handles deferredActionId", () => {
     expect(buildRetryCommand("def_123", "s1")).toBe(
-      "stepharbor retry def_123 --session-id s1"
+      "coding-action-gate retry def_123 --session-id s1"
     );
   });
 
@@ -101,9 +101,9 @@ describe("DEFER UI formatters", () => {
     );
 
     expect(commands.map((entry) => entry.command)).toEqual([
-      "stepharbor read README.md --session-id s1",
-      "stepharbor read src/service.test.ts --session-id s1",
-      "stepharbor retry def_123 --session-id s1"
+      "coding-action-gate read README.md --session-id s1",
+      "coding-action-gate read src/service.test.ts --session-id s1",
+      "coding-action-gate retry def_123 --session-id s1"
     ]);
   });
 
@@ -113,7 +113,7 @@ describe("DEFER UI formatters", () => {
     const commands = buildSuggestedCommands(record);
 
     expect(commands.map((entry) => entry.command)).toContain(
-      "stepharbor read README.md --session-id default"
+      "coding-action-gate read README.md --session-id default"
     );
   });
 

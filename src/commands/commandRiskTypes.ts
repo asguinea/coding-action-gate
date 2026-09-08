@@ -1,7 +1,7 @@
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 
 export type CommandRiskLevel = NonNullable<
-  StepHarborSignals["commandRiskScore"]
+  CodingActionGateSignals["commandRiskScore"]
 >;
 
 export type CommandCategory =

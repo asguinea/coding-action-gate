@@ -1,7 +1,7 @@
 import type { DecisionPosture } from "../domain/decisions.js";
 import type { FetchPlanStep, MissingContextEntry } from "../domain/common.js";
 import type { PolicyRule } from "../domain/policies.js";
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
 
 export const reasonForMatchedRule = (rule: PolicyRule): string =>
   rule.reason ?? `Policy rule ${rule.id} matched.`;
@@ -41,7 +41,7 @@ const conditionIncludes = (
 
 export const buildDeferMissingContext = (
   matchedRules: PolicyRule[],
-  action: NormalizedStepHarborAction
+  action: NormalizedCodingActionGateAction
 ): {
   missingContext?: MissingContextEntry[];
   fetchPlan?: FetchPlanStep[];

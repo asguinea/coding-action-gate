@@ -6,7 +6,7 @@ import { normalizeAction } from "../../src/actions/normalizeAction.js";
 import { parseAndNormalizeAction } from "../../src/actions/parseAction.js";
 import { runDecideCommand } from "../../src/cli/commands/decideCommand.js";
 import { decide } from "../../src/decision/decisionEngine.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
 import { defaultPolicy } from "../../src/policy/defaultPolicy.js";
 import { computeSafetySignals } from "../../src/signals/computeSignals.js";
 import { workspaceBoundaryDetector } from "../../src/signals/detectors/workspaceBoundaryDetector.js";
@@ -19,7 +19,9 @@ import writeFileFixture from "../../src/fixtures/actions/write-file.json" with {
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-ws-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-ws-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -167,9 +169,9 @@ describe("workspaceBoundaryDetector", () => {
   it("multi-path mutation outside any root sets violation true", async () => {
     const cwd = await createTempDir();
     const editAction = {
-      ...(editFileFixture as unknown as StepHarborAction),
+      ...(editFileFixture as unknown as CodingActionGateAction),
       targetPath: "src/inside.ts"
-    } as StepHarborAction;
+    } as CodingActionGateAction;
     const normalized = normalizeAction(editAction, { cwd });
 
     expect(normalized.ok).toBe(true);

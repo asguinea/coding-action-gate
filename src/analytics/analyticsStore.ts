@@ -10,7 +10,11 @@ export interface AnalyticsStoreOptions {
 export const resolveAnalyticsDir = (
   options: AnalyticsStoreOptions = {}
 ): string =>
-  path.resolve(options.cwd ?? process.cwd(), ".stepharbor", "analytics");
+  path.resolve(
+    options.cwd ?? process.cwd(),
+    ".coding-action-gate",
+    "analytics"
+  );
 
 export const resolveAnalyticsEventsPath = (
   options: AnalyticsStoreOptions = {}

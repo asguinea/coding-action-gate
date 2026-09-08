@@ -361,7 +361,7 @@ def recommended_policy_set(available: set[str]) -> dict[str, Any]:
     return {
         "schema_version": "risk-controlled-intervention-batch-9d-policy-set.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Benchmark policy set only; not production StepHarbor validation, conformal guarantee, safety guarantee, or final report result.",
+        "claim_boundary": "Benchmark policy set only; not production CodingActionGate validation, conformal guarantee, safety guarantee, or final report result.",
         "policies": policies,
     }
 
@@ -461,7 +461,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     report = {
         "schema_version": "risk-controlled-intervention-batch-9c5-repair.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Benchmark repair diagnostics only; not production StepHarbor validation, conformal guarantee, safety guarantee, causal prevention claim, or final report result.",
+        "claim_boundary": "Benchmark repair diagnostics only; not production CodingActionGate validation, conformal guarantee, safety guarantee, causal prevention claim, or final report result.",
         "skipped_config_audit": audit,
         "repair_actions_performed": [{"config": config_key(config), "action": "regenerated_row_scores_and_events"} for config in repair_configs],
         "repaired_score_counts": {"rows": len(score_rows), "path": str(REPAIRED_SCORES.relative_to(WORKSPACE))},

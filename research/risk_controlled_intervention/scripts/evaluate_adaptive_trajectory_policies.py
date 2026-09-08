@@ -927,7 +927,7 @@ def main() -> int:
     curve_data = [{"aggregate_key": key, **value} for key, value in aggregate.items()]
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Benchmark adaptive policy diagnostics only; not production StepHarbor validation, conformal guarantee, safety guarantee, arbitrary distribution-shift guarantee, causal prevention claim, or final report result.",
+        "claim_boundary": "Benchmark adaptive policy diagnostics only; not production CodingActionGate validation, conformal guarantee, safety guarantee, arbitrary distribution-shift guarantee, causal prevention claim, or final report result.",
         "input_files_used": {
             "policy_set": str(POLICY_SET_PATH.relative_to(WORKSPACE)),
             "batch9d_report": str(BATCH9D_REPORT.relative_to(WORKSPACE)),

@@ -20,7 +20,7 @@ DEFAULT_FILES = [
 ]
 
 FORBIDDEN_PHRASES = [
-    "validates StepHarbor",
+    "validates CodingActionGate",
     "production validated",
     "production guarantee",
     "guarantees safety",
@@ -42,7 +42,7 @@ SAFE_CONCEPTS = [
     "row-level risk",
     "calibration support",
     "domain shift",
-    "not production StepHarbor validation",
+    "not production CodingActionGate validation",
     "not a production guarantee",
     "not causal prevention",
 ]

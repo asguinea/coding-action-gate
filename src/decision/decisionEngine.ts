@@ -1,4 +1,4 @@
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
 import {
   buildDeferDecisionDetails,
   type DeferDecisionDetails
@@ -11,14 +11,14 @@ import {
   decisionOutputSchema,
   type DecisionPosture
 } from "../domain/decisions.js";
-import type { StepHarborPolicy, PolicyRule } from "../domain/policies.js";
+import type { CodingActionGatePolicy, PolicyRule } from "../domain/policies.js";
 import {
-  stepHarborSignalsSchema,
-  type StepHarborSignals
+  codingActionGateSignalsSchema,
+  type CodingActionGateSignals
 } from "../domain/signals.js";
 import {
   createDecisionEngineError,
-  type StepHarborDecision,
+  type CodingActionGateDecision,
   type DecisionEngineResult
 } from "./decisionErrors.js";
 import {
@@ -34,8 +34,8 @@ import {
 } from "./ruleEvaluator.js";
 
 export interface DecisionEngineInput {
-  action: NormalizedStepHarborAction;
-  policy: StepHarborPolicy;
+  action: NormalizedCodingActionGateAction;
+  policy: CodingActionGatePolicy;
   signals?: DecisionSignals;
   session?: {
     sessionId?: string;
@@ -85,10 +85,12 @@ const chooseWinningRule = (
 };
 
 const buildSignalSummary = (
-  action: NormalizedStepHarborAction,
+  action: NormalizedCodingActionGateAction,
   signals: DecisionSignals
 ): Record<string, unknown> => {
-  const parsedSignals = stepHarborSignalsSchema.passthrough().parse(signals);
+  const parsedSignals = codingActionGateSignalsSchema
+    .passthrough()
+    .parse(signals);
 
   return {
     ...parsedSignals,
@@ -109,10 +111,10 @@ const buildSignalSummary = (
 };
 
 const buildDecision = (
-  action: NormalizedStepHarborAction,
-  policy: StepHarborPolicy,
+  action: NormalizedCodingActionGateAction,
+  policy: CodingActionGatePolicy,
   signals: DecisionSignals
-): StepHarborDecision => {
+): CodingActionGateDecision => {
   const context = buildEvaluationContext(action, signals);
   const ruleResults = evaluateRules(policy.rules ?? [], context);
   const matchedRules = ruleResults
@@ -125,7 +127,7 @@ const buildDecision = (
       ? buildDeferDecisionDetails(
           matchedRules,
           action,
-          stepHarborSignalsSchema.parse(signals)
+          codingActionGateSignalsSchema.parse(signals)
         )
       : {};
   const {
@@ -134,7 +136,7 @@ const buildDecision = (
     ...structuredDeferDetails
   } = deferDetails;
 
-  const output: StepHarborDecision = {
+  const output: CodingActionGateDecision = {
     decision,
     reason:
       decision === "DEFER" &&
@@ -189,4 +191,4 @@ export const decide = (input: DecisionEngineInput): DecisionEngineResult => {
   }
 };
 
-export type { StepHarborSignals };
+export type { CodingActionGateSignals };

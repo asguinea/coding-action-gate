@@ -112,8 +112,8 @@ export const normalizeCodexLikeActionInput = (
   }
 
   const expectedInterceptionPoints = uniqueSorted([
-    ...(scenario?.stepHarborInterceptionPoints ?? []),
-    ...(fixture?.stepHarborInterceptionPoints ?? [])
+    ...(scenario?.codingActionGateInterceptionPoints ?? []),
+    ...(fixture?.codingActionGateInterceptionPoints ?? [])
   ]);
   const expectedUncertaintyDimensions = uniqueSorted([
     ...input.codexLikeAction.proposedRiskSurface,
@@ -148,7 +148,7 @@ export const normalizeCodexLikeActionInput = (
     actionIntentCategory: input.codexLikeAction.proposedIntentCategory,
     targetCategory: input.codexLikeAction.proposedTargetCategory,
     scopeCategory: input.codexLikeAction.proposedScopeCategory,
-    stepHarborActionKind: input.codexLikeAction.proposedOperationCategory,
+    codingActionGateActionKind: input.codexLikeAction.proposedOperationCategory,
     expectedInterceptionPoints,
     expectedProductionDecisionCategory: decisionCategoryForAdapter(
       scenario?.expectedProductionDecision

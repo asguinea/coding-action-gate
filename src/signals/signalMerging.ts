@@ -1,11 +1,11 @@
 import {
-  stepHarborSignalsSchema,
-  type StepHarborSignals
+  codingActionGateSignalsSchema,
+  type CodingActionGateSignals
 } from "../domain/signals.js";
 
 const assignDefined = (
   target: Record<string, unknown>,
-  source: StepHarborSignals | undefined
+  source: CodingActionGateSignals | undefined
 ): void => {
   if (source === undefined) {
     return;
@@ -19,13 +19,13 @@ const assignDefined = (
 };
 
 export const mergeSignals = (
-  providedSignals: StepHarborSignals | undefined,
-  computedSignals: StepHarborSignals | undefined
-): StepHarborSignals => {
+  providedSignals: CodingActionGateSignals | undefined,
+  computedSignals: CodingActionGateSignals | undefined
+): CodingActionGateSignals => {
   const merged: Record<string, unknown> = {};
 
   assignDefined(merged, computedSignals);
   assignDefined(merged, providedSignals);
 
-  return stepHarborSignalsSchema.parse(merged);
+  return codingActionGateSignalsSchema.parse(merged);
 };

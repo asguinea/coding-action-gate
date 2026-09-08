@@ -2,7 +2,7 @@
   "schemaVersion": "real-repo-trial-findings.v1",
   "trialId": "example-sanitized-placeholder",
   "trialDate": "placeholder-date",
-  "stepharborVersion": "placeholder-version",
+  "codingActionGateVersion": "placeholder-version",
   "repoCategory": "toy",
   "repoSizeCategory": "small",
   "languageCategories": ["typescript"],

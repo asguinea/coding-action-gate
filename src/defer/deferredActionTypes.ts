@@ -1,6 +1,6 @@
 import { z } from "zod";
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
-import type { StepHarborAction } from "../domain/actions.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
+import type { CodingActionGateAction } from "../domain/actions.js";
 import {
   fetchPlanStepSchema,
   isoTimestampSchema,
@@ -8,7 +8,7 @@ import {
 } from "../domain/common.js";
 import { decisionOutputSchema } from "../domain/decisions.js";
 import { policyTraceEntrySchema } from "../domain/policies.js";
-import type { StepHarborDecision } from "../decision/decisionErrors.js";
+import type { CodingActionGateDecision } from "../decision/decisionErrors.js";
 import type { DeferredActionError } from "./deferredActionErrors.js";
 
 export const deferredActionStatusSchema = z.enum([
@@ -111,8 +111,8 @@ export interface RecordDeferredActionInput {
 }
 
 export interface RecordDeferredDecisionInput {
-  action: NormalizedStepHarborAction;
-  decision: StepHarborDecision;
+  action: NormalizedCodingActionGateAction;
+  decision: CodingActionGateDecision;
   decisionId?: string;
   sessionId?: string;
   cwd?: string;
@@ -147,7 +147,7 @@ export interface DeferredBypassResult {
 }
 
 export interface DetectDeferredBypassInput {
-  action: NormalizedStepHarborAction;
+  action: NormalizedCodingActionGateAction;
   registry: DeferredActionRegistry;
   context?: {
     cwd?: string;
@@ -166,7 +166,7 @@ export interface DeferredActionRegistry {
     id: string
   ): Promise<DeferredActionResult<DeferredActionRecord | null>>;
   findPendingSimilarAction(
-    action: StepHarborAction | NormalizedStepHarborAction
+    action: CodingActionGateAction | NormalizedCodingActionGateAction
   ): Promise<DeferredActionResult<DeferredActionRecord | null>>;
   markDeferredActionSatisfied(
     id: string,

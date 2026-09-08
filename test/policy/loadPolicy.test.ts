@@ -2,7 +2,7 @@ import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { stepHarborPolicySchema } from "../../src/domain/policies.js";
+import { codingActionGatePolicySchema } from "../../src/domain/policies.js";
 import { defaultPolicy } from "../../src/policy/defaultPolicy.js";
 import { loadPolicy } from "../../src/policy/loadPolicy.js";
 
@@ -10,7 +10,9 @@ const tempDirs: string[] = [];
 const fixtureDir = path.resolve("test/fixtures/policies");
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-load-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-load-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -81,7 +83,7 @@ describe("loadPolicy", () => {
 
   it("discovers policy from cwd", async () => {
     const tempDir = await createTempDir();
-    const discoveredPath = path.join(tempDir, "stepharbor.policy.yml");
+    const discoveredPath = path.join(tempDir, "coding-action-gate.policy.yml");
 
     await writeFile(discoveredPath, "version: 0.1\n");
 
@@ -128,7 +130,9 @@ describe("loadPolicy", () => {
   });
 
   it("validates the default policy against the domain schema", () => {
-    expect(stepHarborPolicySchema.safeParse(defaultPolicy).success).toBe(true);
+    expect(codingActionGatePolicySchema.safeParse(defaultPolicy).success).toBe(
+      true
+    );
   });
 
   it("normalizes snake_case YAML into internal camelCase fields", async () => {

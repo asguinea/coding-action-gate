@@ -18,7 +18,7 @@ from pathlib import Path
 from textwrap import wrap
 from typing import Any
 
-MPLCONFIGDIR = Path(tempfile.gettempdir()) / "stepharbor_release_matplotlib"
+MPLCONFIGDIR = Path(tempfile.gettempdir()) / "codingactiongate_release_matplotlib"
 MPLCONFIGDIR.mkdir(parents=True, exist_ok=True)
 os.environ.setdefault("MPLCONFIGDIR", str(MPLCONFIGDIR))
 

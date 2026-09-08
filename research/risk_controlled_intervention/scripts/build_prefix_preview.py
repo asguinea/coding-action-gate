@@ -540,7 +540,7 @@ def audit_markdown(report: dict[str, Any]) -> str:
         "",
         "Tiny leakage-safe prefix preview over sampled CodeTraceBench artifacts only.",
         "",
-        "This is not production StepHarbor validation, not a conformal claim, and not a production statistical guarantee.",
+        "This is not production CodingActionGate validation, not a conformal claim, and not a production statistical guarantee.",
         "",
         "## Summary",
         "",
@@ -629,7 +629,7 @@ def main() -> int:
         "report_working_title": "Risk-Controlled Intervention in Coding-Agent Trajectories",
         "dataset": "NJU-LINK/CodeTraceBench",
         "claim_boundary": (
-            "Batch 2 tiny prefix preview only; not production StepHarbor validation, "
+            "Batch 2 tiny prefix preview only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "generated_at": datetime.now(timezone.utc).isoformat(),

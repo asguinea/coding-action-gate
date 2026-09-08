@@ -25,7 +25,7 @@ describe("live runtime client", () => {
     const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValueOnce(
       jsonResponse({
         ok: true,
-        service: "stepharbor-ui-api",
+        service: "coding-action-gate-ui-api",
         readOnly: true
       })
     );

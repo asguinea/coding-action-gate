@@ -4,7 +4,7 @@ import {
   areActionsSimilarForDeferral,
   fingerprintAction
 } from "../../src/defer/actionFingerprint.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
 
 const base = {
   timestamp: "2026-05-01T10:00:00.000Z",
@@ -15,7 +15,7 @@ const editAction = (
   id: string,
   targetPath: string,
   timestamp = base.timestamp
-): StepHarborAction => ({
+): CodingActionGateAction => ({
   ...base,
   id,
   timestamp,
@@ -28,14 +28,14 @@ const editAction = (
   }
 });
 
-const commandAction = (command: string): StepHarborAction => ({
+const commandAction = (command: string): CodingActionGateAction => ({
   ...base,
   id: `cmd-${command}`,
   type: "run_command",
   command
 });
 
-const normalize = (action: StepHarborAction, cwd = process.cwd()) => {
+const normalize = (action: CodingActionGateAction, cwd = process.cwd()) => {
   const result = normalizeAction(action, { cwd });
 
   if (!result.ok) {

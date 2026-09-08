@@ -178,7 +178,7 @@ def run() -> dict[str, Any]:
         "schema_version": "risk-controlled-intervention-lightweight-baselines.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "claim_boundary": (
-            "Batch 7 uncalibrated lightweight model scores only; not production StepHarbor validation, "
+            "Batch 7 uncalibrated lightweight model scores only; not production CodingActionGate validation, "
             "not conformal calibration, and not a production statistical guarantee."
         ),
         "scope": "Frozen v0.4 extraction-supported verified subset only.",

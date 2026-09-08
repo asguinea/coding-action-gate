@@ -8,11 +8,11 @@ import {
 } from "../../src/validation/validationPaths.js";
 
 describe("validation paths", () => {
-  it("resolves under .stepharbor/validation by default", () => {
-    const cwd = path.join(os.tmpdir(), "stepharbor-validation-paths");
+  it("resolves under .coding-action-gate/validation by default", () => {
+    const cwd = path.join(os.tmpdir(), "coding-action-gate-validation-paths");
 
     expect(resolveValidationLogPath({ cwd })).toBe(
-      path.join(cwd, ".stepharbor/validation/session_default.jsonl")
+      path.join(cwd, ".coding-action-gate/validation/session_default.jsonl")
     );
   });
 

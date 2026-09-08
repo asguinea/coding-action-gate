@@ -46,7 +46,7 @@ describe("version command", () => {
 
     expect(result.exitCode).toBe(0);
     expect(result.stderr).toBe("");
-    expect(result.stdout).toBe(`StepHarbor ${version}\n`);
+    expect(result.stdout).toBe(`CodingActionGate ${version}\n`);
   });
 
   it("prints equivalent output for version command", async () => {
@@ -55,7 +55,7 @@ describe("version command", () => {
     const command = await captureCli(["version"]);
 
     expect(command.exitCode).toBe(0);
-    expect(command.stdout).toBe(`StepHarbor ${version}\n`);
+    expect(command.stdout).toBe(`CodingActionGate ${version}\n`);
     expect(command.stdout).toBe(flag.stdout);
   });
 
@@ -63,16 +63,18 @@ describe("version command", () => {
     const result = await captureCli(["--help"]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("stepharbor version");
-    expect(result.stdout).toContain("stepharbor decide <actionFile>");
-    expect(result.stdout).toContain("stepharbor ui [options]");
-    expect(result.stdout).toContain("stepharbor doctor [options]");
-    expect(result.stdout).toContain("stepharbor analytics <summary|clear>");
+    expect(result.stdout).toContain("coding-action-gate version");
+    expect(result.stdout).toContain("coding-action-gate decide <actionFile>");
+    expect(result.stdout).toContain("coding-action-gate ui [options]");
+    expect(result.stdout).toContain("coding-action-gate doctor [options]");
     expect(result.stdout).toContain(
-      "stepharbor policy <show|validate|explain>"
+      "coding-action-gate analytics <summary|clear>"
     );
-    expect(result.stdout).toContain("stepharbor help [topic]");
-    expect(result.stdout).toContain("stepharbor help <topic>");
+    expect(result.stdout).toContain(
+      "coding-action-gate policy <show|validate|explain>"
+    );
+    expect(result.stdout).toContain("coding-action-gate help [topic]");
+    expect(result.stdout).toContain("coding-action-gate help <topic>");
     expect(result.stdout).toContain("--version");
   });
 
@@ -80,7 +82,7 @@ describe("version command", () => {
     const result = await captureCli(["ui", "--help"]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("stepharbor ui [options]");
+    expect(result.stdout).toContain("coding-action-gate ui [options]");
     expect(result.stdout).toContain("--no-ui-server");
   });
 });

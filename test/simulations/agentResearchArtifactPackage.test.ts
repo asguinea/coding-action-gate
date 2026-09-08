@@ -440,7 +440,7 @@ describe("agent research artifact package", () => {
       realReviewedTrace: false,
       actualRuntimeDecision: false,
       realAgentExecution: false,
-      realStepHarborExecution: false,
+      realCodingActionGateExecution: false,
       realValidationResult: false,
       realWorldResult: false,
       calibrationDatasetCreated: false,

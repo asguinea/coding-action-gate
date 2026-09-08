@@ -39,9 +39,9 @@ This preserves privacy and keeps the artifact suitable for future review, future
 
 ## Claim Boundaries
 
-Runner decisions are scripted expected categories. They are not actual runtime StepHarbor decisions, not uncertainty-router outputs, and not validation results.
+Runner decisions are scripted expected categories. They are not actual runtime CodingActionGate decisions, not uncertainty-router outputs, and not validation results.
 
-The runner does not make uncertainty routing authoritative. StepHarbor remains not conformal and does not provide statistical guarantees. The runner is product-first and reproducible, but it does not provide real-world validation, real agent validation, completed agent-in-the-loop validation, benchmark proof of real-world performance, formal verification, sandboxing, enterprise readiness, production safety guarantees, exfiltration-proof behavior, public disclosure approval, or legal/IP conclusions.
+The runner does not make uncertainty routing authoritative. CodingActionGate remains not conformal and does not provide statistical guarantees. The runner is product-first and reproducible, but it does not provide real-world validation, real agent validation, completed agent-in-the-loop validation, benchmark proof of real-world performance, formal verification, sandboxing, enterprise readiness, production safety guarantees, exfiltration-proof behavior, public disclosure approval, or legal/IP conclusions.
 
 ## Future Use
 
@@ -57,6 +57,6 @@ Those future uses must continue to distinguish synthetic example runs from futur
 
 Batch 12.6 defines the trace review and labeling protocol that can reference these synthetic run records. The protocol adds category-only review examples; it does not perform real review or create reviewed traces.
 
-Batch 12.7 consumes synthetic run records and review labels in a synthetic baseline-comparison framework. Those comparisons are category-only planning artifacts and do not run baselines, agents, commands, traces, or StepHarbor runtime decisions.
+Batch 12.7 consumes synthetic run records and review labels in a synthetic baseline-comparison framework. Those comparisons are category-only planning artifacts and do not run baselines, agents, commands, traces, or CodingActionGate runtime decisions.
 
 Batch 12.8 packages synthetic run references into a synthetic research artifact package. The package includes run linkage examples only and does not include raw run payloads or real trace recordings.

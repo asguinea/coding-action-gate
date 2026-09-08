@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { buildAuditRecord } from "../../src/audit/auditRecordBuilder.js";
-import type { StepHarborDecision } from "../../src/decision/decisionErrors.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
-import type { StepHarborSignals } from "../../src/domain/signals.js";
+import type { CodingActionGateDecision } from "../../src/decision/decisionErrors.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
+import type { CodingActionGateSignals } from "../../src/domain/signals.js";
 
 const fakeToken = "sk-abcdefghijklmnopqrstuvwxyz123456";
 
-const decision: StepHarborDecision = {
+const decision: CodingActionGateDecision = {
   decision: "BLOCK",
   reason: "Proposed mutation appears to contain secret material.",
   matchedPolicies: [
@@ -23,13 +23,13 @@ const decision: StepHarborDecision = {
   requiredNextSteps: []
 };
 
-const signals: StepHarborSignals = {
+const signals: CodingActionGateSignals = {
   secretTouch: "confirmed",
   secretPatternMatch: true,
   matchedSecretPatterns: ["openai_api_key"]
 };
 
-const action: StepHarborAction = {
+const action: CodingActionGateAction = {
   id: "action-redaction",
   type: "write_file",
   timestamp: "2026-04-30T08:00:00.000Z",

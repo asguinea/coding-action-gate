@@ -33,7 +33,9 @@ import safeReadmeEdit from "../../examples/actions/safe-readme-edit.json" with {
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-router-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-router-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };

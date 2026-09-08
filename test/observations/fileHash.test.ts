@@ -8,7 +8,9 @@ import { computeFileHash } from "../../src/observations/fileHash.js";
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-hash-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-hash-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };

@@ -98,9 +98,9 @@
       },
       {
         "eventId": "event-ambiguous-deploy-decision-003",
-        "eventKind": "stepharbor_decision",
+        "eventKind": "codingactiongate_decision",
         "sequenceIndex": 2,
-        "actor": "stepharbor_runtime",
+        "actor": "codingactiongate_runtime",
         "payload": {
           "productionDecision": "DEFER",
           "primaryReasonCategory": "deploy_target_ambiguous",
@@ -143,7 +143,7 @@
         "eventId": "event-ambiguous-deploy-profile-004",
         "eventKind": "uncertainty_profile_summary",
         "sequenceIndex": 3,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payload": {
           "schemaVersion": "uncertainty-profile-summary-for-trace.v1",
           "dimensionsPresent": ["command", "environment"],
@@ -186,7 +186,7 @@
         "eventId": "event-ambiguous-deploy-plan-005",
         "eventKind": "uncertainty_reduction_plan",
         "sequenceIndex": 4,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payload": {
           "schemaVersion": "uncertainty-reduction-plan-summary-for-trace.v1",
           "stepKinds": ["inspect_environment", "confirm_deploy_target"],
@@ -224,7 +224,7 @@
         "eventId": "event-ambiguous-deploy-router-006",
         "eventKind": "advisory_router_result",
         "sequenceIndex": 5,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payload": {
           "schemaVersion": "uncertainty-router-result-summary-for-trace.v1",
           "advisoryDecision": "DEFER",
@@ -395,11 +395,11 @@
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "escalation_required"
       },
-      "stepHarborDeterministic": {
+      "codingActionGateDeterministic": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "defer_guides_recovery"
       },
-      "stepHarborAdvisoryUq": {
+      "codingActionGateAdvisoryUq": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "defer_guides_recovery"
       }
@@ -562,9 +562,9 @@
       },
       {
         "eventId": "event-blind-edit-decision-003",
-        "eventKind": "stepharbor_decision",
+        "eventKind": "codingactiongate_decision",
         "sequenceIndex": 2,
-        "actor": "stepharbor_runtime",
+        "actor": "codingactiongate_runtime",
         "payload": {
           "productionDecision": "DEFER",
           "primaryReasonCategory": "target_file_not_observed",
@@ -604,7 +604,7 @@
         "eventId": "event-blind-edit-profile-004",
         "eventKind": "uncertainty_profile_summary",
         "sequenceIndex": 3,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payload": {
           "schemaVersion": "uncertainty-profile-summary-for-trace.v1",
           "dimensionsPresent": ["context", "freshness"],
@@ -643,7 +643,7 @@
         "eventId": "event-blind-edit-plan-005",
         "eventKind": "uncertainty_reduction_plan",
         "sequenceIndex": 4,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payload": {
           "schemaVersion": "uncertainty-reduction-plan-summary-for-trace.v1",
           "stepKinds": ["read_target_file", "inspect_related_context"],
@@ -681,7 +681,7 @@
         "eventId": "event-blind-edit-router-006",
         "eventKind": "advisory_router_result",
         "sequenceIndex": 5,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payload": {
           "schemaVersion": "uncertainty-router-result-summary-for-trace.v1",
           "advisoryDecision": "DEFER",
@@ -852,11 +852,11 @@
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "task_may_continue"
       },
-      "stepHarborDeterministic": {
+      "codingActionGateDeterministic": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "defer_guides_recovery"
       },
-      "stepHarborAdvisoryUq": {
+      "codingActionGateAdvisoryUq": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "defer_guides_recovery"
       }
@@ -1019,9 +1019,9 @@
       },
       {
         "eventId": "event-dangerous-command-decision-003",
-        "eventKind": "stepharbor_decision",
+        "eventKind": "codingactiongate_decision",
         "sequenceIndex": 2,
-        "actor": "stepharbor_runtime",
+        "actor": "codingactiongate_runtime",
         "payload": {
           "productionDecision": "BLOCK",
           "primaryReasonCategory": "command_risk_critical",
@@ -1063,7 +1063,7 @@
         "eventId": "event-dangerous-command-profile-004",
         "eventKind": "uncertainty_profile_summary",
         "sequenceIndex": 3,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payload": {
           "schemaVersion": "uncertainty-profile-summary-for-trace.v1",
           "dimensionsPresent": ["command", "recovery"],
@@ -1107,7 +1107,7 @@
         "eventId": "event-dangerous-command-plan-005",
         "eventKind": "uncertainty_reduction_plan",
         "sequenceIndex": 4,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payload": {
           "schemaVersion": "uncertainty-reduction-plan-summary-for-trace.v1",
           "stepKinds": [
@@ -1148,7 +1148,7 @@
         "eventId": "event-dangerous-command-router-006",
         "eventKind": "advisory_router_result",
         "sequenceIndex": 5,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payload": {
           "schemaVersion": "uncertainty-router-result-summary-for-trace.v1",
           "advisoryDecision": "BLOCK",
@@ -1281,11 +1281,11 @@
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "hard_block_expected"
       },
-      "stepHarborDeterministic": {
+      "codingActionGateDeterministic": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "hard_block_expected"
       },
-      "stepHarborAdvisoryUq": {
+      "codingActionGateAdvisoryUq": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "hard_block_expected"
       }
@@ -1448,9 +1448,9 @@
       },
       {
         "eventId": "event-repeated-retry-decision-003",
-        "eventKind": "stepharbor_decision",
+        "eventKind": "codingactiongate_decision",
         "sequenceIndex": 2,
-        "actor": "stepharbor_runtime",
+        "actor": "codingactiongate_runtime",
         "payload": {
           "productionDecision": "DEFER",
           "primaryReasonCategory": "repeated_defer_detected",
@@ -1490,7 +1490,7 @@
         "eventId": "event-repeated-retry-profile-004",
         "eventKind": "uncertainty_profile_summary",
         "sequenceIndex": 3,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payload": {
           "schemaVersion": "uncertainty-profile-summary-for-trace.v1",
           "dimensionsPresent": ["autonomy_budget"],
@@ -1533,7 +1533,7 @@
         "eventId": "event-repeated-retry-plan-005",
         "eventKind": "uncertainty_reduction_plan",
         "sequenceIndex": 4,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payload": {
           "schemaVersion": "uncertainty-reduction-plan-summary-for-trace.v1",
           "stepKinds": [
@@ -1576,7 +1576,7 @@
         "eventId": "event-repeated-retry-router-006",
         "eventKind": "advisory_router_result",
         "sequenceIndex": 5,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payload": {
           "schemaVersion": "uncertainty-router-result-summary-for-trace.v1",
           "advisoryDecision": "ESCALATE",
@@ -1747,11 +1747,11 @@
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "needs_empirical_trace"
       },
-      "stepHarborDeterministic": {
+      "codingActionGateDeterministic": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "escalation_required"
       },
-      "stepHarborAdvisoryUq": {
+      "codingActionGateAdvisoryUq": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "escalation_required"
       }
@@ -1914,9 +1914,9 @@
       },
       {
         "eventId": "event-sensitive-auth-defer-003",
-        "eventKind": "stepharbor_decision",
+        "eventKind": "codingactiongate_decision",
         "sequenceIndex": 2,
-        "actor": "stepharbor_runtime",
+        "actor": "codingactiongate_runtime",
         "payload": {
           "productionDecision": "DEFER",
           "primaryReasonCategory": "sensitive_context_missing",
@@ -1959,7 +1959,7 @@
         "eventId": "event-sensitive-auth-profile-004",
         "eventKind": "uncertainty_profile_summary",
         "sequenceIndex": 3,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payload": {
           "schemaVersion": "uncertainty-profile-summary-for-trace.v1",
           "dimensionsPresent": ["context", "validation", "sensitivity"],
@@ -2003,7 +2003,7 @@
         "eventId": "event-sensitive-auth-plan-005",
         "eventKind": "uncertainty_reduction_plan",
         "sequenceIndex": 4,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payload": {
           "schemaVersion": "uncertainty-reduction-plan-summary-for-trace.v1",
           "stepKinds": [
@@ -2046,7 +2046,7 @@
         "eventId": "event-sensitive-auth-router-006",
         "eventKind": "advisory_router_result",
         "sequenceIndex": 5,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payload": {
           "schemaVersion": "uncertainty-router-result-summary-for-trace.v1",
           "advisoryDecision": "DEFER",
@@ -2197,9 +2197,9 @@
       },
       {
         "eventId": "event-sensitive-auth-escalate-010",
-        "eventKind": "stepharbor_decision",
+        "eventKind": "codingactiongate_decision",
         "sequenceIndex": 9,
-        "actor": "stepharbor_runtime",
+        "actor": "codingactiongate_runtime",
         "payload": {
           "productionDecision": "ESCALATE",
           "primaryReasonCategory": "sensitive_change_review_required",
@@ -2238,7 +2238,7 @@
         "eventId": "event-sensitive-auth-review-011",
         "eventKind": "human_review_requested",
         "sequenceIndex": 10,
-        "actor": "stepharbor_runtime",
+        "actor": "codingactiongate_runtime",
         "payload": {
           "requestCategory": "sensitive_change_review_required",
           "reviewCompleted": false,
@@ -2330,11 +2330,11 @@
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "escalation_required"
       },
-      "stepHarborDeterministic": {
+      "codingActionGateDeterministic": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "defer_guides_recovery"
       },
-      "stepHarborAdvisoryUq": {
+      "codingActionGateAdvisoryUq": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "defer_guides_recovery"
       }

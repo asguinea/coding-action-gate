@@ -299,7 +299,7 @@ describe("agent trace review protocol", () => {
         realReviewCompleted: false,
         actualRuntimeDecision: false,
         realAgentExecution: false,
-        realStepHarborExecution: false,
+        realCodingActionGateExecution: false,
         realValidationResult: false,
         realWorldResult: false,
         baselineEvaluated: false,

@@ -226,7 +226,7 @@ def markdown_report(report: dict[str, Any]) -> str:
         "",
         "Batch 4 parser hardening taxonomy for the existing bounded 50-artifact pilot.",
         "",
-        "This is pre-modeling infrastructure only. It is not production StepHarbor validation, not a conformal claim, and not a production statistical guarantee.",
+        "This is pre-modeling infrastructure only. It is not production CodingActionGate validation, not a conformal claim, and not a production statistical guarantee.",
         "",
         "## Summary",
         "",
@@ -275,7 +275,7 @@ def main() -> int:
         "schema_version": "risk-controlled-intervention-pilot-failure-taxonomy.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "claim_boundary": (
-            "Batch 4 failure taxonomy only; not production StepHarbor validation, "
+            "Batch 4 failure taxonomy only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "summary": summary,

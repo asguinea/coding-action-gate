@@ -1,4 +1,4 @@
-import type { StepHarborPolicy } from "../domain/policies.js";
+import type { CodingActionGatePolicy } from "../domain/policies.js";
 
 export type PolicyLoadErrorCode =
   | "POLICY_FILE_NOT_FOUND"
@@ -29,7 +29,7 @@ export type LoadedPolicySource =
 export type LoadedPolicyResult =
   | {
       ok: true;
-      policy: StepHarborPolicy;
+      policy: CodingActionGatePolicy;
       source: LoadedPolicySource;
     }
   | {

@@ -55,27 +55,27 @@ const buildTraceEventSkeleton = (
     event("task_presented", 0, "persona", "task_category"),
     event("proposed_action", 1, "coding_agent", "proposed_action_category"),
     event(
-      "stepharbor_decision",
+      "codingactiongate_decision",
       2,
-      "stepharbor_runtime",
+      "codingactiongate_runtime",
       "scripted_decision_category"
     ),
     event(
       "uncertainty_profile_summary",
       3,
-      "stepharbor_uncertainty_advisory",
+      "codingactiongate_uncertainty_advisory",
       "uncertainty_summary_category"
     ),
     event(
       "uncertainty_reduction_plan",
       4,
-      "stepharbor_uncertainty_advisory",
+      "codingactiongate_uncertainty_advisory",
       "reduction_plan_category"
     ),
     event(
       "advisory_router_result",
       5,
-      "stepharbor_uncertainty_advisory",
+      "codingactiongate_uncertainty_advisory",
       "scripted_advisory_category"
     )
   ];
@@ -277,16 +277,16 @@ export const buildAgentSimulationRun = (
         likelyOutcomeCategory:
           scenario.baselineExpectations.policyOnlyGuard.likelyOutcomeCategory
       },
-      stepHarborDeterministic: {
+      codingActionGateDeterministic: {
         status: "ready_for_future_evaluation",
         likelyOutcomeCategory:
-          scenario.baselineExpectations.stepHarborDeterministic
+          scenario.baselineExpectations.codingActionGateDeterministic
             .likelyOutcomeCategory
       },
-      stepHarborAdvisoryUq: {
+      codingActionGateAdvisoryUq: {
         status: "ready_for_future_evaluation",
         likelyOutcomeCategory:
-          scenario.baselineExpectations.stepHarborAdvisoryUq
+          scenario.baselineExpectations.codingActionGateAdvisoryUq
             .likelyOutcomeCategory
       }
     },
@@ -303,14 +303,14 @@ export const buildAgentSimulationRun = (
     claimBoundaries: {
       actualRuntimeDecision: false,
       realAgentExecution: false,
-      realStepHarborExecution: false,
+      realCodingActionGateExecution: false,
       realValidationResult: false,
       realWorldResult: false,
       conformalGuarantee: false
     },
     notes: [
       "Synthetic example run only.",
-      "Scripted category output; no agent, command, trace runtime, or StepHarbor runtime execution occurred."
+      "Scripted category output; no agent, command, trace runtime, or CodingActionGate runtime execution occurred."
     ]
   });
 };

@@ -1,6 +1,6 @@
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
-import type { StepHarborPolicy } from "../domain/policies.js";
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
+import type { CodingActionGatePolicy } from "../domain/policies.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 import { getValidationCommands } from "./validationPolicy.js";
 import { checkValidationFreshness } from "./validationFreshness.js";
 import type {
@@ -74,13 +74,13 @@ const policyMatchForScope = (scope: LandingActionScope): string | undefined => {
 };
 
 export const computeValidationGateSignals = async (input: {
-  action: NormalizedStepHarborAction;
-  policy: StepHarborPolicy;
+  action: NormalizedCodingActionGateAction;
+  policy: CodingActionGatePolicy;
   cwd?: string;
   sessionId?: string;
   validationDir?: string;
   maxAgeMs?: number;
-}): Promise<StepHarborSignals> => {
+}): Promise<CodingActionGateSignals> => {
   const scope = classifyLandingAction(input.action);
 
   if (scope === "none") {

@@ -94,7 +94,7 @@ export const phase16GateSummaryBoundaryStatementValues = [
   "no_runtime_integration_approved",
   "no_real_agent_evidence_started",
   "no_real_calibration_started",
-  "deterministic_stepharbor_decisions_remain_authoritative",
+  "deterministic_codingactiongate_decisions_remain_authoritative",
   "deterministic_safety_overrides_cannot_be_overridden_by_calibrated_advisory_signals",
   "phase_17_real_agent_evidence_required"
 ] as const;

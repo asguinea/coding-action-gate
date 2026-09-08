@@ -16,11 +16,11 @@ export type HelpTopic = (typeof helpTopics)[number];
 
 const availableTopicsText = (): string => helpTopics.join(", ");
 
-const mainHelp = `StepHarbor is a runtime authorization layer for agentic coding. It decides whether
+const mainHelp = `CodingActionGate is a runtime authorization layer for agentic coding. It decides whether
 proposed actions should PROCEED, DEFER, ESCALATE, or BLOCK before execution.
 
 Usage:
-  stepharbor help [topic]
+  coding-action-gate help [topic]
 
 Guard actions:
   decide <actionFile>       Authorize an action JSON file without applying it.
@@ -37,7 +37,7 @@ Local dashboard:
   ui                        Launch the localhost-only read-only dashboard.
 
 Setup and diagnostics:
-  init                      Write a starter stepharbor.policy.yml file.
+  init                      Write a starter coding-action-gate.policy.yml file.
   doctor                    Run read-only project readiness checks.
   policy                    Show, validate, or explain the effective policy.
 
@@ -58,11 +58,11 @@ Help:
   help analytics            Explain local analytics summary and clearing.
   help first-run            Show a simple first-run flow.
 
-Run 'stepharbor --help' for command syntax, or 'stepharbor help decisions' to
+Run 'coding-action-gate --help' for command syntax, or 'coding-action-gate help decisions' to
 understand the decision outcomes.
 `;
 
-const decisionsHelp = `StepHarbor decision outcomes:
+const decisionsHelp = `CodingActionGate decision outcomes:
 
 PROCEED
   The action may execute immediately if the calling agent or user chooses to run it.
@@ -81,12 +81,12 @@ ESCALATE
 BLOCK
   The action violates a hard safety or policy boundary and must not execute.
 
-Use 'stepharbor help defer' for the DEFER and retry flow.
+Use 'coding-action-gate help defer' for the DEFER and retry flow.
 `;
 
 const deferHelp = `DEFER flow:
 
-StepHarbor can DEFER actions when current evidence is missing or stale. Common
+CodingActionGate can DEFER actions when current evidence is missing or stale. Common
 causes include read-before-write requirements, stale file state, missing related context,
 or missing related tests.
 
@@ -95,10 +95,10 @@ the requested evidence, then retry the original deferred action for
 reauthorization.
 
 Example:
-  1. An edit is proposed before src/foo.ts was read, so StepHarbor returns DEFER.
-  2. Run: stepharbor read src/foo.ts
-  3. Run: stepharbor read test/foo.test.ts
-  4. Run: stepharbor retry <deferredActionId>
+  1. An edit is proposed before src/foo.ts was read, so CodingActionGate returns DEFER.
+  2. Run: coding-action-gate read src/foo.ts
+  3. Run: coding-action-gate read test/foo.test.ts
+  4. Run: coding-action-gate retry <deferredActionId>
   5. Retry may PROCEED, ESCALATE, or BLOCK depending on the gathered evidence.
 
 DEFER is not failure. It is a safe autonomous repair loop before authorization.
@@ -106,45 +106,45 @@ DEFER is not failure. It is a safe autonomous repair loop before authorization.
 
 const policyHelp = `Policy:
 
-StepHarbor policy is enforcement configuration, usually stored in
-stepharbor.policy.yml. Policy controls boundaries such as workspace scope,
+CodingActionGate policy is enforcement configuration, usually stored in
+coding-action-gate.policy.yml. Policy controls boundaries such as workspace scope,
 sensitive paths, command risk, validation gates, Git landing rules, and
 deploy/publish behavior.
 
 Read-only policy commands (read-only, no mutation):
-  stepharbor policy show
-  stepharbor policy validate
-  stepharbor policy explain
+  coding-action-gate policy show
+  coding-action-gate policy validate
+  coding-action-gate policy explain
 
 These commands do not edit policy, approve actions, override decisions, mutate
 configuration, or change analytics settings. Policy editing is not implemented
-in this batch. Analytics is controlled with STEPHARBOR_ANALYTICS=0, not policy.
+in this batch. Analytics is controlled with CODING_ACTION_GATE_ANALYTICS=0, not policy.
 This help topic does not edit policy.
 
 Create a starter policy:
-  stepharbor init --template basic
-  stepharbor init --template node
-  stepharbor init --template strict
-  stepharbor init --template monorepo-lite
+  coding-action-gate init --template basic
+  coding-action-gate init --template node
+  coding-action-gate init --template strict
+  coding-action-gate init --template monorepo-lite
 
-Run 'stepharbor doctor' after initialization to check project readiness.
+Run 'coding-action-gate doctor' after initialization to check project readiness.
 `;
 
 const securityHelp = `Security and privacy:
 
-StepHarbor is local-first. It records local-only product-behavior analytics under
-.stepharbor/analytics/. No remote telemetry is sent.
+CodingActionGate is local-first. It records local-only product-behavior analytics under
+.coding-action-gate/analytics/. No remote telemetry is sent.
 
 Analytics records event categories such as decisions, DEFER recording, retries,
 doctor/init/export-feedback runs, and UI launches. It does not record source
 code, file contents, diffs, raw commands, raw paths, environment variables,
 secrets, repo names, or validation logs. Disable local analytics with:
-  STEPHARBOR_ANALYTICS=0
+  CODING_ACTION_GATE_ANALYTICS=0
 
 Secret-like values and sensitive data are redacted in CLI and audit output where
 supported. Avoid pasting raw secrets into action files or support requests.
 
-stepharbor exec remains dry-run only; it authorizes a command but does not execute
+coding-action-gate exec remains dry-run only; it authorizes a command but does not execute
 it. Dangerous commands should be BLOCKed, DEFERred, or ESCALATEd according to
 policy and available evidence.
 
@@ -152,14 +152,14 @@ The dashboard API is localhost-only and read-only. The dashboard has no mutation
 endpoints and cannot approve actions, retry actions, edit files, run commands,
 or mutate policy.
 
-Inspect local analytics with stepharbor analytics summary. Clear analytics events
-only with stepharbor analytics clear --yes; this does not delete audit logs,
+Inspect local analytics with coding-action-gate analytics summary. Clear analytics events
+only with coding-action-gate analytics clear --yes; this does not delete audit logs,
 deferred actions, observations, validation state, or policy.
 `;
 
 const uiHelp = `Local dashboard:
 
-stepharbor ui launches the local read-only dashboard and read-only API. It serves
+coding-action-gate ui launches the local read-only dashboard and read-only API. It serves
 local runtime state such as audit records, deferred actions, observations,
 validation state, Git state, and policy visibility where available.
 
@@ -181,23 +181,23 @@ From a source checkout:
   npm run ui:build
   npm pack
   npm install -g ./<tarball>
-  stepharbor --version
-  stepharbor doctor
+  coding-action-gate --version
+  coding-action-gate doctor
 
 Installed CLI vs source checkout:
-  Installed stepharbor should work from any repository.
+  Installed coding-action-gate should work from any repository.
   Source checkouts may use node dist/cli/cli.js or npm scripts.
 
 UI assets:
   Local preview packages include bundled ui/dist assets.
-  Source checkouts may require npm run ui:build before stepharbor ui.
+  Source checkouts may require npm run ui:build before coding-action-gate ui.
 
 Uninstall:
-  npm uninstall -g stepharbor
+  npm uninstall -g coding-action-gate
 
-Reset local StepHarbor state:
-  Remove .stepharbor/ from a repository only when intentionally deleting local
-  StepHarbor runtime state. This deletes audit, deferred, validation, and
+Reset local CodingActionGate state:
+  Remove .coding-action-gate/ from a repository only when intentionally deleting local
+  CodingActionGate runtime state. This deletes audit, deferred, validation, and
   observation state for that workspace.
 
 Release candidate checks:
@@ -209,27 +209,27 @@ Release candidate checks:
 const firstRunHelp = `First run:
 
 1. Install the local preview package.
-2. Run: stepharbor --version
-3. Run: stepharbor doctor
-4. Initialize policy if needed: stepharbor init
-5. Try a safe dry-run: stepharbor exec "echo hello"
+2. Run: coding-action-gate --version
+3. Run: coding-action-gate doctor
+4. Initialize policy if needed: coding-action-gate init
+5. Try a safe dry-run: coding-action-gate exec "echo hello"
 6. Try a decision example if examples are available.
-7. Launch the dashboard: stepharbor ui
-8. Export sanitized feedback if needed: stepharbor export-feedback
+7. Launch the dashboard: coding-action-gate ui
+8. Export sanitized feedback if needed: coding-action-gate export-feedback
 
 Installed local preview packages include bundled ui/dist dashboard assets. Source
-checkouts may require npm run ui:build before stepharbor ui.
+checkouts may require npm run ui:build before coding-action-gate ui.
 
-StepHarbor is local-first, stepharbor exec is dry-run only, and the dashboard is
+CodingActionGate is local-first, coding-action-gate exec is dry-run only, and the dashboard is
 read-only with no mutation endpoints or remote telemetry at this phase. Local
-analytics can be disabled with STEPHARBOR_ANALYTICS=0.
+analytics can be disabled with CODING_ACTION_GATE_ANALYTICS=0.
 `;
 
 const analyticsHelp = `Local analytics:
 
-StepHarbor records local-only product-behavior analytics for beta calibration.
+CodingActionGate records local-only product-behavior analytics for beta calibration.
 Events are stored in:
-  .stepharbor/analytics/events.jsonl
+  .coding-action-gate/analytics/events.jsonl
 
 No remote telemetry is sent. Analytics does not record raw paths, raw commands,
 diffs, source code, file contents, environment variables, secrets, repo names,
@@ -237,16 +237,16 @@ or validation logs. Analytics is separate from audit logs and does not replace
 the audit trail.
 
 Inspect local aggregate behavior:
-  stepharbor analytics summary
+  coding-action-gate analytics summary
 
 Clear local analytics events only:
-  stepharbor analytics clear --yes
+  coding-action-gate analytics clear --yes
 
 Clear does not delete audit logs, deferred actions, observations, validation
-state, policy, or the rest of .stepharbor/.
+state, policy, or the rest of .coding-action-gate/.
 
 Disable future analytics recording for a command or shell:
-  STEPHARBOR_ANALYTICS=0
+  CODING_ACTION_GATE_ANALYTICS=0
 
 Persistent local enable/disable commands are not implemented yet.
 `;

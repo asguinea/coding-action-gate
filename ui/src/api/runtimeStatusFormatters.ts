@@ -220,4 +220,4 @@ export const buildRuntimeStatusRows = (
 export const defaultPolicyEmptyStateHint = (
   source: UiPolicySource | undefined
 ): string[] =>
-  source?.type === "default" ? ["stepharbor init --template node"] : [];
+  source?.type === "default" ? ["coding-action-gate init --template node"] : [];

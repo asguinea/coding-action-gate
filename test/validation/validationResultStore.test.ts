@@ -10,7 +10,7 @@ const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-val-store-")
+    path.join(os.tmpdir(), "coding-action-gate-val-store-")
   );
   tempDirs.push(tempDir);
   return tempDir;

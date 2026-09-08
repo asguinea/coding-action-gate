@@ -1,7 +1,7 @@
 import path from "node:path";
 import type { AuditLoggerOptions } from "./auditErrors.js";
 
-export const defaultAuditDir = ".stepharbor/audit";
+export const defaultAuditDir = ".coding-action-gate/audit";
 export const defaultAuditFileName = "decisions.jsonl";
 
 export const resolveAuditLogPath = (

@@ -155,7 +155,7 @@ def run_verified_gate(
         "schema_version": "risk-controlled-intervention-verified-quality-gate.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "claim_boundary": (
-            "Batch 6 verified extraction QA only; not production StepHarbor validation, "
+            "Batch 6 verified extraction QA only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "decision": decision,
@@ -185,7 +185,7 @@ def markdown(report: dict[str, Any]) -> str:
         "",
         "Automated QA for verified-split extraction dry run.",
         "",
-        "This is not production StepHarbor validation, not a conformal claim, and not a production statistical guarantee.",
+        "This is not production CodingActionGate validation, not a conformal claim, and not a production statistical guarantee.",
         "",
         f"## Decision: `{report['decision']}`",
         "",

@@ -475,7 +475,7 @@ describe("agent advisory interface boundary schema", () => {
     );
 
     expect(Object.keys(packageJson.scripts ?? {})).not.toContain("advisory");
-    expect(cli).not.toMatch(/stepharbor advisory\b/);
+    expect(cli).not.toMatch(/coding-action-gate advisory\b/);
     expect(cli).not.toMatch(/case ["']advisory["']/);
     expect(cli).not.toMatch(/runAdvisory/i);
   });

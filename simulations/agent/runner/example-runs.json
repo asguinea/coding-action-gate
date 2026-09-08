@@ -45,9 +45,9 @@
         "executable": false
       },
       {
-        "eventKind": "stepharbor_decision",
+        "eventKind": "codingactiongate_decision",
         "sequenceIndex": 2,
-        "actor": "stepharbor_runtime",
+        "actor": "codingactiongate_runtime",
         "payloadCategory": "scripted_decision_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -55,7 +55,7 @@
       {
         "eventKind": "uncertainty_profile_summary",
         "sequenceIndex": 3,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "uncertainty_summary_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -63,7 +63,7 @@
       {
         "eventKind": "uncertainty_reduction_plan",
         "sequenceIndex": 4,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "reduction_plan_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -71,7 +71,7 @@
       {
         "eventKind": "advisory_router_result",
         "sequenceIndex": 5,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "scripted_advisory_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -116,11 +116,11 @@
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "escalation_required"
       },
-      "stepHarborDeterministic": {
+      "codingActionGateDeterministic": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "defer_guides_recovery"
       },
-      "stepHarborAdvisoryUq": {
+      "codingActionGateAdvisoryUq": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "defer_guides_recovery"
       }
@@ -171,14 +171,14 @@
     "claimBoundaries": {
       "actualRuntimeDecision": false,
       "realAgentExecution": false,
-      "realStepHarborExecution": false,
+      "realCodingActionGateExecution": false,
       "realValidationResult": false,
       "realWorldResult": false,
       "conformalGuarantee": false
     },
     "notes": [
       "Synthetic example run only.",
-      "Scripted category output; no agent, command, trace runtime, or StepHarbor runtime execution occurred."
+      "Scripted category output; no agent, command, trace runtime, or CodingActionGate runtime execution occurred."
     ]
   },
   {
@@ -230,9 +230,9 @@
         "executable": false
       },
       {
-        "eventKind": "stepharbor_decision",
+        "eventKind": "codingactiongate_decision",
         "sequenceIndex": 2,
-        "actor": "stepharbor_runtime",
+        "actor": "codingactiongate_runtime",
         "payloadCategory": "scripted_decision_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -240,7 +240,7 @@
       {
         "eventKind": "uncertainty_profile_summary",
         "sequenceIndex": 3,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "uncertainty_summary_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -248,7 +248,7 @@
       {
         "eventKind": "uncertainty_reduction_plan",
         "sequenceIndex": 4,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "reduction_plan_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -256,7 +256,7 @@
       {
         "eventKind": "advisory_router_result",
         "sequenceIndex": 5,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "scripted_advisory_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -301,11 +301,11 @@
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "task_may_continue"
       },
-      "stepHarborDeterministic": {
+      "codingActionGateDeterministic": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "defer_guides_recovery"
       },
-      "stepHarborAdvisoryUq": {
+      "codingActionGateAdvisoryUq": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "defer_guides_recovery"
       }
@@ -356,14 +356,14 @@
     "claimBoundaries": {
       "actualRuntimeDecision": false,
       "realAgentExecution": false,
-      "realStepHarborExecution": false,
+      "realCodingActionGateExecution": false,
       "realValidationResult": false,
       "realWorldResult": false,
       "conformalGuarantee": false
     },
     "notes": [
       "Synthetic example run only.",
-      "Scripted category output; no agent, command, trace runtime, or StepHarbor runtime execution occurred."
+      "Scripted category output; no agent, command, trace runtime, or CodingActionGate runtime execution occurred."
     ]
   },
   {
@@ -420,9 +420,9 @@
         "executable": false
       },
       {
-        "eventKind": "stepharbor_decision",
+        "eventKind": "codingactiongate_decision",
         "sequenceIndex": 2,
-        "actor": "stepharbor_runtime",
+        "actor": "codingactiongate_runtime",
         "payloadCategory": "scripted_decision_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -430,7 +430,7 @@
       {
         "eventKind": "uncertainty_profile_summary",
         "sequenceIndex": 3,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "uncertainty_summary_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -438,7 +438,7 @@
       {
         "eventKind": "uncertainty_reduction_plan",
         "sequenceIndex": 4,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "reduction_plan_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -446,7 +446,7 @@
       {
         "eventKind": "advisory_router_result",
         "sequenceIndex": 5,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "scripted_advisory_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -499,11 +499,11 @@
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "unnecessary_interruption_possible"
       },
-      "stepHarborDeterministic": {
+      "codingActionGateDeterministic": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "defer_guides_recovery"
       },
-      "stepHarborAdvisoryUq": {
+      "codingActionGateAdvisoryUq": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "defer_guides_recovery"
       }
@@ -554,14 +554,14 @@
     "claimBoundaries": {
       "actualRuntimeDecision": false,
       "realAgentExecution": false,
-      "realStepHarborExecution": false,
+      "realCodingActionGateExecution": false,
       "realValidationResult": false,
       "realWorldResult": false,
       "conformalGuarantee": false
     },
     "notes": [
       "Synthetic example run only.",
-      "Scripted category output; no agent, command, trace runtime, or StepHarbor runtime execution occurred."
+      "Scripted category output; no agent, command, trace runtime, or CodingActionGate runtime execution occurred."
     ]
   },
   {
@@ -609,9 +609,9 @@
         "executable": false
       },
       {
-        "eventKind": "stepharbor_decision",
+        "eventKind": "codingactiongate_decision",
         "sequenceIndex": 2,
-        "actor": "stepharbor_runtime",
+        "actor": "codingactiongate_runtime",
         "payloadCategory": "scripted_decision_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -619,7 +619,7 @@
       {
         "eventKind": "uncertainty_profile_summary",
         "sequenceIndex": 3,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "uncertainty_summary_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -627,7 +627,7 @@
       {
         "eventKind": "uncertainty_reduction_plan",
         "sequenceIndex": 4,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "reduction_plan_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -635,7 +635,7 @@
       {
         "eventKind": "advisory_router_result",
         "sequenceIndex": 5,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "scripted_advisory_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -672,11 +672,11 @@
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "hard_block_expected"
       },
-      "stepHarborDeterministic": {
+      "codingActionGateDeterministic": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "hard_block_expected"
       },
-      "stepHarborAdvisoryUq": {
+      "codingActionGateAdvisoryUq": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "hard_block_expected"
       }
@@ -727,14 +727,14 @@
     "claimBoundaries": {
       "actualRuntimeDecision": false,
       "realAgentExecution": false,
-      "realStepHarborExecution": false,
+      "realCodingActionGateExecution": false,
       "realValidationResult": false,
       "realWorldResult": false,
       "conformalGuarantee": false
     },
     "notes": [
       "Synthetic example run only.",
-      "Scripted category output; no agent, command, trace runtime, or StepHarbor runtime execution occurred."
+      "Scripted category output; no agent, command, trace runtime, or CodingActionGate runtime execution occurred."
     ]
   },
   {
@@ -785,9 +785,9 @@
         "executable": false
       },
       {
-        "eventKind": "stepharbor_decision",
+        "eventKind": "codingactiongate_decision",
         "sequenceIndex": 2,
-        "actor": "stepharbor_runtime",
+        "actor": "codingactiongate_runtime",
         "payloadCategory": "scripted_decision_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -795,7 +795,7 @@
       {
         "eventKind": "uncertainty_profile_summary",
         "sequenceIndex": 3,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "uncertainty_summary_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -803,7 +803,7 @@
       {
         "eventKind": "uncertainty_reduction_plan",
         "sequenceIndex": 4,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "reduction_plan_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -811,7 +811,7 @@
       {
         "eventKind": "advisory_router_result",
         "sequenceIndex": 5,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "scripted_advisory_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -864,11 +864,11 @@
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "needs_empirical_trace"
       },
-      "stepHarborDeterministic": {
+      "codingActionGateDeterministic": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "escalation_required"
       },
-      "stepHarborAdvisoryUq": {
+      "codingActionGateAdvisoryUq": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "escalation_required"
       }
@@ -919,14 +919,14 @@
     "claimBoundaries": {
       "actualRuntimeDecision": false,
       "realAgentExecution": false,
-      "realStepHarborExecution": false,
+      "realCodingActionGateExecution": false,
       "realValidationResult": false,
       "realWorldResult": false,
       "conformalGuarantee": false
     },
     "notes": [
       "Synthetic example run only.",
-      "Scripted category output; no agent, command, trace runtime, or StepHarbor runtime execution occurred."
+      "Scripted category output; no agent, command, trace runtime, or CodingActionGate runtime execution occurred."
     ]
   },
   {
@@ -978,9 +978,9 @@
         "executable": false
       },
       {
-        "eventKind": "stepharbor_decision",
+        "eventKind": "codingactiongate_decision",
         "sequenceIndex": 2,
-        "actor": "stepharbor_runtime",
+        "actor": "codingactiongate_runtime",
         "payloadCategory": "scripted_decision_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -988,7 +988,7 @@
       {
         "eventKind": "uncertainty_profile_summary",
         "sequenceIndex": 3,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "uncertainty_summary_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -996,7 +996,7 @@
       {
         "eventKind": "uncertainty_reduction_plan",
         "sequenceIndex": 4,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "reduction_plan_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -1004,7 +1004,7 @@
       {
         "eventKind": "advisory_router_result",
         "sequenceIndex": 5,
-        "actor": "stepharbor_uncertainty_advisory",
+        "actor": "codingactiongate_uncertainty_advisory",
         "payloadCategory": "scripted_advisory_category",
         "rawPayloadIncluded": false,
         "executable": false
@@ -1049,11 +1049,11 @@
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "escalation_required"
       },
-      "stepHarborDeterministic": {
+      "codingActionGateDeterministic": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "defer_guides_recovery"
       },
-      "stepHarborAdvisoryUq": {
+      "codingActionGateAdvisoryUq": {
         "status": "ready_for_future_evaluation",
         "likelyOutcomeCategory": "defer_guides_recovery"
       }
@@ -1104,14 +1104,14 @@
     "claimBoundaries": {
       "actualRuntimeDecision": false,
       "realAgentExecution": false,
-      "realStepHarborExecution": false,
+      "realCodingActionGateExecution": false,
       "realValidationResult": false,
       "realWorldResult": false,
       "conformalGuarantee": false
     },
     "notes": [
       "Synthetic example run only.",
-      "Scripted category output; no agent, command, trace runtime, or StepHarbor runtime execution occurred."
+      "Scripted category output; no agent, command, trace runtime, or CodingActionGate runtime execution occurred."
     ]
   }
 ]

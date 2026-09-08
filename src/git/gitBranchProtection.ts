@@ -1,4 +1,4 @@
-import type { StepHarborPolicy } from "../domain/policies.js";
+import type { CodingActionGatePolicy } from "../domain/policies.js";
 
 export const defaultProtectedBranches = [
   "main",
@@ -16,7 +16,7 @@ const wildcardPatternToRegex = (pattern: string): RegExp => {
 };
 
 export const protectedBranchPatterns = (
-  policy?: Pick<StepHarborPolicy, "protectedBranches">
+  policy?: Pick<CodingActionGatePolicy, "protectedBranches">
 ): string[] =>
   policy?.protectedBranches !== undefined && policy.protectedBranches.length > 0
     ? policy.protectedBranches
@@ -24,7 +24,7 @@ export const protectedBranchPatterns = (
 
 export const isProtectedBranch = (
   branch: string | undefined,
-  policy?: Pick<StepHarborPolicy, "protectedBranches">
+  policy?: Pick<CodingActionGatePolicy, "protectedBranches">
 ): boolean => {
   if (branch === undefined || branch.length === 0) {
     return false;

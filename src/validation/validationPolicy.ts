@@ -1,5 +1,8 @@
 import type { ActionType } from "../domain/actions.js";
-import type { StepHarborPolicy, ValidationPolicy } from "../domain/policies.js";
+import type {
+  CodingActionGatePolicy,
+  ValidationPolicy
+} from "../domain/policies.js";
 
 export type ValidationPolicyTarget = "before_commit" | "before_push";
 
@@ -9,7 +12,7 @@ export interface ValidationCommandConfig {
 }
 
 export const getValidationCommands = (
-  policy: StepHarborPolicy,
+  policy: CodingActionGatePolicy,
   target: ValidationPolicyTarget
 ): ValidationCommandConfig => {
   const validationPolicy =
@@ -24,7 +27,7 @@ export const getValidationCommands = (
 };
 
 export const getValidationPolicyForAction = (
-  policy: StepHarborPolicy,
+  policy: CodingActionGatePolicy,
   actionTypeOrLandingType: ActionType | ValidationPolicyTarget
 ): ValidationPolicy | undefined => {
   switch (actionTypeOrLandingType) {

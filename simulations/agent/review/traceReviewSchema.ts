@@ -1,7 +1,7 @@
 import { z } from "zod";
 import {
   agentSimulationLoopShapes,
-  agentSimulationResponseToStepHarborValues,
+  agentSimulationResponseToCodingActionGateValues,
   knownAgentSimulationUncertaintyDriverIds
 } from "../personaScenarioSchema.js";
 import {
@@ -272,7 +272,7 @@ export const agentTraceReviewClaimBoundariesSchema = z.object({
   realReviewCompleted: z.literal(false),
   actualRuntimeDecision: z.literal(false),
   realAgentExecution: z.literal(false),
-  realStepHarborExecution: z.literal(false),
+  realCodingActionGateExecution: z.literal(false),
   realValidationResult: z.literal(false),
   realWorldResult: z.literal(false),
   baselineEvaluated: z.literal(false),
@@ -362,7 +362,9 @@ export const traceReviewRecordSchema = z.object({
   }),
   agentBehaviorAssessment: z.object({
     loopShape: z.enum(agentSimulationLoopShapes),
-    observedAgentResponse: z.enum(agentSimulationResponseToStepHarborValues),
+    observedAgentResponse: z.enum(
+      agentSimulationResponseToCodingActionGateValues
+    ),
     agentRecoveredAfterDefer: z.enum(agentTraceReviewBooleanCategoryValues),
     repeatedUnsafeBehavior: z.enum(agentTraceReviewBooleanCategoryValues),
     humanReviewNeeded: z.enum(agentTraceReviewBooleanCategoryValues),

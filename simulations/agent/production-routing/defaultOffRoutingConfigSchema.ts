@@ -65,7 +65,7 @@ export const defaultOffFallbackCategoryValues = [
 ] as const;
 
 export const defaultOffFallbackTargetCategoryValues = [
-  "deterministic_stepharbor",
+  "deterministic_codingactiongate",
   "defer",
   "escalate",
   "block",
@@ -103,7 +103,7 @@ export const defaultOffBoundaryStatementValues = [
   "no_cli_api_ui_surface_added",
   "no_scores_thresholds_alpha_calibration_conformal_crc_added",
   "no_statistical_guarantee",
-  "deterministic_stepharbor_decisions_remain_authoritative",
+  "deterministic_codingactiongate_decisions_remain_authoritative",
   "phase_17_real_agent_evidence_required"
 ] as const;
 
@@ -400,7 +400,7 @@ export const buildDefaultOffRoutingConfig = (input?: {
         fallbackTargetCategory:
           category === "uncertainty_above_approved_scope"
             ? "defer"
-            : "deterministic_stepharbor"
+            : "deterministic_codingactiongate"
       }))
     },
     approvalConstraints: {

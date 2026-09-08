@@ -24,11 +24,11 @@ const uniqueRemediations = (checks: DoctorCheck[]): string[] => {
 };
 
 const defaultFirstRunSteps = [
-  "Run `stepharbor init` if this repo is not initialized.",
-  'Try `stepharbor exec "echo hello"` for a safe dry-run.',
-  "Use `stepharbor help defer` to understand DEFER.",
-  "Run `stepharbor ui` to inspect local runtime state.",
-  "For install/package issues, run `stepharbor help install`."
+  "Run `coding-action-gate init` if this repo is not initialized.",
+  'Try `coding-action-gate exec "echo hello"` for a safe dry-run.',
+  "Use `coding-action-gate help defer` to understand DEFER.",
+  "Run `coding-action-gate ui` to inspect local runtime state.",
+  "For install/package issues, run `coding-action-gate help install`."
 ];
 
 const uniqueNextSteps = (checks: DoctorCheck[]): string[] => {
@@ -37,8 +37,8 @@ const uniqueNextSteps = (checks: DoctorCheck[]): string[] => {
 
   for (const step of [...uniqueRemediations(checks), ...defaultFirstRunSteps]) {
     if (
-      step === "Run `stepharbor ui` to inspect local runtime state." &&
-      steps.some((existing) => existing.includes("stepharbor ui"))
+      step === "Run `coding-action-gate ui` to inspect local runtime state." &&
+      steps.some((existing) => existing.includes("coding-action-gate ui"))
     ) {
       continue;
     }
@@ -58,7 +58,7 @@ export const formatDoctorJson = (result: DoctorResult): string =>
   `${JSON.stringify(result, null, 2)}\n`;
 
 export const formatDoctorHuman = (result: DoctorResult): string => {
-  const lines = ["StepHarbor doctor", ""];
+  const lines = ["CodingActionGate doctor", ""];
 
   for (const check of result.checks) {
     lines.push(

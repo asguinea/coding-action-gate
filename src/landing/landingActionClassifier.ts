@@ -1,13 +1,13 @@
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
 import type { LandingActionClassification } from "./landingActionTypes.js";
 
-const commandActionTypes = new Set<NormalizedStepHarborAction["type"]>([
+const commandActionTypes = new Set<NormalizedCodingActionGateAction["type"]>([
   "run_command",
   "git_command",
   "validation_command"
 ]);
 
-const isCommandAction = (action: NormalizedStepHarborAction): boolean =>
+const isCommandAction = (action: NormalizedCodingActionGateAction): boolean =>
   commandActionTypes.has(action.type);
 
 const token = (tokens: string[], index: number): string | undefined =>
@@ -20,7 +20,7 @@ const includesAny = (command: string, values: string[]): boolean =>
   values.some((value) => command.includes(value));
 
 export const classifyLandingAction = (
-  action: NormalizedStepHarborAction
+  action: NormalizedCodingActionGateAction
 ): LandingActionClassification => {
   if (!isCommandAction(action)) {
     return {

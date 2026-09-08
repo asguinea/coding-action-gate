@@ -1,8 +1,8 @@
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
 import type { PolicyRule, PolicyTraceEntry } from "../domain/policies.js";
-import type { StepHarborSignals } from "../domain/signals.js";
+import type { CodingActionGateSignals } from "../domain/signals.js";
 
-export type DecisionSignals = StepHarborSignals & Record<string, unknown>;
+export type DecisionSignals = CodingActionGateSignals & Record<string, unknown>;
 
 export type EvaluationContext = Record<string, unknown>;
 
@@ -118,21 +118,21 @@ const maybeSet = (
 };
 
 const actionTargetPath = (
-  action: NormalizedStepHarborAction
+  action: NormalizedCodingActionGateAction
 ): string | undefined =>
   "targetPath" in action && typeof action.targetPath === "string"
     ? action.targetPath
     : undefined;
 
 const actionCommand = (
-  action: NormalizedStepHarborAction
+  action: NormalizedCodingActionGateAction
 ): string | undefined =>
   "command" in action && typeof action.command === "string"
     ? action.command
     : undefined;
 
 const actionMutatesFilesystem = (
-  action: NormalizedStepHarborAction
+  action: NormalizedCodingActionGateAction
 ): boolean | undefined => {
   if (
     action.type === "write_file" ||
@@ -150,7 +150,7 @@ const actionMutatesFilesystem = (
 };
 
 export const buildEvaluationContext = (
-  action: NormalizedStepHarborAction,
+  action: NormalizedCodingActionGateAction,
   signals: DecisionSignals = {}
 ): EvaluationContext => {
   const context: EvaluationContext = { ...signals };

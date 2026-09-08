@@ -7,7 +7,7 @@
     "toolId": "beta-demo"
   },
   "targetPath": "README.md",
-  "diff": "--- a/README.md\n+++ b/README.md\n@@\n-# StepHarbor Beta Demo\n+# StepHarbor Beta Demo\n+\n+This README was inspected before the edit was authorized.\n",
+  "diff": "--- a/README.md\n+++ b/README.md\n@@\n-# CodingActionGate Beta Demo\n+# CodingActionGate Beta Demo\n+\n+This README was inspected before the edit was authorized.\n",
   "diffStats": {
     "files": 1,
     "addedLines": 2,

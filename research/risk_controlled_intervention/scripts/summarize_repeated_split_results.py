@@ -18,7 +18,7 @@ BUDGET = utils.REPORTS_DIR / "repeated_deferral_budget_analysis.json"
 DECILE = utils.REPORTS_DIR / "repeated_score_decile_analysis.json"
 OUTPUT_JSON = utils.REPORTS_DIR / "repeated_split_summary.json"
 OUTPUT_MD = utils.REPORTS_DIR / "repeated_split_summary.md"
-STATEMENT = "These repeated-split diagnostics are benchmark-level evidence on CodeTraceBench-derived trajectories, not production StepHarbor guarantees."
+STATEMENT = "These repeated-split diagnostics are benchmark-level evidence on CodeTraceBench-derived trajectories, not production CodingActionGate guarantees."
 
 
 def aggregate_baseline_metrics(report: dict[str, Any]) -> dict[str, Any]:

@@ -5,11 +5,11 @@
   "proposedBy": "agent",
   "origin": {
     "agentId": "phase2-example-agent",
-    "provider": "stepharbor-example",
+    "provider": "coding-action-gate-example",
     "toolId": "apply_patch"
   },
   "targetPath": "README.md",
-  "diff": "@@ -1,1 +1,3 @@\n # StepHarbor\n+\n+Runtime authorization for agentic coding.\n",
+  "diff": "@@ -1,1 +1,3 @@\n # CodingActionGate\n+\n+Runtime authorization for agentic coding.\n",
   "diffStats": {
     "files": 1,
     "addedLines": 2,

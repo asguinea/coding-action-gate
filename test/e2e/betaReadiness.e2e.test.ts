@@ -12,7 +12,7 @@ const fakeSecret = "sk-abcdefghijklmnopqrstuvwxyz1234567890";
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-beta-ready-")
+    path.join(os.tmpdir(), "coding-action-gate-beta-ready-")
   );
   tempDirs.push(tempDir);
   return tempDir;
@@ -58,15 +58,15 @@ describe("beta readiness smoke tests", () => {
     const usage = getCliUsage();
 
     for (const command of [
-      "stepharbor decide <actionFile>",
-      "stepharbor exec",
-      "stepharbor read <path>",
-      "stepharbor retry <deferredActionId>",
-      "stepharbor validate",
-      "stepharbor ui [options]",
-      "stepharbor doctor [options]",
-      "stepharbor export-feedback [options]",
-      "stepharbor init [options]"
+      "coding-action-gate decide <actionFile>",
+      "coding-action-gate exec",
+      "coding-action-gate read <path>",
+      "coding-action-gate retry <deferredActionId>",
+      "coding-action-gate validate",
+      "coding-action-gate ui [options]",
+      "coding-action-gate doctor [options]",
+      "coding-action-gate export-feedback [options]",
+      "coding-action-gate init [options]"
     ]) {
       expect(usage).toContain(command);
     }
@@ -87,7 +87,7 @@ describe("beta readiness smoke tests", () => {
       "--cwd",
       cwd,
       "--policy",
-      path.join(cwd, "stepharbor.policy.yml"),
+      path.join(cwd, "coding-action-gate.policy.yml"),
       "--skip-port-check",
       "--json"
     ]);
@@ -120,9 +120,9 @@ describe("beta readiness smoke tests", () => {
     const readme = await readFile(path.join(repoRoot, "README.md"), "utf8");
 
     expect(readme).toContain("## Try it locally");
-    expect(readme).toContain("stepharbor.policy.yml");
+    expect(readme).toContain("coding-action-gate.policy.yml");
     expect(readme).toContain(
-      "export-feedback --cwd . --out stepharbor-feedback.json"
+      "export-feedback --cwd . --out coding-action-gate-feedback.json"
     );
     expect(readme).toContain("read-only dashboard");
   });
@@ -131,7 +131,9 @@ describe("beta readiness smoke tests", () => {
     const result = await captureCli(["export-feedback", "--help"]);
 
     expect(result.exitCode).toBe(0);
-    expect(result.stdout).toContain("stepharbor export-feedback [options]");
+    expect(result.stdout).toContain(
+      "coding-action-gate export-feedback [options]"
+    );
     expect(result.stdout).toContain("--out <path>");
   });
 
@@ -144,7 +146,7 @@ describe("beta readiness smoke tests", () => {
     expect(result.stdout).toContain("--policy <path>");
   });
 
-  it("stepharbor exec rm -rf returns BLOCK and executed false", async () => {
+  it("coding-action-gate exec rm -rf returns BLOCK and executed false", async () => {
     const cwd = await createTempDir();
     const result = await captureCli([
       "exec",
@@ -166,7 +168,7 @@ describe("beta readiness smoke tests", () => {
     expect(output.decision.decision).toBe("BLOCK");
   });
 
-  it("stepharbor exec git status remains dry-run", async () => {
+  it("coding-action-gate exec git status remains dry-run", async () => {
     const cwd = await createTempDir();
     const result = await captureCli([
       "exec",
@@ -186,22 +188,22 @@ describe("beta readiness smoke tests", () => {
     expect(output.executed).toBe(false);
   });
 
-  it("stepharbor init creates only local analytics runtime data", async () => {
+  it("coding-action-gate init creates only local analytics runtime data", async () => {
     const cwd = await createTempDir();
     const result = await captureCli(["init", "--cwd", cwd]);
 
     expect(result.exitCode).toBe(0);
     await expect(
-      access(path.join(cwd, ".stepharbor", "analytics"))
+      access(path.join(cwd, ".coding-action-gate", "analytics"))
     ).resolves.toBeUndefined();
     await expect(
-      access(path.join(cwd, ".stepharbor", "audit"))
+      access(path.join(cwd, ".coding-action-gate", "audit"))
     ).rejects.toThrow();
     await expect(
-      access(path.join(cwd, ".stepharbor", "deferred"))
+      access(path.join(cwd, ".coding-action-gate", "deferred"))
     ).rejects.toThrow();
     await expect(
-      access(path.join(cwd, ".stepharbor", "validation"))
+      access(path.join(cwd, ".coding-action-gate", "validation"))
     ).rejects.toThrow();
   });
 

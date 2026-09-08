@@ -55,7 +55,7 @@ import {
   type PolicyCommandOptions
 } from "./commands/policyCommand.js";
 import { runHelpCommand } from "./commands/helpCommand.js";
-import { formatStepHarborVersion } from "../version.js";
+import { formatCodingActionGateVersion } from "../version.js";
 
 export interface CliIO {
   stdout: Pick<NodeJS.WriteStream, "write">;
@@ -63,33 +63,33 @@ export interface CliIO {
 }
 
 const usage = `Usage:
-  stepharbor decide <actionFile> [options]
-  stepharbor exec "<command>" [options]
-  stepharbor read <path> [options]
-  stepharbor retry <deferredActionId> [options]
-  stepharbor validate <kind> [options]
-  stepharbor validate [kind] --command "<command>" [options]
-  stepharbor ui [options]
-  stepharbor doctor [options]
-  stepharbor export-feedback [options]
-  stepharbor init [options]
-  stepharbor analytics <summary|clear> [options]
-  stepharbor policy <show|validate|explain> [options]
-  stepharbor help [topic]
-  stepharbor version
+  coding-action-gate decide <actionFile> [options]
+  coding-action-gate exec "<command>" [options]
+  coding-action-gate read <path> [options]
+  coding-action-gate retry <deferredActionId> [options]
+  coding-action-gate validate <kind> [options]
+  coding-action-gate validate [kind] --command "<command>" [options]
+  coding-action-gate ui [options]
+  coding-action-gate doctor [options]
+  coding-action-gate export-feedback [options]
+  coding-action-gate init [options]
+  coding-action-gate analytics <summary|clear> [options]
+  coding-action-gate policy <show|validate|explain> [options]
+  coding-action-gate help [topic]
+  coding-action-gate version
 
-stepharbor ui starts the read-only local dashboard API and serves the UI when a build is available.
-stepharbor decide authorizes an action JSON file without executing or applying the action.
-stepharbor exec authorizes a shell command as a dry-run only; the command is not executed.
-stepharbor read performs an authorized file read and records a local observation.
-stepharbor retry reauthorizes a deferred action after evidence is gathered; it does not execute it.
-stepharbor validate explicitly runs an authorized validation command and records the result.
-stepharbor doctor runs read-only project readiness checks.
-stepharbor export-feedback writes a sanitized local JSON feedback bundle.
-stepharbor init writes a starter StepHarbor policy file.
-stepharbor analytics summarizes or clears local product-behavior analytics.
-stepharbor policy shows, validates, and explains the effective read-only policy.
-stepharbor help explains private-beta workflows and topics such as decisions, defer, policy, security, ui, install, analytics, and first-run.
+coding-action-gate ui starts the read-only local dashboard API and serves the UI when a build is available.
+coding-action-gate decide authorizes an action JSON file without executing or applying the action.
+coding-action-gate exec authorizes a shell command as a dry-run only; the command is not executed.
+coding-action-gate read performs an authorized file read and records a local observation.
+coding-action-gate retry reauthorizes a deferred action after evidence is gathered; it does not execute it.
+coding-action-gate validate explicitly runs an authorized validation command and records the result.
+coding-action-gate doctor runs read-only project readiness checks.
+coding-action-gate export-feedback writes a sanitized local JSON feedback bundle.
+coding-action-gate init writes a starter CodingActionGate policy file.
+coding-action-gate analytics summarizes or clears local product-behavior analytics.
+coding-action-gate policy shows, validates, and explains the effective read-only policy.
+coding-action-gate help explains private-beta workflows and topics such as decisions, defer, policy, security, ui, install, analytics, and first-run.
 
 Options:
   --policy <path>        Explicit policy path.
@@ -115,9 +115,9 @@ Options:
   --max-output-bytes <number>
                          Maximum validation output bytes to summarize.
   --max-bytes <number>   Maximum bytes to print/read for read command.
-  --host <host>          UI/API host for stepharbor ui. Must be localhost-only.
-  --api-port <number>    API port for stepharbor ui.
-  --ui-port <number>     UI server port for stepharbor ui.
+  --host <host>          UI/API host for coding-action-gate ui. Must be localhost-only.
+  --api-port <number>    API port for coding-action-gate ui.
+  --ui-port <number>     UI server port for coding-action-gate ui.
   --mock                 Launch UI in Mock Demo mode.
   --live                 Launch UI in Live Local mode.
   --no-open              Do not attempt to open the browser.
@@ -131,12 +131,12 @@ Options:
   --template <name>      Policy template for init: basic, node, strict, monorepo-lite.
   --force                Overwrite existing init output policy.
   --yes                  Confirm analytics clear.
-  --version              Print the StepHarbor version.
+  --version              Print the CodingActionGate version.
   --help                 Show command usage.
 
 More help:
-  stepharbor help
-  stepharbor help <topic>
+  coding-action-gate help
+  coding-action-gate help <topic>
 `;
 
 export const getCliUsage = (): string => usage;
@@ -905,7 +905,7 @@ export const parseUiArgs = (
       ok: false,
       error: createCliError(
         "CLI_BAD_ARGUMENTS",
-        "stepharbor ui does not accept positional arguments."
+        "coding-action-gate ui does not accept positional arguments."
       )
     };
   }
@@ -1014,7 +1014,7 @@ export const parseDoctorArgs = (
       ok: false,
       error: createCliError(
         "CLI_BAD_ARGUMENTS",
-        "stepharbor doctor does not accept positional arguments."
+        "coding-action-gate doctor does not accept positional arguments."
       )
     };
   }
@@ -1131,7 +1131,7 @@ export const parseExportFeedbackArgs = (
       ok: false,
       error: createCliError(
         "CLI_BAD_ARGUMENTS",
-        "stepharbor export-feedback does not accept positional arguments."
+        "coding-action-gate export-feedback does not accept positional arguments."
       )
     };
   }
@@ -1208,7 +1208,7 @@ export const parseInitArgs = (
       ok: false,
       error: createCliError(
         "CLI_BAD_ARGUMENTS",
-        "stepharbor init does not accept positional arguments."
+        "coding-action-gate init does not accept positional arguments."
       )
     };
   }
@@ -1433,7 +1433,7 @@ export const runCli = async (
   const wantsJson = args.includes("--json");
 
   if (wantsVersion || command === "version") {
-    io.stdout.write(`${formatStepHarborVersion()}\n`);
+    io.stdout.write(`${formatCodingActionGateVersion()}\n`);
     return cliExitCodes.success;
   }
 

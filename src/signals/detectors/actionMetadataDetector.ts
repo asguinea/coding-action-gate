@@ -1,10 +1,10 @@
-import type { StepHarborSignals } from "../../domain/signals.js";
+import type { CodingActionGateSignals } from "../../domain/signals.js";
 import type { SafetySignalDetector } from "./baseDetector.js";
 
 export const actionMetadataDetector: SafetySignalDetector = {
   id: "action-metadata",
-  compute: ({ action }): StepHarborSignals => {
-    const signals: StepHarborSignals = {};
+  compute: ({ action }): CodingActionGateSignals => {
+    const signals: CodingActionGateSignals = {};
 
     if (action.type === "delete_file") {
       signals.destructiveOperation = true;

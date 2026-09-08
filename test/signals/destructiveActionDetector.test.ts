@@ -14,7 +14,9 @@ import readFileFixture from "../../src/fixtures/actions/read-file.json" with { t
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-destr-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-destr-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };

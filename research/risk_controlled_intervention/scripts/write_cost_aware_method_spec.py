@@ -26,7 +26,7 @@ MAIN_MD = REPORTS_DIR / "batch_9g_recommended_main_method.md"
 def method_spec(evidence: dict[str, Any]) -> dict[str, Any]:
     return {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "benchmark-level CodeTraceBench-derived method specification; not production StepHarbor validation; not a production guarantee; not causal prevention",
+        "claim_boundary": "benchmark-level CodeTraceBench-derived method specification; not production CodingActionGate validation; not a production guarantee; not causal prevention",
         "prediction_unit": "trajectory prefix up to step t",
         "control_unit": "ALLOW or DEFER decision before step t+1",
         "risk_unit": ["next_step_bad", "next_step_incorrect", "next_step_unuseful"],
@@ -86,7 +86,7 @@ def recommended_main_method(evidence: dict[str, Any]) -> dict[str, Any]:
         ],
         "required_caveats": [
             "benchmark-level CodeTraceBench-derived evidence only",
-            "not production StepHarbor validation",
+            "not production CodingActionGate validation",
             "not a production guarantee",
             "not causal prevention",
             "row-level review budget is not trajectory-level burden",
@@ -132,7 +132,7 @@ def spec_markdown(spec: dict[str, Any]) -> str:
     lines = [
         "# Batch 9G Cost-Aware Method Specification",
         "",
-        "This is a benchmark-level method specification for CodeTraceBench-derived trajectories. It is not production StepHarbor validation, not a production guarantee, and not causal prevention.",
+        "This is a benchmark-level method specification for CodeTraceBench-derived trajectories. It is not production CodingActionGate validation, not a production guarantee, and not causal prevention.",
         "",
         "## Units",
         "",
@@ -153,7 +153,7 @@ def spec_markdown(spec: dict[str, Any]) -> str:
         "",
         "## Why this is not a production guarantee",
         "",
-        "The evidence is benchmark-level and CodeTraceBench-derived. It does not validate production StepHarbor behavior, does not establish production statistical guarantees, and does not establish validity under arbitrary distribution shift.",
+        "The evidence is benchmark-level and CodeTraceBench-derived. It does not validate production CodingActionGate behavior, does not establish production statistical guarantees, and does not establish validity under arbitrary distribution shift.",
         "",
         "## How this differs from process-level trajectory diagnosis",
         "",

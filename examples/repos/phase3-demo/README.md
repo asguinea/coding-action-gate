@@ -1,3 +1,3 @@
 # Phase 3 Demo
 
-This small repo is used by StepHarbor Phase 3 examples.
+This small repo is used by CodingActionGate Phase 3 examples.

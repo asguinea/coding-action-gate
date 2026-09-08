@@ -898,7 +898,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
     report = {
         "schema_version": "risk-controlled-intervention-batch-9d-heldout-robustness.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Benchmark held-out robustness diagnostics only; not production StepHarbor validation, conformal guarantee, safety guarantee, arbitrary distribution-shift guarantee, causal prevention claim, or final report result.",
+        "claim_boundary": "Benchmark held-out robustness diagnostics only; not production CodingActionGate validation, conformal guarantee, safety guarantee, arbitrary distribution-shift guarantee, causal prevention claim, or final report result.",
         "selected_policies_loaded": [policy_id(policy) for policy in selected_policies],
         "grouping_audit": grouping_audit(rows),
         "scenarios_attempted": scenarios,

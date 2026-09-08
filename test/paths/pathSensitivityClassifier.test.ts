@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { normalizeAction } from "../../src/actions/normalizeAction.js";
-import type { StepHarborAction } from "../../src/domain/actions.js";
-import type { StepHarborPolicy } from "../../src/domain/policies.js";
+import type { CodingActionGateAction } from "../../src/domain/actions.js";
+import type { CodingActionGatePolicy } from "../../src/domain/policies.js";
 import { defaultPolicy } from "../../src/policy/defaultPolicy.js";
 import {
   classifyPathSensitivity,
@@ -10,8 +10,8 @@ import {
 
 const actionForPath = (
   targetPath: string,
-  type: StepHarborAction["type"] = "edit_file"
-): StepHarborAction => ({
+  type: CodingActionGateAction["type"] = "edit_file"
+): CodingActionGateAction => ({
   id: `action-${targetPath.replace(/\W+/g, "-")}`,
   type: type as "edit_file",
   timestamp: "2026-04-30T08:00:00.000Z",
@@ -21,7 +21,7 @@ const actionForPath = (
 
 const normalizePathAction = (
   targetPath: string,
-  policy: StepHarborPolicy = defaultPolicy
+  policy: CodingActionGatePolicy = defaultPolicy
 ) => {
   const normalized = normalizeAction(actionForPath(targetPath), {
     cwd: process.cwd()
@@ -106,7 +106,7 @@ describe("classifyPathSensitivity", () => {
     const normalized = normalizeAction({
       ...actionForPath("README.md"),
       targetPaths: ["README.md", "auth/service.ts", ".env"]
-    } as unknown as StepHarborAction);
+    } as unknown as CodingActionGateAction);
 
     if (!normalized.ok) {
       throw new Error(normalized.error.message);

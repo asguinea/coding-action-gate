@@ -10,7 +10,9 @@ import {
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-policy-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-policy-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -30,13 +32,13 @@ describe("findPolicyFile", () => {
 
   it("respects discovery order", async () => {
     const tempDir = await createTempDir();
-    const laterPolicy = path.join(tempDir, ".stepharbor.policy.yaml");
-    const earlierPolicy = path.join(tempDir, "stepharbor.policy.yaml");
+    const laterPolicy = path.join(tempDir, ".coding-action-gate.policy.yaml");
+    const earlierPolicy = path.join(tempDir, "coding-action-gate.policy.yaml");
 
     await writeFile(laterPolicy, "version: 0.1\n");
     await writeFile(earlierPolicy, "version: 0.1\n");
 
     await expect(findPolicyFile(tempDir)).resolves.toBe(earlierPolicy);
-    expect(policyFileNames[1]).toBe("stepharbor.policy.yaml");
+    expect(policyFileNames[1]).toBe("coding-action-gate.policy.yaml");
   });
 });

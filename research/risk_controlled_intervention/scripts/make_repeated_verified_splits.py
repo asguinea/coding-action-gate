@@ -24,7 +24,7 @@ def create_repeated_splits(rows: list[dict[str, Any]], seeds: tuple[int, ...] = 
     return {
         "schema_version": "risk-controlled-intervention-repeated-splits.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "claim_boundary": "Repeated benchmark split scaffolding only; not production StepHarbor validation.",
+        "claim_boundary": "Repeated benchmark split scaffolding only; not production CodingActionGate validation.",
         "seeds": list(seeds),
         "split_ratio": {"train": 0.60, "calibration": 0.20, "test": 0.20},
         "stratification_fields": ["trajectory_has_any_next_step_bad", "source_bucket", "agent_or_layout_family"],

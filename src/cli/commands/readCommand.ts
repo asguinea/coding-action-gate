@@ -5,7 +5,7 @@ import { normalizeAction } from "../../actions/normalizeAction.js";
 import { appendAuditRecord } from "../../audit/auditLogger.js";
 import { buildAuditRecord } from "../../audit/auditRecordBuilder.js";
 import { decide } from "../../decision/decisionEngine.js";
-import type { StepHarborAction } from "../../domain/actions.js";
+import type { CodingActionGateAction } from "../../domain/actions.js";
 import { createFileObservationStore } from "../../observations/fileObservationStore.js";
 import { loadPolicy } from "../../policy/loadPolicy.js";
 import { computeSafetySignals } from "../../signals/computeSignals.js";
@@ -41,7 +41,7 @@ export type ReadCommandResult =
       error: CliError;
     };
 
-type ReadFileCliAction = Extract<StepHarborAction, { type: "read_file" }>;
+type ReadFileCliAction = Extract<CodingActionGateAction, { type: "read_file" }>;
 
 const generateActionId = (timestamp: string): string => {
   const safeTimestamp = timestamp.replace(/[^0-9A-Za-z]/g, "");
@@ -74,11 +74,11 @@ export const buildReadAction = (
     timestamp,
     proposedBy: "agent",
     origin: {
-      toolId: "stepharbor-cli"
+      toolId: "coding-action-gate-cli"
     },
     targetPath,
     raw: {
-      source: "stepharbor read",
+      source: "coding-action-gate read",
       targetPath,
       metadataOnly: options.metadataOnly
     }

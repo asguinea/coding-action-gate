@@ -18,7 +18,9 @@ const phase3RepoDir = path.join(repoRoot, "examples/repos/phase3-demo");
 const envSentinel = "PHASE3_SENTINEL_SHOULD_NOT_APPEAR";
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-p3-e2e-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-p3-e2e-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
@@ -499,7 +501,9 @@ describe("Phase 3 end-to-end flow", () => {
     expect(s1Result.output.decision.decision).toBe("PROCEED");
     expect(s2Result.output.decision.decision).toBe("DEFER");
     expect(
-      await exists(path.join(cwd, ".stepharbor/observations/session_s1.jsonl"))
+      await exists(
+        path.join(cwd, ".coding-action-gate/observations/session_s1.jsonl")
+      )
     ).toBe(true);
   });
 

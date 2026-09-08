@@ -194,12 +194,12 @@ class Batch9GPolicySelectorTests(unittest.TestCase):
         self.assertIn("no_safe_recommendation_conditions", method)
 
     def test_claim_checker_catches_forbidden_phrase(self):
-        result = claim_mod.check_text("This validates StepHarbor and prevents failures.")
-        self.assertIn("validates StepHarbor", result["forbidden_phrase_hits"])
+        result = claim_mod.check_text("This validates CodingActionGate and prevents failures.")
+        self.assertIn("validates CodingActionGate", result["forbidden_phrase_hits"])
         self.assertIn("prevents failures", result["forbidden_phrase_hits"])
 
     def test_claim_checker_allows_negated_safe_phrase(self):
-        text = "benchmark-level CodeTraceBench-derived cost-aware row-level risk with trajectory-level burden, calibration support, and domain shift; not production StepHarbor validation; not a production guarantee; not causal prevention."
+        text = "benchmark-level CodeTraceBench-derived cost-aware row-level risk with trajectory-level burden, calibration support, and domain shift; not production CodingActionGate validation; not a production guarantee; not causal prevention."
         result = claim_mod.check_text(text)
         self.assertEqual(result["forbidden_phrase_hits"], [])
 

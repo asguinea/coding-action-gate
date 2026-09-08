@@ -39,7 +39,7 @@ const requiredFields = [
 
 const forbiddenOverclaimPhrases = [
   ["control plane has been", "validated"],
-  ["stepharbor has been", "validated"],
+  ["codingactiongate has been", "validated"],
   ["production reliability is", "proven"],
   ["statistical guarantees", "exist"],
   ["conformal", "guarantee"],

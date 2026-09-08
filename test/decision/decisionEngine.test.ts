@@ -3,7 +3,7 @@ import { parseAndNormalizeAction } from "../../src/actions/parseAction.js";
 import { decide } from "../../src/decision/decisionEngine.js";
 import { defaultPolicy } from "../../src/policy/defaultPolicy.js";
 import type {
-  StepHarborPolicy,
+  CodingActionGatePolicy,
   PolicyRule
 } from "../../src/domain/policies.js";
 import editFileFixture from "../../src/fixtures/actions/edit-file.json" with { type: "json" };
@@ -20,7 +20,7 @@ const normalizeFixture = (fixture: unknown) => {
   return result.action;
 };
 
-const policyWithRules = (rules: PolicyRule[]): StepHarborPolicy => ({
+const policyWithRules = (rules: PolicyRule[]): CodingActionGatePolicy => ({
   version: "test",
   rules
 });

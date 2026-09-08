@@ -19,7 +19,7 @@ const timestamp = "2026-05-04T00:00:00.000Z";
 
 const createTempDir = async (): Promise<string> => {
   const tempDir = await mkdtemp(
-    path.join(os.tmpdir(), "stepharbor-ui-server-")
+    path.join(os.tmpdir(), "coding-action-gate-ui-server-")
   );
   tempDirs.push(tempDir);
   return tempDir;
@@ -195,20 +195,20 @@ describe("read-only UI server", () => {
     expect(response.headers.get("content-type")).toContain("application/json");
     expect(response.headers.get("cache-control")).toBe("no-store");
     expect(response.headers.get("x-content-type-options")).toBe("nosniff");
-    expect(response.headers.get("x-stepharbor-read-only")).toBe("true");
+    expect(response.headers.get("x-coding-action-gate-read-only")).toBe("true");
     expect(body).toMatchObject({
       ok: true,
-      service: "stepharbor-ui-api",
+      service: "coding-action-gate-ui-api",
       readOnly: true
     });
   });
 
   it("GET /api/audit returns records from temp audit JSONL", async () => {
     const cwd = await createTempDir();
-    await writeJsonl(path.join(cwd, ".stepharbor/audit/decisions.jsonl"), [
-      auditRecord("one"),
-      auditRecord("two")
-    ]);
+    await writeJsonl(
+      path.join(cwd, ".coding-action-gate/audit/decisions.jsonl"),
+      [auditRecord("one"), auditRecord("two")]
+    );
     const server = await startServer({ cwd });
     const { body } = await fetchJson(server, "/api/audit");
 
@@ -227,10 +227,10 @@ describe("read-only UI server", () => {
 
   it("GET /api/audit/latest returns latest record", async () => {
     const cwd = await createTempDir();
-    await writeJsonl(path.join(cwd, ".stepharbor/audit/decisions.jsonl"), [
-      auditRecord("one"),
-      auditRecord("two")
-    ]);
+    await writeJsonl(
+      path.join(cwd, ".coding-action-gate/audit/decisions.jsonl"),
+      [auditRecord("one"), auditRecord("two")]
+    );
     const server = await startServer({ cwd });
     const { body } = await fetchJson(server, "/api/audit/latest");
 
@@ -244,9 +244,10 @@ describe("read-only UI server", () => {
 
   it("GET /api/deferred returns session records", async () => {
     const cwd = await createTempDir();
-    await writeJsonl(path.join(cwd, ".stepharbor/deferred/session_s1.jsonl"), [
-      deferredRecord("def_one")
-    ]);
+    await writeJsonl(
+      path.join(cwd, ".coding-action-gate/deferred/session_s1.jsonl"),
+      [deferredRecord("def_one")]
+    );
     const server = await startServer({ cwd, sessionId: "default" });
     const { body } = await fetchJson(server, "/api/deferred?sessionId=s1");
 
@@ -259,7 +260,7 @@ describe("read-only UI server", () => {
   it("GET /api/observations returns session records", async () => {
     const cwd = await createTempDir();
     await writeJsonl(
-      path.join(cwd, ".stepharbor/observations/session_s1.jsonl"),
+      path.join(cwd, ".coding-action-gate/observations/session_s1.jsonl"),
       [observationRecord("obs_one")]
     );
     const server = await startServer({ cwd });
@@ -274,7 +275,7 @@ describe("read-only UI server", () => {
   it("GET /api/validation returns session records", async () => {
     const cwd = await createTempDir();
     await writeJsonl(
-      path.join(cwd, ".stepharbor/validation/session_s1.jsonl"),
+      path.join(cwd, ".coding-action-gate/validation/session_s1.jsonl"),
       [validationRecord("val_one")]
     );
     const server = await startServer({ cwd });
@@ -321,7 +322,7 @@ describe("read-only UI server", () => {
 
   it("GET /api/policy returns explicit policy when policyPath provided", async () => {
     const cwd = await createTempDir();
-    const policyPath = path.join(cwd, "stepharbor.policy.yml");
+    const policyPath = path.join(cwd, "coding-action-gate.policy.yml");
     await writeFile(
       policyPath,
       [
@@ -375,12 +376,14 @@ describe("read-only UI server", () => {
 
   it("GET /api/status returns store availability", async () => {
     const cwd = await createTempDir();
-    await writeJsonl(path.join(cwd, ".stepharbor/audit/decisions.jsonl"), [
-      auditRecord("one")
-    ]);
-    await writeJsonl(path.join(cwd, ".stepharbor/deferred/session_s1.jsonl"), [
-      deferredRecord("def_one")
-    ]);
+    await writeJsonl(
+      path.join(cwd, ".coding-action-gate/audit/decisions.jsonl"),
+      [auditRecord("one")]
+    );
+    await writeJsonl(
+      path.join(cwd, ".coding-action-gate/deferred/session_s1.jsonl"),
+      [deferredRecord("def_one")]
+    );
     const server = await startServer({ cwd, sessionId: "s1" });
     const { body } = await fetchJson(server, "/api/status");
 
@@ -400,11 +403,10 @@ describe("read-only UI server", () => {
 
   it("limit query caps returned records", async () => {
     const cwd = await createTempDir();
-    await writeJsonl(path.join(cwd, ".stepharbor/audit/decisions.jsonl"), [
-      auditRecord("one"),
-      auditRecord("two"),
-      auditRecord("three")
-    ]);
+    await writeJsonl(
+      path.join(cwd, ".coding-action-gate/audit/decisions.jsonl"),
+      [auditRecord("one"), auditRecord("two"), auditRecord("three")]
+    );
     const server = await startServer({ cwd });
     const { body } = await fetchJson(server, "/api/audit?limit=2");
 
@@ -437,10 +439,10 @@ describe("read-only UI server", () => {
 
   it("limit over maximum is capped safely", async () => {
     const cwd = await createTempDir();
-    await writeJsonl(path.join(cwd, ".stepharbor/audit/decisions.jsonl"), [
-      auditRecord("one"),
-      auditRecord("two")
-    ]);
+    await writeJsonl(
+      path.join(cwd, ".coding-action-gate/audit/decisions.jsonl"),
+      [auditRecord("one"), auditRecord("two")]
+    );
     const server = await startServer({ cwd });
     const { response, body } = await fetchJson(
       server,
@@ -524,7 +526,9 @@ describe("read-only UI server", () => {
       });
 
       expect(response.status).toBe(200);
-      expect(response.headers.get("x-stepharbor-read-only")).toBe("true");
+      expect(response.headers.get("x-coding-action-gate-read-only")).toBe(
+        "true"
+      );
       expect(response.headers.get("cache-control")).toBe("no-store");
       expect(await response.text()).toBe("");
     } finally {
@@ -555,7 +559,7 @@ describe("read-only UI server", () => {
 
   it("adapter errors return safe UI_ADAPTER_ERROR without stack trace", async () => {
     const cwd = await createTempDir();
-    await mkdir(path.join(cwd, ".stepharbor/audit/decisions.jsonl"), {
+    await mkdir(path.join(cwd, ".coding-action-gate/audit/decisions.jsonl"), {
       recursive: true
     });
     const server = await startServer({ cwd });
@@ -566,7 +570,7 @@ describe("read-only UI server", () => {
       ok: false,
       error: {
         code: "UI_ADAPTER_ERROR",
-        message: "StepHarbor UI adapter failed to read runtime data."
+        message: "CodingActionGate UI adapter failed to read runtime data."
       }
     });
     expect(JSON.stringify(body)).not.toContain("stack");

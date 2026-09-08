@@ -149,7 +149,7 @@ export const createPlaceholderDashboard = (
     root.append(
       createDashboardSection(
         "Current Decision",
-        "Latest selected StepHarbor authorization result.",
+        "Latest selected CodingActionGate authorization result.",
         createDecisionPanel(selectedRecord)
       )
     );
@@ -196,7 +196,7 @@ export const createPlaceholderDashboard = (
     root.append(
       createDashboardSection(
         "Current Decision",
-        "Latest selected StepHarbor authorization result.",
+        "Latest selected CodingActionGate authorization result.",
         data.source === "live"
           ? createLiveEmptyState("audit", {
               defaultPolicy: data.policySource?.type === "default"
@@ -220,7 +220,7 @@ export const createPlaceholderDashboard = (
   root.append(
     createDashboardSection(
       "Runtime Stores",
-      "Read-only summaries of the local StepHarbor runtime stores.",
+      "Read-only summaries of the local CodingActionGate runtime stores.",
       grid
     )
   );
@@ -253,7 +253,7 @@ export const createPlaceholderDashboard = (
       root.append(
         createDashboardSection(
           "First-Run Guidance",
-          "Suggested read-only CLI steps for populating local StepHarbor runtime data.",
+          "Suggested read-only CLI steps for populating local CodingActionGate runtime data.",
           liveHints
         )
       );
@@ -276,7 +276,7 @@ export const createPlaceholderDashboard = (
   root.append(
     createDashboardSection(
       "Audit Timeline",
-      "Filter and inspect chronological StepHarbor decisions.",
+      "Filter and inspect chronological CodingActionGate decisions.",
       createAuditTimeline(
         data.auditRecords,
         data.selectedDecisionId,

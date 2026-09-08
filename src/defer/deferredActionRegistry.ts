@@ -2,8 +2,8 @@ import { randomBytes } from "node:crypto";
 import { appendFile, mkdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { ZodError } from "zod";
-import type { NormalizedStepHarborAction } from "../actions/actionErrors.js";
-import type { StepHarborAction } from "../domain/actions.js";
+import type { NormalizedCodingActionGateAction } from "../actions/actionErrors.js";
+import type { CodingActionGateAction } from "../domain/actions.js";
 import { redactObject } from "../redaction/redactObject.js";
 import {
   actionCommandExecutableForDeferral,
@@ -151,7 +151,7 @@ const matchesFilter = (
 };
 
 const commandForAction = (
-  action: StepHarborAction | NormalizedStepHarborAction
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
 ): string | undefined => {
   if (
     "normalized" in action &&
@@ -167,7 +167,7 @@ const commandForAction = (
 };
 
 const actionTypeForAction = (
-  action: StepHarborAction | NormalizedStepHarborAction
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
 ): string =>
   "normalized" in action &&
   isRecord(action.normalized) &&
@@ -177,7 +177,7 @@ const actionTypeForAction = (
 
 const recordIsSimilarToAction = (
   record: DeferredActionRecord,
-  action: StepHarborAction | NormalizedStepHarborAction
+  action: CodingActionGateAction | NormalizedCodingActionGateAction
 ): boolean => {
   if (record.actionFingerprint === fingerprintAction(action)) {
     return true;
@@ -188,7 +188,7 @@ const recordIsSimilarToAction = (
     "type" in record.originalAction &&
     typeof record.originalAction["type"] === "string" &&
     areActionsSimilarForDeferral(
-      record.originalAction as StepHarborAction,
+      record.originalAction as CodingActionGateAction,
       action
     )
   ) {
@@ -222,7 +222,7 @@ const recordIsSimilarToAction = (
 };
 
 const collectNormalizedRelativeTargetPaths = (
-  action: NormalizedStepHarborAction
+  action: NormalizedCodingActionGateAction
 ): string[] | undefined => {
   const paths = [
     ...(action.normalized.relativeTargetPath !== undefined
@@ -358,7 +358,7 @@ export const createDeferredActionRegistry = (
   };
 
   const findPendingSimilarAction = async (
-    action: StepHarborAction | NormalizedStepHarborAction
+    action: CodingActionGateAction | NormalizedCodingActionGateAction
   ): Promise<DeferredActionResult<DeferredActionRecord | null>> => {
     const listed = await listDeferredActions({ status: "pending" });
 

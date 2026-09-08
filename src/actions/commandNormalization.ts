@@ -1,6 +1,6 @@
 import path from "node:path";
 import { z } from "zod";
-import type { StepHarborAction } from "../domain/actions.js";
+import type { CodingActionGateAction } from "../domain/actions.js";
 
 export interface CommandNormalizationOptions {
   cwd?: string;
@@ -67,7 +67,7 @@ const validationExecutables = new Set(["npm", "pnpm", "yarn"]);
 const validationDirectScripts = new Set(["test", "lint", "typecheck", "build"]);
 
 const isValidationLike = (
-  actionType: StepHarborAction["type"],
+  actionType: CodingActionGateAction["type"],
   tokens: string[]
 ): boolean => {
   if (actionType === "validation_command") {
@@ -93,7 +93,7 @@ const isValidationLike = (
 
 export const normalizeCommandForAction = (
   action: Extract<
-    StepHarborAction,
+    CodingActionGateAction,
     { type: "run_command" | "git_command" | "validation_command" }
   >,
   options: CommandNormalizationOptions = {}

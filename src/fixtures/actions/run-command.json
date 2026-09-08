@@ -9,7 +9,7 @@
     "toolId": "exec_command"
   },
   "command": "npm test",
-  "cwd": "/workspace/stepharbor",
+  "cwd": "/workspace/coding-action-gate",
   "raw": {
     "tool": "exec_command",
     "cmd": "npm test"

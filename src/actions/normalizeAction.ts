@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { StepHarborAction } from "../domain/actions.js";
+import type { CodingActionGateAction } from "../domain/actions.js";
 import {
   createActionNormalizationError,
   type NormalizedActionMetadata,
@@ -43,42 +43,42 @@ export const normalizedActionMetadataSchema = z.object({
   isValidationLikeCommand: z.boolean().optional()
 });
 
-export const normalizedStepHarborActionSchema = z
+export const normalizedCodingActionGateActionSchema = z
   .object({
     raw: z.unknown(),
     normalized: normalizedActionMetadataSchema
   })
   .passthrough();
 
-const fileActionTypes = new Set<StepHarborAction["type"]>([
+const fileActionTypes = new Set<CodingActionGateAction["type"]>([
   "read_file",
   "write_file",
   "edit_file",
   "delete_file"
 ]);
 
-const commandActionTypes = new Set<StepHarborAction["type"]>([
+const commandActionTypes = new Set<CodingActionGateAction["type"]>([
   "run_command",
   "git_command",
   "validation_command"
 ]);
 
 const isFileAction = (
-  action: StepHarborAction
+  action: CodingActionGateAction
 ): action is Extract<
-  StepHarborAction,
+  CodingActionGateAction,
   { type: "read_file" | "write_file" | "edit_file" | "delete_file" }
 > => fileActionTypes.has(action.type);
 
 const isCommandAction = (
-  action: StepHarborAction
+  action: CodingActionGateAction
 ): action is Extract<
-  StepHarborAction,
+  CodingActionGateAction,
   { type: "run_command" | "git_command" | "validation_command" }
 > => commandActionTypes.has(action.type);
 
 export const normalizeAction = (
-  action: StepHarborAction,
+  action: CodingActionGateAction,
   options: NormalizeActionOptions = {}
 ): NormalizedActionResult => {
   const normalized: NormalizedActionMetadata = {
@@ -150,7 +150,7 @@ export const normalizeAction = (
     normalized
   };
 
-  normalizedStepHarborActionSchema.parse(normalizedAction);
+  normalizedCodingActionGateActionSchema.parse(normalizedAction);
 
   return {
     ok: true,
@@ -162,5 +162,5 @@ export type {
   ActionNormalizationError,
   NormalizedActionMetadata,
   NormalizedActionResult,
-  NormalizedStepHarborAction
+  NormalizedCodingActionGateAction
 } from "./actionErrors.js";

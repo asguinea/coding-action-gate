@@ -9,7 +9,7 @@
     "toolId": "exec_command"
   },
   "command": "npm run typecheck",
-  "cwd": "/workspace/stepharbor",
+  "cwd": "/workspace/coding-action-gate",
   "validationKind": "typecheck",
   "raw": {
     "tool": "exec_command",

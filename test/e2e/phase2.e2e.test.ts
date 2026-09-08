@@ -23,7 +23,9 @@ const fakeToken = "abcdefghijklmnopqrstuvwxyz1234567890";
 const envSentinel = "PHASE2_SENTINEL_SHOULD_NOT_APPEAR";
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-p2-e2e-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-p2-e2e-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };

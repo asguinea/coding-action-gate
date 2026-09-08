@@ -303,7 +303,7 @@ def build_report(cluster_id: str, max_examples: int) -> dict[str, Any]:
         "schema_version": "risk-controlled-intervention-unsupported-cluster-deep-inspection.v1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "claim_boundary": (
-            "Batch 6.5 deep cluster inspection only; not production StepHarbor validation, "
+            "Batch 6.5 deep cluster inspection only; not production CodingActionGate validation, "
             "not a conformal claim, and not a production statistical guarantee."
         ),
         "cluster_id": cluster_id,

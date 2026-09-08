@@ -14,7 +14,9 @@ import type { SafetySignalDetector } from "../../src/signals/detectors/index.js"
 const tempDirs: string[] = [];
 
 const createTempDir = async (): Promise<string> => {
-  const tempDir = await mkdtemp(path.join(os.tmpdir(), "stepharbor-signals-"));
+  const tempDir = await mkdtemp(
+    path.join(os.tmpdir(), "coding-action-gate-signals-")
+  );
   tempDirs.push(tempDir);
   return tempDir;
 };
