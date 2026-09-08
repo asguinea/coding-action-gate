@@ -60,7 +60,7 @@
     "check": "npm run typecheck && npm run lint && npm test && npm run build && npm run ui:build && npm run check:release"
   },
   "dependencies": {
-    "yaml": "^2.8.3",
+    "yaml": "^2.9.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
