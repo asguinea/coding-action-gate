@@ -1,7 +1,7 @@
 # Historical direct dependencies for optional empirical recovery.
 # Full empirical workflow has not been revalidated in this candidate.
 numpy==2.4.6
-scipy==1.17.1
+scipy==1.18.1
 scikit-learn==1.9.0
 huggingface-hub==1.19.0
 matplotlib==3.11.0
