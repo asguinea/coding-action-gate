@@ -1,0 +1,16 @@
+{
+  "id": "phase3-safe-readme-edit",
+  "type": "edit_file",
+  "timestamp": "2026-05-02T10:00:00.000Z",
+  "proposedBy": "agent",
+  "targetPath": "README.md",
+  "diff": "@@\n-# Phase 3 Demo\n+# Phase 3 Demo Updated\n",
+  "diffStats": {
+    "files": 1,
+    "addedLines": 1,
+    "deletedLines": 1
+  },
+  "raw": {
+    "source": "phase3-example"
+  }
+}

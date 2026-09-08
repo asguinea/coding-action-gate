@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "opportunity-benchmark-fixture.v1",
+  "id": "fixture-node-validation-repo",
+  "title": "Node Validation Synthetic Repo",
+  "description": "Small inert context for validation and command classification categories.",
+  "fixturePath": "benchmarks/opportunity-map/fixtures/node-validation-repo",
+  "supportedProblemFamilies": [
+    "dangerous_commands_boundary_escapes",
+    "skipped_absent_misleading_verification"
+  ],
+  "scenarioIds": ["dangerous-command-critical-001", "validation-failed-001"],
+  "safety": {
+    "synthetic": true,
+    "inert": true,
+    "containsRealSecrets": false,
+    "containsExecutableDangerousCommands": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false
+  },
+  "categories": {
+    "hasSourceFiles": true,
+    "hasTests": true,
+    "hasPackageJson": true
+  },
+  "categoryMarkers": [
+    "command_risk_critical",
+    "destructive_command_detected",
+    "validation_failed"
+  ]
+}

@@ -1,0 +1,7 @@
+version: 0.1
+rules:
+  - id: escalate-git-like-commands
+    decision: ESCALATE
+    when:
+      is_git_like_command: true
+    reason: "Git-like commands require human review in this example policy."

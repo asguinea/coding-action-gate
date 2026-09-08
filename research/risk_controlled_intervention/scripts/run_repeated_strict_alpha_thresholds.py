@@ -1,0 +1,66 @@
+#!/usr/bin/env python3
+"""Repeated strict-alpha threshold diagnostics."""
+
+from __future__ import annotations
+
+import json
+from datetime import datetime, timezone
+from typing import Any
+
+import repeated_split_utils as utils
+
+REPORT_JSON = utils.REPORTS_DIR / "repeated_strict_alpha_thresholds.json"
+REPORT_MD = utils.REPORTS_DIR / "repeated_strict_alpha_thresholds.md"
+ALPHAS = (0.005, 0.01, 0.02, 0.03, 0.04, 0.05)
+VARIANTS = ("empirical_threshold", "conservative_threshold")
+
+
+def run_thresholds(score_rows: list[dict[str, Any]]) -> dict[str, Any]:
+    grouped = utils.group_scores(score_rows)
+    results = []
+    for seed, by_model in sorted(grouped.items()):
+        for baseline, by_split in sorted(by_model.items()):
+            calibration_rows = by_split.get("calibration", [])
+            test_rows = by_split.get("test", [])
+            if not calibration_rows or not test_rows:
+                continue
+            for alpha in ALPHAS:
+                for variant in VARIANTS:
+                    selected = utils.select_threshold(baseline, calibration_rows, alpha, conservative=(variant == "conservative_threshold"))
+                    tau = float(selected["tau"])
+                    for split, rows in (("calibration", calibration_rows), ("test", test_rows)):
+                        metrics = utils.evaluate_threshold(rows, tau, alpha)
+                        results.append({"seed": seed, "baseline_name": baseline, "alpha": alpha, "thresholding_variant": variant, "split": split, "selection": selected if split == "calibration" else {"tau_selected_on": "calibration"}, **metrics})
+    return {
+        "schema_version": "risk-controlled-intervention-repeated-strict-alpha.v1",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "claim_boundary": "Repeated strict-alpha diagnostics only; not production StepHarbor guarantees.",
+        "alpha_values": list(ALPHAS),
+        "thresholding_variants": list(VARIANTS),
+        "threshold_results": results,
+    }
+
+
+def markdown(report: dict[str, Any]) -> str:
+    lines = ["# Repeated Strict Alpha Thresholds", "", "| alpha | model | test seeds met | mean test deferral |", "|---:|---|---:|---:|"]
+    by_key: dict[tuple[float, str], list[dict[str, Any]]] = {}
+    for row in report["threshold_results"]:
+        if row["split"] == "test" and row["thresholding_variant"] == "empirical_threshold":
+            by_key.setdefault((row["alpha"], row["baseline_name"]), []).append(row)
+    for (alpha, baseline), rows in sorted(by_key.items()):
+        met = sum(1 for row in rows if not row["risk_violation"])
+        mean_def = sum(row["deferral_rate"] for row in rows) / len(rows)
+        lines.append(f"| `{alpha}` | `{baseline}` | `{met}/{len(rows)}` | `{mean_def}` |")
+    return "\n".join(lines)
+
+
+def main() -> int:
+    report = run_thresholds(utils.load_repeated_scores())
+    REPORT_JSON.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
+    REPORT_MD.write_text(markdown(report) + "\n")
+    print(json.dumps({"threshold_rows": len(report["threshold_results"])}, indent=2, sort_keys=True))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

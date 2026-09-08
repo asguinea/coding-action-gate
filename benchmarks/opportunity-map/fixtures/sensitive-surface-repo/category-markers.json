@@ -1,0 +1,12 @@
+{
+  "sensitiveSurfaceCategories": [
+    "sensitive_path_detected",
+    "sensitive_context_missing",
+    "sensitive_change_review_required"
+  ],
+  "secretSurfaceCategories": [
+    "secret_path_detected",
+    "secret_pattern_detected",
+    "secret_material_detected"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "example-commit-before-validation-placeholder",
+  "type": "git_command",
+  "timestamp": "2026-04-26T04:04:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "agentId": "example-agent",
+    "provider": "stepharbor-example",
+    "toolId": "exec_command"
+  },
+  "command": "git commit -m \"fix bug\"",
+  "cwd": ".",
+  "raw": {
+    "source": "examples/actions/commit-before-validation-placeholder.json"
+  }
+}

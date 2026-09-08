@@ -1,0 +1,16 @@
+{
+  "id": "example-run-dangerous-command-placeholder",
+  "type": "run_command",
+  "timestamp": "2026-04-26T04:03:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "agentId": "example-agent",
+    "provider": "stepharbor-example",
+    "toolId": "exec_command"
+  },
+  "command": "rm -rf .",
+  "cwd": ".",
+  "raw": {
+    "source": "examples/actions/run-dangerous-command-placeholder.json"
+  }
+}

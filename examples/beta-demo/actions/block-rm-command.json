@@ -1,0 +1,10 @@
+{
+  "id": "beta-demo-block-rm-command",
+  "type": "run_command",
+  "timestamp": "2026-05-01T12:04:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "toolId": "beta-demo"
+  },
+  "command": "rm -rf ."
+}

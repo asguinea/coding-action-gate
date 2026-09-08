@@ -1,0 +1,10 @@
+{
+  "id": "beta-demo-landing-prod-deploy",
+  "type": "run_command",
+  "timestamp": "2026-05-01T12:05:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "toolId": "beta-demo"
+  },
+  "command": "vercel deploy --prod"
+}

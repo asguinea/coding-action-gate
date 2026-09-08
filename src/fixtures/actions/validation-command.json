@@ -1,0 +1,18 @@
+{
+  "id": "action-validation-command-1",
+  "type": "validation_command",
+  "timestamp": "2026-04-25T19:58:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "agentId": "agent-1",
+    "provider": "codex",
+    "toolId": "exec_command"
+  },
+  "command": "npm run typecheck",
+  "cwd": "/workspace/stepharbor",
+  "validationKind": "typecheck",
+  "raw": {
+    "tool": "exec_command",
+    "cmd": "npm run typecheck"
+  }
+}

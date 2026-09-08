@@ -1,0 +1,382 @@
+{
+  "schemaVersion": "agent-offline-split-simulation.v1",
+  "simulationId": "offline-split-simulation-synthetic-v1",
+  "source": "synthetic_mock_split_simulation",
+  "phase": {
+    "phaseId": "phase-14",
+    "phaseName": "Offline Conformal / CRC Prototype",
+    "completedPreviousPhase": "phase-13-complete-readiness-infrastructure-only",
+    "completedBatches": ["14.1", "14.2"],
+    "currentBatch": "14.3",
+    "futureBatches": ["14.4", "14.5", "14.6"],
+    "phaseStatus": "offline_split_mechanics_simulation_without_real_splits_or_calibration"
+  },
+  "linkedScoreInputSet": {
+    "inputSetId": "offline-score-input-set-synthetic-v1",
+    "schemaVersion": "agent-offline-score-input-set.v1",
+    "source": "synthetic_mock_score_input",
+    "scoreInputIds": [
+      "offline-score-input-synthetic-block-001",
+      "offline-score-input-synthetic-defer-001",
+      "offline-score-input-synthetic-escalate-001",
+      "offline-score-input-synthetic-recovery-001",
+      "offline-score-input-synthetic-friction-coverage-001"
+    ],
+    "rawScoreInputsIncluded": false
+  },
+  "splitPolicy": {
+    "policyId": "offline-mock-split-policy-v1",
+    "allowedMockSplitCategories": [
+      "mock_train",
+      "mock_calibration",
+      "mock_test",
+      "mock_holdout",
+      "mock_not_eligible"
+    ],
+    "futureRealSplitCategories": [
+      "future_train",
+      "future_calibration",
+      "future_test",
+      "future_holdout",
+      "not_eligible"
+    ],
+    "groupingKeys": [
+      "scenario_family",
+      "fixture_family",
+      "trace_source",
+      "score_family",
+      "risk_dimension",
+      "action_category",
+      "decision_category",
+      "source_artifact_family",
+      "synthetic_mock_family"
+    ],
+    "leakageRiskCategories": [
+      "same_scenario_family",
+      "same_fixture_family",
+      "same_trace_source",
+      "same_agent_session_future",
+      "same_reviewer_batch_future",
+      "same_score_family",
+      "same_risk_dimension",
+      "same_normalized_action_category",
+      "duplicated_or_near_duplicate_mock_input",
+      "synthetic_example_only",
+      "unresolved_source_linkage",
+      "no_leakage_risk_detected"
+    ],
+    "mockSplitAssignmentAllowed": true,
+    "realSplitAssignmentAllowed": false,
+    "realReviewedTracesRequiredForRealSplit": true,
+    "approvedCalibrationDatasetRequiredForRealSplit": true,
+    "syntheticExamplesCanBeAssignedToRealSplit": false
+  },
+  "mockSplitBuckets": {
+    "mock_train": {
+      "bucketId": "offline-split-bucket-train-001",
+      "mockSplitCategory": "mock_train",
+      "scoreInputIds": [
+        "offline-score-input-synthetic-block-001",
+        "offline-score-input-synthetic-defer-001"
+      ],
+      "bucketPurposeCategory": "synthetic_training_mechanics",
+      "realSplitEquivalentCategory": "future_train",
+      "realSplitAssigned": false
+    },
+    "mock_calibration": {
+      "bucketId": "offline-split-bucket-calibration-001",
+      "mockSplitCategory": "mock_calibration",
+      "scoreInputIds": ["offline-score-input-synthetic-escalate-001"],
+      "bucketPurposeCategory": "synthetic_calibration_mechanics",
+      "realSplitEquivalentCategory": "future_calibration",
+      "realSplitAssigned": false
+    },
+    "mock_test": {
+      "bucketId": "offline-split-bucket-test-001",
+      "mockSplitCategory": "mock_test",
+      "scoreInputIds": ["offline-score-input-synthetic-recovery-001"],
+      "bucketPurposeCategory": "synthetic_test_mechanics",
+      "realSplitEquivalentCategory": "future_test",
+      "realSplitAssigned": false
+    },
+    "mock_holdout": {
+      "bucketId": "offline-split-bucket-holdout-001",
+      "mockSplitCategory": "mock_holdout",
+      "scoreInputIds": [],
+      "bucketPurposeCategory": "synthetic_holdout_mechanics",
+      "realSplitEquivalentCategory": "future_holdout",
+      "realSplitAssigned": false
+    },
+    "mock_not_eligible": {
+      "bucketId": "offline-split-bucket-not_eligible-001",
+      "mockSplitCategory": "mock_not_eligible",
+      "scoreInputIds": ["offline-score-input-synthetic-friction-coverage-001"],
+      "bucketPurposeCategory": "synthetic_exclusion_mechanics",
+      "realSplitEquivalentCategory": "not_eligible",
+      "realSplitAssigned": false
+    }
+  },
+  "evaluatedMockInputs": [
+    {
+      "scoreInputId": "offline-score-input-synthetic-block-001",
+      "mockSplitCategory": "mock_train",
+      "futureRealSplitCategory": "future_train",
+      "realSplitAssigned": false,
+      "leakageRiskCategories": [
+        "same_score_family",
+        "same_risk_dimension",
+        "synthetic_example_only"
+      ],
+      "groupingKeyCategories": [
+        "score_family",
+        "risk_dimension",
+        "action_category"
+      ],
+      "exclusionReasonCategories": ["mock_input_only"],
+      "boundaryStatus": "boundary_clear_for_mock_only",
+      "rawInputIncluded": false
+    },
+    {
+      "scoreInputId": "offline-score-input-synthetic-defer-001",
+      "mockSplitCategory": "mock_train",
+      "futureRealSplitCategory": "future_train",
+      "realSplitAssigned": false,
+      "leakageRiskCategories": [
+        "same_scenario_family",
+        "same_score_family",
+        "synthetic_example_only"
+      ],
+      "groupingKeyCategories": [
+        "scenario_family",
+        "score_family",
+        "decision_category"
+      ],
+      "exclusionReasonCategories": ["mock_input_only"],
+      "boundaryStatus": "boundary_clear_for_mock_only",
+      "rawInputIncluded": false
+    },
+    {
+      "scoreInputId": "offline-score-input-synthetic-escalate-001",
+      "mockSplitCategory": "mock_calibration",
+      "futureRealSplitCategory": "future_calibration",
+      "realSplitAssigned": false,
+      "leakageRiskCategories": [
+        "same_risk_dimension",
+        "same_normalized_action_category",
+        "synthetic_example_only"
+      ],
+      "groupingKeyCategories": ["risk_dimension", "action_category"],
+      "exclusionReasonCategories": ["mock_input_only"],
+      "boundaryStatus": "boundary_clear_for_mock_only",
+      "rawInputIncluded": false
+    },
+    {
+      "scoreInputId": "offline-score-input-synthetic-recovery-001",
+      "mockSplitCategory": "mock_test",
+      "futureRealSplitCategory": "future_test",
+      "realSplitAssigned": false,
+      "leakageRiskCategories": ["no_leakage_risk_detected"],
+      "groupingKeyCategories": ["synthetic_mock_family"],
+      "exclusionReasonCategories": ["mock_input_only"],
+      "boundaryStatus": "boundary_clear_for_mock_only",
+      "rawInputIncluded": false
+    },
+    {
+      "scoreInputId": "offline-score-input-synthetic-friction-coverage-001",
+      "mockSplitCategory": "mock_not_eligible",
+      "futureRealSplitCategory": "not_eligible",
+      "realSplitAssigned": false,
+      "leakageRiskCategories": [
+        "same_score_family",
+        "synthetic_example_only",
+        "duplicated_or_near_duplicate_mock_input"
+      ],
+      "groupingKeyCategories": ["score_family", "source_artifact_family"],
+      "exclusionReasonCategories": [
+        "synthetic_example_only_not_real_data",
+        "approved_dataset_required"
+      ],
+      "boundaryStatus": "boundary_clear_for_mock_only",
+      "rawInputIncluded": false
+    }
+  ],
+  "leakageCheckSummary": {
+    "totalEvaluatedInputs": 5,
+    "totalInputsWithLeakageRisk": 4,
+    "sameScenarioFamilyCount": 1,
+    "sameFixtureFamilyCount": 0,
+    "sameTraceSourceCount": 0,
+    "sameScoreFamilyCount": 3,
+    "sameRiskDimensionCount": 2,
+    "sameNormalizedActionCategoryCount": 1,
+    "duplicatedOrNearDuplicateMockInputCount": 1,
+    "syntheticExampleOnlyCount": 4,
+    "unresolvedSourceLinkageCount": 0,
+    "noLeakageRiskDetectedCount": 1,
+    "realLeakageAnalysisPerformed": false
+  },
+  "splitBalanceSummary": {
+    "totalMockInputs": 5,
+    "mockTrainCount": 2,
+    "mockCalibrationCount": 1,
+    "mockTestCount": 1,
+    "mockHoldoutCount": 0,
+    "mockNotEligibleCount": 1,
+    "realTrainCount": 0,
+    "realCalibrationCount": 0,
+    "realTestCount": 0,
+    "realHoldoutCount": 0,
+    "realSplitAssignedCount": 0
+  },
+  "futureRealSplitRequirements": {
+    "requirements": [
+      {
+        "requirementId": "real_reviewed_traces_required",
+        "status": "future_unmet",
+        "requiredBeforeRealSplit": true
+      },
+      {
+        "requirementId": "eligible_calibration_dataset_required",
+        "status": "future_unmet",
+        "requiredBeforeRealSplit": true
+      },
+      {
+        "requirementId": "real_human_review_required",
+        "status": "future_unmet",
+        "requiredBeforeRealSplit": true
+      },
+      {
+        "requirementId": "adjudication_required",
+        "status": "future_unmet",
+        "requiredBeforeRealSplit": true
+      },
+      {
+        "requirementId": "approved_split_policy_required",
+        "status": "future_unmet",
+        "requiredBeforeRealSplit": true
+      },
+      {
+        "requirementId": "leakage_review_required",
+        "status": "future_unmet",
+        "requiredBeforeRealSplit": true
+      },
+      {
+        "requirementId": "raw_data_exclusion_required",
+        "status": "future_unmet",
+        "requiredBeforeRealSplit": true
+      },
+      {
+        "requirementId": "privacy_boundary_clearance_required",
+        "status": "future_unmet",
+        "requiredBeforeRealSplit": true
+      },
+      {
+        "requirementId": "safety_boundary_clearance_required",
+        "status": "future_unmet",
+        "requiredBeforeRealSplit": true
+      },
+      {
+        "requirementId": "claim_boundary_review_required",
+        "status": "future_unmet",
+        "requiredBeforeRealSplit": true
+      }
+    ],
+    "allRequirementsFutureOrUnmet": true
+  },
+  "boundarySummary": {
+    "safetyBoundaryViolationCount": 0,
+    "privacyBoundaryViolationCount": 0,
+    "claimBoundaryViolationCount": 0,
+    "rawDataBoundaryViolationCount": 0,
+    "splitBoundaryViolationCount": 0,
+    "calibrationBoundaryViolationCount": 0,
+    "scoringBoundaryViolationCount": 0,
+    "conformalBoundaryViolationCount": 0,
+    "runtimeBoundaryViolationCount": 0
+  },
+  "safety": {
+    "inert": true,
+    "syntheticOnly": true,
+    "mockOnly": true,
+    "designOnly": true,
+    "executesAgent": false,
+    "executesCommands": false,
+    "executesPackageScripts": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false,
+    "touchesRealSecrets": false,
+    "usesRealRepo": false,
+    "containsPrivateData": false,
+    "containsExecutableAction": false,
+    "changesRuntimeBehavior": false,
+    "createsCalibrationDataset": false,
+    "createsCalibrationManifest": false,
+    "createsSplitManifest": false,
+    "assignsRealDatasetSplits": false,
+    "appliesCalibration": false,
+    "computesNumericLosses": false,
+    "computesRiskScores": false,
+    "computesNonconformityScores": false,
+    "computesThresholds": false,
+    "introducesAlpha": false,
+    "implementsConformalRiskControl": false
+  },
+  "privacy": {
+    "rawPromptIncluded": false,
+    "rawActionIncluded": false,
+    "rawCommandIncluded": false,
+    "rawDiffIncluded": false,
+    "rawSourceCodeIncluded": false,
+    "rawValidationLogIncluded": false,
+    "rawReviewIncluded": false,
+    "rawTraceIncluded": false,
+    "rawBaselineIncluded": false,
+    "rawCalibrationDataIncluded": false,
+    "rawManifestDataIncluded": false,
+    "rawAdjudicationDataIncluded": false,
+    "rawSplitDataIncluded": false,
+    "rawScoreDataIncluded": false,
+    "realRepoNameIncluded": false,
+    "realPathIncluded": false,
+    "realUserIncluded": false,
+    "realEmailIncluded": false,
+    "secretIncluded": false,
+    "rawAgentOutputIncluded": false,
+    "reviewerIdentityIncluded": false,
+    "categoryOnly": true
+  },
+  "claimBoundaries": {
+    "syntheticOnly": true,
+    "mockOnly": true,
+    "designOnly": true,
+    "realCalibrationDataset": false,
+    "realCalibrationRecord": false,
+    "realReviewedTrace": false,
+    "realAgentExecution": false,
+    "realStepHarborExecution": false,
+    "realValidationResult": false,
+    "realWorldResult": false,
+    "calibrationDatasetCreated": false,
+    "calibrationApplied": false,
+    "realDatasetSplitsAssigned": false,
+    "splitManifestCreated": false,
+    "numericLossesComputed": false,
+    "riskScoresComputed": false,
+    "nonconformityScoresComputed": false,
+    "thresholdsComputed": false,
+    "alphaIntroduced": false,
+    "conformalRiskControlImplemented": false,
+    "conformalGuarantee": false,
+    "statisticalGuarantee": false,
+    "productionRoutingChanged": false,
+    "publicDisclosureApproved": false,
+    "legalConclusion": false
+  },
+  "notes": [
+    "synthetic_mock_split_simulation",
+    "not_real_split",
+    "no_split_manifest",
+    "no_thresholds",
+    "no_alpha"
+  ]
+}

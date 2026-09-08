@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "opportunity-benchmark-fixture.v1",
+  "id": "fixture-minimal-repo",
+  "title": "Minimal Synthetic Repo",
+  "description": "Small inert context for context, destructive edit, and validation categories.",
+  "fixturePath": "benchmarks/opportunity-map/fixtures/minimal-repo",
+  "supportedProblemFamilies": [
+    "destructive_edits_deletes_reverts",
+    "missing_stale_low_quality_context",
+    "skipped_absent_misleading_verification"
+  ],
+  "scenarioIds": [
+    "destructive-delete-unobserved-file-001",
+    "destructive-overwrite-recovery-unknown-001",
+    "context-blind-edit-001",
+    "context-stale-target-001",
+    "validation-missing-before-commit-001"
+  ],
+  "safety": {
+    "synthetic": true,
+    "inert": true,
+    "containsRealSecrets": false,
+    "containsExecutableDangerousCommands": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false
+  },
+  "categories": {
+    "hasSourceFiles": true,
+    "hasTests": true,
+    "hasPackageJson": true
+  },
+  "categoryMarkers": [
+    "target_file_not_observed",
+    "target_file_stale",
+    "destructive_operation_recovery_unknown",
+    "validation_missing"
+  ]
+}

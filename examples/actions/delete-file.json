@@ -1,0 +1,16 @@
+{
+  "id": "example-delete-file",
+  "type": "delete_file",
+  "timestamp": "2026-04-26T04:01:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "agentId": "example-agent",
+    "provider": "stepharbor-example",
+    "toolId": "delete_file"
+  },
+  "targetPath": "src/old.ts",
+  "expectedHash": "sha256:placeholder-before",
+  "raw": {
+    "source": "examples/actions/delete-file.json"
+  }
+}

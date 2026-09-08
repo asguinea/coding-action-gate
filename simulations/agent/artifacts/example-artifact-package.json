@@ -1,0 +1,475 @@
+{
+  "schemaVersion": "agent-research-artifact-package.v1",
+  "artifactPackageId": "agent-phase-12-synthetic-artifact-package-001",
+  "source": "synthetic_phase_12_artifact_package",
+  "phase": {
+    "phaseId": "phase-12",
+    "phaseName": "Agent-in-the-Loop Simulation and Research Dataset",
+    "completedBatches": [
+      "12.1",
+      "12.2",
+      "12.3",
+      "12.4",
+      "12.5",
+      "12.6",
+      "12.7"
+    ],
+    "currentBatch": "12.8",
+    "futureBatches": ["12.9", "12.10", "12.11", "12.12"]
+  },
+  "includedAssets": {
+    "personaScenarioMatrix": {
+      "assetKind": "personaScenarioMatrix",
+      "schemaVersion": "agent-simulation-matrix.v1",
+      "assetCount": 18,
+      "sourceBatch": "12.1",
+      "relativePathCategory": "phase12_matrix_assets",
+      "exportedModuleRef": "persona_scenario_schema",
+      "containsRawCode": false,
+      "containsRawCommands": false,
+      "containsRawPrompts": false,
+      "containsRawAgentOutput": false,
+      "containsPrivateData": false,
+      "syntheticOnly": true
+    },
+    "traceExamples": {
+      "assetKind": "traceExamples",
+      "schemaVersion": "agent-action-trace.v1",
+      "assetCount": 5,
+      "sourceBatch": "12.2",
+      "relativePathCategory": "phase12_trace_examples",
+      "exportedModuleRef": "agent_trace_schema",
+      "containsRawCode": false,
+      "containsRawCommands": false,
+      "containsRawPrompts": false,
+      "containsRawAgentOutput": false,
+      "containsPrivateData": false,
+      "syntheticOnly": true
+    },
+    "controlledFixtures": {
+      "assetKind": "controlledFixtures",
+      "schemaVersion": "agent-simulation-fixture.v1",
+      "assetCount": 8,
+      "sourceBatch": "12.3",
+      "relativePathCategory": "phase12_controlled_fixtures",
+      "exportedModuleRef": "fixture_schema",
+      "containsRawCode": false,
+      "containsRawCommands": false,
+      "containsRawPrompts": false,
+      "containsRawAgentOutput": false,
+      "containsPrivateData": false,
+      "syntheticOnly": true
+    },
+    "adapterInputs": {
+      "assetKind": "adapterInputs",
+      "schemaVersion": "codex-like-action-input.v1",
+      "assetCount": 6,
+      "sourceBatch": "12.4",
+      "relativePathCategory": "phase12_adapter_inputs",
+      "exportedModuleRef": "codex_action_adapter_schema",
+      "containsRawCode": false,
+      "containsRawCommands": false,
+      "containsRawPrompts": false,
+      "containsRawAgentOutput": false,
+      "containsPrivateData": false,
+      "syntheticOnly": true
+    },
+    "syntheticRuns": {
+      "assetKind": "syntheticRuns",
+      "schemaVersion": "agent-simulation-run.v1",
+      "assetCount": 6,
+      "sourceBatch": "12.5",
+      "relativePathCategory": "phase12_synthetic_runs",
+      "exportedModuleRef": "agent_simulation_runner_schema",
+      "containsRawCode": false,
+      "containsRawCommands": false,
+      "containsRawPrompts": false,
+      "containsRawAgentOutput": false,
+      "containsPrivateData": false,
+      "syntheticOnly": true
+    },
+    "syntheticReviewRecords": {
+      "assetKind": "syntheticReviewRecords",
+      "schemaVersion": "agent-trace-review.v1",
+      "assetCount": 6,
+      "sourceBatch": "12.6",
+      "relativePathCategory": "phase12_synthetic_reviews",
+      "exportedModuleRef": "trace_review_schema",
+      "containsRawCode": false,
+      "containsRawCommands": false,
+      "containsRawPrompts": false,
+      "containsRawAgentOutput": false,
+      "containsPrivateData": false,
+      "syntheticOnly": true
+    },
+    "syntheticBaselineComparisons": {
+      "assetKind": "syntheticBaselineComparisons",
+      "schemaVersion": "agent-baseline-comparison.v1",
+      "assetCount": 6,
+      "sourceBatch": "12.7",
+      "relativePathCategory": "phase12_synthetic_baselines",
+      "exportedModuleRef": "baseline_comparison_schema",
+      "containsRawCode": false,
+      "containsRawCommands": false,
+      "containsRawPrompts": false,
+      "containsRawAgentOutput": false,
+      "containsPrivateData": false,
+      "syntheticOnly": true
+    }
+  },
+  "assetGraph": {
+    "graphVersion": "phase-12-asset-graph.v1",
+    "nodesCategoryOnly": true,
+    "rawContentIncluded": false,
+    "edges": [
+      {
+        "relationKind": "persona_to_scenario",
+        "from": { "personaId": "fast_solo_founder" },
+        "to": { "scenarioId": "blind-edit-missing-context-001" },
+        "rawContentIncluded": false
+      },
+      {
+        "relationKind": "scenario_to_fixture",
+        "from": { "scenarioId": "blind-edit-missing-context-001" },
+        "to": { "fixtureRef": "fixture_minimal_source_synthetic" },
+        "rawContentIncluded": false
+      },
+      {
+        "relationKind": "adapter_input_to_normalized_action",
+        "from": { "adapterInputId": "adapter-blind-edit-missing-context-001" },
+        "to": {
+          "normalizedActionId": "normalized-blind-edit-missing-context-001"
+        },
+        "rawContentIncluded": false
+      },
+      {
+        "relationKind": "run_to_persona",
+        "from": { "runId": "run-blind-edit-defer-retry-001" },
+        "to": { "personaId": "fast_solo_founder" },
+        "rawContentIncluded": false
+      },
+      {
+        "relationKind": "run_to_scenario",
+        "from": { "runId": "run-blind-edit-defer-retry-001" },
+        "to": { "scenarioId": "blind-edit-missing-context-001" },
+        "rawContentIncluded": false
+      },
+      {
+        "relationKind": "run_to_fixture",
+        "from": { "runId": "run-blind-edit-defer-retry-001" },
+        "to": { "fixtureRef": "fixture_minimal_source_synthetic" },
+        "rawContentIncluded": false
+      },
+      {
+        "relationKind": "run_to_adapter_input",
+        "from": { "runId": "run-blind-edit-defer-retry-001" },
+        "to": { "adapterInputId": "adapter-blind-edit-missing-context-001" },
+        "rawContentIncluded": false
+      },
+      {
+        "relationKind": "review_to_run",
+        "from": { "reviewId": "review-blind-edit-defer-retry-001" },
+        "to": { "runId": "run-blind-edit-defer-retry-001" },
+        "rawContentIncluded": false
+      },
+      {
+        "relationKind": "review_to_trace",
+        "from": { "reviewId": "review-blind-edit-defer-retry-001" },
+        "to": { "traceId": "trace-blind-edit-missing-context-001" },
+        "rawContentIncluded": false
+      },
+      {
+        "relationKind": "baseline_comparison_to_run",
+        "from": { "comparisonId": "baseline-blind-edit-defer-001" },
+        "to": { "runId": "run-blind-edit-defer-retry-001" },
+        "rawContentIncluded": false
+      },
+      {
+        "relationKind": "baseline_comparison_to_review",
+        "from": { "comparisonId": "baseline-blind-edit-defer-001" },
+        "to": { "reviewId": "review-blind-edit-defer-retry-001" },
+        "rawContentIncluded": false
+      }
+    ]
+  },
+  "traceLinkageExamples": [
+    {
+      "linkageId": "blind_edit_trace_review_direct",
+      "source": "synthetic_category_only",
+      "artifactKind": "synthetic_trace_example",
+      "traceId": "trace-blind-edit-missing-context-001",
+      "reviewId": "review-blind-edit-defer-retry-001",
+      "personaId": "fast_solo_founder",
+      "scenarioId": "blind-edit-missing-context-001",
+      "fixtureRef": "fixture_minimal_source_synthetic",
+      "directTraceReviewLink": true,
+      "artifactReviewedRaw": false,
+      "rawTraceIncluded": false,
+      "rawReviewIncluded": false,
+      "realReviewCompleted": false,
+      "realReviewedTrace": false,
+      "realAgentExecution": false,
+      "realValidationResult": false
+    }
+  ],
+  "runLinkageExamples": [
+    {
+      "linkageId": "blind_edit_run_linkage",
+      "runId": "run-blind-edit-defer-retry-001",
+      "personaId": "fast_solo_founder",
+      "scenarioId": "blind-edit-missing-context-001",
+      "fixtureRefs": ["fixture_minimal_source_synthetic"],
+      "adapterInputId": "adapter-blind-edit-missing-context-001",
+      "normalizedActionId": "normalized-blind-edit-missing-context-001",
+      "rawRunIncluded": false
+    },
+    {
+      "linkageId": "dangerous_command_run_linkage",
+      "runId": "run-dangerous-command-block-001",
+      "personaId": "devops_platform_engineer",
+      "scenarioId": "dangerous-command-hard-block-001",
+      "fixtureRefs": ["fixture_command_risk_synthetic"],
+      "adapterInputId": "adapter-dangerous-command-hard-block-001",
+      "normalizedActionId": "normalized-dangerous-command-hard-block-001",
+      "rawRunIncluded": false
+    }
+  ],
+  "reviewLinkageExamples": [
+    {
+      "linkageId": "blind_edit_review_linkage",
+      "reviewId": "review-blind-edit-defer-retry-001",
+      "labels": [
+        "useful",
+        "defer_helped",
+        "friction_acceptable",
+        "calibration_candidate"
+      ],
+      "rawReviewIncluded": false,
+      "reviewerIdentityIncluded": false,
+      "realReviewCompleted": false
+    },
+    {
+      "linkageId": "dangerous_command_review_linkage",
+      "reviewId": "review-dangerous-command-block-001",
+      "labels": [
+        "unsafe_prevented",
+        "block_justified",
+        "friction_acceptable",
+        "calibration_candidate"
+      ],
+      "rawReviewIncluded": false,
+      "reviewerIdentityIncluded": false,
+      "realReviewCompleted": false
+    }
+  ],
+  "baselineLinkageExamples": [
+    {
+      "linkageId": "blind_edit_baseline_linkage",
+      "comparisonId": "baseline-blind-edit-defer-001",
+      "strategiesRepresented": [
+        "no_guard",
+        "policy_only_guard",
+        "deterministic_stepharbor",
+        "stepharbor_with_advisory_uq"
+      ],
+      "syntheticMetricsOnly": true,
+      "rawBaselineIncluded": false,
+      "realBaselineEvaluation": false
+    },
+    {
+      "linkageId": "dangerous_command_baseline_linkage",
+      "comparisonId": "baseline-dangerous-command-block-001",
+      "strategiesRepresented": [
+        "no_guard",
+        "policy_only_guard",
+        "deterministic_stepharbor",
+        "stepharbor_with_advisory_uq"
+      ],
+      "syntheticMetricsOnly": true,
+      "rawBaselineIncluded": false,
+      "realBaselineEvaluation": false
+    }
+  ],
+  "datasetCard": {
+    "name": "phase_12_synthetic_artifact_package",
+    "version": "v1",
+    "artifactType": "synthetic_phase_12_research_artifact_package",
+    "intendedUse": [
+      "inspect_phase_12_synthetic_assets",
+      "reproduce_synthetic_asset_checks",
+      "support_future_baseline_planning",
+      "support_future_calibration_dataset_design",
+      "support_future_report_artifact_planning",
+      "support_future_real_agent_pilot_design"
+    ],
+    "notIntendedUse": [
+      "real_world_validation",
+      "production_performance_claims",
+      "real_agent_benchmark_claims",
+      "calibration_training_data",
+      "conformal_risk_control_claims",
+      "safety_guarantee_claims",
+      "enterprise_readiness_claims"
+    ],
+    "assetSummary": [
+      "persona_scenario_matrix",
+      "synthetic_trace_examples",
+      "controlled_fixture_metadata",
+      "adapter_input_examples",
+      "synthetic_run_records",
+      "synthetic_review_records",
+      "synthetic_baseline_comparisons"
+    ],
+    "syntheticDataStatement": "synthetic_category_only",
+    "privacyStatement": "no_private_or_raw_values",
+    "safetyStatement": "inert_non_executing",
+    "claimBoundaryStatement": "not_real_validation_or_calibration",
+    "knownLimitations": [
+      "synthetic_scenario_limited",
+      "no_real_agent_behavior_observed",
+      "no_distribution_shift_assessment",
+      "no_calibrated_thresholds",
+      "no_real_developer_friction_measurement",
+      "no_external_reproducibility_yet"
+    ],
+    "futureUseCategories": [
+      "batch_12_9_report_positioning",
+      "phase_13_calibration_dataset_design",
+      "phase_14_offline_conformal_crc_experiments",
+      "future_controlled_agent_pilot_design"
+    ],
+    "notRealCalibrationDataset": true
+  },
+  "reproducibility": {
+    "localOnly": true,
+    "deterministic": true,
+    "requiresNetwork": false,
+    "requiresAgentExecution": false,
+    "requiresCommandExecution": false,
+    "requiresRealRepo": false,
+    "requiresSecrets": false,
+    "requiredTestSuites": [
+      "agentResearchArtifactPackage",
+      "agentResearchArtifactPackageDocs",
+      "agentBaselineComparisons",
+      "agentTraceReviewProtocol",
+      "agentSimulationRunner",
+      "codexActionAdapter",
+      "agentSimulationFixtures",
+      "agentTraceSchema",
+      "agentPersonaScenarioMatrix"
+    ],
+    "requiredBuildChecks": [
+      "typecheck",
+      "npm_test",
+      "build",
+      "lint",
+      "ui_build",
+      "smoke_install"
+    ],
+    "packageSafe": true
+  },
+  "limitations": {
+    "syntheticOnly": true,
+    "noRealAgentExecution": true,
+    "noRealUserStudy": true,
+    "noRealBaselineEvaluation": true,
+    "noRealReviews": true,
+    "noRealReviewedTraces": true,
+    "noCalibrationDataset": true,
+    "noCalibrationApplied": true,
+    "noConformalRiskControl": true,
+    "noStatisticalGuarantee": true,
+    "noProductionRoutingChange": true,
+    "noRealWorldValidation": true,
+    "limitationCategories": [
+      "synthetic_scenario_limited",
+      "no_real_agent_behavior_observed",
+      "no_distribution_shift_assessment",
+      "no_calibrated_thresholds",
+      "no_real_developer_friction_measurement",
+      "no_external_reproducibility_yet"
+    ]
+  },
+  "safety": {
+    "inert": true,
+    "syntheticOnly": true,
+    "executesAgent": false,
+    "executesCommands": false,
+    "executesPackageScripts": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false,
+    "touchesRealSecrets": false,
+    "usesRealRepo": false,
+    "containsPrivateData": false,
+    "containsExecutableAction": false,
+    "changesRuntimeBehavior": false,
+    "createsCalibrationDataset": false,
+    "runsBaselineEvaluation": false
+  },
+  "privacy": {
+    "rawPromptIncluded": false,
+    "rawActionIncluded": false,
+    "rawCommandIncluded": false,
+    "rawDiffIncluded": false,
+    "rawSourceCodeIncluded": false,
+    "rawValidationLogIncluded": false,
+    "rawReviewIncluded": false,
+    "rawTraceIncluded": false,
+    "rawBaselineIncluded": false,
+    "realRepoNameIncluded": false,
+    "realPathIncluded": false,
+    "realUserIncluded": false,
+    "realEmailIncluded": false,
+    "secretIncluded": false,
+    "rawAgentOutputIncluded": false,
+    "reviewerIdentityIncluded": false,
+    "categoryOnly": true
+  },
+  "claimBoundaries": {
+    "syntheticOnly": true,
+    "realArtifactDataset": false,
+    "realBaselineEvaluation": false,
+    "realReviewCompleted": false,
+    "realReviewedTrace": false,
+    "actualRuntimeDecision": false,
+    "realAgentExecution": false,
+    "realStepHarborExecution": false,
+    "realValidationResult": false,
+    "realWorldResult": false,
+    "calibrationDatasetCreated": false,
+    "calibrationApplied": false,
+    "conformalRiskControlImplemented": false,
+    "conformalGuarantee": false,
+    "statisticalGuarantee": false,
+    "publicDisclosureApproved": false,
+    "legalConclusion": false
+  },
+  "metrics": {
+    "personaCount": 6,
+    "scenarioCount": 18,
+    "traceExampleCount": 5,
+    "fixtureCount": 8,
+    "adapterInputCount": 6,
+    "syntheticRunCount": 6,
+    "syntheticReviewRecordCount": 6,
+    "syntheticBaselineComparisonCount": 6,
+    "directTraceLinkageExampleCount": 1,
+    "runLinkageExampleCount": 2,
+    "reviewLinkageExampleCount": 2,
+    "baselineLinkageExampleCount": 2,
+    "safetyBoundaryViolationCount": 0,
+    "privacyBoundaryViolationCount": 0,
+    "claimBoundaryViolationCount": 0,
+    "localSyntheticCountsOnly": true,
+    "realWorldPerformanceMetric": false,
+    "calibratedRiskMetric": false,
+    "statisticalEstimate": false,
+    "measuredProductivityMetric": false
+  },
+  "notes": [
+    "synthetic_artifact_package_only",
+    "category_only_asset_graph",
+    "no_real_dataset_release"
+  ]
+}

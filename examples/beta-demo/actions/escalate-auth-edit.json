@@ -1,0 +1,16 @@
+{
+  "id": "beta-demo-escalate-auth-edit",
+  "type": "edit_file",
+  "timestamp": "2026-05-01T12:02:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "toolId": "beta-demo"
+  },
+  "targetPath": "auth/service.ts",
+  "diff": "--- a/auth/service.ts\n+++ b/auth/service.ts\n@@\n export function isAllowed(role: string): boolean {\n-  return role === \"admin\";\n+  return role === \"admin\" || role === \"support\";\n }\n",
+  "diffStats": {
+    "files": 1,
+    "addedLines": 1,
+    "deletedLines": 1
+  }
+}

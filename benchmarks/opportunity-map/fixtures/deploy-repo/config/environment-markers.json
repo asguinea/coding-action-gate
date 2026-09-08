@@ -1,0 +1,10 @@
+{
+  "environmentCategories": [
+    "environment_unknown",
+    "deploy_target_ambiguous",
+    "deployment_command_detected",
+    "production_environment_detected",
+    "environment_risk_critical"
+  ],
+  "executionModel": "metadata_only"
+}

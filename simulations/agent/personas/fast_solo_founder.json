@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "agent-simulation-persona.v1",
+  "personaId": "fast_solo_founder",
+  "displayName": "Fast solo founder",
+  "description": "A high-speed builder using coding agents to ship quickly, with a risk of accepting broad changes too quickly.",
+  "developmentContext": "Works in a small controlled product-like fixture repo where speed competes with context and validation.",
+  "typicalRiskPressure": "Launch pressure can lead to edits before reading target files or checking related tests.",
+  "likelyAgentUsePattern": "Asks for feature additions and fast fixes, then wants the agent to land changes with minimal interruption.",
+  "relevantStepHarborConcerns": [
+    "context",
+    "freshness",
+    "git_workflow",
+    "validation"
+  ],
+  "expectedSimulationValue": "Represents common fast-moving agent use where advisory DEFER should guide context gathering without excessive friction.",
+  "privacyNotes": "Scenario prompts are category-only and do not include customer-specific feature requests."
+}

@@ -1,0 +1,17 @@
+{
+  "id": "action-run-command-1",
+  "type": "run_command",
+  "timestamp": "2026-04-25T19:56:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "agentId": "agent-1",
+    "provider": "codex",
+    "toolId": "exec_command"
+  },
+  "command": "npm test",
+  "cwd": "/workspace/stepharbor",
+  "raw": {
+    "tool": "exec_command",
+    "cmd": "npm test"
+  }
+}

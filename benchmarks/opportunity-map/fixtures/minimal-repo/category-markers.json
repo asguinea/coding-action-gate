@@ -1,0 +1,8 @@
+{
+  "contextCategories": ["target_file_not_observed", "target_file_stale"],
+  "recoveryCategories": [
+    "destructive_operation_recovery_unknown",
+    "recovery_checkpoint_missing"
+  ],
+  "validationCategories": ["validation_missing"]
+}

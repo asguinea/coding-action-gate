@@ -1,0 +1,17 @@
+{
+  "id": "action-read-file-1",
+  "type": "read_file",
+  "timestamp": "2026-04-25T19:52:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "agentId": "agent-1",
+    "provider": "codex",
+    "toolId": "read_file"
+  },
+  "targetPath": "src/index.ts",
+  "expectedHash": "sha256:placeholder-before",
+  "raw": {
+    "tool": "read",
+    "path": "src/index.ts"
+  }
+}

@@ -1,0 +1,386 @@
+{
+  "schemaVersion": "agent-offline-threshold-selection.v1",
+  "thresholdSelectionId": "offline-threshold-selection-synthetic-v1",
+  "source": "synthetic_mock_threshold_selection",
+  "phase": {
+    "phaseId": "phase-14",
+    "phaseName": "Offline Conformal / CRC Prototype",
+    "completedPreviousPhase": "phase-13-complete-readiness-infrastructure-only",
+    "completedBatches": ["14.1", "14.2", "14.3"],
+    "currentBatch": "14.4",
+    "futureBatches": ["14.5", "14.6"],
+    "phaseStatus": "offline_threshold_selection_mechanics_without_real_thresholds_or_guarantees"
+  },
+  "linkedScoreInputSet": {
+    "inputSetId": "offline-score-input-set-synthetic-v1",
+    "schemaVersion": "agent-offline-score-input-set.v1",
+    "source": "synthetic_mock_score_input",
+    "scoreInputIds": [
+      "offline-score-input-synthetic-block-001",
+      "offline-score-input-synthetic-defer-001",
+      "offline-score-input-synthetic-escalate-001",
+      "offline-score-input-synthetic-recovery-001",
+      "offline-score-input-synthetic-friction-coverage-001"
+    ],
+    "rawScoreInputsIncluded": false
+  },
+  "linkedSplitSimulation": {
+    "simulationId": "offline-split-simulation-synthetic-v1",
+    "schemaVersion": "agent-offline-split-simulation.v1",
+    "source": "synthetic_mock_split_simulation",
+    "mockSplitCategories": [
+      "mock_train",
+      "mock_calibration",
+      "mock_test",
+      "mock_holdout",
+      "mock_not_eligible"
+    ],
+    "rawSplitSimulationIncluded": false
+  },
+  "thresholdPolicy": {
+    "policyId": "offline-mock-threshold-policy-v1",
+    "thresholdPolicyKind": "mock_mechanics_only",
+    "allowedMockThresholdCategories": [
+      "mock_very_conservative",
+      "mock_conservative",
+      "mock_balanced",
+      "mock_permissive",
+      "mock_not_selected",
+      "mock_not_applicable"
+    ],
+    "mockRiskBudgetCategories": [
+      "mock_low_risk_tolerance",
+      "mock_medium_risk_tolerance",
+      "mock_high_risk_tolerance",
+      "mock_not_applicable"
+    ],
+    "selectionCriterionCategories": [
+      "mock_minimize_safety_boundary_risk",
+      "mock_balance_friction_and_safety",
+      "mock_preserve_escalation_coverage",
+      "mock_exercise_not_eligible_path",
+      "mock_no_real_selection"
+    ],
+    "thresholdSelectionAllowedForMockMechanics": true,
+    "realThresholdSelectionAllowed": false,
+    "alphaControlAllowed": false,
+    "realCalibrationDataRequiredForRealThreshold": true,
+    "approvedSplitRequiredForRealThreshold": true,
+    "conformalProcedureRequiredForGuaranteeClaims": true
+  },
+  "mockThresholdCandidates": [
+    {
+      "candidateId": "offline-threshold-candidate-conservative-001",
+      "mockThresholdCategory": "mock_conservative",
+      "relatedScoreFamilies": [
+        "unsafe_action_score_input",
+        "missing_context_score_input",
+        "sensitivity_score_input"
+      ],
+      "relatedRiskDimensions": [
+        "unsafe_action_risk",
+        "missing_context_risk",
+        "sensitive_area_risk"
+      ],
+      "mockRiskBudgetCategory": "mock_low_risk_tolerance",
+      "selectionStatus": "mock_selected_for_mechanics",
+      "realThresholdComputed": false,
+      "numericThresholdValueIncluded": false,
+      "alphaValueIncluded": false,
+      "conformalGuaranteeClaimed": false
+    },
+    {
+      "candidateId": "offline-threshold-candidate-balanced-001",
+      "mockThresholdCategory": "mock_balanced",
+      "relatedScoreFamilies": [
+        "recovery_uncertainty_score_input",
+        "friction_score_input",
+        "coverage_gap_score_input"
+      ],
+      "relatedRiskDimensions": [
+        "recovery_uncertainty_risk",
+        "friction_risk",
+        "coverage_gap_risk"
+      ],
+      "mockRiskBudgetCategory": "mock_medium_risk_tolerance",
+      "selectionStatus": "mock_candidate_only",
+      "realThresholdComputed": false,
+      "numericThresholdValueIncluded": false,
+      "alphaValueIncluded": false,
+      "conformalGuaranteeClaimed": false
+    },
+    {
+      "candidateId": "offline-threshold-candidate-permissive-001",
+      "mockThresholdCategory": "mock_permissive",
+      "relatedScoreFamilies": [
+        "premature_action_score_input",
+        "validation_failure_score_input",
+        "autonomy_retry_score_input"
+      ],
+      "relatedRiskDimensions": [
+        "premature_action_risk",
+        "validation_failure_risk",
+        "autonomy_retry_risk"
+      ],
+      "mockRiskBudgetCategory": "mock_high_risk_tolerance",
+      "selectionStatus": "mock_rejected_for_mechanics",
+      "realThresholdComputed": false,
+      "numericThresholdValueIncluded": false,
+      "alphaValueIncluded": false,
+      "conformalGuaranteeClaimed": false
+    }
+  ],
+  "mockBucketSummaries": {
+    "mockTrainSummary": {
+      "mockSplitCategory": "mock_train",
+      "mockInputCount": 2,
+      "coveredScoreFamilies": [
+        "missing_context_score_input",
+        "premature_action_score_input",
+        "stale_context_score_input",
+        "unsafe_action_score_input",
+        "validation_failure_score_input",
+        "workspace_boundary_score_input"
+      ],
+      "coveredRiskDimensions": [
+        "missing_context_risk",
+        "premature_action_risk",
+        "stale_context_risk",
+        "unsafe_action_risk",
+        "validation_failure_risk",
+        "workspace_boundary_risk"
+      ],
+      "mockOnly": true,
+      "realBucket": false
+    },
+    "mockCalibrationSummary": {
+      "mockSplitCategory": "mock_calibration",
+      "mockInputCount": 1,
+      "coveredScoreFamilies": [
+        "environment_ambiguity_score_input",
+        "git_workflow_score_input",
+        "sensitivity_score_input"
+      ],
+      "coveredRiskDimensions": [
+        "environment_ambiguity_risk",
+        "git_workflow_risk",
+        "sensitive_area_risk"
+      ],
+      "mockOnly": true,
+      "realBucket": false
+    },
+    "mockTestSummary": {
+      "mockSplitCategory": "mock_test",
+      "mockInputCount": 1,
+      "coveredScoreFamilies": [
+        "autonomy_retry_score_input",
+        "recovery_uncertainty_score_input"
+      ],
+      "coveredRiskDimensions": [
+        "autonomy_retry_risk",
+        "recovery_uncertainty_risk"
+      ],
+      "mockOnly": true,
+      "realBucket": false
+    },
+    "mockHoldoutSummary": {
+      "mockSplitCategory": "mock_holdout",
+      "mockInputCount": 0,
+      "coveredScoreFamilies": [],
+      "coveredRiskDimensions": [],
+      "mockOnly": true,
+      "realBucket": false
+    },
+    "mockNotEligibleSummary": {
+      "mockSplitCategory": "mock_not_eligible",
+      "mockInputCount": 1,
+      "coveredScoreFamilies": [
+        "coverage_gap_score_input",
+        "friction_score_input"
+      ],
+      "coveredRiskDimensions": ["coverage_gap_risk", "friction_risk"],
+      "mockOnly": true,
+      "realBucket": false
+    },
+    "realCalibrationBucketExists": false,
+    "realTestBucketExists": false
+  },
+  "mockSelectionSummary": {
+    "candidateCount": 3,
+    "mockSelectedCandidateCount": 1,
+    "mockRejectedCandidateCount": 1,
+    "realThresholdComputedCount": 0,
+    "numericThresholdValueCount": 0,
+    "alphaValueCount": 0,
+    "conformalGuaranteeClaimCount": 0,
+    "statisticalGuaranteeClaimCount": 0,
+    "selectionMechanicsExercised": true,
+    "realSelectionPerformed": false
+  },
+  "futureRealThresholdRequirements": {
+    "requirements": [
+      {
+        "requirementId": "real_calibration_dataset_required",
+        "status": "future_unmet",
+        "requiredBeforeRealThresholdSelection": true
+      },
+      {
+        "requirementId": "approved_calibration_split_required",
+        "status": "future_unmet",
+        "requiredBeforeRealThresholdSelection": true
+      },
+      {
+        "requirementId": "approved_test_split_required",
+        "status": "future_unmet",
+        "requiredBeforeRealThresholdSelection": true
+      },
+      {
+        "requirementId": "real_nonconformity_scores_required",
+        "status": "future_unmet",
+        "requiredBeforeRealThresholdSelection": true
+      },
+      {
+        "requirementId": "numeric_threshold_procedure_required",
+        "status": "future_unmet",
+        "requiredBeforeRealThresholdSelection": true
+      },
+      {
+        "requirementId": "alpha_definition_required",
+        "status": "future_unmet",
+        "requiredBeforeRealThresholdSelection": true
+      },
+      {
+        "requirementId": "conformal_assumptions_required",
+        "status": "future_unmet",
+        "requiredBeforeRealThresholdSelection": true
+      },
+      {
+        "requirementId": "crc_objective_required",
+        "status": "future_unmet",
+        "requiredBeforeRealThresholdSelection": true
+      },
+      {
+        "requirementId": "empirical_evaluation_required",
+        "status": "future_unmet",
+        "requiredBeforeRealThresholdSelection": true
+      },
+      {
+        "requirementId": "distribution_shift_review_required",
+        "status": "future_unmet",
+        "requiredBeforeRealThresholdSelection": true
+      },
+      {
+        "requirementId": "claim_boundary_review_required",
+        "status": "future_unmet",
+        "requiredBeforeRealThresholdSelection": true
+      },
+      {
+        "requirementId": "production_routing_review_required",
+        "status": "future_unmet",
+        "requiredBeforeRealThresholdSelection": true
+      }
+    ],
+    "allRequirementsFutureOrUnmet": true
+  },
+  "boundarySummary": {
+    "safetyBoundaryViolationCount": 0,
+    "privacyBoundaryViolationCount": 0,
+    "claimBoundaryViolationCount": 0,
+    "rawDataBoundaryViolationCount": 0,
+    "splitBoundaryViolationCount": 0,
+    "scoringBoundaryViolationCount": 0,
+    "thresholdBoundaryViolationCount": 0,
+    "alphaBoundaryViolationCount": 0,
+    "calibrationBoundaryViolationCount": 0,
+    "conformalBoundaryViolationCount": 0,
+    "runtimeBoundaryViolationCount": 0
+  },
+  "safety": {
+    "inert": true,
+    "syntheticOnly": true,
+    "mockOnly": true,
+    "designOnly": true,
+    "executesAgent": false,
+    "executesCommands": false,
+    "executesPackageScripts": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false,
+    "touchesRealSecrets": false,
+    "usesRealRepo": false,
+    "containsPrivateData": false,
+    "containsExecutableAction": false,
+    "changesRuntimeBehavior": false,
+    "createsCalibrationDataset": false,
+    "createsCalibrationManifest": false,
+    "createsSplitManifest": false,
+    "assignsRealDatasetSplits": false,
+    "appliesCalibration": false,
+    "computesNumericLosses": false,
+    "computesRiskScores": false,
+    "computesNonconformityScores": false,
+    "computesRealThresholds": false,
+    "introducesAlpha": false,
+    "implementsConformalRiskControl": false,
+    "performsRealThresholdSelection": false
+  },
+  "privacy": {
+    "rawPromptIncluded": false,
+    "rawActionIncluded": false,
+    "rawCommandIncluded": false,
+    "rawDiffIncluded": false,
+    "rawSourceCodeIncluded": false,
+    "rawValidationLogIncluded": false,
+    "rawReviewIncluded": false,
+    "rawTraceIncluded": false,
+    "rawBaselineIncluded": false,
+    "rawCalibrationDataIncluded": false,
+    "rawManifestDataIncluded": false,
+    "rawAdjudicationDataIncluded": false,
+    "rawSplitDataIncluded": false,
+    "rawScoreDataIncluded": false,
+    "rawThresholdDataIncluded": false,
+    "realRepoNameIncluded": false,
+    "realPathIncluded": false,
+    "realUserIncluded": false,
+    "realEmailIncluded": false,
+    "secretIncluded": false,
+    "rawAgentOutputIncluded": false,
+    "reviewerIdentityIncluded": false,
+    "categoryOnly": true
+  },
+  "claimBoundaries": {
+    "syntheticOnly": true,
+    "mockOnly": true,
+    "designOnly": true,
+    "realCalibrationDataset": false,
+    "realCalibrationRecord": false,
+    "realReviewedTrace": false,
+    "realAgentExecution": false,
+    "realStepHarborExecution": false,
+    "realValidationResult": false,
+    "realWorldResult": false,
+    "calibrationDatasetCreated": false,
+    "calibrationApplied": false,
+    "realDatasetSplitsAssigned": false,
+    "splitManifestCreated": false,
+    "numericLossesComputed": false,
+    "riskScoresComputed": false,
+    "nonconformityScoresComputed": false,
+    "realThresholdsComputed": false,
+    "thresholdValuesIncluded": false,
+    "alphaIntroduced": false,
+    "conformalRiskControlImplemented": false,
+    "conformalGuarantee": false,
+    "statisticalGuarantee": false,
+    "productionRoutingChanged": false,
+    "publicDisclosureApproved": false,
+    "legalConclusion": false
+  },
+  "notes": [
+    "synthetic_mock_threshold_selection",
+    "mock_selection_only",
+    "no_real_thresholds",
+    "no_threshold_values",
+    "no_alpha"
+  ]
+}

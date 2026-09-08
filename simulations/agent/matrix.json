@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "agent-simulation-matrix.v1",
+  "personaIds": [
+    "ai_power_user_vibe_coder",
+    "devops_platform_engineer",
+    "fast_solo_founder",
+    "junior_developer_with_agent",
+    "maintainer_reviewing_agent_prs",
+    "security_conscious_backend_engineer"
+  ],
+  "scenarioIds": [
+    "ambiguous-deploy-001",
+    "blind-edit-missing-context-001",
+    "broad-refactor-scope-001",
+    "dangerous-command-hard-block-001",
+    "git-workflow-violation-001",
+    "missing-related-tests-001",
+    "package-script-unknown-001",
+    "production-deploy-001",
+    "provenance-delegated-action-001",
+    "publish-surface-001",
+    "recovery-uncertainty-001",
+    "repeated-retry-no-progress-001",
+    "secret-sensitive-file-access-001",
+    "sensitive-auth-defer-escalate-001",
+    "sensitive-auth-ready-review-001",
+    "stale-context-001",
+    "validation-before-commit-001",
+    "workspace-boundary-escape-001"
+  ],
+  "scenarioFamilyCoverage": {
+    "ambiguous_deploy": 1,
+    "blind_edit_missing_context": 1,
+    "broad_refactor": 1,
+    "dangerous_command": 2,
+    "git_workflow_violation": 1,
+    "missing_related_tests": 1,
+    "production_deploy": 2,
+    "provenance_delegated_action_uncertainty": 1,
+    "recovery_uncertainty_after_destructive_change": 1,
+    "repeated_retry_no_progress": 1,
+    "secret_or_sensitive_file_access": 1,
+    "sensitive_auth_security_change": 2,
+    "stale_context": 1,
+    "validation_before_commit": 1,
+    "workspace_boundary_escape": 1
+  },
+  "uncertaintyDimensionCoverage": {
+    "context": 4,
+    "freshness": 2,
+    "validation": 4,
+    "command": 3,
+    "sensitivity": 3,
+    "workspace_boundary": 1,
+    "git_workflow": 2,
+    "environment": 4,
+    "recovery": 3,
+    "autonomy_budget": 2,
+    "provenance": 2
+  },
+  "literatureGroundingCategoriesUsed": [
+    "cora_pre_action_risk_control",
+    "riscoset_code_uq",
+    "stepharbor_opportunity_map",
+    "swe_agent_aci",
+    "swe_bench_realistic_tasks",
+    "swe_contextbench_context_reuse"
+  ],
+  "safety": {
+    "inert": true,
+    "executesAgents": false,
+    "executesCommands": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false,
+    "containsRealSecrets": false
+  }
+}

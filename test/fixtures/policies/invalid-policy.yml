@@ -1,0 +1,5 @@
+version: 0.1
+rules:
+  - id: invalid-decision
+    decision: ALLOW
+    when: {}

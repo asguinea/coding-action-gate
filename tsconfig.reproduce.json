@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "rootDir": ".", "outDir": ".reproduction-build" },
+  "include": ["scripts/reproduce-benchmark.ts"]
+}

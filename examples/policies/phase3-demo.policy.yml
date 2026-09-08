@@ -1,0 +1,78 @@
+version: "0.1"
+
+workspace:
+  allowed_roots:
+    - "."
+  forbidden_mutation_outside_workspace: true
+
+sensitive_paths:
+  critical:
+    - ".env"
+    - ".env.*"
+    - "secrets/**"
+    - "*.pem"
+    - "*.key"
+  high:
+    - "auth/**"
+    - "billing/**"
+    - ".github/workflows/**"
+
+thresholds:
+  context_completeness_minimum: 0.70
+
+rules:
+  - id: read-before-write
+    decision: DEFER
+    when:
+      action_type:
+        - edit_file
+        - write_file
+        - delete_file
+      target_file_freshness:
+        - stale
+        - unknown
+        - missing
+    reason: "Target file state is not fresh."
+
+  - id: require-related-tests
+    decision: DEFER
+    when:
+      context_completeness_score: "<0.70"
+    reason: "Related context has not been sufficiently inspected."
+
+  - id: block-workspace-escape
+    decision: BLOCK
+    when:
+      workspace_boundary_violation: true
+      mutates_filesystem: true
+    reason: "Mutation escapes allowed workspace roots."
+
+  - id: escalate-sensitive-change
+    decision: ESCALATE
+    when:
+      path_sensitivity:
+        - high
+        - critical
+      action_type:
+        - edit_file
+        - write_file
+        - delete_file
+    reason: "Sensitive path changes require human review."
+
+  - id: escalate-destructive-file-change
+    decision: ESCALATE
+    when:
+      destructive_operation: true
+      mutates_filesystem: true
+    reason: "Destructive filesystem changes require human review."
+
+  - id: block-secret-read
+    decision: BLOCK
+    when:
+      secret_touch:
+        - probable
+        - confirmed
+      action_type:
+        - read_file
+        - run_command
+    reason: "Secret-bearing inputs require masking or explicit approval."

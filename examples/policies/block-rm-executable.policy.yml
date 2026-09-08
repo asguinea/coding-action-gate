@@ -1,0 +1,7 @@
+version: 0.1
+rules:
+  - id: block-rm-executable
+    decision: BLOCK
+    when:
+      command_executable: rm
+    reason: "Commands executed through rm are blocked in this example policy."

@@ -1,0 +1,489 @@
+{
+  "schemaVersion": "agent-calibration-readiness-summary.v1",
+  "readinessSummaryId": "phase-13-calibration-readiness-summary-001",
+  "source": "synthetic_phase_13_readiness_summary",
+  "phase": {
+    "phaseId": "phase-13",
+    "phaseName": "Calibration Dataset Construction",
+    "completedBatches": ["13.1", "13.2", "13.3", "13.4", "13.5"],
+    "currentBatch": "13.5",
+    "phaseStatus": "complete_as_calibration_dataset_readiness_infrastructure_only",
+    "previousPhaseStatus": "phase-12-complete-synthetic-design-readiness-only",
+    "nextPhaseStatus": "phase-14-offline-conformal-crc-prototype-future"
+  },
+  "completedPhase13Batches": [
+    {
+      "batchId": "13.1",
+      "batchName": "calibration_dataset_schema_and_inclusion_criteria",
+      "artifactKindsProduced": [
+        "record_schema",
+        "synthetic_examples",
+        "inclusion_criteria",
+        "label_taxonomy"
+      ],
+      "readinessContribution": "schema_readiness",
+      "boundarySummary": "no_real_calibration_data",
+      "createsRealCalibrationData": false,
+      "appliesCalibration": false,
+      "implementsConformalRiskControl": false,
+      "changesRuntimeBehavior": false
+    },
+    {
+      "batchId": "13.2",
+      "batchName": "calibration_dataset_manifest_builder",
+      "artifactKindsProduced": ["synthetic_manifest_schema", "manifest_helper"],
+      "readinessContribution": "manifest_readiness",
+      "boundarySummary": "no_real_manifest_or_dataset",
+      "createsRealCalibrationData": false,
+      "appliesCalibration": false,
+      "implementsConformalRiskControl": false,
+      "changesRuntimeBehavior": false
+    },
+    {
+      "batchId": "13.3",
+      "batchName": "label_completeness_and_adjudication_workflow",
+      "artifactKindsProduced": [
+        "label_completeness_schema",
+        "adjudication_readiness_categories"
+      ],
+      "readinessContribution": "label_readiness",
+      "boundarySummary": "no_real_adjudication",
+      "createsRealCalibrationData": false,
+      "appliesCalibration": false,
+      "implementsConformalRiskControl": false,
+      "changesRuntimeBehavior": false
+    },
+    {
+      "batchId": "13.4",
+      "batchName": "split_planning_and_leakage_checks",
+      "artifactKindsProduced": [
+        "split_planning_schema",
+        "leakage_check_categories"
+      ],
+      "readinessContribution": "split_readiness",
+      "boundarySummary": "no_real_splits",
+      "createsRealCalibrationData": false,
+      "appliesCalibration": false,
+      "implementsConformalRiskControl": false,
+      "changesRuntimeBehavior": false
+    },
+    {
+      "batchId": "13.5",
+      "batchName": "calibration_dataset_readiness_summary_and_handoff",
+      "artifactKindsProduced": ["readiness_summary", "phase_14_handoff"],
+      "readinessContribution": "phase_completion_readiness",
+      "boundarySummary": "no_phase_14_execution",
+      "createsRealCalibrationData": false,
+      "appliesCalibration": false,
+      "implementsConformalRiskControl": false,
+      "changesRuntimeBehavior": false
+    }
+  ],
+  "implementedReadinessArtifacts": {
+    "artifacts": [
+      {
+        "artifactKind": "calibration_record_schema",
+        "sourceBatch": "13.1",
+        "schemaVersion": "agent-calibration-record.v1",
+        "syntheticOnly": true,
+        "realCalibrationData": false,
+        "runtimeIntegrated": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "synthetic_schema_examples",
+        "sourceBatch": "13.1",
+        "syntheticOnly": true,
+        "realCalibrationData": false,
+        "runtimeIntegrated": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "inclusion_exclusion_criteria",
+        "sourceBatch": "13.1",
+        "syntheticOnly": true,
+        "realCalibrationData": false,
+        "runtimeIntegrated": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "label_taxonomy",
+        "sourceBatch": "13.1",
+        "syntheticOnly": true,
+        "realCalibrationData": false,
+        "runtimeIntegrated": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "calibration_boundary_docs",
+        "sourceBatch": "13.1",
+        "syntheticOnly": true,
+        "realCalibrationData": false,
+        "runtimeIntegrated": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "synthetic_manifest_layer",
+        "sourceBatch": "13.2",
+        "schemaVersion": "agent-calibration-manifest.v1",
+        "syntheticOnly": true,
+        "realCalibrationData": false,
+        "runtimeIntegrated": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "label_completeness_adjudication_readiness_layer",
+        "sourceBatch": "13.3",
+        "schemaVersion": "agent-calibration-label-completeness-report.v1",
+        "syntheticOnly": true,
+        "realCalibrationData": false,
+        "runtimeIntegrated": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "split_planning_leakage_check_layer",
+        "sourceBatch": "13.4",
+        "schemaVersion": "agent-calibration-split-planning-report.v1",
+        "syntheticOnly": true,
+        "realCalibrationData": false,
+        "runtimeIntegrated": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "readiness_summary",
+        "sourceBatch": "13.5",
+        "schemaVersion": "agent-calibration-readiness-summary.v1",
+        "syntheticOnly": true,
+        "realCalibrationData": false,
+        "runtimeIntegrated": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "phase_14_handoff",
+        "sourceBatch": "13.5",
+        "syntheticOnly": true,
+        "realCalibrationData": false,
+        "runtimeIntegrated": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "boundary_checklist",
+        "sourceBatch": "13.5",
+        "syntheticOnly": true,
+        "realCalibrationData": false,
+        "runtimeIntegrated": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      }
+    ]
+  },
+  "missingEvidenceSummary": {
+    "missingEvidenceCategories": [
+      "real_controlled_agent_traces",
+      "real_reviewed_traces",
+      "real_human_adjudication",
+      "eligible_reviewed_trace_pool",
+      "calibration_dataset_approval",
+      "train_calibration_test_split_approval",
+      "real_split_manifest",
+      "numeric_loss_definitions",
+      "risk_score_definitions",
+      "nonconformity_score_definitions",
+      "threshold_selection_procedure",
+      "offline_conformal_crc_experiment_results",
+      "advisory_calibrated_routing_results",
+      "production_authoritative_calibrated_routing_approval"
+    ],
+    "allRequiredEvidenceStillFuture": true,
+    "realEvidenceIncluded": false
+  },
+  "datasetReadinessSummary": {
+    "schemaExists": true,
+    "inclusionCriteriaExist": true,
+    "manifestLayerExists": true,
+    "labelCompletenessLayerExists": true,
+    "splitPlanningLayerExists": true,
+    "realCalibrationDatasetExists": false,
+    "realCalibrationRecordsExist": false,
+    "eligibleReviewedTracePoolExists": false,
+    "datasetExportWorkflowExists": false,
+    "calibrationDatasetApproved": false
+  },
+  "labelReadinessSummary": {
+    "labelSchemaExists": true,
+    "labelCompletenessWorkflowExists": true,
+    "adjudicationReadinessWorkflowExists": true,
+    "realHumanReviewPerformed": false,
+    "realHumanAdjudicationPerformed": false,
+    "realReviewerAssigned": false,
+    "labelCompletenessReportIsSyntheticOnly": true,
+    "realCalibrationLabelsExist": false
+  },
+  "splitReadinessSummary": {
+    "splitPlanningSchemaExists": true,
+    "leakageCheckLayerExists": true,
+    "futureSplitCategoriesDefined": true,
+    "leakageRiskCategoriesDefined": true,
+    "realTrainCalibrationTestSplitAssigned": false,
+    "splitManifestExists": false,
+    "realDatasetSplitExists": false,
+    "conformalCalibrationSplitExists": false
+  },
+  "phase14HandoffSummary": {
+    "handoffReadyForOfflinePrototypeDesign": true,
+    "handoffReadyForRealCalibration": false,
+    "handoffReadyForProductionRouting": false,
+    "availableInputs": [
+      "calibration_schema",
+      "inclusion_exclusion_criteria",
+      "label_taxonomy",
+      "synthetic_manifest_structure",
+      "label_completeness_structure",
+      "split_planning_structure",
+      "boundary_checklists",
+      "synthetic_examples_for_schema_testing"
+    ],
+    "missingInputs": [
+      "real_calibration_dataset",
+      "eligible_reviewed_traces",
+      "train_calibration_test_splits",
+      "numeric_loss_functions",
+      "risk_scores",
+      "nonconformity_scores",
+      "thresholds",
+      "empirical_risk_results",
+      "conformal_crc_results"
+    ],
+    "phase14AllowedStartingScope": [
+      "offline_prototype_design_over_synthetic_inputs",
+      "offline_prototype_design_over_mock_inputs",
+      "schema_compatibility_planning",
+      "loss_definition_design_without_computation",
+      "nonconformity_score_design_without_computation",
+      "threshold_procedure_design_without_selection"
+    ],
+    "phase14ForbiddenStartingClaims": [
+      "real_calibration_exists",
+      "conformal_guarantee_exists",
+      "risk_is_controlled_at_alpha",
+      "production_routing_is_calibrated",
+      "real_world_validation_exists"
+    ]
+  },
+  "blockerSummary": {
+    "blockers": [
+      {
+        "blockerCategory": "no_real_reviewed_traces",
+        "blocksRealCalibrationDataset": true,
+        "blocksConformalClaims": false,
+        "blocksProductionRouting": false,
+        "resolutionRequiresFutureBatch": true,
+        "resolved": false
+      },
+      {
+        "blockerCategory": "no_real_human_adjudication",
+        "blocksRealCalibrationDataset": true,
+        "blocksConformalClaims": false,
+        "blocksProductionRouting": false,
+        "resolutionRequiresFutureBatch": true,
+        "resolved": false
+      },
+      {
+        "blockerCategory": "no_eligible_trace_pool",
+        "blocksRealCalibrationDataset": true,
+        "blocksConformalClaims": false,
+        "blocksProductionRouting": false,
+        "resolutionRequiresFutureBatch": true,
+        "resolved": false
+      },
+      {
+        "blockerCategory": "no_real_calibration_dataset",
+        "blocksRealCalibrationDataset": true,
+        "blocksConformalClaims": true,
+        "blocksProductionRouting": false,
+        "resolutionRequiresFutureBatch": true,
+        "resolved": false
+      },
+      {
+        "blockerCategory": "no_real_split_manifest",
+        "blocksRealCalibrationDataset": false,
+        "blocksConformalClaims": true,
+        "blocksProductionRouting": false,
+        "resolutionRequiresFutureBatch": true,
+        "resolved": false
+      },
+      {
+        "blockerCategory": "no_numeric_loss_functions",
+        "blocksRealCalibrationDataset": false,
+        "blocksConformalClaims": true,
+        "blocksProductionRouting": false,
+        "resolutionRequiresFutureBatch": true,
+        "resolved": false
+      },
+      {
+        "blockerCategory": "no_risk_scores",
+        "blocksRealCalibrationDataset": false,
+        "blocksConformalClaims": true,
+        "blocksProductionRouting": false,
+        "resolutionRequiresFutureBatch": true,
+        "resolved": false
+      },
+      {
+        "blockerCategory": "no_nonconformity_scores",
+        "blocksRealCalibrationDataset": false,
+        "blocksConformalClaims": true,
+        "blocksProductionRouting": false,
+        "resolutionRequiresFutureBatch": true,
+        "resolved": false
+      },
+      {
+        "blockerCategory": "no_thresholds",
+        "blocksRealCalibrationDataset": false,
+        "blocksConformalClaims": true,
+        "blocksProductionRouting": true,
+        "resolutionRequiresFutureBatch": true,
+        "resolved": false
+      },
+      {
+        "blockerCategory": "no_offline_conformal_crc_results",
+        "blocksRealCalibrationDataset": false,
+        "blocksConformalClaims": true,
+        "blocksProductionRouting": true,
+        "resolutionRequiresFutureBatch": true,
+        "resolved": false
+      },
+      {
+        "blockerCategory": "no_approval_for_production_routing",
+        "blocksRealCalibrationDataset": false,
+        "blocksConformalClaims": false,
+        "blocksProductionRouting": true,
+        "resolutionRequiresFutureBatch": true,
+        "resolved": false
+      }
+    ],
+    "unresolvedBlockerCount": 11
+  },
+  "boundarySummary": {
+    "safetyBoundaryViolationCount": 0,
+    "privacyBoundaryViolationCount": 0,
+    "claimBoundaryViolationCount": 0,
+    "rawDataBoundaryViolationCount": 0,
+    "calibrationBoundaryViolationCount": 0,
+    "splitBoundaryViolationCount": 0,
+    "conformalBoundaryViolationCount": 0,
+    "runtimeBoundaryViolationCount": 0
+  },
+  "metrics": {
+    "completedPhase13BatchCount": 5,
+    "implementedReadinessArtifactCount": 11,
+    "syntheticSchemaExampleCount": 5,
+    "syntheticManifestCount": 1,
+    "syntheticLabelCompletenessReportCount": 1,
+    "syntheticSplitPlanningReportCount": 1,
+    "realCalibrationDatasetCount": 0,
+    "realCalibrationRecordCount": 0,
+    "realReviewedTraceCount": 0,
+    "realHumanAdjudicationCount": 0,
+    "realSplitManifestCount": 0,
+    "realTrainCalibrationTestSplitCount": 0,
+    "numericLossFunctionCount": 0,
+    "riskScoreCount": 0,
+    "nonconformityScoreCount": 0,
+    "thresholdCount": 0,
+    "conformalImplementationCount": 0,
+    "productionRoutingChangeCount": 0
+  },
+  "safety": {
+    "inert": true,
+    "syntheticOnly": true,
+    "executesAgent": false,
+    "executesCommands": false,
+    "executesPackageScripts": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false,
+    "touchesRealSecrets": false,
+    "usesRealRepo": false,
+    "containsPrivateData": false,
+    "containsExecutableAction": false,
+    "changesRuntimeBehavior": false,
+    "createsCalibrationDataset": false,
+    "createsCalibrationManifest": false,
+    "createsSplitManifest": false,
+    "assignsDatasetSplits": false,
+    "appliesCalibration": false,
+    "computesNumericLosses": false,
+    "computesRiskScores": false,
+    "computesNonconformityScores": false,
+    "computesThresholds": false,
+    "implementsConformalRiskControl": false,
+    "performsAdjudication": false,
+    "assignsReviewers": false
+  },
+  "privacy": {
+    "rawPromptIncluded": false,
+    "rawActionIncluded": false,
+    "rawCommandIncluded": false,
+    "rawDiffIncluded": false,
+    "rawSourceCodeIncluded": false,
+    "rawValidationLogIncluded": false,
+    "rawReviewIncluded": false,
+    "rawTraceIncluded": false,
+    "rawBaselineIncluded": false,
+    "rawCalibrationDataIncluded": false,
+    "rawManifestDataIncluded": false,
+    "rawAdjudicationDataIncluded": false,
+    "rawSplitDataIncluded": false,
+    "realRepoNameIncluded": false,
+    "realPathIncluded": false,
+    "realUserIncluded": false,
+    "realEmailIncluded": false,
+    "secretIncluded": false,
+    "rawAgentOutputIncluded": false,
+    "reviewerIdentityIncluded": false,
+    "categoryOnly": true
+  },
+  "claimBoundaries": {
+    "syntheticOnly": true,
+    "realCalibrationReadinessReport": false,
+    "realCalibrationManifest": false,
+    "realCalibrationDataset": false,
+    "realCalibrationRecord": false,
+    "realReviewedTrace": false,
+    "realHumanAdjudication": false,
+    "realReviewerAssigned": false,
+    "realAgentExecution": false,
+    "realStepHarborExecution": false,
+    "realValidationResult": false,
+    "realWorldResult": false,
+    "calibrationDatasetCreated": false,
+    "calibrationApplied": false,
+    "datasetSplitsAssigned": false,
+    "splitManifestCreated": false,
+    "numericLossesComputed": false,
+    "riskScoresComputed": false,
+    "nonconformityScoresComputed": false,
+    "thresholdsComputed": false,
+    "conformalRiskControlImplemented": false,
+    "conformalGuarantee": false,
+    "statisticalGuarantee": false,
+    "productionRoutingChanged": false,
+    "publicDisclosureApproved": false,
+    "legalConclusion": false
+  },
+  "notes": [
+    "phase_13_complete_as_readiness_infrastructure_only",
+    "no_real_calibration_dataset",
+    "no_phase_14_execution",
+    "not_real_calibration_data"
+  ]
+}

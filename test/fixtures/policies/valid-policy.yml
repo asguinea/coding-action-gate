@@ -1,0 +1,46 @@
+version: 0.1
+
+workspace:
+  allowed_roots:
+    - "."
+  forbidden_mutation_outside_workspace: true
+
+protected_branches:
+  - main
+  - release/*
+
+sensitive_paths:
+  critical:
+    - ".env"
+  high:
+    - "security/**"
+  medium:
+    - "package.json"
+
+validation:
+  before_commit:
+    required: true
+    commands:
+      - "npm test"
+  before_push:
+    required: false
+    commands:
+      - "npm run build"
+
+thresholds:
+  large_diff_files: 4
+  large_diff_lines: 200
+  context_completeness_minimum: 0.6
+  sensitive_context_completeness_minimum: 0.85
+  max_retries_same_goal: 2
+  max_session_minutes_without_progress: 15
+
+rules:
+  - id: require-fresh-file
+    decision: DEFER
+    when:
+      action_type:
+        - edit_file
+      target_file_freshness:
+        - stale
+    reason: "Target file must be fresh."

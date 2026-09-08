@@ -1,0 +1,19 @@
+{
+  "id": "action-write-file-1",
+  "type": "write_file",
+  "timestamp": "2026-04-25T19:53:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "agentId": "agent-1",
+    "provider": "codex",
+    "toolId": "write_file"
+  },
+  "targetPath": "src/domain/example.ts",
+  "content": "export const example = true;\n",
+  "contentHash": "sha256:placeholder-after",
+  "expectedHash": "sha256:placeholder-before",
+  "raw": {
+    "tool": "write",
+    "path": "src/domain/example.ts"
+  }
+}

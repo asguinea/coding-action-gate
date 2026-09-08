@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "opportunity-benchmark-fixture.v1",
+  "id": "fixture-sensitive-surface-repo",
+  "title": "Sensitive Surface Synthetic Repo",
+  "description": "Small inert context for sensitive surface and secret category simulations.",
+  "fixturePath": "benchmarks/opportunity-map/fixtures/sensitive-surface-repo",
+  "supportedProblemFamilies": [
+    "secrets_exfiltration",
+    "sensitive_surfaces_large_diffs"
+  ],
+  "scenarioIds": [
+    "secret-path-access-001",
+    "secret-pattern-output-001",
+    "sensitive-auth-missing-context-001",
+    "sensitive-auth-context-ready-001"
+  ],
+  "safety": {
+    "synthetic": true,
+    "inert": true,
+    "containsRealSecrets": false,
+    "containsExecutableDangerousCommands": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false
+  },
+  "categories": {
+    "hasSourceFiles": true,
+    "hasTests": true,
+    "hasPackageJson": true,
+    "hasSensitiveSurfaceSimulation": true
+  },
+  "categoryMarkers": [
+    "sensitive_path_detected",
+    "sensitive_context_missing",
+    "sensitive_change_review_required",
+    "secret_path_detected",
+    "secret_pattern_detected",
+    "secret_material_detected"
+  ]
+}

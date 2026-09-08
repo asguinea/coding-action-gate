@@ -1,0 +1,16 @@
+{
+  "id": "phase3-auth-edit",
+  "type": "edit_file",
+  "timestamp": "2026-05-02T10:02:00.000Z",
+  "proposedBy": "agent",
+  "targetPath": "auth/service.ts",
+  "diff": "@@\n-export const authorize = (): boolean => true;\n+export const authorize = (): boolean => false;\n",
+  "diffStats": {
+    "files": 1,
+    "addedLines": 1,
+    "deletedLines": 1
+  },
+  "raw": {
+    "source": "phase3-example"
+  }
+}

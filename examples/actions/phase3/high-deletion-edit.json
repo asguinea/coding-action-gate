@@ -1,0 +1,16 @@
+{
+  "id": "phase3-high-deletion-edit",
+  "type": "edit_file",
+  "timestamp": "2026-05-02T10:04:00.000Z",
+  "proposedBy": "agent",
+  "targetPath": "src/service.ts",
+  "diff": "@@\n-export const service = (): number => 1;\n-export const unusedA = true;\n-export const unusedB = true;\n+export const service = (): number => 2;\n",
+  "diffStats": {
+    "files": 1,
+    "addedLines": 1,
+    "deletedLines": 501
+  },
+  "raw": {
+    "source": "phase3-example"
+  }
+}

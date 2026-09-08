@@ -1,0 +1,25 @@
+title = "StepHarbor source scan"
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Installed dependencies and generated local outputs"
+paths = [
+  '''(^|/)node_modules/''',
+  '''(^|/)\.venv/''',
+  '''(^|/)dist/''',
+  '''(^|/)\.reproduction-build/''',
+  '''(^|/)reproduction/''',
+  '''(^|/)__pycache__/'''
+]
+
+[[allowlists]]
+description = "Handwritten synthetic regression tokens; reviewed, never issued credentials"
+condition = "AND"
+paths = ['^test/(secrets/secretPatterns|secrets/secretEntropy|redaction/redactString|signals/secretDetector)\.test\.ts$']
+regexTarget = "secret"
+regexes = [
+  '^sk_live_1234567890abcdefghij$',
+  '^A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6$',
+  '^AKIA1234567890ABCDEF$'
+]

@@ -1,0 +1,325 @@
+{
+  "schemaVersion": "agent-action-protocol.v1",
+  "protocolRecordId": "phase-17-agent-action-protocol-001",
+  "source": "synthetic_phase_17_action_protocol_design",
+  "protocolStatus": {
+    "phase": "phase_17",
+    "protocolOnly": true,
+    "designOnly": true,
+    "captureEnabledNow": false,
+    "realAgentIntegrationEnabledNow": false,
+    "executesAgent": false,
+    "executesActions": false,
+    "executesCommands": false,
+    "mutatesRepository": false,
+    "requiresNetwork": false,
+    "createsRealTrace": false,
+    "createsCalibrationData": false,
+    "productionRoutingEnabledNow": false,
+    "calibratedRoutingEnabledNow": false,
+    "advisoryRoutingAuthoritativeNow": false,
+    "phase16GateStillRequired": true
+  },
+  "linkedPhase16GateSummary": {
+    "phase16GateSummaryRecordId": "phase-16-gate-summary-001",
+    "schemaVersion": "agent-phase-16-gate-summary.v1",
+    "phase16GatePassesNow": false,
+    "productionRoutingEligibleNow": false,
+    "productionRoutingEnabledNow": false,
+    "rawGateSummaryIncluded": false
+  },
+  "proposedActionEnvelope": {
+    "actionProtocolVersion": "agent-action-protocol.v1",
+    "proposedActionIdCategory": "category_only_proposed_action_id",
+    "sessionIdCategory": "category_only_controlled_session_id",
+    "agentSystemCategory": "generic_coding_agent",
+    "agentAdapterCategory": "future_adapter_category",
+    "actionCategory": "unknown_or_unsupported_action",
+    "actionIntentCategory": "normalized_intent_category",
+    "actionRiskCategory": "normalized_risk_category",
+    "targetCategory": "normalized_target_category",
+    "evidenceStateCategory": "normalized_evidence_state_category",
+    "requiresAuthorizationBeforeExecution": true,
+    "proposedOnlyNotExecuted": true,
+    "rawActionPayloadIncludedByDefault": false,
+    "privacyRedactionRequired": true,
+    "categoryOnlyByDefault": true
+  },
+  "supportedActionCategories": [
+    {
+      "actionCategory": "read_file",
+      "requiresPreExecutionAuthorization": true,
+      "canBeCapturedAsProposal": true,
+      "executesDuringCapture": false
+    },
+    {
+      "actionCategory": "write_file",
+      "requiresPreExecutionAuthorization": true,
+      "canBeCapturedAsProposal": true,
+      "executesDuringCapture": false
+    },
+    {
+      "actionCategory": "edit_file",
+      "requiresPreExecutionAuthorization": true,
+      "canBeCapturedAsProposal": true,
+      "executesDuringCapture": false
+    },
+    {
+      "actionCategory": "delete_file",
+      "requiresPreExecutionAuthorization": true,
+      "canBeCapturedAsProposal": true,
+      "executesDuringCapture": false
+    },
+    {
+      "actionCategory": "run_command",
+      "requiresPreExecutionAuthorization": true,
+      "canBeCapturedAsProposal": true,
+      "executesDuringCapture": false
+    },
+    {
+      "actionCategory": "install_dependency",
+      "requiresPreExecutionAuthorization": true,
+      "canBeCapturedAsProposal": true,
+      "executesDuringCapture": false
+    },
+    {
+      "actionCategory": "run_tests",
+      "requiresPreExecutionAuthorization": true,
+      "canBeCapturedAsProposal": true,
+      "executesDuringCapture": false
+    },
+    {
+      "actionCategory": "git_commit",
+      "requiresPreExecutionAuthorization": true,
+      "canBeCapturedAsProposal": true,
+      "executesDuringCapture": false
+    },
+    {
+      "actionCategory": "git_push",
+      "requiresPreExecutionAuthorization": true,
+      "canBeCapturedAsProposal": true,
+      "executesDuringCapture": false
+    },
+    {
+      "actionCategory": "git_reset",
+      "requiresPreExecutionAuthorization": true,
+      "canBeCapturedAsProposal": true,
+      "executesDuringCapture": false
+    },
+    {
+      "actionCategory": "git_clean",
+      "requiresPreExecutionAuthorization": true,
+      "canBeCapturedAsProposal": true,
+      "executesDuringCapture": false
+    },
+    {
+      "actionCategory": "deploy",
+      "requiresPreExecutionAuthorization": true,
+      "canBeCapturedAsProposal": true,
+      "executesDuringCapture": false
+    },
+    {
+      "actionCategory": "publish_or_release",
+      "requiresPreExecutionAuthorization": true,
+      "canBeCapturedAsProposal": true,
+      "executesDuringCapture": false
+    },
+    {
+      "actionCategory": "unknown_or_unsupported_action",
+      "requiresPreExecutionAuthorization": true,
+      "canBeCapturedAsProposal": true,
+      "executesDuringCapture": false
+    }
+  ],
+  "requiredNormalizedFields": [
+    "actionCategory",
+    "targetCategory",
+    "intentCategory",
+    "riskCategory",
+    "evidenceStateCategory",
+    "workspaceBoundaryCategory",
+    "sensitivityCategory",
+    "validationStateCategory",
+    "gitStateCategory",
+    "environmentCategory",
+    "proposedExecutionCategory",
+    "rawPayloadPolicyCategory",
+    "timestampCategory"
+  ],
+  "rawPayloadPolicy": {
+    "rawCommandsAllowedByDefault": false,
+    "rawDiffsAllowedByDefault": false,
+    "rawSourceCodeAllowedByDefault": false,
+    "rawPathsAllowedByDefault": false,
+    "rawRepoNamesAllowedByDefault": false,
+    "rawPromptsAllowedByDefault": false,
+    "rawModelOutputsAllowedByDefault": false,
+    "rawValidationLogsAllowedByDefault": false,
+    "rawSecretsAllowed": false,
+    "sanitizedCategoryOnlyDefault": true,
+    "futureSanitizedExcerptRequiresApproval": true
+  },
+  "privacyInclusionRules": {
+    "inclusionCategories": [
+      "category_only_action_metadata",
+      "normalized_action_type",
+      "normalized_risk_category",
+      "normalized_evidence_state",
+      "normalized_safety_signal_categories",
+      "normalized_decision_category",
+      "sanitized_outcome_category"
+    ],
+    "exclusionCategories": [
+      "raw_source_code",
+      "raw_diff",
+      "raw_command",
+      "raw_secret",
+      "raw_env_var",
+      "raw_private_path",
+      "raw_repo_name",
+      "raw_branch_name",
+      "raw_prompt",
+      "raw_model_output",
+      "raw_validation_log",
+      "human_name",
+      "human_email",
+      "customer_data"
+    ]
+  },
+  "authorizationContract": {
+    "proposedActionsMustBeAuthorizedBeforeExecution": true,
+    "decisionCategories": ["PROCEED", "DEFER", "ESCALATE", "BLOCK"],
+    "proposedActionCaptureDoesNotImplyExecution": true,
+    "blockStopsExecution": true,
+    "deferRequiresEvidenceGatheringBeforeRetry": true,
+    "escalateRequiresHumanReviewBeforeExecution": true,
+    "proceedOnlyAllowsExecutionInsideCurrentDeterministicPolicy": true,
+    "futureCalibratedAdvisorySignalsAuthoritativeNow": false
+  },
+  "controlledEnvironmentRequirements": [
+    "disposable_workspace_required",
+    "no_real_secrets",
+    "no_customer_data",
+    "no_private_repositories_without_explicit_approval",
+    "no_network_unless_explicitly_approved",
+    "dangerous_commands_must_not_execute",
+    "production_deploys_must_not_execute",
+    "publish_release_actions_must_not_execute",
+    "logs_must_be_privacy_sanitized",
+    "trace_review_required_before_dataset_inclusion"
+  ],
+  "phase17EvidencePlanLink": {
+    "realAgentEvidenceRequired": true,
+    "thisBatchCreatesRealEvidence": false,
+    "futureControlledTraceCollectionRequired": true,
+    "futureTraceReviewRequired": true,
+    "futureBaselineComparisonRequired": true,
+    "futureCalibrationDatasetHandoffRequired": true,
+    "phase16GateReconsiderationRequiresFutureEvidence": true
+  },
+  "blockers": [
+    "protocol_only_no_capture",
+    "no_real_agent_integration",
+    "no_controlled_sessions_run",
+    "no_real_proposed_actions_captured",
+    "no_reviewed_trace_labels",
+    "no_baseline_comparison",
+    "no_real_calibration_dataset",
+    "no_scores_or_thresholds",
+    "no_phase16_gate_reconsideration"
+  ],
+  "safety": {
+    "inert": true,
+    "protocolOnly": true,
+    "designOnly": true,
+    "executesAgent": false,
+    "executesActions": false,
+    "executesCommands": false,
+    "executesPackageScripts": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false,
+    "touchesRealSecrets": false,
+    "usesRealRepo": false,
+    "containsPrivateData": false,
+    "containsExecutableAction": false,
+    "changesRuntimeBehavior": false,
+    "addsRuntimeConfigFlag": false,
+    "implementsAgentIntegration": false,
+    "capturesRealProposedActions": false,
+    "createsRealTrace": false,
+    "createsCalibrationData": false,
+    "computesScores": false,
+    "computesThresholds": false,
+    "appliesCalibration": false,
+    "implementsAdvisoryRouting": false,
+    "implementsCalibratedRouting": false,
+    "implementsProductionRouting": false,
+    "implementsConformalRiskControl": false
+  },
+  "privacy": {
+    "categoryOnly": true,
+    "rawPromptIncluded": false,
+    "rawActionIncluded": false,
+    "rawCommandIncluded": false,
+    "rawDiffIncluded": false,
+    "rawSourceCodeIncluded": false,
+    "rawValidationLogIncluded": false,
+    "rawTraceIncluded": false,
+    "rawCalibrationDataIncluded": false,
+    "rawScoreDataIncluded": false,
+    "rawThresholdDataIncluded": false,
+    "rawRoutingDataIncluded": false,
+    "rawConfigDataIncluded": false,
+    "rawGateDataIncluded": false,
+    "realRepoNameIncluded": false,
+    "realBranchNameIncluded": false,
+    "realPathIncluded": false,
+    "realUserIncluded": false,
+    "realEmailIncluded": false,
+    "secretIncluded": false,
+    "rawAgentOutputIncluded": false,
+    "customerDataIncluded": false,
+    "reviewerIdentityIncluded": false
+  },
+  "claimBoundaries": {
+    "protocolOnly": true,
+    "designOnly": true,
+    "productionRoutingEnabled": false,
+    "advisoryRoutingEnabled": false,
+    "calibratedRoutingEnabled": false,
+    "productionRoutingEligible": false,
+    "realAgentIntegrationImplemented": false,
+    "realAgentEvidenceStarted": false,
+    "realAgentTraceCaptured": false,
+    "realReviewedTrace": false,
+    "realCalibrationStarted": false,
+    "realCalibrationDataset": false,
+    "realScores": false,
+    "nonconformityScores": false,
+    "thresholds": false,
+    "alphaIntroduced": false,
+    "calibrationApplied": false,
+    "conformalRiskControlImplemented": false,
+    "conformalGuarantee": false,
+    "statisticalGuarantee": false,
+    "realEvaluationResults": false,
+    "productionAuthorityGranted": false
+  },
+  "boundaryStatements": [
+    "phase_17_protocol_only",
+    "no_real_agent_integration",
+    "no_real_agent_evidence_collected",
+    "no_real_proposed_actions_captured",
+    "no_runtime_behavior_changed",
+    "no_production_advisory_calibrated_routing_enabled",
+    "no_scores_thresholds_alpha_calibration_conformal_crc_added",
+    "no_statistical_guarantee",
+    "deterministic_stepharbor_decisions_remain_authoritative",
+    "phase_16_gate_still_does_not_pass"
+  ],
+  "notes": [
+    "phase_17_protocol_defined_only",
+    "no_real_capture_yet",
+    "phase_16_gate_still_does_not_pass"
+  ]
+}

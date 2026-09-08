@@ -1,0 +1,18 @@
+{
+  "dataset": "NJU-LINK/CodeTraceBench",
+  "revision": "aa213b84ffb6690fc37ca15766d6ca174ec36d4d",
+  "url": "https://huggingface.co/datasets/NJU-LINK/CodeTraceBench",
+  "license_declared_upstream": "MIT",
+  "manifests": {
+    "bench_manifest.verified.jsonl": {
+      "sha256": "bd02d3dafa145146567e87f7d55b158ef0dd30043d4a4c2c03e631c2056ff92e",
+      "bytes": 5115695,
+      "matches_reference_input": true
+    },
+    "bench_manifest.full.jsonl": {
+      "sha256": "2b5e4fbd9a0dae81adccb8967088dfc7dd2dcc3a63e83fdbb4415777b060aee7",
+      "bytes": 75889031,
+      "matches_reference_input": true
+    }
+  }
+}

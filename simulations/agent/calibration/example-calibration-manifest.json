@@ -1,0 +1,381 @@
+{
+  "schemaVersion": "agent-calibration-manifest.v1",
+  "manifestId": "calibration-synthetic-manifest-001",
+  "source": "synthetic_schema_manifest",
+  "phase": {
+    "phaseId": "phase-13",
+    "phaseName": "Calibration Dataset Construction",
+    "completedBatches": ["13.1"],
+    "currentBatch": "13.2",
+    "futureBatches": ["13.3", "13.4", "13.5"],
+    "previousPhaseStatus": "phase-12-complete-synthetic-design-readiness-only",
+    "nextPhaseStatus": "phase-14-offline-conformal-crc-prototype-future"
+  },
+  "sourceRecords": [
+    {
+      "calibrationRecordId": "calibration-synthetic-ambiguous-deploy-policy-miss-001",
+      "sourceArtifactRefs": {
+        "runId": "run-ambiguous-deploy-defer-human-001",
+        "traceId": "trace-ambiguous-deploy-001",
+        "reviewId": "review-ambiguous-deploy-defer-human-001",
+        "baselineComparisonId": "baseline-ambiguous-deploy-defer-001",
+        "artifactPackageId": "agent-phase-12-synthetic-artifact-package-001"
+      },
+      "sourceRecordKind": "synthetic_schema_example",
+      "eligibilityCategory": "needs_additional_review_labels",
+      "exclusionReasonCategories": [
+        "calibration_boundary_not_satisfied",
+        "future_trace_required",
+        "missing_required_labels",
+        "needs_adjudication",
+        "not_real_calibration_data",
+        "not_real_reviewed_trace",
+        "split_not_assigned",
+        "synthetic_schema_example_only"
+      ],
+      "missingRequirementCategories": [
+        "future_adjudication",
+        "future_human_review_label",
+        "future_loss_label_definition",
+        "future_real_reviewed_trace",
+        "future_split_planning"
+      ],
+      "linkageStatus": "resolved_synthetic_links",
+      "labelReadinessStatus": "needs_adjudication",
+      "splitReadinessStatus": "not_eligible_synthetic_example",
+      "calibrationReadinessStatus": "needs_adjudication_before_use",
+      "safeForManifest": true,
+      "rawRecordIncluded": false
+    },
+    {
+      "calibrationRecordId": "calibration-synthetic-blind-edit-defer-001",
+      "sourceArtifactRefs": {
+        "runId": "run-blind-edit-defer-retry-001",
+        "traceId": "trace-blind-edit-missing-context-001",
+        "reviewId": "review-blind-edit-defer-retry-001",
+        "baselineComparisonId": "baseline-blind-edit-defer-001",
+        "artifactPackageId": "agent-phase-12-synthetic-artifact-package-001"
+      },
+      "sourceRecordKind": "synthetic_schema_example",
+      "eligibilityCategory": "structurally_eligible_future_candidate",
+      "exclusionReasonCategories": [
+        "calibration_boundary_not_satisfied",
+        "future_trace_required",
+        "not_real_calibration_data",
+        "not_real_reviewed_trace",
+        "split_not_assigned",
+        "synthetic_schema_example_only"
+      ],
+      "missingRequirementCategories": [
+        "future_human_review_label",
+        "future_loss_label_definition",
+        "future_real_reviewed_trace",
+        "future_split_planning"
+      ],
+      "linkageStatus": "resolved_synthetic_links",
+      "labelReadinessStatus": "structurally_complete_synthetic_labels",
+      "splitReadinessStatus": "not_eligible_synthetic_example",
+      "calibrationReadinessStatus": "not_calibration_data",
+      "safeForManifest": true,
+      "rawRecordIncluded": false
+    },
+    {
+      "calibrationRecordId": "calibration-synthetic-broad-refactor-coverage-gap-001",
+      "sourceArtifactRefs": {
+        "runId": "run-broad-refactor-scope-control-001",
+        "reviewId": "review-broad-refactor-coverage-gap-001",
+        "baselineComparisonId": "baseline-broad-refactor-recovery-001",
+        "artifactPackageId": "agent-phase-12-synthetic-artifact-package-001"
+      },
+      "sourceRecordKind": "synthetic_schema_example",
+      "eligibilityCategory": "excluded_not_real_calibration_data",
+      "exclusionReasonCategories": [
+        "calibration_boundary_not_satisfied",
+        "future_trace_required",
+        "needs_adjudication",
+        "not_real_calibration_data",
+        "not_real_reviewed_trace",
+        "split_not_assigned",
+        "synthetic_schema_example_only"
+      ],
+      "missingRequirementCategories": [
+        "future_adjudication",
+        "future_human_review_label",
+        "future_loss_label_definition",
+        "future_real_reviewed_trace",
+        "future_split_planning"
+      ],
+      "linkageStatus": "resolved_synthetic_links",
+      "labelReadinessStatus": "needs_adjudication",
+      "splitReadinessStatus": "not_eligible_synthetic_example",
+      "calibrationReadinessStatus": "needs_adjudication_before_use",
+      "safeForManifest": true,
+      "rawRecordIncluded": false
+    },
+    {
+      "calibrationRecordId": "calibration-synthetic-dangerous-command-block-001",
+      "sourceArtifactRefs": {
+        "runId": "run-dangerous-command-block-001",
+        "traceId": "trace-dangerous-command-hard-block-001",
+        "reviewId": "review-dangerous-command-block-001",
+        "baselineComparisonId": "baseline-dangerous-command-block-001",
+        "artifactPackageId": "agent-phase-12-synthetic-artifact-package-001"
+      },
+      "sourceRecordKind": "synthetic_schema_example",
+      "eligibilityCategory": "structurally_eligible_future_candidate",
+      "exclusionReasonCategories": [
+        "calibration_boundary_not_satisfied",
+        "future_trace_required",
+        "not_real_calibration_data",
+        "not_real_reviewed_trace",
+        "split_not_assigned",
+        "synthetic_schema_example_only"
+      ],
+      "missingRequirementCategories": [
+        "future_human_review_label",
+        "future_loss_label_definition",
+        "future_real_reviewed_trace",
+        "future_split_planning"
+      ],
+      "linkageStatus": "resolved_synthetic_links",
+      "labelReadinessStatus": "structurally_complete_synthetic_labels",
+      "splitReadinessStatus": "not_eligible_synthetic_example",
+      "calibrationReadinessStatus": "not_calibration_data",
+      "safeForManifest": true,
+      "rawRecordIncluded": false
+    },
+    {
+      "calibrationRecordId": "calibration-synthetic-sensitive-auth-escalate-001",
+      "sourceArtifactRefs": {
+        "runId": "run-sensitive-auth-defer-escalate-001",
+        "traceId": "trace-sensitive-auth-defer-escalate-001",
+        "reviewId": "review-sensitive-auth-defer-escalate-001",
+        "baselineComparisonId": "baseline-sensitive-auth-escalate-001",
+        "artifactPackageId": "agent-phase-12-synthetic-artifact-package-001"
+      },
+      "sourceRecordKind": "synthetic_schema_example",
+      "eligibilityCategory": "needs_adjudication",
+      "exclusionReasonCategories": [
+        "calibration_boundary_not_satisfied",
+        "future_trace_required",
+        "needs_adjudication",
+        "not_real_calibration_data",
+        "not_real_reviewed_trace",
+        "split_not_assigned",
+        "synthetic_schema_example_only"
+      ],
+      "missingRequirementCategories": [
+        "future_adjudication",
+        "future_human_review_label",
+        "future_loss_label_definition",
+        "future_real_reviewed_trace",
+        "future_split_planning"
+      ],
+      "linkageStatus": "resolved_synthetic_links",
+      "labelReadinessStatus": "needs_adjudication",
+      "splitReadinessStatus": "not_eligible_synthetic_example",
+      "calibrationReadinessStatus": "needs_adjudication_before_use",
+      "safeForManifest": true,
+      "rawRecordIncluded": false
+    }
+  ],
+  "eligibilitySummary": {
+    "totalSourceRecords": 5,
+    "structurallyEligibleFutureCandidateCount": 2,
+    "needsAdditionalReviewLabelsCount": 1,
+    "needsAdjudicationCount": 1,
+    "excludedSyntheticExampleOnlyCount": 5,
+    "excludedBoundaryViolationCount": 0,
+    "excludedInsufficientLinkageCount": 0,
+    "excludedNotRealCalibrationDataCount": 5,
+    "realCalibrationRecordCount": 0
+  },
+  "exclusionSummary": {
+    "exclusionCounts": [
+      {
+        "exclusionReasonCategory": "synthetic_schema_example_only",
+        "recordCount": 5
+      },
+      {
+        "exclusionReasonCategory": "not_real_reviewed_trace",
+        "recordCount": 5
+      },
+      {
+        "exclusionReasonCategory": "not_real_calibration_data",
+        "recordCount": 5
+      },
+      {
+        "exclusionReasonCategory": "missing_required_labels",
+        "recordCount": 1
+      },
+      {
+        "exclusionReasonCategory": "needs_adjudication",
+        "recordCount": 3
+      },
+      {
+        "exclusionReasonCategory": "boundary_violation",
+        "recordCount": 0
+      },
+      {
+        "exclusionReasonCategory": "insufficient_source_linkage",
+        "recordCount": 0
+      },
+      {
+        "exclusionReasonCategory": "raw_private_data_present",
+        "recordCount": 0
+      },
+      {
+        "exclusionReasonCategory": "raw_agent_output_present",
+        "recordCount": 0
+      },
+      {
+        "exclusionReasonCategory": "calibration_boundary_not_satisfied",
+        "recordCount": 5
+      },
+      {
+        "exclusionReasonCategory": "split_not_assigned",
+        "recordCount": 5
+      },
+      {
+        "exclusionReasonCategory": "future_trace_required",
+        "recordCount": 5
+      }
+    ],
+    "rawPrivateDataPresentCount": 0,
+    "rawAgentOutputPresentCount": 0,
+    "noRealPrivateDataPresent": true
+  },
+  "linkageSummary": {
+    "totalRecordsWithReviewLink": 5,
+    "totalRecordsWithTraceLink": 4,
+    "totalRecordsWithRunLink": 5,
+    "totalRecordsWithBaselineComparisonLink": 5,
+    "totalRecordsWithArtifactPackageLink": 5,
+    "unresolvedLinkCount": 0,
+    "rawLinkedArtifactIncluded": false
+  },
+  "labelReadinessSummary": {
+    "totalRecords": 5,
+    "recordsWithDecisionLabels": 5,
+    "recordsWithUncertaintyLabels": 5,
+    "recordsWithAgentBehaviorLabels": 5,
+    "recordsWithOutcomeLabels": 5,
+    "recordsWithFrictionLabels": 5,
+    "recordsWithCoverageLabels": 5,
+    "recordsWithFutureLossLabelCandidates": 5,
+    "recordsMissingRequiredLabels": 5,
+    "recordsNeedingAdjudication": 3,
+    "realHumanReviewedRecordCount": 0
+  },
+  "splitReadinessSummary": {
+    "totalRecords": 5,
+    "splitAssignedCount": 0,
+    "futureSplitCandidateCount": 0,
+    "notEligibleForSplitCount": 5,
+    "leakageRiskCategories": ["high", "low", "medium"],
+    "splitManifestCreated": false
+  },
+  "calibrationReadinessSummary": {
+    "totalRecords": 5,
+    "futureCalibrationCandidateCount": 2,
+    "notCalibrationReadyCount": 5,
+    "syntheticExampleOnlyCount": 5,
+    "calibrationDatasetCreated": false,
+    "calibrationApplied": false,
+    "conformalUsed": false,
+    "statisticalGuaranteeClaimed": false,
+    "suitableForCalibrationAsIsCount": 0
+  },
+  "boundarySummary": {
+    "safetyBoundaryViolationCount": 0,
+    "privacyBoundaryViolationCount": 0,
+    "claimBoundaryViolationCount": 0,
+    "rawDataBoundaryViolationCount": 0,
+    "calibrationBoundaryViolationCount": 0,
+    "conformalBoundaryViolationCount": 0,
+    "runtimeBoundaryViolationCount": 0
+  },
+  "metrics": {
+    "totalManifestRecords": 5,
+    "syntheticSchemaExampleCount": 5,
+    "futureControlledTraceCount": 0,
+    "futureRealTrialTraceCount": 0,
+    "realCalibrationRecordCount": 0,
+    "realReviewedTraceCount": 0,
+    "unresolvedLinkCount": 0,
+    "missingRequiredLabelCount": 5,
+    "adjudicationNeededCount": 3,
+    "splitAssignedCount": 0,
+    "calibrationDatasetCreatedCount": 0,
+    "calibrationAppliedCount": 0,
+    "thresholdComputedCount": 0,
+    "conformalImplementationCount": 0
+  },
+  "safety": {
+    "inert": true,
+    "syntheticOnly": true,
+    "executesAgent": false,
+    "executesCommands": false,
+    "executesPackageScripts": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false,
+    "touchesRealSecrets": false,
+    "usesRealRepo": false,
+    "containsPrivateData": false,
+    "containsExecutableAction": false,
+    "changesRuntimeBehavior": false,
+    "createsCalibrationDataset": false,
+    "appliesCalibration": false,
+    "implementsConformalRiskControl": false,
+    "assignsDatasetSplits": false,
+    "computesThresholds": false
+  },
+  "privacy": {
+    "rawPromptIncluded": false,
+    "rawActionIncluded": false,
+    "rawCommandIncluded": false,
+    "rawDiffIncluded": false,
+    "rawSourceCodeIncluded": false,
+    "rawValidationLogIncluded": false,
+    "rawReviewIncluded": false,
+    "rawTraceIncluded": false,
+    "rawBaselineIncluded": false,
+    "rawCalibrationDataIncluded": false,
+    "rawManifestDataIncluded": false,
+    "realRepoNameIncluded": false,
+    "realPathIncluded": false,
+    "realUserIncluded": false,
+    "realEmailIncluded": false,
+    "secretIncluded": false,
+    "rawAgentOutputIncluded": false,
+    "reviewerIdentityIncluded": false,
+    "categoryOnly": true
+  },
+  "claimBoundaries": {
+    "syntheticOnly": true,
+    "realCalibrationManifest": false,
+    "realCalibrationDataset": false,
+    "realCalibrationRecord": false,
+    "realReviewedTrace": false,
+    "realAgentExecution": false,
+    "realStepHarborExecution": false,
+    "realValidationResult": false,
+    "realWorldResult": false,
+    "calibrationDatasetCreated": false,
+    "calibrationApplied": false,
+    "datasetSplitsAssigned": false,
+    "thresholdsComputed": false,
+    "conformalRiskControlImplemented": false,
+    "conformalGuarantee": false,
+    "statisticalGuarantee": false,
+    "productionRoutingChanged": false,
+    "publicDisclosureApproved": false,
+    "legalConclusion": false
+  },
+  "notes": [
+    "synthetic_manifest_example",
+    "not_real_calibration_dataset",
+    "no_splits_assigned",
+    "no_calibration_applied"
+  ]
+}

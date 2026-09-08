@@ -1,0 +1,22 @@
+{
+  "id": "phase2-auth-edit",
+  "type": "edit_file",
+  "timestamp": "2026-04-30T08:03:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "agentId": "phase2-example-agent",
+    "provider": "stepharbor-example",
+    "toolId": "apply_patch"
+  },
+  "targetPath": "auth/service.ts",
+  "diff": "@@ -10,1 +10,1 @@\n-export const mode = \"old\";\n+export const mode = \"new\";\n",
+  "diffStats": {
+    "files": 1,
+    "addedLines": 1,
+    "deletedLines": 1
+  },
+  "expectedHash": "sha256:placeholder-before",
+  "raw": {
+    "source": "examples/actions/phase2/auth-edit.json"
+  }
+}

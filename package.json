@@ -1,0 +1,81 @@
+{
+  "name": "stepharbor",
+  "version": "0.1.0",
+  "description": "Runtime authorization layer for agentic coding.",
+  "author": "Alejandro Sanchez Guinea",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asguinea/stepharbor.git"
+  },
+  "homepage": "https://github.com/asguinea/stepharbor#readme",
+  "bugs": {
+    "url": "https://github.com/asguinea/stepharbor/issues"
+  },
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "stepharbor": "dist/cli/cli.js"
+  },
+  "files": [
+    "dist",
+    "ui/dist",
+    "examples/actions",
+    "examples/policies",
+    "docs",
+    "!**/.DS_Store",
+    "!**/.stepharbor/**",
+    "!**/node_modules/**",
+    "!**/*.log",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md",
+    "CITATION.cff"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p ui/tsconfig.json",
+    "lint": "eslint .",
+    "format": "prettier --write src test ui benchmarks simulations trials scripts *.json *.ts *.js *.md docs .github",
+    "cli": "node dist/cli/cli.js",
+    "demo:decide": "node dist/cli/cli.js decide examples/actions/safe-readme-edit.json --policy examples/policies/proceed-only.policy.yml",
+    "demo:exec": "node dist/cli/cli.js exec \"npm test\" --json --no-audit",
+    "demo:block": "node dist/cli/cli.js exec \"rm -rf .\" --policy examples/policies/block-rm-executable.policy.yml --json --no-audit",
+    "demo:audit": "node dist/cli/cli.js decide examples/actions/safe-readme-edit.json --policy examples/policies/defer-edits.policy.yml",
+    "demo:phase2:safe": "node dist/cli/cli.js decide examples/actions/phase2/safe-readme-edit.json --json --no-audit",
+    "demo:phase2:delete": "node dist/cli/cli.js decide examples/actions/phase2/inside-workspace-delete.json --json --no-audit",
+    "demo:phase2:auth": "node dist/cli/cli.js decide examples/actions/phase2/auth-edit.json --json --no-audit",
+    "demo:phase2:env": "node dist/cli/cli.js decide examples/actions/phase2/read-env.json --json --no-audit",
+    "demo:phase2:rm": "node dist/cli/cli.js exec \"rm -rf .\" --json --no-audit",
+    "demo:phase2:redaction": "node dist/cli/cli.js exec \"echo sk-abcdefghijklmnopqrstuvwxyz1234567890\" --json --no-audit",
+    "demo:beta": "node examples/beta-demo/scripts/generate-demo-data.mjs",
+    "smoke:install": "node scripts/smoke-installed-cli.mjs",
+    "ui:dev": "vite --config ui/vite.config.ts --host 127.0.0.1",
+    "ui:build": "vite build --config ui/vite.config.ts",
+    "ui:preview": "vite preview --config ui/vite.config.ts --host 127.0.0.1",
+    "format:check": "prettier --check src test ui benchmarks simulations trials scripts *.json *.ts *.js *.md docs .github",
+    "check:release": "node scripts/check-release.mjs",
+    "reproduce": "node scripts/reproduce.mjs",
+    "check": "npm run typecheck && npm run lint && npm test && npm run build && npm run ui:build && npm run check:release"
+  },
+  "dependencies": {
+    "yaml": "^2.8.3",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.0.0",
+    "eslint": "^10.10.0",
+    "globals": "^17.0.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.70.0",
+    "vite": "^8.2.2",
+    "vitest": "^5.0.0"
+  },
+  "engines": {
+    "node": "^22.12.0 || ^24.0.0 || >=26.0.0"
+  },
+  "license": "Apache-2.0"
+}

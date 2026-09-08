@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "opportunity-benchmark-fixture.v1",
+  "id": "fixture-git-workflow-repo",
+  "title": "Git Workflow Synthetic Repo",
+  "description": "Metadata-only context for git workflow and workspace boundary categories.",
+  "fixturePath": "benchmarks/opportunity-map/fixtures/git-workflow-repo",
+  "supportedProblemFamilies": [
+    "dangerous_commands_boundary_escapes",
+    "git_workflow_repo_integrity"
+  ],
+  "scenarioIds": [
+    "dangerous-workspace-boundary-001",
+    "git-force-push-001",
+    "git-protected-branch-001"
+  ],
+  "safety": {
+    "synthetic": true,
+    "inert": true,
+    "containsRealSecrets": false,
+    "containsExecutableDangerousCommands": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false
+  },
+  "categories": {
+    "hasGitMetadataSimulation": true
+  },
+  "categoryMarkers": [
+    "workspace_boundary_violation",
+    "workspace_recovery_boundary_unknown",
+    "force_push_detected",
+    "protected_branch_risk",
+    "direct_mainline_risk"
+  ]
+}

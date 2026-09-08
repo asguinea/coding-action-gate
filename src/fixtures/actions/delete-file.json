@@ -1,0 +1,17 @@
+{
+  "id": "action-delete-file-1",
+  "type": "delete_file",
+  "timestamp": "2026-04-25T19:55:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "agentId": "agent-1",
+    "provider": "codex",
+    "toolId": "delete_file"
+  },
+  "targetPath": "tmp/generated-output.txt",
+  "expectedHash": "sha256:placeholder-before",
+  "raw": {
+    "tool": "delete",
+    "path": "tmp/generated-output.txt"
+  }
+}

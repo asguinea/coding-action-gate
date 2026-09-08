@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "real-repo-trial-findings.v1",
+  "trialId": "example-sanitized-placeholder",
+  "trialDate": "placeholder-date",
+  "stepharborVersion": "placeholder-version",
+  "repoCategory": "toy",
+  "repoSizeCategory": "small",
+  "languageCategories": ["typescript"],
+  "frameworkCategories": ["node"],
+  "trialMode": "guided_operator",
+  "policyTemplate": "basic",
+  "decisionCounts": {
+    "PROCEED": 3,
+    "DEFER": 2,
+    "ESCALATE": 1,
+    "BLOCK": 1
+  },
+  "topCategories": {
+    "deferDrivers": ["target_file_not_observed", "validation_missing"],
+    "escalateDrivers": ["sensitive_change_review_required"],
+    "blockDrivers": ["command_risk_critical"]
+  },
+  "cases": [
+    {
+      "caseId": "placeholder-context-001",
+      "opportunityFamily": "missing_stale_low_quality_context",
+      "expectedPosture": "DEFER",
+      "actualPosture": "DEFER",
+      "outcomeCategory": "useful",
+      "driverCategories": ["target_file_not_observed"],
+      "notesCategory": "context_plan_clear"
+    },
+    {
+      "caseId": "placeholder-sensitive-001",
+      "opportunityFamily": "sensitive_surfaces_large_diffs",
+      "expectedPosture": "ESCALATE",
+      "actualPosture": "ESCALATE",
+      "outcomeCategory": "needs_review",
+      "driverCategories": ["sensitive_change_review_required"],
+      "notesCategory": "review_boundary_clear"
+    },
+    {
+      "caseId": "placeholder-command-001",
+      "opportunityFamily": "dangerous_commands_boundary_escapes",
+      "expectedPosture": "BLOCK",
+      "actualPosture": "BLOCK",
+      "outcomeCategory": "useful",
+      "driverCategories": ["command_risk_critical"],
+      "notesCategory": "hard_boundary_clear"
+    }
+  ],
+  "qualitativeFeedback": {
+    "usefulPatterns": ["defer_plan_actionable", "block_reason_clear"],
+    "confusingPatterns": ["escalate_copy_needs_context"],
+    "missingCoverage": ["none_observed_placeholder"],
+    "requestedImprovements": ["shorter_operator_summary"]
+  },
+  "privacyReview": {
+    "manuallyReviewed": true,
+    "containsSourceCode": false,
+    "containsDiffs": false,
+    "containsSecrets": false,
+    "containsRawCommands": false,
+    "containsPrivatePaths": false,
+    "containsRepoNames": false,
+    "containsBranchNames": false,
+    "containsValidationLogs": false,
+    "containsCustomerData": false
+  },
+  "limitations": [
+    "example_placeholder_not_real_trial",
+    "synthetic_sanitized_data",
+    "category_level_only",
+    "manual_review_required"
+  ]
+}

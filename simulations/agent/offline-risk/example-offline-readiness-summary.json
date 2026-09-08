@@ -1,0 +1,634 @@
+{
+  "schemaVersion": "agent-offline-readiness-summary.v1",
+  "readinessSummaryId": "phase-14-offline-readiness-summary-001",
+  "source": "synthetic_phase_14_readiness_summary",
+  "phase": {
+    "phaseId": "phase-14",
+    "phaseName": "Offline Conformal / CRC Prototype",
+    "completedPreviousPhase": "phase-13-complete-readiness-infrastructure-only",
+    "completedBatches": ["14.1", "14.2", "14.3", "14.4", "14.5", "14.6"],
+    "currentBatch": "14.6",
+    "phaseStatus": "complete_as_offline_synthetic_mock_prototype_groundwork_only",
+    "nextPhaseStatus": "phase-15-advisory-routing-future"
+  },
+  "completedPhase14Batches": [
+    {
+      "batchId": "14.1",
+      "batchName": "offline risk loss function design",
+      "artifactKindsProduced": ["risk_loss_design"],
+      "capabilityAdded": "candidate loss and risk categories",
+      "whyItMatters": "defines future scoring and evaluation vocabulary",
+      "boundarySummary": "design only with no numeric computation",
+      "computesScores": false,
+      "computesThresholds": false,
+      "introducesAlpha": false,
+      "appliesCalibration": false,
+      "implementsConformalRiskControl": false,
+      "changesRuntimeBehavior": false
+    },
+    {
+      "batchId": "14.2",
+      "batchName": "offline score schema and mock inputs",
+      "artifactKindsProduced": [
+        "offline_score_input_schema",
+        "mock_nonconformity_input_structure"
+      ],
+      "capabilityAdded": "mock score input records",
+      "whyItMatters": "connects risk design to synthetic input structure",
+      "boundarySummary": "mock only with no real scores",
+      "computesScores": false,
+      "computesThresholds": false,
+      "introducesAlpha": false,
+      "appliesCalibration": false,
+      "implementsConformalRiskControl": false,
+      "changesRuntimeBehavior": false
+    },
+    {
+      "batchId": "14.3",
+      "batchName": "calibration test split simulation",
+      "artifactKindsProduced": ["mock_split_simulation"],
+      "capabilityAdded": "mock split mechanics",
+      "whyItMatters": "exercises future split structure without real splits",
+      "boundarySummary": "synthetic mechanics only with no split manifest",
+      "computesScores": false,
+      "computesThresholds": false,
+      "introducesAlpha": false,
+      "appliesCalibration": false,
+      "implementsConformalRiskControl": false,
+      "changesRuntimeBehavior": false
+    },
+    {
+      "batchId": "14.4",
+      "batchName": "offline threshold selection prototype",
+      "artifactKindsProduced": ["mock_threshold_selection_mechanics"],
+      "capabilityAdded": "mock threshold candidate mechanics",
+      "whyItMatters": "shows future threshold workflow shape",
+      "boundarySummary": "mock only with no threshold values",
+      "computesScores": false,
+      "computesThresholds": false,
+      "introducesAlpha": false,
+      "appliesCalibration": false,
+      "implementsConformalRiskControl": false,
+      "changesRuntimeBehavior": false
+    },
+    {
+      "batchId": "14.5",
+      "batchName": "offline evaluation report schema",
+      "artifactKindsProduced": ["offline_evaluation_report_schema"],
+      "capabilityAdded": "future report scaffold",
+      "whyItMatters": "separates placeholder sections from real results",
+      "boundarySummary": "schema only with no evaluation results",
+      "computesScores": false,
+      "computesThresholds": false,
+      "introducesAlpha": false,
+      "appliesCalibration": false,
+      "implementsConformalRiskControl": false,
+      "changesRuntimeBehavior": false
+    },
+    {
+      "batchId": "14.6",
+      "batchName": "phase readiness summary and handoff",
+      "artifactKindsProduced": [
+        "phase_14_readiness_summary",
+        "phase_15_handoff_boundary"
+      ],
+      "capabilityAdded": "readiness summary and phase handoff",
+      "whyItMatters": "closes offline groundwork before future advisory design",
+      "boundarySummary": "handoff only with no routing implementation",
+      "computesScores": false,
+      "computesThresholds": false,
+      "introducesAlpha": false,
+      "appliesCalibration": false,
+      "implementsConformalRiskControl": false,
+      "changesRuntimeBehavior": false
+    }
+  ],
+  "implementedOfflineArtifacts": {
+    "artifacts": [
+      {
+        "artifactKind": "risk_loss_design",
+        "artifactId": "phase-14-offline-risk-loss-design-v1",
+        "sourceBatch": "14.1",
+        "schemaVersion": "agent-offline-risk-loss-design.v1",
+        "positiveCapability": "loss and risk design vocabulary",
+        "downstreamUse": "future score and advisory design",
+        "syntheticOnly": true,
+        "mockOnly": false,
+        "realDataUsed": false,
+        "runtimeIntegrated": false,
+        "scoresComputed": false,
+        "thresholdsComputed": false,
+        "alphaIntroduced": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "offline_score_input_schema",
+        "artifactId": "offline-score-input-set-synthetic-v1",
+        "sourceBatch": "14.2",
+        "schemaVersion": "agent-offline-score-input-set.v1",
+        "positiveCapability": "mock score input schema",
+        "downstreamUse": "future advisory input mapping",
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "realDataUsed": false,
+        "runtimeIntegrated": false,
+        "scoresComputed": false,
+        "thresholdsComputed": false,
+        "alphaIntroduced": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "mock_nonconformity_input_structure",
+        "artifactId": "offline-score-input-set-synthetic-v1",
+        "sourceBatch": "14.2",
+        "schemaVersion": "agent-offline-score-input-set.v1",
+        "positiveCapability": "mock nonconformity input categories",
+        "downstreamUse": "future score schema design",
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "realDataUsed": false,
+        "runtimeIntegrated": false,
+        "scoresComputed": false,
+        "thresholdsComputed": false,
+        "alphaIntroduced": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "mock_split_simulation",
+        "artifactId": "offline-split-simulation-synthetic-v1",
+        "sourceBatch": "14.3",
+        "schemaVersion": "agent-offline-split-simulation.v1",
+        "positiveCapability": "mock split mechanics",
+        "downstreamUse": "future split policy design",
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "realDataUsed": false,
+        "runtimeIntegrated": false,
+        "scoresComputed": false,
+        "thresholdsComputed": false,
+        "alphaIntroduced": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "mock_threshold_selection_mechanics",
+        "artifactId": "offline-threshold-selection-synthetic-v1",
+        "sourceBatch": "14.4",
+        "schemaVersion": "agent-offline-threshold-selection.v1",
+        "positiveCapability": "mock threshold workflow categories",
+        "downstreamUse": "future threshold procedure design",
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "realDataUsed": false,
+        "runtimeIntegrated": false,
+        "scoresComputed": false,
+        "thresholdsComputed": false,
+        "alphaIntroduced": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "offline_evaluation_report_schema",
+        "artifactId": "offline-evaluation-report-schema-synthetic-v1",
+        "sourceBatch": "14.5",
+        "schemaVersion": "agent-offline-evaluation-report.v1",
+        "positiveCapability": "future evaluation report scaffold",
+        "downstreamUse": "future report boundary testing",
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "realDataUsed": false,
+        "runtimeIntegrated": false,
+        "scoresComputed": false,
+        "thresholdsComputed": false,
+        "alphaIntroduced": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "phase_14_readiness_summary",
+        "artifactId": "phase-14-offline-readiness-summary-001",
+        "sourceBatch": "14.6",
+        "schemaVersion": "agent-offline-readiness-summary.v1",
+        "positiveCapability": "phase completion summary",
+        "downstreamUse": "future phase handoff review",
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "realDataUsed": false,
+        "runtimeIntegrated": false,
+        "scoresComputed": false,
+        "thresholdsComputed": false,
+        "alphaIntroduced": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      },
+      {
+        "artifactKind": "phase_15_handoff_boundary",
+        "artifactId": "phase-15-advisory-routing-handoff-boundary-001",
+        "sourceBatch": "14.6",
+        "positiveCapability": "advisory design boundary",
+        "downstreamUse": "future phase scope control",
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "realDataUsed": false,
+        "runtimeIntegrated": false,
+        "scoresComputed": false,
+        "thresholdsComputed": false,
+        "alphaIntroduced": false,
+        "calibrationApplied": false,
+        "conformalImplemented": false
+      }
+    ]
+  },
+  "artifactChain": {
+    "edges": [
+      {
+        "fromArtifact": "risk_loss_design",
+        "fromArtifactId": "phase-14-offline-risk-loss-design-v1",
+        "toArtifact": "offline_score_input_schema",
+        "toArtifactId": "offline-score-input-set-synthetic-v1",
+        "relationshipCategory": "defines_inputs_for",
+        "linkageStatus": "synthetic_mock_linked",
+        "rawArtifactEmbedded": false
+      },
+      {
+        "fromArtifact": "offline_score_input_schema",
+        "fromArtifactId": "offline-score-input-set-synthetic-v1",
+        "toArtifact": "mock_split_simulation",
+        "toArtifactId": "offline-split-simulation-synthetic-v1",
+        "relationshipCategory": "feeds_mock_mechanics",
+        "linkageStatus": "synthetic_mock_linked",
+        "rawArtifactEmbedded": false
+      },
+      {
+        "fromArtifact": "mock_split_simulation",
+        "fromArtifactId": "offline-split-simulation-synthetic-v1",
+        "toArtifact": "mock_threshold_selection_mechanics",
+        "toArtifactId": "offline-threshold-selection-synthetic-v1",
+        "relationshipCategory": "feeds_mock_threshold_mechanics",
+        "linkageStatus": "synthetic_mock_linked",
+        "rawArtifactEmbedded": false
+      },
+      {
+        "fromArtifact": "mock_threshold_selection_mechanics",
+        "fromArtifactId": "offline-threshold-selection-synthetic-v1",
+        "toArtifact": "offline_evaluation_report_schema",
+        "toArtifactId": "offline-evaluation-report-schema-synthetic-v1",
+        "relationshipCategory": "feeds_report_schema",
+        "linkageStatus": "synthetic_mock_linked",
+        "rawArtifactEmbedded": false
+      },
+      {
+        "fromArtifact": "offline_evaluation_report_schema",
+        "fromArtifactId": "offline-evaluation-report-schema-synthetic-v1",
+        "toArtifact": "phase_14_readiness_summary",
+        "toArtifactId": "phase-14-offline-readiness-summary-001",
+        "relationshipCategory": "feeds_readiness_summary",
+        "linkageStatus": "readiness_summary_linked",
+        "rawArtifactEmbedded": false
+      }
+    ]
+  },
+  "phase14CapabilitySummary": {
+    "riskLossDesignAvailable": true,
+    "mockScoreInputsAvailable": true,
+    "mockNonconformityInputsAvailable": true,
+    "mockSplitMechanicsAvailable": true,
+    "mockThresholdMechanicsAvailable": true,
+    "evaluationReportSchemaAvailable": true,
+    "readinessHandoffAvailable": true,
+    "offlinePrototypeGroundworkComplete": true,
+    "realExperimentCapabilityAvailable": false,
+    "advisoryRoutingCapabilityAvailable": false,
+    "productionRoutingCapabilityAvailable": false
+  },
+  "missingEvidenceSummary": {
+    "missingEvidence": [
+      {
+        "evidenceCategory": "real_calibration_dataset",
+        "status": "future_missing",
+        "requiredBeforeRealClaims": true
+      },
+      {
+        "evidenceCategory": "eligible_reviewed_traces",
+        "status": "future_missing",
+        "requiredBeforeRealClaims": true
+      },
+      {
+        "evidenceCategory": "approved_train_calibration_test_split",
+        "status": "future_missing",
+        "requiredBeforeRealClaims": true
+      },
+      {
+        "evidenceCategory": "real_scores",
+        "status": "future_missing",
+        "requiredBeforeRealClaims": true
+      },
+      {
+        "evidenceCategory": "real_nonconformity_scores",
+        "status": "future_missing",
+        "requiredBeforeRealClaims": true
+      },
+      {
+        "evidenceCategory": "real_thresholds",
+        "status": "future_missing",
+        "requiredBeforeRealClaims": true
+      },
+      {
+        "evidenceCategory": "alpha_definition",
+        "status": "future_missing",
+        "requiredBeforeRealClaims": true
+      },
+      {
+        "evidenceCategory": "conformal_or_crc_procedure",
+        "status": "future_missing",
+        "requiredBeforeRealClaims": true
+      },
+      {
+        "evidenceCategory": "empirical_evaluation_results",
+        "status": "future_missing",
+        "requiredBeforeRealClaims": true
+      },
+      {
+        "evidenceCategory": "distribution_shift_assessment",
+        "status": "future_missing",
+        "requiredBeforeRealClaims": true
+      },
+      {
+        "evidenceCategory": "advisory_routing_evaluation",
+        "status": "future_missing",
+        "requiredBeforeRealClaims": true
+      },
+      {
+        "evidenceCategory": "production_routing_approval",
+        "status": "future_missing",
+        "requiredBeforeRealClaims": true
+      }
+    ],
+    "allEvidenceFutureOrMissing": true
+  },
+  "phase15HandoffSummary": {
+    "handoffReadyForAdvisoryRoutingDesign": true,
+    "handoffReadyForAdvisoryRoutingImplementation": false,
+    "handoffReadyForProductionRouting": false,
+    "availableInputs": [
+      "risk_loss_design",
+      "mock_score_input_schema",
+      "mock_nonconformity_input_structure",
+      "mock_split_mechanics",
+      "mock_threshold_mechanics",
+      "evaluation_report_schema",
+      "boundary_checklists",
+      "claim_boundary_docs"
+    ],
+    "missingInputs": [
+      "real_calibration_dataset",
+      "eligible_reviewed_traces",
+      "real_scores",
+      "nonconformity_scores",
+      "thresholds",
+      "alpha",
+      "empirical_evaluation_results",
+      "conformal_crc_results"
+    ],
+    "allowedPhase15StartingScope": "advisory_routing_design_and_schema_work_only",
+    "forbiddenPhase15StartingClaims": [
+      "advisory_routing_is_calibrated",
+      "conformal_guarantee_exists",
+      "risk_is_controlled_at_alpha",
+      "production_routing_is_calibrated",
+      "real_world_validation_exists"
+    ]
+  },
+  "advisoryRoutingReadiness": {
+    "designInputsAvailable": true,
+    "mockInputsAvailable": true,
+    "advisorySchemaCanBeDesigned": true,
+    "advisoryImplementationAllowedNow": false,
+    "productionAuthorityAllowedNow": false,
+    "calibrationRequiredBeforeRealUse": true,
+    "evaluationRequiredBeforeClaims": true,
+    "humanApprovalRequiredBeforeRoutingChanges": true
+  },
+  "blockerSummary": {
+    "blockers": [
+      {
+        "blockerCategory": "no_real_calibration_dataset",
+        "status": "unresolved_future",
+        "blocksRealCalibration": true,
+        "blocksConformalClaims": true,
+        "blocksAdvisoryRoutingClaims": false,
+        "blocksProductionRouting": true,
+        "resolutionRequiresFutureBatch": true
+      },
+      {
+        "blockerCategory": "no_eligible_reviewed_traces",
+        "status": "unresolved_future",
+        "blocksRealCalibration": true,
+        "blocksConformalClaims": true,
+        "blocksAdvisoryRoutingClaims": false,
+        "blocksProductionRouting": true,
+        "resolutionRequiresFutureBatch": true
+      },
+      {
+        "blockerCategory": "no_real_scores",
+        "status": "unresolved_future",
+        "blocksRealCalibration": true,
+        "blocksConformalClaims": true,
+        "blocksAdvisoryRoutingClaims": true,
+        "blocksProductionRouting": true,
+        "resolutionRequiresFutureBatch": true
+      },
+      {
+        "blockerCategory": "no_nonconformity_scores",
+        "status": "unresolved_future",
+        "blocksRealCalibration": true,
+        "blocksConformalClaims": true,
+        "blocksAdvisoryRoutingClaims": true,
+        "blocksProductionRouting": true,
+        "resolutionRequiresFutureBatch": true
+      },
+      {
+        "blockerCategory": "no_thresholds",
+        "status": "unresolved_future",
+        "blocksRealCalibration": true,
+        "blocksConformalClaims": true,
+        "blocksAdvisoryRoutingClaims": true,
+        "blocksProductionRouting": true,
+        "resolutionRequiresFutureBatch": true
+      },
+      {
+        "blockerCategory": "no_alpha",
+        "status": "unresolved_future",
+        "blocksRealCalibration": true,
+        "blocksConformalClaims": true,
+        "blocksAdvisoryRoutingClaims": true,
+        "blocksProductionRouting": true,
+        "resolutionRequiresFutureBatch": true
+      },
+      {
+        "blockerCategory": "no_empirical_evaluation_results",
+        "status": "unresolved_future",
+        "blocksRealCalibration": false,
+        "blocksConformalClaims": true,
+        "blocksAdvisoryRoutingClaims": true,
+        "blocksProductionRouting": true,
+        "resolutionRequiresFutureBatch": true
+      },
+      {
+        "blockerCategory": "no_distribution_shift_assessment",
+        "status": "unresolved_future",
+        "blocksRealCalibration": false,
+        "blocksConformalClaims": true,
+        "blocksAdvisoryRoutingClaims": false,
+        "blocksProductionRouting": true,
+        "resolutionRequiresFutureBatch": true
+      },
+      {
+        "blockerCategory": "no_advisory_routing_evaluation",
+        "status": "unresolved_future",
+        "blocksRealCalibration": false,
+        "blocksConformalClaims": true,
+        "blocksAdvisoryRoutingClaims": true,
+        "blocksProductionRouting": true,
+        "resolutionRequiresFutureBatch": true
+      },
+      {
+        "blockerCategory": "no_approval_for_routing_changes",
+        "status": "unresolved_future",
+        "blocksRealCalibration": false,
+        "blocksConformalClaims": true,
+        "blocksAdvisoryRoutingClaims": false,
+        "blocksProductionRouting": true,
+        "resolutionRequiresFutureBatch": true
+      }
+    ]
+  },
+  "boundarySummary": {
+    "safetyBoundaryViolationCount": 0,
+    "privacyBoundaryViolationCount": 0,
+    "claimBoundaryViolationCount": 0,
+    "rawDataBoundaryViolationCount": 0,
+    "evaluationBoundaryViolationCount": 0,
+    "metricBoundaryViolationCount": 0,
+    "scoringBoundaryViolationCount": 0,
+    "thresholdBoundaryViolationCount": 0,
+    "alphaBoundaryViolationCount": 0,
+    "calibrationBoundaryViolationCount": 0,
+    "conformalBoundaryViolationCount": 0,
+    "routingBoundaryViolationCount": 0,
+    "runtimeBoundaryViolationCount": 0
+  },
+  "metrics": {
+    "completedPhase14BatchCount": 6,
+    "implementedOfflineArtifactCount": 8,
+    "artifactChainEdgeCount": 5,
+    "realCalibrationDatasetCount": 0,
+    "realReviewedTraceCount": 0,
+    "realScoreCount": 0,
+    "realNonconformityScoreCount": 0,
+    "realThresholdCount": 0,
+    "alphaValueCount": 0,
+    "empiricalEvaluationResultCount": 0,
+    "conformalImplementationCount": 0,
+    "advisoryRoutingImplementationCount": 0,
+    "productionRoutingChangeCount": 0
+  },
+  "safety": {
+    "inert": true,
+    "syntheticOnly": true,
+    "mockOnly": true,
+    "designOnly": true,
+    "executesAgent": false,
+    "executesCommands": false,
+    "executesPackageScripts": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false,
+    "touchesRealSecrets": false,
+    "usesRealRepo": false,
+    "containsPrivateData": false,
+    "containsExecutableAction": false,
+    "changesRuntimeBehavior": false,
+    "createsCalibrationDataset": false,
+    "createsCalibrationManifest": false,
+    "createsSplitManifest": false,
+    "assignsRealDatasetSplits": false,
+    "appliesCalibration": false,
+    "computesNumericLosses": false,
+    "computesRiskScores": false,
+    "computesNonconformityScores": false,
+    "computesRealThresholds": false,
+    "introducesAlpha": false,
+    "implementsConformalRiskControl": false,
+    "implementsAdvisoryRouting": false,
+    "implementsProductionRouting": false,
+    "performsRealEvaluation": false,
+    "computesPerformanceMetrics": false
+  },
+  "privacy": {
+    "rawPromptIncluded": false,
+    "rawActionIncluded": false,
+    "rawCommandIncluded": false,
+    "rawDiffIncluded": false,
+    "rawSourceCodeIncluded": false,
+    "rawValidationLogIncluded": false,
+    "rawReviewIncluded": false,
+    "rawTraceIncluded": false,
+    "rawBaselineIncluded": false,
+    "rawCalibrationDataIncluded": false,
+    "rawManifestDataIncluded": false,
+    "rawAdjudicationDataIncluded": false,
+    "rawSplitDataIncluded": false,
+    "rawScoreDataIncluded": false,
+    "rawThresholdDataIncluded": false,
+    "rawEvaluationDataIncluded": false,
+    "rawRoutingDataIncluded": false,
+    "realRepoNameIncluded": false,
+    "realPathIncluded": false,
+    "realUserIncluded": false,
+    "realEmailIncluded": false,
+    "secretIncluded": false,
+    "rawAgentOutputIncluded": false,
+    "reviewerIdentityIncluded": false,
+    "categoryOnly": true
+  },
+  "claimBoundaries": {
+    "syntheticOnly": true,
+    "mockOnly": true,
+    "designOnly": true,
+    "realCalibrationDataset": false,
+    "realCalibrationRecord": false,
+    "realReviewedTrace": false,
+    "realAgentExecution": false,
+    "realStepHarborExecution": false,
+    "realValidationResult": false,
+    "realWorldResult": false,
+    "realEvaluationResults": false,
+    "calibrationDatasetCreated": false,
+    "calibrationApplied": false,
+    "realDatasetSplitsAssigned": false,
+    "splitManifestCreated": false,
+    "numericLossesComputed": false,
+    "riskScoresComputed": false,
+    "nonconformityScoresComputed": false,
+    "realThresholdsComputed": false,
+    "thresholdValuesIncluded": false,
+    "alphaIntroduced": false,
+    "performanceMetricsComputed": false,
+    "conformalRiskControlImplemented": false,
+    "conformalGuarantee": false,
+    "statisticalGuarantee": false,
+    "advisoryRoutingImplemented": false,
+    "productionRoutingChanged": false,
+    "publicDisclosureApproved": false,
+    "legalConclusion": false
+  },
+  "notes": [
+    "phase_14_complete_as_groundwork_only",
+    "phase_15_future",
+    "no_advisory_routing_implementation",
+    "no_production_routing_change"
+  ]
+}

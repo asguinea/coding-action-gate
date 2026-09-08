@@ -1,0 +1,10 @@
+version: 0.1
+workspace:
+  allowed_roots:
+    - "."
+  forbidden_mutation_outside_workspace: true
+rules:
+  - id: invalid-yaml
+    decision: BLOCK
+    when:
+      action_type: [read_file

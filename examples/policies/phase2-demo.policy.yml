@@ -1,0 +1,119 @@
+version: "0.1"
+
+workspace:
+  allowed_roots:
+    - "."
+  forbidden_mutation_outside_workspace: true
+
+protected_branches:
+  - main
+  - master
+  - production
+  - release/*
+
+sensitive_paths:
+  critical:
+    - ".env"
+    - ".env.*"
+    - ".ssh/**"
+    - ".aws/**"
+    - ".gcloud/**"
+    - ".azure/**"
+    - "secrets/**"
+    - "*.pem"
+    - "*.key"
+  high:
+    - "auth/**"
+    - "billing/**"
+    - "payments/**"
+    - "security/**"
+    - "infra/prod/**"
+    - "db/migrations/**"
+    - ".github/workflows/**"
+  medium:
+    - "config/**"
+    - "infra/**"
+    - "scripts/deploy/**"
+    - "deployment/**"
+    - "ci/**"
+
+thresholds:
+  large_diff_files: 8
+  large_diff_lines: 500
+  context_completeness_minimum: 0.70
+  sensitive_context_completeness_minimum: 0.90
+  max_retries_same_goal: 3
+  max_session_minutes_without_progress: 20
+
+rules:
+  - id: block-workspace-escape
+    decision: BLOCK
+    when:
+      workspace_boundary_violation: true
+      mutates_filesystem: true
+    reason: "Mutation escapes allowed workspace roots."
+
+  - id: block-critical-command
+    decision: BLOCK
+    when:
+      command_risk_score:
+        - critical
+    reason: "Critical-risk shell command is prohibited."
+
+  - id: escalate-high-risk-command
+    decision: ESCALATE
+    when:
+      command_risk_score:
+        - high
+    reason: "High-risk shell command requires human approval."
+
+  - id: escalate-destructive-file-change
+    decision: ESCALATE
+    when:
+      destructive_operation: true
+      mutates_filesystem: true
+    reason: "Destructive filesystem changes require human review."
+
+  - id: escalate-sensitive-change
+    decision: ESCALATE
+    when:
+      path_sensitivity:
+        - high
+        - critical
+      action_type:
+        - edit_file
+        - write_file
+        - delete_file
+    reason: "Sensitive path changes require human review."
+
+  - id: block-secret-content-in-mutation
+    decision: BLOCK
+    when:
+      secret_touch:
+        - probable
+        - confirmed
+      mutates_filesystem: true
+    reason: "Proposed mutation appears to contain secret material."
+
+  - id: block-secret-read
+    decision: BLOCK
+    when:
+      secret_touch:
+        - probable
+        - confirmed
+      action_type:
+        - read_file
+        - run_command
+    reason: "Secret-bearing inputs require masking or explicit approval."
+
+  - id: block-force-push
+    decision: BLOCK
+    when:
+      force_push: true
+    reason: "Force push is prohibited."
+
+  - id: block-hook-bypass
+    decision: BLOCK
+    when:
+      hook_bypass: true
+    reason: "Hook bypass is prohibited."

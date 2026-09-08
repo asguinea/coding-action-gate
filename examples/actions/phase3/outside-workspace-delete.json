@@ -1,0 +1,10 @@
+{
+  "id": "phase3-outside-workspace-delete",
+  "type": "delete_file",
+  "timestamp": "2026-05-02T10:06:00.000Z",
+  "proposedBy": "agent",
+  "targetPath": "../outside/file.ts",
+  "raw": {
+    "source": "phase3-example"
+  }
+}

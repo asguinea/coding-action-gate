@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "opportunity-benchmark-fixture.v1",
+  "id": "fixture-autonomy-provenance-repo",
+  "title": "Autonomy and Provenance Synthetic Repo",
+  "description": "Metadata-only context for repeated defer, broad scope, progress, and delegated provenance categories.",
+  "fixturePath": "benchmarks/opportunity-map/fixtures/autonomy-provenance-repo",
+  "supportedProblemFamilies": [
+    "runaway_loops_token_burn_context_collapse",
+    "subagent_plugin_provenance"
+  ],
+  "scenarioIds": [
+    "autonomy-repeated-defer-001",
+    "autonomy-no-progress-001",
+    "provenance-unknown-subagent-001",
+    "provenance-untrusted-plugin-001"
+  ],
+  "safety": {
+    "synthetic": true,
+    "inert": true,
+    "containsRealSecrets": false,
+    "containsExecutableDangerousCommands": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false
+  },
+  "categories": {
+    "hasAutonomySimulation": true,
+    "hasProvenanceSimulation": true
+  },
+  "categoryMarkers": [
+    "repeated_defer_detected",
+    "retry_budget_exceeded",
+    "no_net_progress_detected",
+    "action_scope_too_broad",
+    "provenance_unknown",
+    "delegated_action_provenance_unknown",
+    "provenance_untrusted"
+  ]
+}

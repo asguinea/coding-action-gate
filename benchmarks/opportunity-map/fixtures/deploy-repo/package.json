@@ -1,0 +1,9 @@
+{
+  "name": "fixture-deploy-repo",
+  "private": true,
+  "scripts": {
+    "test": "echo fixture-test",
+    "lint": "echo fixture-lint",
+    "build": "echo fixture-build"
+  }
+}

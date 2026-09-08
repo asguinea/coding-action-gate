@@ -1,0 +1,5 @@
+count,no_safe_reason,rate
+3752,correction_blocked,0.04962962962962963
+58678,empirical_infeasible,0.7761640211640212
+570,selected_corrected_feasible_policy,0.00753968253968254
+12600,structurally_infeasible_by_first_failure_prevalence,0.16666666666666666

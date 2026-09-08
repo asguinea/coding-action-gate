@@ -1,0 +1,22 @@
+{
+  "id": "phase2-high-deletion-edit",
+  "type": "edit_file",
+  "timestamp": "2026-04-30T08:02:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "agentId": "phase2-example-agent",
+    "provider": "stepharbor-example",
+    "toolId": "apply_patch"
+  },
+  "targetPath": "src/service.ts",
+  "diff": "@@ -1,600 +1,20 @@\n-legacy implementation removed\n+small replacement\n",
+  "diffStats": {
+    "files": 1,
+    "addedLines": 20,
+    "deletedLines": 600
+  },
+  "expectedHash": "sha256:placeholder-before",
+  "raw": {
+    "source": "examples/actions/phase2/high-deletion-edit.json"
+  }
+}

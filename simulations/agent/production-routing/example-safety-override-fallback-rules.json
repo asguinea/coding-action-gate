@@ -1,0 +1,511 @@
+{
+  "schemaVersion": "agent-safety-override-fallback-rules.v1",
+  "rulesRecordId": "phase-16-safety-override-fallback-rules-001",
+  "source": "synthetic_safety_override_fallback_rules_design",
+  "phase": {
+    "phaseId": "phase-16",
+    "phaseName": "Production-Authoritative Calibrated Routing Gate",
+    "completedPreviousPhase": "phase-15-complete-advisory-design-readiness-groundwork-only",
+    "completedBatches": ["16.1", "16.2"],
+    "currentBatch": "16.3",
+    "futureBatches": ["16.4", "16.5"],
+    "phaseStatus": "safety_override_fallback_rules_design_without_runtime_routing_implementation"
+  },
+  "ruleStatus": {
+    "designOnly": true,
+    "productionRoutingEnabledNow": false,
+    "advisoryRoutingEnabledNow": false,
+    "calibratedRoutingEnabledNow": false,
+    "productionRoutingEligibleNow": false,
+    "defaultOffRequired": true,
+    "deterministicOverridesAuthoritative": true,
+    "fallbackToDeterministicRequired": true,
+    "humanReviewRequiredForSensitiveCases": true,
+    "phase17EvidenceRequired": true
+  },
+  "linkedProductionEligibility": {
+    "eligibilityRecordId": "phase-16-production-eligibility-001",
+    "schemaVersion": "agent-production-routing-eligibility.v1",
+    "source": "synthetic_production_eligibility_design",
+    "productionRoutingEligibleNow": false,
+    "rawEligibilityRecordIncluded": false
+  },
+  "linkedDefaultOffRoutingConfig": {
+    "configRecordId": "phase-16-default-off-routing-config-001",
+    "schemaVersion": "agent-default-off-routing-config.v1",
+    "source": "synthetic_default_off_routing_config_design",
+    "productionRoutingEnabledNow": false,
+    "advisoryRoutingEnabledNow": false,
+    "calibratedRoutingEnabledNow": false,
+    "defaultOffRequired": true,
+    "rawDefaultOffConfigIncluded": false
+  },
+  "deterministicSafetyOverrides": [
+    {
+      "overrideCategory": "secret_or_credential_access",
+      "currentAuthority": "deterministic_stepharbor",
+      "calibratedLayerMayOverride": false,
+      "advisoryLayerMayOverride": false,
+      "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
+      "fallbackDecisionCategory": "block_by_policy",
+      "rationaleCategory": "protects_secrets_and_private_data"
+    },
+    {
+      "overrideCategory": "workspace_escape",
+      "currentAuthority": "deterministic_stepharbor",
+      "calibratedLayerMayOverride": false,
+      "advisoryLayerMayOverride": false,
+      "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
+      "fallbackDecisionCategory": "block_by_policy",
+      "rationaleCategory": "preserves_workspace_boundary"
+    },
+    {
+      "overrideCategory": "dangerous_command",
+      "currentAuthority": "deterministic_stepharbor",
+      "calibratedLayerMayOverride": false,
+      "advisoryLayerMayOverride": false,
+      "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
+      "fallbackDecisionCategory": "block_by_policy",
+      "rationaleCategory": "prevents_dangerous_or_destructive_action"
+    },
+    {
+      "overrideCategory": "destructive_file_action",
+      "currentAuthority": "deterministic_stepharbor",
+      "calibratedLayerMayOverride": false,
+      "advisoryLayerMayOverride": false,
+      "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
+      "fallbackDecisionCategory": "block_by_policy",
+      "rationaleCategory": "prevents_dangerous_or_destructive_action"
+    },
+    {
+      "overrideCategory": "production_deploy",
+      "currentAuthority": "deterministic_stepharbor",
+      "calibratedLayerMayOverride": false,
+      "advisoryLayerMayOverride": false,
+      "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
+      "fallbackDecisionCategory": "block_by_policy",
+      "rationaleCategory": "preserves_release_and_branch_controls"
+    },
+    {
+      "overrideCategory": "protected_branch_operation",
+      "currentAuthority": "deterministic_stepharbor",
+      "calibratedLayerMayOverride": false,
+      "advisoryLayerMayOverride": false,
+      "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
+      "fallbackDecisionCategory": "block_by_policy",
+      "rationaleCategory": "preserves_release_and_branch_controls"
+    },
+    {
+      "overrideCategory": "validation_failure",
+      "currentAuthority": "deterministic_stepharbor",
+      "calibratedLayerMayOverride": false,
+      "advisoryLayerMayOverride": false,
+      "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": true,
+      "fallbackDecisionCategory": "defer_for_evidence",
+      "rationaleCategory": "preserves_validation_and_evidence_requirements"
+    },
+    {
+      "overrideCategory": "validation_bypass_or_no_verify",
+      "currentAuthority": "deterministic_stepharbor",
+      "calibratedLayerMayOverride": false,
+      "advisoryLayerMayOverride": false,
+      "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
+      "fallbackDecisionCategory": "block_by_policy",
+      "rationaleCategory": "preserves_validation_and_evidence_requirements"
+    },
+    {
+      "overrideCategory": "publish_or_release_action",
+      "currentAuthority": "deterministic_stepharbor",
+      "calibratedLayerMayOverride": false,
+      "advisoryLayerMayOverride": false,
+      "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
+      "fallbackDecisionCategory": "block_by_policy",
+      "rationaleCategory": "preserves_release_and_branch_controls"
+    },
+    {
+      "overrideCategory": "policy_block",
+      "currentAuthority": "deterministic_stepharbor",
+      "calibratedLayerMayOverride": false,
+      "advisoryLayerMayOverride": false,
+      "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
+      "fallbackDecisionCategory": "block_by_policy",
+      "rationaleCategory": "preserves_policy_or_user_prohibition"
+    },
+    {
+      "overrideCategory": "explicit_user_or_policy_forbidden_action",
+      "currentAuthority": "deterministic_stepharbor",
+      "calibratedLayerMayOverride": false,
+      "advisoryLayerMayOverride": false,
+      "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": false,
+      "fallbackDecisionCategory": "block_by_policy",
+      "rationaleCategory": "preserves_policy_or_user_prohibition"
+    },
+    {
+      "overrideCategory": "private_data_exposure_risk",
+      "currentAuthority": "deterministic_stepharbor",
+      "calibratedLayerMayOverride": false,
+      "advisoryLayerMayOverride": false,
+      "requiresHumanApprovalToProceedIfProceedingIsEverAllowed": true,
+      "fallbackDecisionCategory": "escalate_for_human_review",
+      "rationaleCategory": "protects_secrets_and_private_data"
+    }
+  ],
+  "fallbackRules": [
+    {
+      "fallbackCategory": "missing_eligibility_record",
+      "triggerCategory": "missing_eligibility_record",
+      "fallbackTargetCategory": "deny_production_authority",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "missing_gate_artifact"
+    },
+    {
+      "fallbackCategory": "failed_eligibility",
+      "triggerCategory": "failed_eligibility",
+      "fallbackTargetCategory": "deny_production_authority",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "gate_not_satisfied"
+    },
+    {
+      "fallbackCategory": "missing_default_off_config",
+      "triggerCategory": "missing_default_off_config",
+      "fallbackTargetCategory": "deny_production_authority",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "missing_gate_artifact"
+    },
+    {
+      "fallbackCategory": "default_off_config_not_satisfied",
+      "triggerCategory": "default_off_config_not_satisfied",
+      "fallbackTargetCategory": "deny_production_authority",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "default_off_not_satisfied"
+    },
+    {
+      "fallbackCategory": "production_routing_disabled",
+      "triggerCategory": "production_routing_disabled",
+      "fallbackTargetCategory": "deny_production_authority",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "production_authority_denied"
+    },
+    {
+      "fallbackCategory": "unsupported_action_category",
+      "triggerCategory": "unsupported_action_category",
+      "fallbackTargetCategory": "deterministic_decision_engine",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "unsupported_or_unapproved_scope"
+    },
+    {
+      "fallbackCategory": "missing_score",
+      "triggerCategory": "missing_score",
+      "fallbackTargetCategory": "deterministic_decision_engine",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "missing_or_stale_calibrated_signal_input"
+    },
+    {
+      "fallbackCategory": "stale_score",
+      "triggerCategory": "stale_score",
+      "fallbackTargetCategory": "deterministic_decision_engine",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "missing_or_stale_calibrated_signal_input"
+    },
+    {
+      "fallbackCategory": "missing_threshold",
+      "triggerCategory": "missing_threshold",
+      "fallbackTargetCategory": "deterministic_decision_engine",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "missing_or_stale_calibrated_signal_input"
+    },
+    {
+      "fallbackCategory": "stale_threshold",
+      "triggerCategory": "stale_threshold",
+      "fallbackTargetCategory": "deterministic_decision_engine",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "missing_or_stale_calibrated_signal_input"
+    },
+    {
+      "fallbackCategory": "missing_calibration_dataset",
+      "triggerCategory": "missing_calibration_dataset",
+      "fallbackTargetCategory": "deterministic_decision_engine",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "missing_or_stale_calibrated_signal_input"
+    },
+    {
+      "fallbackCategory": "stale_calibration_dataset",
+      "triggerCategory": "stale_calibration_dataset",
+      "fallbackTargetCategory": "deterministic_decision_engine",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "missing_or_stale_calibrated_signal_input"
+    },
+    {
+      "fallbackCategory": "distribution_shift_detected_or_unassessed",
+      "triggerCategory": "distribution_shift_detected_or_unassessed",
+      "fallbackTargetCategory": "defer_for_evidence",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "distribution_or_context_uncertain"
+    },
+    {
+      "fallbackCategory": "policy_conflict",
+      "triggerCategory": "policy_conflict",
+      "fallbackTargetCategory": "block_by_policy",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "policy_or_validation_conflict"
+    },
+    {
+      "fallbackCategory": "incomplete_evidence",
+      "triggerCategory": "incomplete_evidence",
+      "fallbackTargetCategory": "defer_for_evidence",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "policy_or_validation_conflict"
+    },
+    {
+      "fallbackCategory": "stale_context",
+      "triggerCategory": "stale_context",
+      "fallbackTargetCategory": "defer_for_evidence",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "distribution_or_context_uncertain"
+    },
+    {
+      "fallbackCategory": "missing_required_validation",
+      "triggerCategory": "missing_required_validation",
+      "fallbackTargetCategory": "block_by_policy",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "policy_or_validation_conflict"
+    },
+    {
+      "fallbackCategory": "failed_required_validation",
+      "triggerCategory": "failed_required_validation",
+      "fallbackTargetCategory": "block_by_policy",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "policy_or_validation_conflict"
+    },
+    {
+      "fallbackCategory": "high_uncertainty_outside_approved_scope",
+      "triggerCategory": "high_uncertainty_outside_approved_scope",
+      "fallbackTargetCategory": "defer_for_evidence",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "distribution_or_context_uncertain"
+    },
+    {
+      "fallbackCategory": "missing_human_approval",
+      "triggerCategory": "missing_human_approval",
+      "fallbackTargetCategory": "escalate_for_human_review",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": true,
+      "rationaleCategory": "human_or_privacy_review_required"
+    },
+    {
+      "fallbackCategory": "privacy_boundary_unclear",
+      "triggerCategory": "privacy_boundary_unclear",
+      "fallbackTargetCategory": "escalate_for_human_review",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": true,
+      "rationaleCategory": "human_or_privacy_review_required"
+    },
+    {
+      "fallbackCategory": "claim_boundary_unclear",
+      "triggerCategory": "claim_boundary_unclear",
+      "fallbackTargetCategory": "escalate_for_human_review",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": true,
+      "rationaleCategory": "human_or_privacy_review_required"
+    },
+    {
+      "fallbackCategory": "phase17_evidence_missing",
+      "triggerCategory": "phase17_evidence_missing",
+      "fallbackTargetCategory": "deny_production_authority",
+      "calibratedLayerMayProceed": false,
+      "humanReviewRequired": false,
+      "rationaleCategory": "production_authority_denied"
+    }
+  ],
+  "rulePrecedence": {
+    "precedence": [
+      {
+        "precedenceRank": 1,
+        "ruleCategory": "deterministic_hard_block_or_policy_prohibition",
+        "futureCalibratedAdvisoryMayOverride": false
+      },
+      {
+        "precedenceRank": 2,
+        "ruleCategory": "deterministic_safety_override",
+        "futureCalibratedAdvisoryMayOverride": false
+      },
+      {
+        "precedenceRank": 3,
+        "ruleCategory": "eligibility_gate",
+        "futureCalibratedAdvisoryMayOverride": false
+      },
+      {
+        "precedenceRank": 4,
+        "ruleCategory": "default_off_config_gate",
+        "futureCalibratedAdvisoryMayOverride": false
+      },
+      {
+        "precedenceRank": 5,
+        "ruleCategory": "fallback_conditions",
+        "futureCalibratedAdvisoryMayOverride": false
+      },
+      {
+        "precedenceRank": 6,
+        "ruleCategory": "human_approval_requirements",
+        "futureCalibratedAdvisoryMayOverride": false
+      },
+      {
+        "precedenceRank": 7,
+        "ruleCategory": "deterministic_defer_escalate_evidence_requirements",
+        "futureCalibratedAdvisoryMayOverride": false
+      },
+      {
+        "precedenceRank": 8,
+        "ruleCategory": "future_calibrated_advisory_signal_if_ever_approved",
+        "futureCalibratedAdvisoryMayOverride": false
+      },
+      {
+        "precedenceRank": 9,
+        "ruleCategory": "audit_monitoring_reporting_obligations",
+        "futureCalibratedAdvisoryMayOverride": false
+      }
+    ],
+    "calibratedAdvisorySignalsLowerAuthorityThanDeterministicSafetyOverrides": true,
+    "calibratedAdvisorySignalsCannotOverrideHigherPriorityRules": true
+  },
+  "phase17EvidenceDependency": {
+    "realAgentEvidenceRequired": true,
+    "controlledTraceCollectionRequired": true,
+    "reviewedTraceLabelsRequired": true,
+    "baselineComparisonOnRealControlledTracesRequired": true,
+    "calibrationDatasetConstructionAfterTraceReviewRequired": true,
+    "productionRoutingCannotBeEnabledWithoutPhase17Evidence": true
+  },
+  "blockers": {
+    "blockerCategories": [
+      "no_real_controlled_agent_traces",
+      "no_reviewed_real_trace_labels",
+      "no_real_calibration_dataset",
+      "no_real_scores",
+      "no_real_thresholds",
+      "no_offline_evaluation",
+      "no_distribution_shift_review",
+      "no_human_approval_record",
+      "no_approved_runtime_integration_scope",
+      "production_routing_default_off",
+      "safety_override_rules_design_only",
+      "fallback_rules_design_only"
+    ]
+  },
+  "safety": {
+    "inert": true,
+    "syntheticOnly": true,
+    "designOnly": true,
+    "gateDesignOnly": true,
+    "safetyOverrideDesignOnly": true,
+    "fallbackDesignOnly": true,
+    "executesAgent": false,
+    "executesCommands": false,
+    "executesPackageScripts": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false,
+    "touchesRealSecrets": false,
+    "usesRealRepo": false,
+    "containsPrivateData": false,
+    "containsExecutableAction": false,
+    "changesRuntimeBehavior": false,
+    "addsRuntimeConfigFlag": false,
+    "implementsAdvisoryRouting": false,
+    "implementsCalibratedRouting": false,
+    "implementsProductionRouting": false,
+    "appliesCalibration": false,
+    "computesScores": false,
+    "computesThresholds": false,
+    "introducesAlpha": false,
+    "implementsConformalRiskControl": false
+  },
+  "privacy": {
+    "rawPromptIncluded": false,
+    "rawActionIncluded": false,
+    "rawCommandIncluded": false,
+    "rawDiffIncluded": false,
+    "rawSourceCodeIncluded": false,
+    "rawValidationLogIncluded": false,
+    "rawReviewIncluded": false,
+    "rawTraceIncluded": false,
+    "rawCalibrationDataIncluded": false,
+    "rawScoreDataIncluded": false,
+    "rawThresholdDataIncluded": false,
+    "rawRoutingDataIncluded": false,
+    "rawConfigDataIncluded": false,
+    "rawGateDataIncluded": false,
+    "realRepoNameIncluded": false,
+    "realPathIncluded": false,
+    "realUserIncluded": false,
+    "realEmailIncluded": false,
+    "secretIncluded": false,
+    "rawAgentOutputIncluded": false,
+    "reviewerIdentityIncluded": false,
+    "categoryOnly": true
+  },
+  "claimBoundaries": {
+    "syntheticOnly": true,
+    "designOnly": true,
+    "safetyOverrideDesignOnly": true,
+    "fallbackDesignOnly": true,
+    "productionRoutingEnabled": false,
+    "advisoryRoutingEnabled": false,
+    "calibratedRoutingEnabled": false,
+    "productionRoutingEligible": false,
+    "runtimeConfigFlagAdded": false,
+    "policyFlagAdded": false,
+    "advisoryRoutingImplemented": false,
+    "calibratedRoutingImplemented": false,
+    "productionRoutingChanged": false,
+    "realCalibrationDataset": false,
+    "realReviewedTrace": false,
+    "realScores": false,
+    "nonconformityScores": false,
+    "thresholds": false,
+    "alphaIntroduced": false,
+    "calibrationApplied": false,
+    "conformalRiskControlImplemented": false,
+    "conformalGuarantee": false,
+    "statisticalGuarantee": false,
+    "realEvaluationResults": false,
+    "publicDisclosureApproved": false,
+    "legalConclusion": false
+  },
+  "boundaryStatements": [
+    "no_runtime_behavior_changed",
+    "no_production_routing_enabled",
+    "no_advisory_calibrated_routing_implementation_added",
+    "no_policy_flag_added",
+    "no_cli_api_ui_surface_added",
+    "no_scores_thresholds_alpha_calibration_conformal_crc_added",
+    "no_statistical_guarantee",
+    "deterministic_stepharbor_decisions_remain_authoritative",
+    "deterministic_safety_overrides_cannot_be_overridden_by_calibrated_advisory_signals",
+    "phase_17_real_agent_evidence_required"
+  ],
+  "notes": [
+    "safety_override_fallback_design_only",
+    "routing_not_enabled",
+    "deterministic_authority_preserved",
+    "phase_17_evidence_required"
+  ]
+}

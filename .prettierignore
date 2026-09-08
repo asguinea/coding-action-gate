@@ -1,0 +1,10 @@
+node_modules/
+dist/
+ui/dist/
+coverage/
+research/
+reproduction/
+**/workdir/
+package-lock.json
+# Intentionally malformed parser fixture.
+test/fixtures/policies/invalid-yaml.yml

@@ -1,0 +1,16 @@
+{
+  "id": "phase2-outside-workspace-delete",
+  "type": "delete_file",
+  "timestamp": "2026-04-30T08:00:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "agentId": "phase2-example-agent",
+    "provider": "stepharbor-example",
+    "toolId": "delete_file"
+  },
+  "targetPath": "../outside/file.ts",
+  "expectedHash": "sha256:placeholder-before",
+  "raw": {
+    "source": "examples/actions/phase2/outside-workspace-delete.json"
+  }
+}

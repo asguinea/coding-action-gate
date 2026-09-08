@@ -1,0 +1,25 @@
+version: 0.1
+workspace:
+  allowed_roots:
+    - "."
+  forbidden_mutation_outside_workspace: true
+rules:
+  - id: demo-defer-edits
+    decision: DEFER
+    when:
+      action_type:
+        - edit_file
+        - write_file
+    reason: "Phase 1 demo: file mutations are deferred."
+
+  - id: demo-escalate-git
+    decision: ESCALATE
+    when:
+      is_git_like_command: true
+    reason: "Phase 1 demo: git-like commands require review."
+
+  - id: demo-block-rm
+    decision: BLOCK
+    when:
+      command_executable: rm
+    reason: "Phase 1 demo: rm commands are blocked by executable name."

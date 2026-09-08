@@ -1,0 +1,9 @@
+version: 0.1
+rules:
+  - id: defer-file-mutations
+    decision: DEFER
+    when:
+      action_type:
+        - edit_file
+        - write_file
+    reason: "File edits are deferred in this Phase 1 example policy."

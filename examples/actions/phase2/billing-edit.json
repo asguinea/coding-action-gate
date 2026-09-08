@@ -1,0 +1,22 @@
+{
+  "id": "phase2-billing-edit",
+  "type": "edit_file",
+  "timestamp": "2026-04-30T08:04:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "agentId": "phase2-example-agent",
+    "provider": "stepharbor-example",
+    "toolId": "apply_patch"
+  },
+  "targetPath": "billing/checkout.ts",
+  "diff": "@@ -4,1 +4,1 @@\n-export const checkoutMode = \"legacy\";\n+export const checkoutMode = \"current\";\n",
+  "diffStats": {
+    "files": 1,
+    "addedLines": 1,
+    "deletedLines": 1
+  },
+  "expectedHash": "sha256:placeholder-before",
+  "raw": {
+    "source": "examples/actions/phase2/billing-edit.json"
+  }
+}

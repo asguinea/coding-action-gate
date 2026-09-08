@@ -1,0 +1,12 @@
+{
+  "workspaceCategories": [
+    "workspace_boundary_violation",
+    "workspace_recovery_boundary_unknown"
+  ],
+  "gitWorkflowCategories": [
+    "force_push_detected",
+    "protected_branch_risk",
+    "direct_mainline_risk",
+    "landing_action_detected"
+  ]
+}

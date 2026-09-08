@@ -1,0 +1,338 @@
+{
+  "schemaVersion": "agent-default-off-routing-config.v1",
+  "configRecordId": "phase-16-default-off-routing-config-001",
+  "source": "synthetic_default_off_routing_config_design",
+  "phase": {
+    "phaseId": "phase-16",
+    "phaseName": "Production-Authoritative Calibrated Routing Gate",
+    "completedPreviousPhase": "phase-15-complete-advisory-design-readiness-groundwork-only",
+    "completedBatches": ["16.1"],
+    "currentBatch": "16.2",
+    "futureBatches": ["16.3", "16.4", "16.5"],
+    "phaseStatus": "default_off_routing_configuration_design_without_runtime_configuration_or_routing_implementation"
+  },
+  "configStatus": {
+    "productionRoutingEnabledNow": false,
+    "advisoryRoutingEnabledNow": false,
+    "calibratedRoutingEnabledNow": false,
+    "productionRoutingEligibleNow": false,
+    "defaultOffRequired": true,
+    "explicitFutureScopeRequired": true,
+    "humanApprovalRequired": true,
+    "policyConfigRequired": true,
+    "fallbackToDeterministicRequired": true,
+    "deterministicSafetyOverridesRequired": true
+  },
+  "linkedProductionEligibility": {
+    "eligibilityRecordId": "phase-16-production-eligibility-001",
+    "schemaVersion": "agent-production-routing-eligibility.v1",
+    "source": "synthetic_production_eligibility_design",
+    "productionRoutingEligibleNow": false,
+    "rawEligibilityRecordIncluded": false
+  },
+  "candidateFutureScopes": [
+    {
+      "scopeCategory": "low_risk_read_only_actions",
+      "currentlyEnabled": false,
+      "requiresFutureEligibilityPass": true,
+      "requiresHumanApproval": true,
+      "requiresPolicyConfig": true,
+      "requiresFallbackToDeterministic": true,
+      "requiresDeterministicSafetyOverrides": true
+    },
+    {
+      "scopeCategory": "narrow_non_destructive_file_actions",
+      "currentlyEnabled": false,
+      "requiresFutureEligibilityPass": true,
+      "requiresHumanApproval": true,
+      "requiresPolicyConfig": true,
+      "requiresFallbackToDeterministic": true,
+      "requiresDeterministicSafetyOverrides": true
+    },
+    {
+      "scopeCategory": "advisory_only_comparison_mode",
+      "currentlyEnabled": false,
+      "requiresFutureEligibilityPass": true,
+      "requiresHumanApproval": true,
+      "requiresPolicyConfig": true,
+      "requiresFallbackToDeterministic": true,
+      "requiresDeterministicSafetyOverrides": true
+    },
+    {
+      "scopeCategory": "controlled_beta_workspace_scope",
+      "currentlyEnabled": false,
+      "requiresFutureEligibilityPass": true,
+      "requiresHumanApproval": true,
+      "requiresPolicyConfig": true,
+      "requiresFallbackToDeterministic": true,
+      "requiresDeterministicSafetyOverrides": true
+    }
+  ],
+  "disallowedCurrentScopes": {
+    "scopeCategories": [
+      "destructive_file_actions",
+      "secret_or_credential_paths",
+      "workspace_escape_actions",
+      "dangerous_commands",
+      "production_deploys",
+      "protected_branch_operations",
+      "validation_bypass_actions",
+      "publish_or_release_actions",
+      "raw_private_data_dependent_routing",
+      "unreviewed_agent_trace_based_routing"
+    ]
+  },
+  "requiredFutureEvidence": {
+    "evidenceCategories": [
+      "real_controlled_agent_traces",
+      "reviewed_trace_labels",
+      "adjudicated_labels",
+      "eligible_calibration_dataset",
+      "approved_split_manifest",
+      "real_scores",
+      "nonconformity_or_risk_scores",
+      "threshold_selection_procedure",
+      "offline_evaluation_report",
+      "distribution_shift_review",
+      "product_security_privacy_review",
+      "human_approval_record"
+    ]
+  },
+  "routingAuthorityConstraints": {
+    "deterministicDecisionsAuthoritativeNow": true,
+    "calibratedAdvisoryRoutingHasProductionAuthorityNow": false,
+    "futureAuthorityMustBeNarrowerThanDeterministicSafetyPolicy": true,
+    "calibratedAdvisoryMayOverrideDeterministicBlock": false,
+    "calibratedAdvisoryMayBypassDeferEvidenceWithoutFutureApproval": false,
+    "calibratedAdvisoryMayDowngradeEscalateWhenHumanReviewRequired": false,
+    "deterministicSafetyOverridesRemainMandatory": true
+  },
+  "fallbackConstraints": {
+    "fallbacks": [
+      {
+        "fallbackCategory": "missing_eligibility_record",
+        "fallbackRequired": true,
+        "fallbackTargetCategory": "deterministic_stepharbor"
+      },
+      {
+        "fallbackCategory": "failed_eligibility",
+        "fallbackRequired": true,
+        "fallbackTargetCategory": "deterministic_stepharbor"
+      },
+      {
+        "fallbackCategory": "missing_score",
+        "fallbackRequired": true,
+        "fallbackTargetCategory": "deterministic_stepharbor"
+      },
+      {
+        "fallbackCategory": "stale_score",
+        "fallbackRequired": true,
+        "fallbackTargetCategory": "deterministic_stepharbor"
+      },
+      {
+        "fallbackCategory": "missing_threshold",
+        "fallbackRequired": true,
+        "fallbackTargetCategory": "deterministic_stepharbor"
+      },
+      {
+        "fallbackCategory": "stale_threshold",
+        "fallbackRequired": true,
+        "fallbackTargetCategory": "deterministic_stepharbor"
+      },
+      {
+        "fallbackCategory": "missing_calibration_dataset",
+        "fallbackRequired": true,
+        "fallbackTargetCategory": "deterministic_stepharbor"
+      },
+      {
+        "fallbackCategory": "stale_calibration_dataset",
+        "fallbackRequired": true,
+        "fallbackTargetCategory": "deterministic_stepharbor"
+      },
+      {
+        "fallbackCategory": "distribution_shift",
+        "fallbackRequired": true,
+        "fallbackTargetCategory": "deterministic_stepharbor"
+      },
+      {
+        "fallbackCategory": "policy_conflict",
+        "fallbackRequired": true,
+        "fallbackTargetCategory": "deterministic_stepharbor"
+      },
+      {
+        "fallbackCategory": "unsupported_action_category",
+        "fallbackRequired": true,
+        "fallbackTargetCategory": "deterministic_stepharbor"
+      },
+      {
+        "fallbackCategory": "incomplete_evidence",
+        "fallbackRequired": true,
+        "fallbackTargetCategory": "deterministic_stepharbor"
+      },
+      {
+        "fallbackCategory": "uncertainty_above_approved_scope",
+        "fallbackRequired": true,
+        "fallbackTargetCategory": "defer"
+      }
+    ]
+  },
+  "approvalConstraints": {
+    "approvals": [
+      {
+        "approvalCategory": "product_owner_approval",
+        "currentStatus": "future_unmet",
+        "approvalGranted": false
+      },
+      {
+        "approvalCategory": "security_review",
+        "currentStatus": "future_unmet",
+        "approvalGranted": false
+      },
+      {
+        "approvalCategory": "privacy_review",
+        "currentStatus": "future_unmet",
+        "approvalGranted": false
+      },
+      {
+        "approvalCategory": "claim_boundary_review",
+        "currentStatus": "future_unmet",
+        "approvalGranted": false
+      },
+      {
+        "approvalCategory": "routing_behavior_review",
+        "currentStatus": "future_unmet",
+        "approvalGranted": false
+      },
+      {
+        "approvalCategory": "rollback_plan_review",
+        "currentStatus": "future_unmet",
+        "approvalGranted": false
+      },
+      {
+        "approvalCategory": "beta_scope_approval",
+        "currentStatus": "future_unmet",
+        "approvalGranted": false
+      },
+      {
+        "approvalCategory": "monitoring_or_audit_readiness_review",
+        "currentStatus": "future_unmet",
+        "approvalGranted": false
+      }
+    ]
+  },
+  "phase17EvidenceDependency": {
+    "realAgentEvidenceRequired": true,
+    "controlledTraceCollectionRequired": true,
+    "reviewedTraceLabelsRequired": true,
+    "baselineComparisonOnRealControlledTracesRequired": true,
+    "calibrationDatasetConstructionAfterTraceReviewRequired": true,
+    "productionRoutingCannotBeEnabledWithoutPhase17Evidence": true
+  },
+  "blockers": {
+    "blockerCategories": [
+      "no_real_controlled_agent_traces",
+      "no_reviewed_real_trace_labels",
+      "no_real_calibration_dataset",
+      "no_real_scores",
+      "no_real_thresholds",
+      "no_offline_evaluation",
+      "no_distribution_shift_review",
+      "no_human_approval_record",
+      "no_approved_runtime_integration_scope"
+    ]
+  },
+  "safety": {
+    "inert": true,
+    "syntheticOnly": true,
+    "designOnly": true,
+    "gateDesignOnly": true,
+    "defaultOffDesignOnly": true,
+    "executesAgent": false,
+    "executesCommands": false,
+    "executesPackageScripts": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false,
+    "touchesRealSecrets": false,
+    "usesRealRepo": false,
+    "containsPrivateData": false,
+    "containsExecutableAction": false,
+    "changesRuntimeBehavior": false,
+    "addsRuntimeConfigFlag": false,
+    "implementsAdvisoryRouting": false,
+    "implementsCalibratedRouting": false,
+    "implementsProductionRouting": false,
+    "appliesCalibration": false,
+    "computesScores": false,
+    "computesThresholds": false,
+    "introducesAlpha": false,
+    "implementsConformalRiskControl": false
+  },
+  "privacy": {
+    "rawPromptIncluded": false,
+    "rawActionIncluded": false,
+    "rawCommandIncluded": false,
+    "rawDiffIncluded": false,
+    "rawSourceCodeIncluded": false,
+    "rawValidationLogIncluded": false,
+    "rawReviewIncluded": false,
+    "rawTraceIncluded": false,
+    "rawCalibrationDataIncluded": false,
+    "rawScoreDataIncluded": false,
+    "rawThresholdDataIncluded": false,
+    "rawRoutingDataIncluded": false,
+    "rawConfigDataIncluded": false,
+    "rawGateDataIncluded": false,
+    "realRepoNameIncluded": false,
+    "realPathIncluded": false,
+    "realUserIncluded": false,
+    "realEmailIncluded": false,
+    "secretIncluded": false,
+    "rawAgentOutputIncluded": false,
+    "reviewerIdentityIncluded": false,
+    "categoryOnly": true
+  },
+  "claimBoundaries": {
+    "syntheticOnly": true,
+    "designOnly": true,
+    "defaultOffDesignOnly": true,
+    "productionRoutingEnabled": false,
+    "advisoryRoutingEnabled": false,
+    "calibratedRoutingEnabled": false,
+    "productionRoutingEligible": false,
+    "runtimeConfigFlagAdded": false,
+    "policyFlagAdded": false,
+    "advisoryRoutingImplemented": false,
+    "calibratedRoutingImplemented": false,
+    "productionRoutingChanged": false,
+    "realCalibrationDataset": false,
+    "realReviewedTrace": false,
+    "realScores": false,
+    "nonconformityScores": false,
+    "thresholds": false,
+    "alphaIntroduced": false,
+    "calibrationApplied": false,
+    "conformalRiskControlImplemented": false,
+    "conformalGuarantee": false,
+    "statisticalGuarantee": false,
+    "realEvaluationResults": false,
+    "publicDisclosureApproved": false,
+    "legalConclusion": false
+  },
+  "boundaryStatements": [
+    "no_runtime_behavior_changed",
+    "no_production_routing_enabled",
+    "no_advisory_calibrated_routing_implementation_added",
+    "no_policy_flag_added",
+    "no_cli_api_ui_surface_added",
+    "no_scores_thresholds_alpha_calibration_conformal_crc_added",
+    "no_statistical_guarantee",
+    "deterministic_stepharbor_decisions_remain_authoritative",
+    "phase_17_real_agent_evidence_required"
+  ],
+  "notes": [
+    "default_off_design_only",
+    "routing_not_enabled",
+    "production_routing_not_eligible",
+    "phase_17_evidence_required"
+  ]
+}

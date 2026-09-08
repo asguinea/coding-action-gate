@@ -1,0 +1,16 @@
+{
+  "id": "beta-demo-defer-service-edit",
+  "type": "edit_file",
+  "timestamp": "2026-05-01T12:01:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "toolId": "beta-demo"
+  },
+  "targetPath": "src/service.ts",
+  "diff": "--- a/src/service.ts\n+++ b/src/service.ts\n@@\n export function calculateTotal(items: number[]): number {\n-  return items.reduce((sum, value) => sum + value, 0);\n+  return items.reduce((sum, value) => sum + Math.max(0, value), 0);\n }\n",
+  "diffStats": {
+    "files": 1,
+    "addedLines": 1,
+    "deletedLines": 1
+  }
+}

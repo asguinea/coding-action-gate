@@ -1,0 +1,15 @@
+{
+  "id": "phase2-read-env",
+  "type": "read_file",
+  "timestamp": "2026-04-30T08:05:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "agentId": "phase2-example-agent",
+    "provider": "stepharbor-example",
+    "toolId": "read_file"
+  },
+  "targetPath": ".env",
+  "raw": {
+    "source": "examples/actions/phase2/read-env.json"
+  }
+}

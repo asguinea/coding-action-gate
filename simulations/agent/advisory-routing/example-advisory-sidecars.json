@@ -1,0 +1,941 @@
+[
+  {
+    "schemaVersion": "agent-advisory-routing-sidecar.v1",
+    "sidecarId": "advisory-sidecar-synthetic-defer-001",
+    "source": "synthetic_advisory_sidecar_design",
+    "phase": {
+      "phaseId": "phase-15",
+      "phaseName": "Advisory Calibrated Routing Design",
+      "completedPreviousPhase": "phase-14-complete-offline-synthetic-mock-groundwork-only",
+      "completedBatches": [],
+      "currentBatch": "15.1",
+      "futureBatches": ["15.2", "15.3", "15.4", "15.5"],
+      "phaseStatus": "advisory_routing_schema_design_started_without_routing_implementation"
+    },
+    "linkedDeterministicDecision": {
+      "decisionCategory": "DEFER",
+      "decisionSourceCategory": "synthetic_phase_14_mock_artifact",
+      "deterministicDecisionRemainsAuthoritative": true,
+      "advisoryMayOverrideDecision": false,
+      "productionRoutingChanged": false,
+      "rawDecisionPayloadIncluded": false
+    },
+    "linkedPhase14Readiness": {
+      "readinessSummaryId": "phase-14-offline-readiness-summary-001",
+      "linkedArtifactKinds": [
+        "risk_loss_design",
+        "offline_score_input_schema",
+        "mock_nonconformity_input_structure",
+        "mock_split_simulation",
+        "mock_threshold_selection_mechanics",
+        "offline_evaluation_report_schema",
+        "phase_14_readiness_summary"
+      ],
+      "availableDesignInputs": [
+        "risk_loss_design",
+        "mock_score_input_schema",
+        "mock_nonconformity_input_structure",
+        "mock_split_mechanics",
+        "mock_threshold_mechanics",
+        "evaluation_report_schema",
+        "boundary_checklists",
+        "claim_boundary_docs"
+      ],
+      "missingEvidenceCategories": [
+        "real_reviewed_traces",
+        "real_calibration_dataset",
+        "approved_split",
+        "real_scores",
+        "nonconformity_scores",
+        "threshold_or_policy_procedure",
+        "evaluation_results",
+        "claim_boundary_review",
+        "human_approval"
+      ],
+      "rawReadinessArtifactIncluded": false
+    },
+    "advisoryRecommendation": {
+      "recommendationCategory": "advisory_aligns_with_deterministic_decision",
+      "recommendationStrengthCategory": "moderate",
+      "recommendationScope": "synthetic_sidecar_only",
+      "advisoryOnly": true,
+      "calibrated": false,
+      "conformal": false,
+      "thresholdBased": false,
+      "alphaBased": false,
+      "productionAuthoritative": false
+    },
+    "advisoryExplanation": {
+      "explanationCategories": ["missing_context_explanation"],
+      "relatedUncertaintyDimensions": ["missing_context"],
+      "relatedRiskDimensions": ["validation_gap_risk"],
+      "relatedLossFamilies": ["validation_loss"],
+      "relatedPhase14Artifacts": [
+        "risk_loss_design",
+        "offline_score_input_schema"
+      ],
+      "rawExplanationTextIncluded": false
+    },
+    "advisoryEvidenceRequirements": {
+      "requiredCategories": [
+        "real_reviewed_traces_required",
+        "real_calibration_dataset_required",
+        "approved_split_required",
+        "real_scores_required",
+        "nonconformity_scores_required",
+        "threshold_or_policy_procedure_required",
+        "evaluation_results_required",
+        "claim_boundary_review_required",
+        "human_approval_required"
+      ],
+      "evidenceStatus": "future_unmet",
+      "allRequirementsFuture": true
+    },
+    "authorityBoundary": {
+      "deterministicDecisionAuthoritative": true,
+      "advisorySidecarNonAuthoritative": true,
+      "advisoryCanBlock": false,
+      "advisoryCanProceed": false,
+      "advisoryCanEscalate": false,
+      "advisoryCanDefer": false,
+      "advisoryCanChangeRuntimeDecision": false,
+      "requiresExplicitFutureIntegration": true,
+      "routingBehaviorChanged": false
+    },
+    "futureRoutingRequirements": {
+      "advisorySchemaReadyForDesignUse": true,
+      "mockRoutingPrototypeRequired": true,
+      "sideBySideComparisonRequired": true,
+      "evaluationReportRequired": true,
+      "calibrationEvidenceRequiredBeforeCalibratedClaims": true,
+      "humanApprovalRequiredBeforeImplementation": true,
+      "productionRoutingRequiresSeparatePhase": true
+    },
+    "safety": {
+      "inert": true,
+      "syntheticOnly": true,
+      "designOnly": true,
+      "advisoryOnly": true,
+      "executesAgent": false,
+      "executesCommands": false,
+      "executesPackageScripts": false,
+      "requiresNetwork": false,
+      "mutatesRepository": false,
+      "touchesRealSecrets": false,
+      "usesRealRepo": false,
+      "containsPrivateData": false,
+      "containsExecutableAction": false,
+      "changesRuntimeBehavior": false,
+      "implementsAdvisoryRouting": false,
+      "implementsCalibratedRouting": false,
+      "implementsProductionRouting": false,
+      "appliesCalibration": false,
+      "computesScores": false,
+      "computesThresholds": false,
+      "introducesAlpha": false,
+      "implementsConformalRiskControl": false
+    },
+    "privacy": {
+      "rawPromptIncluded": false,
+      "rawActionIncluded": false,
+      "rawCommandIncluded": false,
+      "rawDiffIncluded": false,
+      "rawSourceCodeIncluded": false,
+      "rawValidationLogIncluded": false,
+      "rawReviewIncluded": false,
+      "rawTraceIncluded": false,
+      "rawBaselineIncluded": false,
+      "rawCalibrationDataIncluded": false,
+      "rawScoreDataIncluded": false,
+      "rawThresholdDataIncluded": false,
+      "rawEvaluationDataIncluded": false,
+      "rawRoutingDataIncluded": false,
+      "realRepoNameIncluded": false,
+      "realPathIncluded": false,
+      "realUserIncluded": false,
+      "realEmailIncluded": false,
+      "secretIncluded": false,
+      "rawAgentOutputIncluded": false,
+      "reviewerIdentityIncluded": false,
+      "categoryOnly": true
+    },
+    "claimBoundaries": {
+      "syntheticOnly": true,
+      "designOnly": true,
+      "advisoryOnly": true,
+      "advisoryRoutingImplemented": false,
+      "calibratedRoutingImplemented": false,
+      "productionRoutingChanged": false,
+      "realCalibrationDataset": false,
+      "realReviewedTrace": false,
+      "realScores": false,
+      "nonconformityScores": false,
+      "thresholds": false,
+      "alphaIntroduced": false,
+      "calibrationApplied": false,
+      "conformalRiskControlImplemented": false,
+      "conformalGuarantee": false,
+      "statisticalGuarantee": false,
+      "realEvaluationResults": false,
+      "publicDisclosureApproved": false,
+      "legalConclusion": false
+    },
+    "notes": ["design_sidecar_only", "deterministic_decision_authoritative"]
+  },
+  {
+    "schemaVersion": "agent-advisory-routing-sidecar.v1",
+    "sidecarId": "advisory-sidecar-more-context-001",
+    "source": "synthetic_advisory_sidecar_design",
+    "phase": {
+      "phaseId": "phase-15",
+      "phaseName": "Advisory Calibrated Routing Design",
+      "completedPreviousPhase": "phase-14-complete-offline-synthetic-mock-groundwork-only",
+      "completedBatches": [],
+      "currentBatch": "15.1",
+      "futureBatches": ["15.2", "15.3", "15.4", "15.5"],
+      "phaseStatus": "advisory_routing_schema_design_started_without_routing_implementation"
+    },
+    "linkedDeterministicDecision": {
+      "decisionCategory": "DEFER",
+      "decisionSourceCategory": "synthetic_phase_12_run",
+      "deterministicDecisionRemainsAuthoritative": true,
+      "advisoryMayOverrideDecision": false,
+      "productionRoutingChanged": false,
+      "rawDecisionPayloadIncluded": false
+    },
+    "linkedPhase14Readiness": {
+      "readinessSummaryId": "phase-14-offline-readiness-summary-001",
+      "linkedArtifactKinds": [
+        "risk_loss_design",
+        "offline_score_input_schema",
+        "mock_nonconformity_input_structure",
+        "mock_split_simulation",
+        "mock_threshold_selection_mechanics",
+        "offline_evaluation_report_schema",
+        "phase_14_readiness_summary"
+      ],
+      "availableDesignInputs": [
+        "risk_loss_design",
+        "mock_score_input_schema",
+        "mock_nonconformity_input_structure",
+        "mock_split_mechanics",
+        "mock_threshold_mechanics",
+        "evaluation_report_schema",
+        "boundary_checklists",
+        "claim_boundary_docs"
+      ],
+      "missingEvidenceCategories": [
+        "real_reviewed_traces",
+        "real_calibration_dataset",
+        "approved_split",
+        "real_scores",
+        "nonconformity_scores",
+        "threshold_or_policy_procedure",
+        "evaluation_results",
+        "claim_boundary_review",
+        "human_approval"
+      ],
+      "rawReadinessArtifactIncluded": false
+    },
+    "advisoryRecommendation": {
+      "recommendationCategory": "advisory_suggests_more_context",
+      "recommendationStrengthCategory": "weak",
+      "recommendationScope": "future_side_by_side_review",
+      "advisoryOnly": true,
+      "calibrated": false,
+      "conformal": false,
+      "thresholdBased": false,
+      "alphaBased": false,
+      "productionAuthoritative": false
+    },
+    "advisoryExplanation": {
+      "explanationCategories": [
+        "stale_context_explanation",
+        "coverage_gap_explanation"
+      ],
+      "relatedUncertaintyDimensions": ["stale_context", "coverage_gap"],
+      "relatedRiskDimensions": ["coverage_gap_risk", "validation_gap_risk"],
+      "relatedLossFamilies": ["coverage_loss", "validation_loss"],
+      "relatedPhase14Artifacts": [
+        "mock_split_simulation",
+        "offline_evaluation_report_schema"
+      ],
+      "rawExplanationTextIncluded": false
+    },
+    "advisoryEvidenceRequirements": {
+      "requiredCategories": [
+        "real_reviewed_traces_required",
+        "real_calibration_dataset_required",
+        "approved_split_required",
+        "real_scores_required",
+        "nonconformity_scores_required",
+        "threshold_or_policy_procedure_required",
+        "evaluation_results_required",
+        "claim_boundary_review_required",
+        "human_approval_required"
+      ],
+      "evidenceStatus": "future_unmet",
+      "allRequirementsFuture": true
+    },
+    "authorityBoundary": {
+      "deterministicDecisionAuthoritative": true,
+      "advisorySidecarNonAuthoritative": true,
+      "advisoryCanBlock": false,
+      "advisoryCanProceed": false,
+      "advisoryCanEscalate": false,
+      "advisoryCanDefer": false,
+      "advisoryCanChangeRuntimeDecision": false,
+      "requiresExplicitFutureIntegration": true,
+      "routingBehaviorChanged": false
+    },
+    "futureRoutingRequirements": {
+      "advisorySchemaReadyForDesignUse": true,
+      "mockRoutingPrototypeRequired": true,
+      "sideBySideComparisonRequired": true,
+      "evaluationReportRequired": true,
+      "calibrationEvidenceRequiredBeforeCalibratedClaims": true,
+      "humanApprovalRequiredBeforeImplementation": true,
+      "productionRoutingRequiresSeparatePhase": true
+    },
+    "safety": {
+      "inert": true,
+      "syntheticOnly": true,
+      "designOnly": true,
+      "advisoryOnly": true,
+      "executesAgent": false,
+      "executesCommands": false,
+      "executesPackageScripts": false,
+      "requiresNetwork": false,
+      "mutatesRepository": false,
+      "touchesRealSecrets": false,
+      "usesRealRepo": false,
+      "containsPrivateData": false,
+      "containsExecutableAction": false,
+      "changesRuntimeBehavior": false,
+      "implementsAdvisoryRouting": false,
+      "implementsCalibratedRouting": false,
+      "implementsProductionRouting": false,
+      "appliesCalibration": false,
+      "computesScores": false,
+      "computesThresholds": false,
+      "introducesAlpha": false,
+      "implementsConformalRiskControl": false
+    },
+    "privacy": {
+      "rawPromptIncluded": false,
+      "rawActionIncluded": false,
+      "rawCommandIncluded": false,
+      "rawDiffIncluded": false,
+      "rawSourceCodeIncluded": false,
+      "rawValidationLogIncluded": false,
+      "rawReviewIncluded": false,
+      "rawTraceIncluded": false,
+      "rawBaselineIncluded": false,
+      "rawCalibrationDataIncluded": false,
+      "rawScoreDataIncluded": false,
+      "rawThresholdDataIncluded": false,
+      "rawEvaluationDataIncluded": false,
+      "rawRoutingDataIncluded": false,
+      "realRepoNameIncluded": false,
+      "realPathIncluded": false,
+      "realUserIncluded": false,
+      "realEmailIncluded": false,
+      "secretIncluded": false,
+      "rawAgentOutputIncluded": false,
+      "reviewerIdentityIncluded": false,
+      "categoryOnly": true
+    },
+    "claimBoundaries": {
+      "syntheticOnly": true,
+      "designOnly": true,
+      "advisoryOnly": true,
+      "advisoryRoutingImplemented": false,
+      "calibratedRoutingImplemented": false,
+      "productionRoutingChanged": false,
+      "realCalibrationDataset": false,
+      "realReviewedTrace": false,
+      "realScores": false,
+      "nonconformityScores": false,
+      "thresholds": false,
+      "alphaIntroduced": false,
+      "calibrationApplied": false,
+      "conformalRiskControlImplemented": false,
+      "conformalGuarantee": false,
+      "statisticalGuarantee": false,
+      "realEvaluationResults": false,
+      "publicDisclosureApproved": false,
+      "legalConclusion": false
+    },
+    "notes": ["category_only_design", "future_evidence_required"]
+  },
+  {
+    "schemaVersion": "agent-advisory-routing-sidecar.v1",
+    "sidecarId": "advisory-sidecar-human-review-001",
+    "source": "synthetic_advisory_sidecar_design",
+    "phase": {
+      "phaseId": "phase-15",
+      "phaseName": "Advisory Calibrated Routing Design",
+      "completedPreviousPhase": "phase-14-complete-offline-synthetic-mock-groundwork-only",
+      "completedBatches": [],
+      "currentBatch": "15.1",
+      "futureBatches": ["15.2", "15.3", "15.4", "15.5"],
+      "phaseStatus": "advisory_routing_schema_design_started_without_routing_implementation"
+    },
+    "linkedDeterministicDecision": {
+      "decisionCategory": "ESCALATE",
+      "decisionSourceCategory": "synthetic_phase_13_record",
+      "deterministicDecisionRemainsAuthoritative": true,
+      "advisoryMayOverrideDecision": false,
+      "productionRoutingChanged": false,
+      "rawDecisionPayloadIncluded": false
+    },
+    "linkedPhase14Readiness": {
+      "readinessSummaryId": "phase-14-offline-readiness-summary-001",
+      "linkedArtifactKinds": [
+        "risk_loss_design",
+        "offline_score_input_schema",
+        "mock_nonconformity_input_structure",
+        "mock_split_simulation",
+        "mock_threshold_selection_mechanics",
+        "offline_evaluation_report_schema",
+        "phase_14_readiness_summary"
+      ],
+      "availableDesignInputs": [
+        "risk_loss_design",
+        "mock_score_input_schema",
+        "mock_nonconformity_input_structure",
+        "mock_split_mechanics",
+        "mock_threshold_mechanics",
+        "evaluation_report_schema",
+        "boundary_checklists",
+        "claim_boundary_docs"
+      ],
+      "missingEvidenceCategories": [
+        "real_reviewed_traces",
+        "real_calibration_dataset",
+        "approved_split",
+        "real_scores",
+        "nonconformity_scores",
+        "threshold_or_policy_procedure",
+        "evaluation_results",
+        "claim_boundary_review",
+        "human_approval"
+      ],
+      "rawReadinessArtifactIncluded": false
+    },
+    "advisoryRecommendation": {
+      "recommendationCategory": "advisory_suggests_human_review",
+      "recommendationStrengthCategory": "moderate",
+      "recommendationScope": "future_mock_comparison",
+      "advisoryOnly": true,
+      "calibrated": false,
+      "conformal": false,
+      "thresholdBased": false,
+      "alphaBased": false,
+      "productionAuthoritative": false
+    },
+    "advisoryExplanation": {
+      "explanationCategories": [
+        "sensitivity_explanation",
+        "validation_gap_explanation"
+      ],
+      "relatedUncertaintyDimensions": ["sensitivity", "validation_gap"],
+      "relatedRiskDimensions": ["secret_exposure_risk", "policy_miss_risk"],
+      "relatedLossFamilies": ["privacy_loss", "validation_loss"],
+      "relatedPhase14Artifacts": [
+        "risk_loss_design",
+        "mock_nonconformity_input_structure"
+      ],
+      "rawExplanationTextIncluded": false
+    },
+    "advisoryEvidenceRequirements": {
+      "requiredCategories": [
+        "real_reviewed_traces_required",
+        "real_calibration_dataset_required",
+        "approved_split_required",
+        "real_scores_required",
+        "nonconformity_scores_required",
+        "threshold_or_policy_procedure_required",
+        "evaluation_results_required",
+        "claim_boundary_review_required",
+        "human_approval_required"
+      ],
+      "evidenceStatus": "future_unmet",
+      "allRequirementsFuture": true
+    },
+    "authorityBoundary": {
+      "deterministicDecisionAuthoritative": true,
+      "advisorySidecarNonAuthoritative": true,
+      "advisoryCanBlock": false,
+      "advisoryCanProceed": false,
+      "advisoryCanEscalate": false,
+      "advisoryCanDefer": false,
+      "advisoryCanChangeRuntimeDecision": false,
+      "requiresExplicitFutureIntegration": true,
+      "routingBehaviorChanged": false
+    },
+    "futureRoutingRequirements": {
+      "advisorySchemaReadyForDesignUse": true,
+      "mockRoutingPrototypeRequired": true,
+      "sideBySideComparisonRequired": true,
+      "evaluationReportRequired": true,
+      "calibrationEvidenceRequiredBeforeCalibratedClaims": true,
+      "humanApprovalRequiredBeforeImplementation": true,
+      "productionRoutingRequiresSeparatePhase": true
+    },
+    "safety": {
+      "inert": true,
+      "syntheticOnly": true,
+      "designOnly": true,
+      "advisoryOnly": true,
+      "executesAgent": false,
+      "executesCommands": false,
+      "executesPackageScripts": false,
+      "requiresNetwork": false,
+      "mutatesRepository": false,
+      "touchesRealSecrets": false,
+      "usesRealRepo": false,
+      "containsPrivateData": false,
+      "containsExecutableAction": false,
+      "changesRuntimeBehavior": false,
+      "implementsAdvisoryRouting": false,
+      "implementsCalibratedRouting": false,
+      "implementsProductionRouting": false,
+      "appliesCalibration": false,
+      "computesScores": false,
+      "computesThresholds": false,
+      "introducesAlpha": false,
+      "implementsConformalRiskControl": false
+    },
+    "privacy": {
+      "rawPromptIncluded": false,
+      "rawActionIncluded": false,
+      "rawCommandIncluded": false,
+      "rawDiffIncluded": false,
+      "rawSourceCodeIncluded": false,
+      "rawValidationLogIncluded": false,
+      "rawReviewIncluded": false,
+      "rawTraceIncluded": false,
+      "rawBaselineIncluded": false,
+      "rawCalibrationDataIncluded": false,
+      "rawScoreDataIncluded": false,
+      "rawThresholdDataIncluded": false,
+      "rawEvaluationDataIncluded": false,
+      "rawRoutingDataIncluded": false,
+      "realRepoNameIncluded": false,
+      "realPathIncluded": false,
+      "realUserIncluded": false,
+      "realEmailIncluded": false,
+      "secretIncluded": false,
+      "rawAgentOutputIncluded": false,
+      "reviewerIdentityIncluded": false,
+      "categoryOnly": true
+    },
+    "claimBoundaries": {
+      "syntheticOnly": true,
+      "designOnly": true,
+      "advisoryOnly": true,
+      "advisoryRoutingImplemented": false,
+      "calibratedRoutingImplemented": false,
+      "productionRoutingChanged": false,
+      "realCalibrationDataset": false,
+      "realReviewedTrace": false,
+      "realScores": false,
+      "nonconformityScores": false,
+      "thresholds": false,
+      "alphaIntroduced": false,
+      "calibrationApplied": false,
+      "conformalRiskControlImplemented": false,
+      "conformalGuarantee": false,
+      "statisticalGuarantee": false,
+      "realEvaluationResults": false,
+      "publicDisclosureApproved": false,
+      "legalConclusion": false
+    },
+    "notes": ["human_review_category_only", "no_reviewer_identity"]
+  },
+  {
+    "schemaVersion": "agent-advisory-routing-sidecar.v1",
+    "sidecarId": "advisory-sidecar-hard-stop-001",
+    "source": "synthetic_advisory_sidecar_design",
+    "phase": {
+      "phaseId": "phase-15",
+      "phaseName": "Advisory Calibrated Routing Design",
+      "completedPreviousPhase": "phase-14-complete-offline-synthetic-mock-groundwork-only",
+      "completedBatches": [],
+      "currentBatch": "15.1",
+      "futureBatches": ["15.2", "15.3", "15.4", "15.5"],
+      "phaseStatus": "advisory_routing_schema_design_started_without_routing_implementation"
+    },
+    "linkedDeterministicDecision": {
+      "decisionCategory": "BLOCK",
+      "decisionSourceCategory": "synthetic_phase_14_mock_artifact",
+      "deterministicDecisionRemainsAuthoritative": true,
+      "advisoryMayOverrideDecision": false,
+      "productionRoutingChanged": false,
+      "rawDecisionPayloadIncluded": false
+    },
+    "linkedPhase14Readiness": {
+      "readinessSummaryId": "phase-14-offline-readiness-summary-001",
+      "linkedArtifactKinds": [
+        "risk_loss_design",
+        "offline_score_input_schema",
+        "mock_nonconformity_input_structure",
+        "mock_split_simulation",
+        "mock_threshold_selection_mechanics",
+        "offline_evaluation_report_schema",
+        "phase_14_readiness_summary"
+      ],
+      "availableDesignInputs": [
+        "risk_loss_design",
+        "mock_score_input_schema",
+        "mock_nonconformity_input_structure",
+        "mock_split_mechanics",
+        "mock_threshold_mechanics",
+        "evaluation_report_schema",
+        "boundary_checklists",
+        "claim_boundary_docs"
+      ],
+      "missingEvidenceCategories": [
+        "real_reviewed_traces",
+        "real_calibration_dataset",
+        "approved_split",
+        "real_scores",
+        "nonconformity_scores",
+        "threshold_or_policy_procedure",
+        "evaluation_results",
+        "claim_boundary_review",
+        "human_approval"
+      ],
+      "rawReadinessArtifactIncluded": false
+    },
+    "advisoryRecommendation": {
+      "recommendationCategory": "advisory_suggests_hard_stop",
+      "recommendationStrengthCategory": "strong",
+      "recommendationScope": "not_runtime_authority",
+      "advisoryOnly": true,
+      "calibrated": false,
+      "conformal": false,
+      "thresholdBased": false,
+      "alphaBased": false,
+      "productionAuthoritative": false
+    },
+    "advisoryExplanation": {
+      "explanationCategories": [
+        "unsafe_action_explanation",
+        "recovery_uncertainty_explanation"
+      ],
+      "relatedUncertaintyDimensions": [
+        "unsafe_action_uncertainty",
+        "recovery_uncertainty"
+      ],
+      "relatedRiskDimensions": [
+        "unsafe_action_risk",
+        "irreversible_change_risk"
+      ],
+      "relatedLossFamilies": ["unsafe_action_loss", "recovery_loss"],
+      "relatedPhase14Artifacts": [
+        "risk_loss_design",
+        "mock_threshold_selection_mechanics"
+      ],
+      "rawExplanationTextIncluded": false
+    },
+    "advisoryEvidenceRequirements": {
+      "requiredCategories": [
+        "real_reviewed_traces_required",
+        "real_calibration_dataset_required",
+        "approved_split_required",
+        "real_scores_required",
+        "nonconformity_scores_required",
+        "threshold_or_policy_procedure_required",
+        "evaluation_results_required",
+        "claim_boundary_review_required",
+        "human_approval_required"
+      ],
+      "evidenceStatus": "future_unmet",
+      "allRequirementsFuture": true
+    },
+    "authorityBoundary": {
+      "deterministicDecisionAuthoritative": true,
+      "advisorySidecarNonAuthoritative": true,
+      "advisoryCanBlock": false,
+      "advisoryCanProceed": false,
+      "advisoryCanEscalate": false,
+      "advisoryCanDefer": false,
+      "advisoryCanChangeRuntimeDecision": false,
+      "requiresExplicitFutureIntegration": true,
+      "routingBehaviorChanged": false
+    },
+    "futureRoutingRequirements": {
+      "advisorySchemaReadyForDesignUse": true,
+      "mockRoutingPrototypeRequired": true,
+      "sideBySideComparisonRequired": true,
+      "evaluationReportRequired": true,
+      "calibrationEvidenceRequiredBeforeCalibratedClaims": true,
+      "humanApprovalRequiredBeforeImplementation": true,
+      "productionRoutingRequiresSeparatePhase": true
+    },
+    "safety": {
+      "inert": true,
+      "syntheticOnly": true,
+      "designOnly": true,
+      "advisoryOnly": true,
+      "executesAgent": false,
+      "executesCommands": false,
+      "executesPackageScripts": false,
+      "requiresNetwork": false,
+      "mutatesRepository": false,
+      "touchesRealSecrets": false,
+      "usesRealRepo": false,
+      "containsPrivateData": false,
+      "containsExecutableAction": false,
+      "changesRuntimeBehavior": false,
+      "implementsAdvisoryRouting": false,
+      "implementsCalibratedRouting": false,
+      "implementsProductionRouting": false,
+      "appliesCalibration": false,
+      "computesScores": false,
+      "computesThresholds": false,
+      "introducesAlpha": false,
+      "implementsConformalRiskControl": false
+    },
+    "privacy": {
+      "rawPromptIncluded": false,
+      "rawActionIncluded": false,
+      "rawCommandIncluded": false,
+      "rawDiffIncluded": false,
+      "rawSourceCodeIncluded": false,
+      "rawValidationLogIncluded": false,
+      "rawReviewIncluded": false,
+      "rawTraceIncluded": false,
+      "rawBaselineIncluded": false,
+      "rawCalibrationDataIncluded": false,
+      "rawScoreDataIncluded": false,
+      "rawThresholdDataIncluded": false,
+      "rawEvaluationDataIncluded": false,
+      "rawRoutingDataIncluded": false,
+      "realRepoNameIncluded": false,
+      "realPathIncluded": false,
+      "realUserIncluded": false,
+      "realEmailIncluded": false,
+      "secretIncluded": false,
+      "rawAgentOutputIncluded": false,
+      "reviewerIdentityIncluded": false,
+      "categoryOnly": true
+    },
+    "claimBoundaries": {
+      "syntheticOnly": true,
+      "designOnly": true,
+      "advisoryOnly": true,
+      "advisoryRoutingImplemented": false,
+      "calibratedRoutingImplemented": false,
+      "productionRoutingChanged": false,
+      "realCalibrationDataset": false,
+      "realReviewedTrace": false,
+      "realScores": false,
+      "nonconformityScores": false,
+      "thresholds": false,
+      "alphaIntroduced": false,
+      "calibrationApplied": false,
+      "conformalRiskControlImplemented": false,
+      "conformalGuarantee": false,
+      "statisticalGuarantee": false,
+      "realEvaluationResults": false,
+      "publicDisclosureApproved": false,
+      "legalConclusion": false
+    },
+    "notes": ["hard_stop_category_only", "cannot_block_runtime"]
+  },
+  {
+    "schemaVersion": "agent-advisory-routing-sidecar.v1",
+    "sidecarId": "advisory-sidecar-lower-friction-001",
+    "source": "synthetic_advisory_sidecar_design",
+    "phase": {
+      "phaseId": "phase-15",
+      "phaseName": "Advisory Calibrated Routing Design",
+      "completedPreviousPhase": "phase-14-complete-offline-synthetic-mock-groundwork-only",
+      "completedBatches": [],
+      "currentBatch": "15.1",
+      "futureBatches": ["15.2", "15.3", "15.4", "15.5"],
+      "phaseStatus": "advisory_routing_schema_design_started_without_routing_implementation"
+    },
+    "linkedDeterministicDecision": {
+      "decisionCategory": "PROCEED",
+      "decisionSourceCategory": "synthetic_phase_12_run",
+      "deterministicDecisionRemainsAuthoritative": true,
+      "advisoryMayOverrideDecision": false,
+      "productionRoutingChanged": false,
+      "rawDecisionPayloadIncluded": false
+    },
+    "linkedPhase14Readiness": {
+      "readinessSummaryId": "phase-14-offline-readiness-summary-001",
+      "linkedArtifactKinds": [
+        "risk_loss_design",
+        "offline_score_input_schema",
+        "mock_nonconformity_input_structure",
+        "mock_split_simulation",
+        "mock_threshold_selection_mechanics",
+        "offline_evaluation_report_schema",
+        "phase_14_readiness_summary"
+      ],
+      "availableDesignInputs": [
+        "risk_loss_design",
+        "mock_score_input_schema",
+        "mock_nonconformity_input_structure",
+        "mock_split_mechanics",
+        "mock_threshold_mechanics",
+        "evaluation_report_schema",
+        "boundary_checklists",
+        "claim_boundary_docs"
+      ],
+      "missingEvidenceCategories": [
+        "real_reviewed_traces",
+        "real_calibration_dataset",
+        "approved_split",
+        "real_scores",
+        "nonconformity_scores",
+        "threshold_or_policy_procedure",
+        "evaluation_results",
+        "claim_boundary_review",
+        "human_approval"
+      ],
+      "rawReadinessArtifactIncluded": false
+    },
+    "advisoryRecommendation": {
+      "recommendationCategory": "advisory_suggests_lower_friction",
+      "recommendationStrengthCategory": "insufficient_evidence",
+      "recommendationScope": "future_side_by_side_review",
+      "advisoryOnly": true,
+      "calibrated": false,
+      "conformal": false,
+      "thresholdBased": false,
+      "alphaBased": false,
+      "productionAuthoritative": false
+    },
+    "advisoryExplanation": {
+      "explanationCategories": [
+        "friction_tradeoff_explanation",
+        "insufficient_evidence_explanation"
+      ],
+      "relatedUncertaintyDimensions": [
+        "friction_uncertainty",
+        "insufficient_evidence"
+      ],
+      "relatedRiskDimensions": [
+        "operational_friction_risk",
+        "coverage_gap_risk"
+      ],
+      "relatedLossFamilies": ["friction_loss", "not_applicable"],
+      "relatedPhase14Artifacts": [
+        "offline_evaluation_report_schema",
+        "phase_14_readiness_summary"
+      ],
+      "rawExplanationTextIncluded": false
+    },
+    "advisoryEvidenceRequirements": {
+      "requiredCategories": [
+        "real_reviewed_traces_required",
+        "real_calibration_dataset_required",
+        "approved_split_required",
+        "real_scores_required",
+        "nonconformity_scores_required",
+        "threshold_or_policy_procedure_required",
+        "evaluation_results_required",
+        "claim_boundary_review_required",
+        "human_approval_required"
+      ],
+      "evidenceStatus": "future_unmet",
+      "allRequirementsFuture": true
+    },
+    "authorityBoundary": {
+      "deterministicDecisionAuthoritative": true,
+      "advisorySidecarNonAuthoritative": true,
+      "advisoryCanBlock": false,
+      "advisoryCanProceed": false,
+      "advisoryCanEscalate": false,
+      "advisoryCanDefer": false,
+      "advisoryCanChangeRuntimeDecision": false,
+      "requiresExplicitFutureIntegration": true,
+      "routingBehaviorChanged": false
+    },
+    "futureRoutingRequirements": {
+      "advisorySchemaReadyForDesignUse": true,
+      "mockRoutingPrototypeRequired": true,
+      "sideBySideComparisonRequired": true,
+      "evaluationReportRequired": true,
+      "calibrationEvidenceRequiredBeforeCalibratedClaims": true,
+      "humanApprovalRequiredBeforeImplementation": true,
+      "productionRoutingRequiresSeparatePhase": true
+    },
+    "safety": {
+      "inert": true,
+      "syntheticOnly": true,
+      "designOnly": true,
+      "advisoryOnly": true,
+      "executesAgent": false,
+      "executesCommands": false,
+      "executesPackageScripts": false,
+      "requiresNetwork": false,
+      "mutatesRepository": false,
+      "touchesRealSecrets": false,
+      "usesRealRepo": false,
+      "containsPrivateData": false,
+      "containsExecutableAction": false,
+      "changesRuntimeBehavior": false,
+      "implementsAdvisoryRouting": false,
+      "implementsCalibratedRouting": false,
+      "implementsProductionRouting": false,
+      "appliesCalibration": false,
+      "computesScores": false,
+      "computesThresholds": false,
+      "introducesAlpha": false,
+      "implementsConformalRiskControl": false
+    },
+    "privacy": {
+      "rawPromptIncluded": false,
+      "rawActionIncluded": false,
+      "rawCommandIncluded": false,
+      "rawDiffIncluded": false,
+      "rawSourceCodeIncluded": false,
+      "rawValidationLogIncluded": false,
+      "rawReviewIncluded": false,
+      "rawTraceIncluded": false,
+      "rawBaselineIncluded": false,
+      "rawCalibrationDataIncluded": false,
+      "rawScoreDataIncluded": false,
+      "rawThresholdDataIncluded": false,
+      "rawEvaluationDataIncluded": false,
+      "rawRoutingDataIncluded": false,
+      "realRepoNameIncluded": false,
+      "realPathIncluded": false,
+      "realUserIncluded": false,
+      "realEmailIncluded": false,
+      "secretIncluded": false,
+      "rawAgentOutputIncluded": false,
+      "reviewerIdentityIncluded": false,
+      "categoryOnly": true
+    },
+    "claimBoundaries": {
+      "syntheticOnly": true,
+      "designOnly": true,
+      "advisoryOnly": true,
+      "advisoryRoutingImplemented": false,
+      "calibratedRoutingImplemented": false,
+      "productionRoutingChanged": false,
+      "realCalibrationDataset": false,
+      "realReviewedTrace": false,
+      "realScores": false,
+      "nonconformityScores": false,
+      "thresholds": false,
+      "alphaIntroduced": false,
+      "calibrationApplied": false,
+      "conformalRiskControlImplemented": false,
+      "conformalGuarantee": false,
+      "statisticalGuarantee": false,
+      "realEvaluationResults": false,
+      "publicDisclosureApproved": false,
+      "legalConclusion": false
+    },
+    "notes": ["lower_friction_category_only", "insufficient_evidence"]
+  }
+]

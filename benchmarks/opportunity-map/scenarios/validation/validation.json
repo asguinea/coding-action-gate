@@ -1,0 +1,61 @@
+[
+  {
+    "schemaVersion": "opportunity-benchmark-scenario.v1",
+    "id": "validation-missing-before-commit-001",
+    "title": "Landing action without required validation",
+    "problemFamily": "skipped_absent_misleading_verification",
+    "sourceFromOpportunityMap": "Problem landscape: skipped, absent, or misleading verification",
+    "description": "A landing action category requires validation evidence that is not available.",
+    "action": {
+      "type": "run_command",
+      "category": "landing_validation_required",
+      "commandCategory": "git_landing_command"
+    },
+    "expected": {
+      "productionDecision": "DEFER",
+      "advisoryRouterDecision": "DEFER",
+      "uncertaintyDrivers": ["validation_missing", "landing_action_detected"],
+      "reductionStepKinds": ["run_validation"],
+      "deferDrivers": ["validation_missing"]
+    },
+    "fixtureRefs": ["fixture-minimal-repo"],
+    "safety": {
+      "inert": true,
+      "executesCommands": false,
+      "touchesRealSecrets": false,
+      "requiresNetwork": false,
+      "mutatesRepository": false
+    }
+  },
+  {
+    "schemaVersion": "opportunity-benchmark-scenario.v1",
+    "id": "validation-failed-001",
+    "title": "Failed validation evidence category",
+    "problemFamily": "skipped_absent_misleading_verification",
+    "sourceFromOpportunityMap": "Problem landscape: skipped, absent, or misleading verification",
+    "description": "Validation evidence exists but indicates failure, so ordinary proceed is not advisory-safe.",
+    "action": {
+      "type": "run_command",
+      "category": "validation_failure",
+      "commandCategory": "validation_command"
+    },
+    "expected": {
+      "productionDecision": "ESCALATE",
+      "advisoryRouterDecision": "ESCALATE",
+      "uncertaintyDrivers": ["validation_failed"],
+      "reductionStepKinds": [
+        "inspect_validation_failure",
+        "fix_validation_failure_before_retry"
+      ],
+      "escalationDrivers": ["validation_failed"]
+    },
+    "fixtureRefs": ["fixture-node-validation-repo"],
+    "safety": {
+      "inert": true,
+      "executesCommands": false,
+      "touchesRealSecrets": false,
+      "requiresNetwork": false,
+      "mutatesRepository": false
+    }
+  }
+]

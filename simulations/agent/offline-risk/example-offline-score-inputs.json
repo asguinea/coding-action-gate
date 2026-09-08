@@ -1,0 +1,1767 @@
+{
+  "schemaVersion": "agent-offline-score-input-set.v1",
+  "inputSetId": "offline-score-input-set-synthetic-v1",
+  "source": "synthetic_mock_score_input",
+  "phase": {
+    "phaseId": "phase-14",
+    "phaseName": "Offline Conformal / CRC Prototype",
+    "completedPreviousPhase": "phase-13-complete-readiness-infrastructure-only",
+    "completedBatches": ["14.1"],
+    "currentBatch": "14.2",
+    "futureBatches": ["14.3", "14.4", "14.5", "14.6"],
+    "phaseStatus": "offline_score_schema_and_mock_inputs_without_calibration_or_guarantees"
+  },
+  "scoreInputs": [
+    {
+      "schemaVersion": "agent-offline-score-input.v1",
+      "scoreInputId": "offline-score-input-synthetic-block-001",
+      "source": "synthetic_mock_score_input",
+      "phase": {
+        "phaseId": "phase-14",
+        "phaseName": "Offline Conformal / CRC Prototype",
+        "completedPreviousPhase": "phase-13-complete-readiness-infrastructure-only",
+        "completedBatches": ["14.1"],
+        "currentBatch": "14.2",
+        "futureBatches": ["14.3", "14.4", "14.5", "14.6"],
+        "phaseStatus": "offline_score_schema_and_mock_inputs_without_calibration_or_guarantees"
+      },
+      "linkedRiskLossDesign": {
+        "designId": "phase-14-offline-risk-loss-design-v1",
+        "schemaVersion": "agent-offline-risk-loss-design.v1",
+        "source": "synthetic_design_only",
+        "linkedLossFamilies": [
+          "unsafe_proceed_loss",
+          "missed_block_loss",
+          "missed_escalation_loss"
+        ],
+        "linkedRiskDimensions": [
+          "unsafe_action_risk",
+          "workspace_boundary_risk",
+          "validation_failure_risk"
+        ],
+        "rawDesignIncluded": false
+      },
+      "sourceArtifact": {
+        "artifactKind": "synthetic_mock_composite",
+        "calibrationRecordId": "calibration-synthetic-dangerous-command-block-001",
+        "manifestId": "calibration-synthetic-manifest-001",
+        "labelCompletenessReportId": "calibration-label-completeness-synthetic-report-001",
+        "splitPlanningReportId": "calibration-split-planning-synthetic-report-001",
+        "readinessSummaryId": "phase-13-calibration-readiness-summary-001",
+        "rawArtifactIncluded": false
+      },
+      "candidateScoreFamilies": [
+        {
+          "scoreFamilyId": "unsafe_action_score_input",
+          "relatedRiskDimension": "unsafe_action_risk",
+          "relatedLossFamilies": ["unsafe_proceed_loss", "missed_block_loss"],
+          "requiredFeatureInputs": [
+            "action_category_signal",
+            "decision_category_signal",
+            "safety_boundary_signal"
+          ],
+          "requiredLabelInputs": [
+            "decision_appropriateness_label",
+            "block_quality_label",
+            "safety_outcome_label"
+          ],
+          "futureScoreDefinitionNeeded": true,
+          "mockInputsProvided": true,
+          "realScoreComputed": false,
+          "nonconformityScoreComputed": false
+        },
+        {
+          "scoreFamilyId": "workspace_boundary_score_input",
+          "relatedRiskDimension": "workspace_boundary_risk",
+          "relatedLossFamilies": ["unsafe_proceed_loss", "missed_block_loss"],
+          "requiredFeatureInputs": [
+            "uncertainty_dimension_signal",
+            "safety_boundary_signal"
+          ],
+          "requiredLabelInputs": [
+            "decision_appropriateness_label",
+            "block_quality_label"
+          ],
+          "futureScoreDefinitionNeeded": true,
+          "mockInputsProvided": true,
+          "realScoreComputed": false,
+          "nonconformityScoreComputed": false
+        },
+        {
+          "scoreFamilyId": "validation_failure_score_input",
+          "relatedRiskDimension": "validation_failure_risk",
+          "relatedLossFamilies": [
+            "unsafe_proceed_loss",
+            "missed_escalation_loss"
+          ],
+          "requiredFeatureInputs": [
+            "uncertainty_dimension_signal",
+            "driver_category_signal"
+          ],
+          "requiredLabelInputs": [
+            "decision_appropriateness_label",
+            "safety_outcome_label"
+          ],
+          "futureScoreDefinitionNeeded": true,
+          "mockInputsProvided": true,
+          "realScoreComputed": false,
+          "nonconformityScoreComputed": false
+        }
+      ],
+      "mockFeatureInputs": [
+        {
+          "featureInputId": "block_action_category_signal",
+          "featureFamily": "action_category_signal",
+          "valueCategory": "dangerous_command_action",
+          "sourceCategory": "synthetic_calibration_record",
+          "mockOnly": true,
+          "computedFromRealData": false
+        },
+        {
+          "featureInputId": "block_decision_category_signal",
+          "featureFamily": "decision_category_signal",
+          "valueCategory": "block_candidate",
+          "sourceCategory": "synthetic_calibration_record",
+          "mockOnly": true,
+          "computedFromRealData": false
+        },
+        {
+          "featureInputId": "block_uncertainty_dimension_signal",
+          "featureFamily": "uncertainty_dimension_signal",
+          "valueCategory": "workspace_boundary",
+          "sourceCategory": "synthetic_schema_example",
+          "mockOnly": true,
+          "computedFromRealData": false
+        },
+        {
+          "featureInputId": "block_safety_boundary_signal",
+          "featureFamily": "safety_boundary_signal",
+          "valueCategory": "safety_boundary_clear_for_mock",
+          "sourceCategory": "synthetic_boundary_flag",
+          "mockOnly": true,
+          "computedFromRealData": false
+        }
+      ],
+      "mockLabelInputs": [
+        {
+          "labelInputId": "block_decision_label",
+          "labelFamily": "decision_appropriateness_label",
+          "valueCategory": "synthetic_block_appropriate",
+          "sourceCategory": "synthetic_review_label",
+          "mockOnly": true,
+          "realHumanReviewed": false,
+          "adjudicated": false
+        },
+        {
+          "labelInputId": "block_quality_label",
+          "labelFamily": "block_quality_label",
+          "valueCategory": "synthetic_block_quality_complete",
+          "sourceCategory": "synthetic_review_label",
+          "mockOnly": true,
+          "realHumanReviewed": false,
+          "adjudicated": false
+        },
+        {
+          "labelInputId": "block_safety_outcome_label",
+          "labelFamily": "safety_outcome_label",
+          "valueCategory": "synthetic_safety_outcome_protected",
+          "sourceCategory": "synthetic_outcome_label",
+          "mockOnly": true,
+          "realHumanReviewed": false,
+          "adjudicated": false
+        }
+      ],
+      "mockNonconformityInput": {
+        "inputFamilies": [
+          "decision_mismatch_input",
+          "unsafe_proceed_input",
+          "missed_block_input"
+        ],
+        "requiredScoreFamilies": [
+          "unsafe_action_score_input",
+          "workspace_boundary_score_input",
+          "validation_failure_score_input"
+        ],
+        "requiredLabelFamilies": [
+          "decision_appropriateness_label",
+          "block_quality_label",
+          "safety_outcome_label"
+        ],
+        "requiredFutureEvidence": [
+          "real_reviewed_traces_required",
+          "adjudicated_labels_required",
+          "eligible_calibration_dataset_required",
+          "approved_split_required",
+          "numeric_score_definition_required",
+          "nonconformity_definition_required",
+          "threshold_protocol_required",
+          "calibration_procedure_required",
+          "claim_boundary_review_required"
+        ],
+        "mockInputReadyForSchemaTesting": true,
+        "readyForRealNonconformityScoring": false,
+        "nonconformityScoreComputed": false,
+        "riskScoreComputed": false,
+        "thresholdComputed": false,
+        "alphaIntroduced": false
+      },
+      "futureScoringRequirements": {
+        "requirements": [
+          {
+            "requirementId": "real_reviewed_traces_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "adjudicated_labels_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "eligible_calibration_dataset_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "approved_split_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "numeric_score_definition_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "nonconformity_definition_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "threshold_protocol_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "calibration_procedure_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "claim_boundary_review_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          }
+        ],
+        "allRequirementsFutureOrUnmet": true
+      },
+      "boundarySummary": {
+        "safetyBoundaryViolationCount": 0,
+        "privacyBoundaryViolationCount": 0,
+        "claimBoundaryViolationCount": 0,
+        "rawDataBoundaryViolationCount": 0,
+        "calibrationBoundaryViolationCount": 0,
+        "scoringBoundaryViolationCount": 0,
+        "conformalBoundaryViolationCount": 0,
+        "runtimeBoundaryViolationCount": 0,
+        "numericComputationBoundaryViolationCount": 0
+      },
+      "safety": {
+        "inert": true,
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "designOnly": true,
+        "executesAgent": false,
+        "executesCommands": false,
+        "executesPackageScripts": false,
+        "requiresNetwork": false,
+        "mutatesRepository": false,
+        "touchesRealSecrets": false,
+        "usesRealRepo": false,
+        "containsPrivateData": false,
+        "containsExecutableAction": false,
+        "changesRuntimeBehavior": false,
+        "createsCalibrationDataset": false,
+        "createsCalibrationManifest": false,
+        "createsSplitManifest": false,
+        "assignsDatasetSplits": false,
+        "appliesCalibration": false,
+        "computesNumericLosses": false,
+        "computesRiskScores": false,
+        "computesNonconformityScores": false,
+        "computesThresholds": false,
+        "introducesAlpha": false,
+        "implementsConformalRiskControl": false
+      },
+      "privacy": {
+        "rawPromptIncluded": false,
+        "rawActionIncluded": false,
+        "rawCommandIncluded": false,
+        "rawDiffIncluded": false,
+        "rawSourceCodeIncluded": false,
+        "rawValidationLogIncluded": false,
+        "rawReviewIncluded": false,
+        "rawTraceIncluded": false,
+        "rawBaselineIncluded": false,
+        "rawCalibrationDataIncluded": false,
+        "rawManifestDataIncluded": false,
+        "rawAdjudicationDataIncluded": false,
+        "rawSplitDataIncluded": false,
+        "rawScoreDataIncluded": false,
+        "realRepoNameIncluded": false,
+        "realPathIncluded": false,
+        "realUserIncluded": false,
+        "realEmailIncluded": false,
+        "secretIncluded": false,
+        "rawAgentOutputIncluded": false,
+        "reviewerIdentityIncluded": false,
+        "categoryOnly": true
+      },
+      "claimBoundaries": {
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "designOnly": true,
+        "realCalibrationDataset": false,
+        "realCalibrationRecord": false,
+        "realReviewedTrace": false,
+        "realAgentExecution": false,
+        "realStepHarborExecution": false,
+        "realValidationResult": false,
+        "realWorldResult": false,
+        "calibrationDatasetCreated": false,
+        "calibrationApplied": false,
+        "datasetSplitsAssigned": false,
+        "splitManifestCreated": false,
+        "numericLossesComputed": false,
+        "riskScoresComputed": false,
+        "nonconformityScoresComputed": false,
+        "thresholdsComputed": false,
+        "alphaIntroduced": false,
+        "conformalRiskControlImplemented": false,
+        "conformalGuarantee": false,
+        "statisticalGuarantee": false,
+        "productionRoutingChanged": false,
+        "publicDisclosureApproved": false,
+        "legalConclusion": false
+      },
+      "notes": [
+        "mock_block_score_input",
+        "no_real_scores",
+        "no_thresholds",
+        "no_alpha"
+      ]
+    },
+    {
+      "schemaVersion": "agent-offline-score-input.v1",
+      "scoreInputId": "offline-score-input-synthetic-defer-001",
+      "source": "synthetic_mock_score_input",
+      "phase": {
+        "phaseId": "phase-14",
+        "phaseName": "Offline Conformal / CRC Prototype",
+        "completedPreviousPhase": "phase-13-complete-readiness-infrastructure-only",
+        "completedBatches": ["14.1"],
+        "currentBatch": "14.2",
+        "futureBatches": ["14.3", "14.4", "14.5", "14.6"],
+        "phaseStatus": "offline_score_schema_and_mock_inputs_without_calibration_or_guarantees"
+      },
+      "linkedRiskLossDesign": {
+        "designId": "phase-14-offline-risk-loss-design-v1",
+        "schemaVersion": "agent-offline-risk-loss-design.v1",
+        "source": "synthetic_design_only",
+        "linkedLossFamilies": [
+          "unsafe_proceed_loss",
+          "missed_uncertainty_reduction_loss",
+          "agent_recovery_failure_loss"
+        ],
+        "linkedRiskDimensions": [
+          "premature_action_risk",
+          "missing_context_risk",
+          "stale_context_risk"
+        ],
+        "rawDesignIncluded": false
+      },
+      "sourceArtifact": {
+        "artifactKind": "synthetic_mock_composite",
+        "calibrationRecordId": "calibration-synthetic-blind-edit-defer-001",
+        "manifestId": "calibration-synthetic-manifest-001",
+        "labelCompletenessReportId": "calibration-label-completeness-synthetic-report-001",
+        "splitPlanningReportId": "calibration-split-planning-synthetic-report-001",
+        "readinessSummaryId": "phase-13-calibration-readiness-summary-001",
+        "rawArtifactIncluded": false
+      },
+      "candidateScoreFamilies": [
+        {
+          "scoreFamilyId": "premature_action_score_input",
+          "relatedRiskDimension": "premature_action_risk",
+          "relatedLossFamilies": [
+            "unsafe_proceed_loss",
+            "missed_uncertainty_reduction_loss"
+          ],
+          "requiredFeatureInputs": [
+            "action_category_signal",
+            "decision_category_signal",
+            "uncertainty_dimension_signal"
+          ],
+          "requiredLabelInputs": [
+            "decision_appropriateness_label",
+            "defer_quality_label",
+            "advisory_usefulness_label"
+          ],
+          "futureScoreDefinitionNeeded": true,
+          "mockInputsProvided": true,
+          "realScoreComputed": false,
+          "nonconformityScoreComputed": false
+        },
+        {
+          "scoreFamilyId": "missing_context_score_input",
+          "relatedRiskDimension": "missing_context_risk",
+          "relatedLossFamilies": [
+            "missed_uncertainty_reduction_loss",
+            "agent_recovery_failure_loss"
+          ],
+          "requiredFeatureInputs": [
+            "uncertainty_dimension_signal",
+            "driver_category_signal",
+            "reduction_step_signal"
+          ],
+          "requiredLabelInputs": [
+            "defer_quality_label",
+            "advisory_usefulness_label",
+            "task_progress_label"
+          ],
+          "futureScoreDefinitionNeeded": true,
+          "mockInputsProvided": true,
+          "realScoreComputed": false,
+          "nonconformityScoreComputed": false
+        },
+        {
+          "scoreFamilyId": "stale_context_score_input",
+          "relatedRiskDimension": "stale_context_risk",
+          "relatedLossFamilies": [
+            "unsafe_proceed_loss",
+            "missed_uncertainty_reduction_loss"
+          ],
+          "requiredFeatureInputs": [
+            "uncertainty_dimension_signal",
+            "driver_category_signal"
+          ],
+          "requiredLabelInputs": [
+            "decision_appropriateness_label",
+            "defer_quality_label"
+          ],
+          "futureScoreDefinitionNeeded": true,
+          "mockInputsProvided": true,
+          "realScoreComputed": false,
+          "nonconformityScoreComputed": false
+        }
+      ],
+      "mockFeatureInputs": [
+        {
+          "featureInputId": "defer_action_category_signal",
+          "featureFamily": "action_category_signal",
+          "valueCategory": "blind_edit_action",
+          "sourceCategory": "synthetic_calibration_record",
+          "mockOnly": true,
+          "computedFromRealData": false
+        },
+        {
+          "featureInputId": "defer_decision_category_signal",
+          "featureFamily": "decision_category_signal",
+          "valueCategory": "defer_candidate",
+          "sourceCategory": "synthetic_calibration_record",
+          "mockOnly": true,
+          "computedFromRealData": false
+        },
+        {
+          "featureInputId": "defer_uncertainty_dimension_signal",
+          "featureFamily": "uncertainty_dimension_signal",
+          "valueCategory": "missing_context",
+          "sourceCategory": "synthetic_schema_example",
+          "mockOnly": true,
+          "computedFromRealData": false
+        },
+        {
+          "featureInputId": "defer_reduction_step_signal",
+          "featureFamily": "reduction_step_signal",
+          "valueCategory": "read_before_write_needed",
+          "sourceCategory": "synthetic_uncertainty_label",
+          "mockOnly": true,
+          "computedFromRealData": false
+        }
+      ],
+      "mockLabelInputs": [
+        {
+          "labelInputId": "defer_decision_label",
+          "labelFamily": "decision_appropriateness_label",
+          "valueCategory": "synthetic_defer_appropriate",
+          "sourceCategory": "synthetic_review_label",
+          "mockOnly": true,
+          "realHumanReviewed": false,
+          "adjudicated": false
+        },
+        {
+          "labelInputId": "defer_quality_label",
+          "labelFamily": "defer_quality_label",
+          "valueCategory": "synthetic_defer_quality_complete",
+          "sourceCategory": "synthetic_review_label",
+          "mockOnly": true,
+          "realHumanReviewed": false,
+          "adjudicated": false
+        },
+        {
+          "labelInputId": "defer_task_progress_label",
+          "labelFamily": "task_progress_label",
+          "valueCategory": "synthetic_progress_deferred",
+          "sourceCategory": "synthetic_outcome_label",
+          "mockOnly": true,
+          "realHumanReviewed": false,
+          "adjudicated": false
+        }
+      ],
+      "mockNonconformityInput": {
+        "inputFamilies": [
+          "decision_mismatch_input",
+          "uncertainty_mismatch_input"
+        ],
+        "requiredScoreFamilies": [
+          "premature_action_score_input",
+          "missing_context_score_input",
+          "stale_context_score_input"
+        ],
+        "requiredLabelFamilies": [
+          "decision_appropriateness_label",
+          "defer_quality_label",
+          "advisory_usefulness_label"
+        ],
+        "requiredFutureEvidence": [
+          "real_reviewed_traces_required",
+          "adjudicated_labels_required",
+          "eligible_calibration_dataset_required",
+          "approved_split_required",
+          "numeric_score_definition_required",
+          "nonconformity_definition_required",
+          "threshold_protocol_required",
+          "calibration_procedure_required",
+          "claim_boundary_review_required"
+        ],
+        "mockInputReadyForSchemaTesting": true,
+        "readyForRealNonconformityScoring": false,
+        "nonconformityScoreComputed": false,
+        "riskScoreComputed": false,
+        "thresholdComputed": false,
+        "alphaIntroduced": false
+      },
+      "futureScoringRequirements": {
+        "requirements": [
+          {
+            "requirementId": "real_reviewed_traces_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "adjudicated_labels_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "eligible_calibration_dataset_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "approved_split_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "numeric_score_definition_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "nonconformity_definition_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "threshold_protocol_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "calibration_procedure_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "claim_boundary_review_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          }
+        ],
+        "allRequirementsFutureOrUnmet": true
+      },
+      "boundarySummary": {
+        "safetyBoundaryViolationCount": 0,
+        "privacyBoundaryViolationCount": 0,
+        "claimBoundaryViolationCount": 0,
+        "rawDataBoundaryViolationCount": 0,
+        "calibrationBoundaryViolationCount": 0,
+        "scoringBoundaryViolationCount": 0,
+        "conformalBoundaryViolationCount": 0,
+        "runtimeBoundaryViolationCount": 0,
+        "numericComputationBoundaryViolationCount": 0
+      },
+      "safety": {
+        "inert": true,
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "designOnly": true,
+        "executesAgent": false,
+        "executesCommands": false,
+        "executesPackageScripts": false,
+        "requiresNetwork": false,
+        "mutatesRepository": false,
+        "touchesRealSecrets": false,
+        "usesRealRepo": false,
+        "containsPrivateData": false,
+        "containsExecutableAction": false,
+        "changesRuntimeBehavior": false,
+        "createsCalibrationDataset": false,
+        "createsCalibrationManifest": false,
+        "createsSplitManifest": false,
+        "assignsDatasetSplits": false,
+        "appliesCalibration": false,
+        "computesNumericLosses": false,
+        "computesRiskScores": false,
+        "computesNonconformityScores": false,
+        "computesThresholds": false,
+        "introducesAlpha": false,
+        "implementsConformalRiskControl": false
+      },
+      "privacy": {
+        "rawPromptIncluded": false,
+        "rawActionIncluded": false,
+        "rawCommandIncluded": false,
+        "rawDiffIncluded": false,
+        "rawSourceCodeIncluded": false,
+        "rawValidationLogIncluded": false,
+        "rawReviewIncluded": false,
+        "rawTraceIncluded": false,
+        "rawBaselineIncluded": false,
+        "rawCalibrationDataIncluded": false,
+        "rawManifestDataIncluded": false,
+        "rawAdjudicationDataIncluded": false,
+        "rawSplitDataIncluded": false,
+        "rawScoreDataIncluded": false,
+        "realRepoNameIncluded": false,
+        "realPathIncluded": false,
+        "realUserIncluded": false,
+        "realEmailIncluded": false,
+        "secretIncluded": false,
+        "rawAgentOutputIncluded": false,
+        "reviewerIdentityIncluded": false,
+        "categoryOnly": true
+      },
+      "claimBoundaries": {
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "designOnly": true,
+        "realCalibrationDataset": false,
+        "realCalibrationRecord": false,
+        "realReviewedTrace": false,
+        "realAgentExecution": false,
+        "realStepHarborExecution": false,
+        "realValidationResult": false,
+        "realWorldResult": false,
+        "calibrationDatasetCreated": false,
+        "calibrationApplied": false,
+        "datasetSplitsAssigned": false,
+        "splitManifestCreated": false,
+        "numericLossesComputed": false,
+        "riskScoresComputed": false,
+        "nonconformityScoresComputed": false,
+        "thresholdsComputed": false,
+        "alphaIntroduced": false,
+        "conformalRiskControlImplemented": false,
+        "conformalGuarantee": false,
+        "statisticalGuarantee": false,
+        "productionRoutingChanged": false,
+        "publicDisclosureApproved": false,
+        "legalConclusion": false
+      },
+      "notes": [
+        "mock_defer_score_input",
+        "no_real_scores",
+        "no_thresholds",
+        "no_alpha"
+      ]
+    },
+    {
+      "schemaVersion": "agent-offline-score-input.v1",
+      "scoreInputId": "offline-score-input-synthetic-escalate-001",
+      "source": "synthetic_mock_score_input",
+      "phase": {
+        "phaseId": "phase-14",
+        "phaseName": "Offline Conformal / CRC Prototype",
+        "completedPreviousPhase": "phase-13-complete-readiness-infrastructure-only",
+        "completedBatches": ["14.1"],
+        "currentBatch": "14.2",
+        "futureBatches": ["14.3", "14.4", "14.5", "14.6"],
+        "phaseStatus": "offline_score_schema_and_mock_inputs_without_calibration_or_guarantees"
+      },
+      "linkedRiskLossDesign": {
+        "designId": "phase-14-offline-risk-loss-design-v1",
+        "schemaVersion": "agent-offline-risk-loss-design.v1",
+        "source": "synthetic_design_only",
+        "linkedLossFamilies": [
+          "missed_escalation_loss",
+          "missed_block_loss",
+          "incorrect_block_loss"
+        ],
+        "linkedRiskDimensions": [
+          "sensitive_area_risk",
+          "git_workflow_risk",
+          "environment_ambiguity_risk"
+        ],
+        "rawDesignIncluded": false
+      },
+      "sourceArtifact": {
+        "artifactKind": "synthetic_mock_composite",
+        "calibrationRecordId": "calibration-synthetic-sensitive-auth-escalate-001",
+        "manifestId": "calibration-synthetic-manifest-001",
+        "labelCompletenessReportId": "calibration-label-completeness-synthetic-report-001",
+        "splitPlanningReportId": "calibration-split-planning-synthetic-report-001",
+        "readinessSummaryId": "phase-13-calibration-readiness-summary-001",
+        "rawArtifactIncluded": false
+      },
+      "candidateScoreFamilies": [
+        {
+          "scoreFamilyId": "sensitivity_score_input",
+          "relatedRiskDimension": "sensitive_area_risk",
+          "relatedLossFamilies": [
+            "missed_escalation_loss",
+            "missed_block_loss"
+          ],
+          "requiredFeatureInputs": [
+            "action_category_signal",
+            "uncertainty_dimension_signal",
+            "safety_boundary_signal"
+          ],
+          "requiredLabelInputs": [
+            "decision_appropriateness_label",
+            "escalation_quality_label",
+            "safety_outcome_label"
+          ],
+          "futureScoreDefinitionNeeded": true,
+          "mockInputsProvided": true,
+          "realScoreComputed": false,
+          "nonconformityScoreComputed": false
+        },
+        {
+          "scoreFamilyId": "git_workflow_score_input",
+          "relatedRiskDimension": "git_workflow_risk",
+          "relatedLossFamilies": [
+            "missed_escalation_loss",
+            "incorrect_block_loss"
+          ],
+          "requiredFeatureInputs": [
+            "driver_category_signal",
+            "uncertainty_dimension_signal"
+          ],
+          "requiredLabelInputs": [
+            "escalation_quality_label",
+            "decision_appropriateness_label"
+          ],
+          "futureScoreDefinitionNeeded": true,
+          "mockInputsProvided": true,
+          "realScoreComputed": false,
+          "nonconformityScoreComputed": false
+        },
+        {
+          "scoreFamilyId": "environment_ambiguity_score_input",
+          "relatedRiskDimension": "environment_ambiguity_risk",
+          "relatedLossFamilies": [
+            "missed_escalation_loss",
+            "missed_uncertainty_reduction_loss"
+          ],
+          "requiredFeatureInputs": [
+            "driver_category_signal",
+            "decision_category_signal"
+          ],
+          "requiredLabelInputs": [
+            "escalation_quality_label",
+            "advisory_usefulness_label"
+          ],
+          "futureScoreDefinitionNeeded": true,
+          "mockInputsProvided": true,
+          "realScoreComputed": false,
+          "nonconformityScoreComputed": false
+        }
+      ],
+      "mockFeatureInputs": [
+        {
+          "featureInputId": "escalate_action_category_signal",
+          "featureFamily": "action_category_signal",
+          "valueCategory": "sensitive_auth_action",
+          "sourceCategory": "synthetic_calibration_record",
+          "mockOnly": true,
+          "computedFromRealData": false
+        },
+        {
+          "featureInputId": "escalate_decision_category_signal",
+          "featureFamily": "decision_category_signal",
+          "valueCategory": "escalate_candidate",
+          "sourceCategory": "synthetic_calibration_record",
+          "mockOnly": true,
+          "computedFromRealData": false
+        },
+        {
+          "featureInputId": "escalate_driver_category_signal",
+          "featureFamily": "driver_category_signal",
+          "valueCategory": "sensitive_area",
+          "sourceCategory": "synthetic_uncertainty_label",
+          "mockOnly": true,
+          "computedFromRealData": false
+        },
+        {
+          "featureInputId": "escalate_safety_boundary_signal",
+          "featureFamily": "safety_boundary_signal",
+          "valueCategory": "safety_boundary_clear_for_mock",
+          "sourceCategory": "synthetic_boundary_flag",
+          "mockOnly": true,
+          "computedFromRealData": false
+        }
+      ],
+      "mockLabelInputs": [
+        {
+          "labelInputId": "escalate_decision_label",
+          "labelFamily": "decision_appropriateness_label",
+          "valueCategory": "synthetic_escalate_appropriate",
+          "sourceCategory": "synthetic_review_label",
+          "mockOnly": true,
+          "realHumanReviewed": false,
+          "adjudicated": false
+        },
+        {
+          "labelInputId": "escalation_quality_label",
+          "labelFamily": "escalation_quality_label",
+          "valueCategory": "synthetic_escalation_quality_complete",
+          "sourceCategory": "synthetic_review_label",
+          "mockOnly": true,
+          "realHumanReviewed": false,
+          "adjudicated": false
+        },
+        {
+          "labelInputId": "escalate_safety_outcome_label",
+          "labelFamily": "safety_outcome_label",
+          "valueCategory": "synthetic_safety_outcome_review_needed",
+          "sourceCategory": "synthetic_outcome_label",
+          "mockOnly": true,
+          "realHumanReviewed": false,
+          "adjudicated": false
+        }
+      ],
+      "mockNonconformityInput": {
+        "inputFamilies": ["decision_mismatch_input", "missed_escalation_input"],
+        "requiredScoreFamilies": [
+          "sensitivity_score_input",
+          "git_workflow_score_input",
+          "environment_ambiguity_score_input"
+        ],
+        "requiredLabelFamilies": [
+          "decision_appropriateness_label",
+          "escalation_quality_label",
+          "safety_outcome_label"
+        ],
+        "requiredFutureEvidence": [
+          "real_reviewed_traces_required",
+          "adjudicated_labels_required",
+          "eligible_calibration_dataset_required",
+          "approved_split_required",
+          "numeric_score_definition_required",
+          "nonconformity_definition_required",
+          "threshold_protocol_required",
+          "calibration_procedure_required",
+          "claim_boundary_review_required"
+        ],
+        "mockInputReadyForSchemaTesting": true,
+        "readyForRealNonconformityScoring": false,
+        "nonconformityScoreComputed": false,
+        "riskScoreComputed": false,
+        "thresholdComputed": false,
+        "alphaIntroduced": false
+      },
+      "futureScoringRequirements": {
+        "requirements": [
+          {
+            "requirementId": "real_reviewed_traces_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "adjudicated_labels_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "eligible_calibration_dataset_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "approved_split_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "numeric_score_definition_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "nonconformity_definition_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "threshold_protocol_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "calibration_procedure_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "claim_boundary_review_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          }
+        ],
+        "allRequirementsFutureOrUnmet": true
+      },
+      "boundarySummary": {
+        "safetyBoundaryViolationCount": 0,
+        "privacyBoundaryViolationCount": 0,
+        "claimBoundaryViolationCount": 0,
+        "rawDataBoundaryViolationCount": 0,
+        "calibrationBoundaryViolationCount": 0,
+        "scoringBoundaryViolationCount": 0,
+        "conformalBoundaryViolationCount": 0,
+        "runtimeBoundaryViolationCount": 0,
+        "numericComputationBoundaryViolationCount": 0
+      },
+      "safety": {
+        "inert": true,
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "designOnly": true,
+        "executesAgent": false,
+        "executesCommands": false,
+        "executesPackageScripts": false,
+        "requiresNetwork": false,
+        "mutatesRepository": false,
+        "touchesRealSecrets": false,
+        "usesRealRepo": false,
+        "containsPrivateData": false,
+        "containsExecutableAction": false,
+        "changesRuntimeBehavior": false,
+        "createsCalibrationDataset": false,
+        "createsCalibrationManifest": false,
+        "createsSplitManifest": false,
+        "assignsDatasetSplits": false,
+        "appliesCalibration": false,
+        "computesNumericLosses": false,
+        "computesRiskScores": false,
+        "computesNonconformityScores": false,
+        "computesThresholds": false,
+        "introducesAlpha": false,
+        "implementsConformalRiskControl": false
+      },
+      "privacy": {
+        "rawPromptIncluded": false,
+        "rawActionIncluded": false,
+        "rawCommandIncluded": false,
+        "rawDiffIncluded": false,
+        "rawSourceCodeIncluded": false,
+        "rawValidationLogIncluded": false,
+        "rawReviewIncluded": false,
+        "rawTraceIncluded": false,
+        "rawBaselineIncluded": false,
+        "rawCalibrationDataIncluded": false,
+        "rawManifestDataIncluded": false,
+        "rawAdjudicationDataIncluded": false,
+        "rawSplitDataIncluded": false,
+        "rawScoreDataIncluded": false,
+        "realRepoNameIncluded": false,
+        "realPathIncluded": false,
+        "realUserIncluded": false,
+        "realEmailIncluded": false,
+        "secretIncluded": false,
+        "rawAgentOutputIncluded": false,
+        "reviewerIdentityIncluded": false,
+        "categoryOnly": true
+      },
+      "claimBoundaries": {
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "designOnly": true,
+        "realCalibrationDataset": false,
+        "realCalibrationRecord": false,
+        "realReviewedTrace": false,
+        "realAgentExecution": false,
+        "realStepHarborExecution": false,
+        "realValidationResult": false,
+        "realWorldResult": false,
+        "calibrationDatasetCreated": false,
+        "calibrationApplied": false,
+        "datasetSplitsAssigned": false,
+        "splitManifestCreated": false,
+        "numericLossesComputed": false,
+        "riskScoresComputed": false,
+        "nonconformityScoresComputed": false,
+        "thresholdsComputed": false,
+        "alphaIntroduced": false,
+        "conformalRiskControlImplemented": false,
+        "conformalGuarantee": false,
+        "statisticalGuarantee": false,
+        "productionRoutingChanged": false,
+        "publicDisclosureApproved": false,
+        "legalConclusion": false
+      },
+      "notes": [
+        "mock_escalate_score_input",
+        "no_real_scores",
+        "no_thresholds",
+        "no_alpha"
+      ]
+    },
+    {
+      "schemaVersion": "agent-offline-score-input.v1",
+      "scoreInputId": "offline-score-input-synthetic-recovery-001",
+      "source": "synthetic_mock_score_input",
+      "phase": {
+        "phaseId": "phase-14",
+        "phaseName": "Offline Conformal / CRC Prototype",
+        "completedPreviousPhase": "phase-13-complete-readiness-infrastructure-only",
+        "completedBatches": ["14.1"],
+        "currentBatch": "14.2",
+        "futureBatches": ["14.3", "14.4", "14.5", "14.6"],
+        "phaseStatus": "offline_score_schema_and_mock_inputs_without_calibration_or_guarantees"
+      },
+      "linkedRiskLossDesign": {
+        "designId": "phase-14-offline-risk-loss-design-v1",
+        "schemaVersion": "agent-offline-risk-loss-design.v1",
+        "source": "synthetic_design_only",
+        "linkedLossFamilies": [
+          "agent_recovery_failure_loss",
+          "missed_uncertainty_reduction_loss",
+          "unsafe_proceed_loss"
+        ],
+        "linkedRiskDimensions": [
+          "recovery_uncertainty_risk",
+          "autonomy_retry_risk"
+        ],
+        "rawDesignIncluded": false
+      },
+      "sourceArtifact": {
+        "artifactKind": "synthetic_mock_composite",
+        "calibrationRecordId": "calibration-synthetic-ambiguous-deploy-policy-miss-001",
+        "manifestId": "calibration-synthetic-manifest-001",
+        "labelCompletenessReportId": "calibration-label-completeness-synthetic-report-001",
+        "splitPlanningReportId": "calibration-split-planning-synthetic-report-001",
+        "readinessSummaryId": "phase-13-calibration-readiness-summary-001",
+        "rawArtifactIncluded": false
+      },
+      "candidateScoreFamilies": [
+        {
+          "scoreFamilyId": "recovery_uncertainty_score_input",
+          "relatedRiskDimension": "recovery_uncertainty_risk",
+          "relatedLossFamilies": [
+            "agent_recovery_failure_loss",
+            "missed_uncertainty_reduction_loss"
+          ],
+          "requiredFeatureInputs": [
+            "driver_category_signal",
+            "reduction_step_signal",
+            "label_readiness_signal"
+          ],
+          "requiredLabelInputs": [
+            "agent_recovery_label",
+            "task_progress_label",
+            "advisory_usefulness_label"
+          ],
+          "futureScoreDefinitionNeeded": true,
+          "mockInputsProvided": true,
+          "realScoreComputed": false,
+          "nonconformityScoreComputed": false
+        },
+        {
+          "scoreFamilyId": "autonomy_retry_score_input",
+          "relatedRiskDimension": "autonomy_retry_risk",
+          "relatedLossFamilies": [
+            "agent_recovery_failure_loss",
+            "unsafe_proceed_loss"
+          ],
+          "requiredFeatureInputs": [
+            "driver_category_signal",
+            "label_readiness_signal"
+          ],
+          "requiredLabelInputs": [
+            "agent_recovery_label",
+            "safety_outcome_label"
+          ],
+          "futureScoreDefinitionNeeded": true,
+          "mockInputsProvided": true,
+          "realScoreComputed": false,
+          "nonconformityScoreComputed": false
+        }
+      ],
+      "mockFeatureInputs": [
+        {
+          "featureInputId": "recovery_driver_category_signal",
+          "featureFamily": "driver_category_signal",
+          "valueCategory": "recovery_uncertainty",
+          "sourceCategory": "synthetic_uncertainty_label",
+          "mockOnly": true,
+          "computedFromRealData": false
+        },
+        {
+          "featureInputId": "recovery_reduction_step_signal",
+          "featureFamily": "reduction_step_signal",
+          "valueCategory": "future_review_needed",
+          "sourceCategory": "synthetic_label_completeness_record",
+          "mockOnly": true,
+          "computedFromRealData": false
+        },
+        {
+          "featureInputId": "recovery_label_readiness_signal",
+          "featureFamily": "label_readiness_signal",
+          "valueCategory": "needs_adjudication_future",
+          "sourceCategory": "synthetic_label_completeness_record",
+          "mockOnly": true,
+          "computedFromRealData": false
+        }
+      ],
+      "mockLabelInputs": [
+        {
+          "labelInputId": "recovery_agent_label",
+          "labelFamily": "agent_recovery_label",
+          "valueCategory": "synthetic_recovery_unclear",
+          "sourceCategory": "synthetic_agent_behavior_label",
+          "mockOnly": true,
+          "realHumanReviewed": false,
+          "adjudicated": false
+        },
+        {
+          "labelInputId": "recovery_task_progress_label",
+          "labelFamily": "task_progress_label",
+          "valueCategory": "synthetic_progress_unclear",
+          "sourceCategory": "synthetic_outcome_label",
+          "mockOnly": true,
+          "realHumanReviewed": false,
+          "adjudicated": false
+        }
+      ],
+      "mockNonconformityInput": {
+        "inputFamilies": [
+          "agent_recovery_failure_input",
+          "uncertainty_mismatch_input"
+        ],
+        "requiredScoreFamilies": [
+          "recovery_uncertainty_score_input",
+          "autonomy_retry_score_input"
+        ],
+        "requiredLabelFamilies": [
+          "agent_recovery_label",
+          "task_progress_label",
+          "advisory_usefulness_label"
+        ],
+        "requiredFutureEvidence": [
+          "real_reviewed_traces_required",
+          "adjudicated_labels_required",
+          "eligible_calibration_dataset_required",
+          "approved_split_required",
+          "numeric_score_definition_required",
+          "nonconformity_definition_required",
+          "threshold_protocol_required",
+          "calibration_procedure_required",
+          "claim_boundary_review_required"
+        ],
+        "mockInputReadyForSchemaTesting": true,
+        "readyForRealNonconformityScoring": false,
+        "nonconformityScoreComputed": false,
+        "riskScoreComputed": false,
+        "thresholdComputed": false,
+        "alphaIntroduced": false
+      },
+      "futureScoringRequirements": {
+        "requirements": [
+          {
+            "requirementId": "real_reviewed_traces_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "adjudicated_labels_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "eligible_calibration_dataset_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "approved_split_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "numeric_score_definition_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "nonconformity_definition_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "threshold_protocol_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "calibration_procedure_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "claim_boundary_review_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          }
+        ],
+        "allRequirementsFutureOrUnmet": true
+      },
+      "boundarySummary": {
+        "safetyBoundaryViolationCount": 0,
+        "privacyBoundaryViolationCount": 0,
+        "claimBoundaryViolationCount": 0,
+        "rawDataBoundaryViolationCount": 0,
+        "calibrationBoundaryViolationCount": 0,
+        "scoringBoundaryViolationCount": 0,
+        "conformalBoundaryViolationCount": 0,
+        "runtimeBoundaryViolationCount": 0,
+        "numericComputationBoundaryViolationCount": 0
+      },
+      "safety": {
+        "inert": true,
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "designOnly": true,
+        "executesAgent": false,
+        "executesCommands": false,
+        "executesPackageScripts": false,
+        "requiresNetwork": false,
+        "mutatesRepository": false,
+        "touchesRealSecrets": false,
+        "usesRealRepo": false,
+        "containsPrivateData": false,
+        "containsExecutableAction": false,
+        "changesRuntimeBehavior": false,
+        "createsCalibrationDataset": false,
+        "createsCalibrationManifest": false,
+        "createsSplitManifest": false,
+        "assignsDatasetSplits": false,
+        "appliesCalibration": false,
+        "computesNumericLosses": false,
+        "computesRiskScores": false,
+        "computesNonconformityScores": false,
+        "computesThresholds": false,
+        "introducesAlpha": false,
+        "implementsConformalRiskControl": false
+      },
+      "privacy": {
+        "rawPromptIncluded": false,
+        "rawActionIncluded": false,
+        "rawCommandIncluded": false,
+        "rawDiffIncluded": false,
+        "rawSourceCodeIncluded": false,
+        "rawValidationLogIncluded": false,
+        "rawReviewIncluded": false,
+        "rawTraceIncluded": false,
+        "rawBaselineIncluded": false,
+        "rawCalibrationDataIncluded": false,
+        "rawManifestDataIncluded": false,
+        "rawAdjudicationDataIncluded": false,
+        "rawSplitDataIncluded": false,
+        "rawScoreDataIncluded": false,
+        "realRepoNameIncluded": false,
+        "realPathIncluded": false,
+        "realUserIncluded": false,
+        "realEmailIncluded": false,
+        "secretIncluded": false,
+        "rawAgentOutputIncluded": false,
+        "reviewerIdentityIncluded": false,
+        "categoryOnly": true
+      },
+      "claimBoundaries": {
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "designOnly": true,
+        "realCalibrationDataset": false,
+        "realCalibrationRecord": false,
+        "realReviewedTrace": false,
+        "realAgentExecution": false,
+        "realStepHarborExecution": false,
+        "realValidationResult": false,
+        "realWorldResult": false,
+        "calibrationDatasetCreated": false,
+        "calibrationApplied": false,
+        "datasetSplitsAssigned": false,
+        "splitManifestCreated": false,
+        "numericLossesComputed": false,
+        "riskScoresComputed": false,
+        "nonconformityScoresComputed": false,
+        "thresholdsComputed": false,
+        "alphaIntroduced": false,
+        "conformalRiskControlImplemented": false,
+        "conformalGuarantee": false,
+        "statisticalGuarantee": false,
+        "productionRoutingChanged": false,
+        "publicDisclosureApproved": false,
+        "legalConclusion": false
+      },
+      "notes": [
+        "mock_recovery_score_input",
+        "no_real_scores",
+        "no_thresholds",
+        "no_alpha"
+      ]
+    },
+    {
+      "schemaVersion": "agent-offline-score-input.v1",
+      "scoreInputId": "offline-score-input-synthetic-friction-coverage-001",
+      "source": "synthetic_mock_score_input",
+      "phase": {
+        "phaseId": "phase-14",
+        "phaseName": "Offline Conformal / CRC Prototype",
+        "completedPreviousPhase": "phase-13-complete-readiness-infrastructure-only",
+        "completedBatches": ["14.1"],
+        "currentBatch": "14.2",
+        "futureBatches": ["14.3", "14.4", "14.5", "14.6"],
+        "phaseStatus": "offline_score_schema_and_mock_inputs_without_calibration_or_guarantees"
+      },
+      "linkedRiskLossDesign": {
+        "designId": "phase-14-offline-risk-loss-design-v1",
+        "schemaVersion": "agent-offline-risk-loss-design.v1",
+        "source": "synthetic_design_only",
+        "linkedLossFamilies": [
+          "excessive_friction_loss",
+          "coverage_gap_loss",
+          "incorrect_block_loss"
+        ],
+        "linkedRiskDimensions": ["friction_risk", "coverage_gap_risk"],
+        "rawDesignIncluded": false
+      },
+      "sourceArtifact": {
+        "artifactKind": "synthetic_mock_composite",
+        "calibrationRecordId": "calibration-synthetic-broad-refactor-coverage-gap-001",
+        "manifestId": "calibration-synthetic-manifest-001",
+        "labelCompletenessReportId": "calibration-label-completeness-synthetic-report-001",
+        "splitPlanningReportId": "calibration-split-planning-synthetic-report-001",
+        "readinessSummaryId": "phase-13-calibration-readiness-summary-001",
+        "rawArtifactIncluded": false
+      },
+      "candidateScoreFamilies": [
+        {
+          "scoreFamilyId": "friction_score_input",
+          "relatedRiskDimension": "friction_risk",
+          "relatedLossFamilies": [
+            "excessive_friction_loss",
+            "incorrect_block_loss"
+          ],
+          "requiredFeatureInputs": [
+            "friction_category_signal",
+            "decision_category_signal",
+            "label_readiness_signal"
+          ],
+          "requiredLabelInputs": [
+            "friction_label",
+            "decision_appropriateness_label",
+            "task_progress_label"
+          ],
+          "futureScoreDefinitionNeeded": true,
+          "mockInputsProvided": true,
+          "realScoreComputed": false,
+          "nonconformityScoreComputed": false
+        },
+        {
+          "scoreFamilyId": "coverage_gap_score_input",
+          "relatedRiskDimension": "coverage_gap_risk",
+          "relatedLossFamilies": ["coverage_gap_loss"],
+          "requiredFeatureInputs": [
+            "coverage_gap_signal",
+            "split_readiness_signal",
+            "leakage_risk_signal"
+          ],
+          "requiredLabelInputs": [
+            "coverage_gap_label",
+            "future_loss_candidate_label"
+          ],
+          "futureScoreDefinitionNeeded": true,
+          "mockInputsProvided": true,
+          "realScoreComputed": false,
+          "nonconformityScoreComputed": false
+        }
+      ],
+      "mockFeatureInputs": [
+        {
+          "featureInputId": "friction_category_signal",
+          "featureFamily": "friction_category_signal",
+          "valueCategory": "synthetic_friction_possible",
+          "sourceCategory": "synthetic_label_completeness_record",
+          "mockOnly": true,
+          "computedFromRealData": false
+        },
+        {
+          "featureInputId": "coverage_gap_signal",
+          "featureFamily": "coverage_gap_signal",
+          "valueCategory": "synthetic_coverage_gap_possible",
+          "sourceCategory": "synthetic_calibration_record",
+          "mockOnly": true,
+          "computedFromRealData": false
+        },
+        {
+          "featureInputId": "split_readiness_signal",
+          "featureFamily": "split_readiness_signal",
+          "valueCategory": "synthetic_example_only_not_real_data",
+          "sourceCategory": "synthetic_split_planning_record",
+          "mockOnly": true,
+          "computedFromRealData": false
+        }
+      ],
+      "mockLabelInputs": [
+        {
+          "labelInputId": "friction_label",
+          "labelFamily": "friction_label",
+          "valueCategory": "synthetic_friction_unmeasured",
+          "sourceCategory": "synthetic_friction_label",
+          "mockOnly": true,
+          "realHumanReviewed": false,
+          "adjudicated": false
+        },
+        {
+          "labelInputId": "coverage_gap_label",
+          "labelFamily": "coverage_gap_label",
+          "valueCategory": "synthetic_coverage_gap_candidate",
+          "sourceCategory": "synthetic_coverage_label",
+          "mockOnly": true,
+          "realHumanReviewed": false,
+          "adjudicated": false
+        },
+        {
+          "labelInputId": "future_loss_candidate_label",
+          "labelFamily": "future_loss_candidate_label",
+          "valueCategory": "synthetic_future_loss_candidate",
+          "sourceCategory": "synthetic_loss_candidate_label",
+          "mockOnly": true,
+          "realHumanReviewed": false,
+          "adjudicated": false
+        }
+      ],
+      "mockNonconformityInput": {
+        "inputFamilies": ["excessive_friction_input", "coverage_gap_input"],
+        "requiredScoreFamilies": [
+          "friction_score_input",
+          "coverage_gap_score_input"
+        ],
+        "requiredLabelFamilies": [
+          "friction_label",
+          "coverage_gap_label",
+          "future_loss_candidate_label"
+        ],
+        "requiredFutureEvidence": [
+          "real_reviewed_traces_required",
+          "adjudicated_labels_required",
+          "eligible_calibration_dataset_required",
+          "approved_split_required",
+          "numeric_score_definition_required",
+          "nonconformity_definition_required",
+          "threshold_protocol_required",
+          "calibration_procedure_required",
+          "claim_boundary_review_required"
+        ],
+        "mockInputReadyForSchemaTesting": true,
+        "readyForRealNonconformityScoring": false,
+        "nonconformityScoreComputed": false,
+        "riskScoreComputed": false,
+        "thresholdComputed": false,
+        "alphaIntroduced": false
+      },
+      "futureScoringRequirements": {
+        "requirements": [
+          {
+            "requirementId": "real_reviewed_traces_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "adjudicated_labels_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "eligible_calibration_dataset_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "approved_split_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "numeric_score_definition_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "nonconformity_definition_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "threshold_protocol_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "calibration_procedure_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          },
+          {
+            "requirementId": "claim_boundary_review_required",
+            "status": "future_unmet",
+            "requiredBeforeRealScoring": true
+          }
+        ],
+        "allRequirementsFutureOrUnmet": true
+      },
+      "boundarySummary": {
+        "safetyBoundaryViolationCount": 0,
+        "privacyBoundaryViolationCount": 0,
+        "claimBoundaryViolationCount": 0,
+        "rawDataBoundaryViolationCount": 0,
+        "calibrationBoundaryViolationCount": 0,
+        "scoringBoundaryViolationCount": 0,
+        "conformalBoundaryViolationCount": 0,
+        "runtimeBoundaryViolationCount": 0,
+        "numericComputationBoundaryViolationCount": 0
+      },
+      "safety": {
+        "inert": true,
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "designOnly": true,
+        "executesAgent": false,
+        "executesCommands": false,
+        "executesPackageScripts": false,
+        "requiresNetwork": false,
+        "mutatesRepository": false,
+        "touchesRealSecrets": false,
+        "usesRealRepo": false,
+        "containsPrivateData": false,
+        "containsExecutableAction": false,
+        "changesRuntimeBehavior": false,
+        "createsCalibrationDataset": false,
+        "createsCalibrationManifest": false,
+        "createsSplitManifest": false,
+        "assignsDatasetSplits": false,
+        "appliesCalibration": false,
+        "computesNumericLosses": false,
+        "computesRiskScores": false,
+        "computesNonconformityScores": false,
+        "computesThresholds": false,
+        "introducesAlpha": false,
+        "implementsConformalRiskControl": false
+      },
+      "privacy": {
+        "rawPromptIncluded": false,
+        "rawActionIncluded": false,
+        "rawCommandIncluded": false,
+        "rawDiffIncluded": false,
+        "rawSourceCodeIncluded": false,
+        "rawValidationLogIncluded": false,
+        "rawReviewIncluded": false,
+        "rawTraceIncluded": false,
+        "rawBaselineIncluded": false,
+        "rawCalibrationDataIncluded": false,
+        "rawManifestDataIncluded": false,
+        "rawAdjudicationDataIncluded": false,
+        "rawSplitDataIncluded": false,
+        "rawScoreDataIncluded": false,
+        "realRepoNameIncluded": false,
+        "realPathIncluded": false,
+        "realUserIncluded": false,
+        "realEmailIncluded": false,
+        "secretIncluded": false,
+        "rawAgentOutputIncluded": false,
+        "reviewerIdentityIncluded": false,
+        "categoryOnly": true
+      },
+      "claimBoundaries": {
+        "syntheticOnly": true,
+        "mockOnly": true,
+        "designOnly": true,
+        "realCalibrationDataset": false,
+        "realCalibrationRecord": false,
+        "realReviewedTrace": false,
+        "realAgentExecution": false,
+        "realStepHarborExecution": false,
+        "realValidationResult": false,
+        "realWorldResult": false,
+        "calibrationDatasetCreated": false,
+        "calibrationApplied": false,
+        "datasetSplitsAssigned": false,
+        "splitManifestCreated": false,
+        "numericLossesComputed": false,
+        "riskScoresComputed": false,
+        "nonconformityScoresComputed": false,
+        "thresholdsComputed": false,
+        "alphaIntroduced": false,
+        "conformalRiskControlImplemented": false,
+        "conformalGuarantee": false,
+        "statisticalGuarantee": false,
+        "productionRoutingChanged": false,
+        "publicDisclosureApproved": false,
+        "legalConclusion": false
+      },
+      "notes": [
+        "mock_friction_coverage_score_input",
+        "no_real_scores",
+        "no_thresholds",
+        "no_alpha"
+      ]
+    }
+  ],
+  "scoreFamilyCoverage": {
+    "requiredScoreFamilyCount": 13,
+    "coveredScoreFamilyCount": 13,
+    "missingScoreFamilyCount": 0,
+    "scoreComputedCount": 0,
+    "nonconformityScoreComputedCount": 0,
+    "thresholdComputedCount": 0
+  },
+  "mockInputSummary": {
+    "totalScoreInputs": 5,
+    "mockFeatureInputCount": 18,
+    "mockLabelInputCount": 14,
+    "realScoreComputedCount": 0,
+    "realNonconformityScoreComputedCount": 0,
+    "realThresholdComputedCount": 0,
+    "alphaIntroducedCount": 0
+  },
+  "boundarySummary": {
+    "safetyBoundaryViolationCount": 0,
+    "privacyBoundaryViolationCount": 0,
+    "claimBoundaryViolationCount": 0,
+    "rawDataBoundaryViolationCount": 0,
+    "calibrationBoundaryViolationCount": 0,
+    "scoringBoundaryViolationCount": 0,
+    "conformalBoundaryViolationCount": 0,
+    "runtimeBoundaryViolationCount": 0,
+    "numericComputationBoundaryViolationCount": 0
+  },
+  "safety": {
+    "inert": true,
+    "syntheticOnly": true,
+    "mockOnly": true,
+    "designOnly": true,
+    "executesAgent": false,
+    "executesCommands": false,
+    "executesPackageScripts": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false,
+    "touchesRealSecrets": false,
+    "usesRealRepo": false,
+    "containsPrivateData": false,
+    "containsExecutableAction": false,
+    "changesRuntimeBehavior": false,
+    "createsCalibrationDataset": false,
+    "createsCalibrationManifest": false,
+    "createsSplitManifest": false,
+    "assignsDatasetSplits": false,
+    "appliesCalibration": false,
+    "computesNumericLosses": false,
+    "computesRiskScores": false,
+    "computesNonconformityScores": false,
+    "computesThresholds": false,
+    "introducesAlpha": false,
+    "implementsConformalRiskControl": false
+  },
+  "privacy": {
+    "rawPromptIncluded": false,
+    "rawActionIncluded": false,
+    "rawCommandIncluded": false,
+    "rawDiffIncluded": false,
+    "rawSourceCodeIncluded": false,
+    "rawValidationLogIncluded": false,
+    "rawReviewIncluded": false,
+    "rawTraceIncluded": false,
+    "rawBaselineIncluded": false,
+    "rawCalibrationDataIncluded": false,
+    "rawManifestDataIncluded": false,
+    "rawAdjudicationDataIncluded": false,
+    "rawSplitDataIncluded": false,
+    "rawScoreDataIncluded": false,
+    "realRepoNameIncluded": false,
+    "realPathIncluded": false,
+    "realUserIncluded": false,
+    "realEmailIncluded": false,
+    "secretIncluded": false,
+    "rawAgentOutputIncluded": false,
+    "reviewerIdentityIncluded": false,
+    "categoryOnly": true
+  },
+  "claimBoundaries": {
+    "syntheticOnly": true,
+    "mockOnly": true,
+    "designOnly": true,
+    "realCalibrationDataset": false,
+    "realCalibrationRecord": false,
+    "realReviewedTrace": false,
+    "realAgentExecution": false,
+    "realStepHarborExecution": false,
+    "realValidationResult": false,
+    "realWorldResult": false,
+    "calibrationDatasetCreated": false,
+    "calibrationApplied": false,
+    "datasetSplitsAssigned": false,
+    "splitManifestCreated": false,
+    "numericLossesComputed": false,
+    "riskScoresComputed": false,
+    "nonconformityScoresComputed": false,
+    "thresholdsComputed": false,
+    "alphaIntroduced": false,
+    "conformalRiskControlImplemented": false,
+    "conformalGuarantee": false,
+    "statisticalGuarantee": false,
+    "productionRoutingChanged": false,
+    "publicDisclosureApproved": false,
+    "legalConclusion": false
+  },
+  "notes": [
+    "synthetic_mock_score_input_set",
+    "not_calibration_data",
+    "no_scores",
+    "no_nonconformity_scores",
+    "no_thresholds",
+    "no_alpha"
+  ]
+}

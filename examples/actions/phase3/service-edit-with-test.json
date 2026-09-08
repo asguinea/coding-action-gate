@@ -1,0 +1,16 @@
+{
+  "id": "phase3-service-edit-with-test",
+  "type": "edit_file",
+  "timestamp": "2026-05-02T10:03:00.000Z",
+  "proposedBy": "agent",
+  "targetPath": "src/service.ts",
+  "diff": "@@\n-export const service = (): number => 1;\n+export const service = (): number => 2;\n",
+  "diffStats": {
+    "files": 1,
+    "addedLines": 1,
+    "deletedLines": 1
+  },
+  "raw": {
+    "source": "phase3-example"
+  }
+}

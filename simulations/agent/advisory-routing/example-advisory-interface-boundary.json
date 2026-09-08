@@ -1,0 +1,278 @@
+{
+  "schemaVersion": "agent-advisory-interface-boundary.v1",
+  "interfaceBoundaryId": "phase-15-advisory-interface-boundary-001",
+  "source": "synthetic_advisory_interface_boundary",
+  "phase": {
+    "phaseId": "phase-15",
+    "phaseName": "Advisory Calibrated Routing Design",
+    "completedPreviousPhase": "phase-14-complete-offline-synthetic-mock-groundwork-only",
+    "completedBatches": ["15.1", "15.2", "15.3"],
+    "currentBatch": "15.4",
+    "futureBatches": ["15.5"],
+    "phaseStatus": "advisory_interface_boundary_design_without_ui_api_cli_implementation"
+  },
+  "linkedAdvisoryArtifacts": {
+    "sidecarIds": [
+      "advisory-sidecar-hard-stop-001",
+      "advisory-sidecar-human-review-001",
+      "advisory-sidecar-lower-friction-001",
+      "advisory-sidecar-more-context-001",
+      "advisory-sidecar-synthetic-defer-001"
+    ],
+    "sidecarSchemaVersion": "agent-advisory-routing-sidecar.v1",
+    "mockRoutingOutputIds": [
+      "mock-advisory-routing-context-001",
+      "mock-advisory-routing-defer-001",
+      "mock-advisory-routing-hard-stop-001",
+      "mock-advisory-routing-human-review-001",
+      "mock-advisory-routing-lower-friction-001"
+    ],
+    "mockRoutingSchemaVersion": "agent-mock-advisory-routing-output.v1",
+    "sideBySideComparisonReportId": "phase-15-side-by-side-comparison-001",
+    "sideBySideComparisonSchemaVersion": "agent-advisory-side-by-side-comparison-report.v1",
+    "phase14ReadinessSummaryId": "phase-14-offline-readiness-summary-001",
+    "rawArtifactsIncluded": false
+  },
+  "interfaceScope": {
+    "scopeKind": "boundary_design_only",
+    "currentSurfaceStatus": "no_ui_api_cli_surface_implemented",
+    "uiImplemented": false,
+    "apiImplemented": false,
+    "cliImplemented": false,
+    "runtimeIntegrated": false,
+    "productionEnabled": false
+  },
+  "futureUiBoundary": {
+    "futurePanelCategories": [
+      "advisory_sidecar_panel",
+      "advisory_comparison_panel",
+      "advisory_evidence_requirements_panel",
+      "advisory_authority_boundary_panel",
+      "advisory_readiness_panel"
+    ],
+    "futureDisplayModes": [
+      "read_only_advisory_metadata",
+      "side_by_side_decision_comparison",
+      "boundary_warning_display",
+      "future_requirements_display"
+    ],
+    "allowedFutureDisplayedArtifacts": [
+      "advisory_sidecar_summary",
+      "side_by_side_comparison_summary",
+      "authority_boundary_summary",
+      "future_evidence_requirements_summary",
+      "phase_14_readiness_reference"
+    ],
+    "prohibitedFutureDisplayedContent": [
+      "raw_prompt",
+      "raw_agent_output",
+      "raw_command",
+      "raw_diff",
+      "raw_source_code",
+      "raw_trace",
+      "raw_review_text",
+      "raw_score_data",
+      "raw_threshold_data",
+      "raw_private_data"
+    ],
+    "uiImplemented": false,
+    "dashboardPanelAdded": false,
+    "mayChangeDecisionFromUi": false
+  },
+  "futureApiBoundary": {
+    "futureEndpointCategories": [
+      "advisory_sidecar_read_endpoint",
+      "advisory_comparison_read_endpoint",
+      "advisory_readiness_read_endpoint",
+      "advisory_boundary_read_endpoint"
+    ],
+    "futureResponseShapes": [
+      "read_only_advisory_sidecar_response",
+      "read_only_comparison_summary_response",
+      "read_only_boundary_summary_response",
+      "read_only_future_requirements_response"
+    ],
+    "allowedFutureResponseArtifacts": [
+      "advisory_sidecar_summary",
+      "mock_advisory_summary",
+      "side_by_side_comparison_summary",
+      "authority_boundary_summary",
+      "future_evidence_requirements_summary"
+    ],
+    "prohibitedFutureResponseContent": [
+      "raw_prompt",
+      "raw_agent_output",
+      "raw_command",
+      "raw_diff",
+      "raw_source_code",
+      "raw_trace",
+      "raw_review_text",
+      "raw_score_data",
+      "raw_threshold_data",
+      "raw_private_data"
+    ],
+    "apiImplemented": false,
+    "endpointAdded": false,
+    "mayChangeDecisionFromApi": false
+  },
+  "futureCliBoundary": {
+    "futureCommandCategories": [
+      "advisory_show",
+      "advisory_compare",
+      "advisory_readiness",
+      "advisory_boundary"
+    ],
+    "futureOutputShapes": [
+      "read_only_advisory_summary",
+      "read_only_side_by_side_summary",
+      "read_only_boundary_summary",
+      "read_only_future_requirements_summary"
+    ],
+    "allowedFutureOutputArtifacts": [
+      "advisory_sidecar_summary",
+      "mock_advisory_summary",
+      "side_by_side_comparison_summary",
+      "authority_boundary_summary",
+      "future_evidence_requirements_summary"
+    ],
+    "prohibitedFutureOutputContent": [
+      "raw_prompt",
+      "raw_agent_output",
+      "raw_command",
+      "raw_diff",
+      "raw_source_code",
+      "raw_trace",
+      "raw_review_text",
+      "raw_score_data",
+      "raw_threshold_data",
+      "raw_private_data"
+    ],
+    "cliImplemented": false,
+    "commandAdded": false,
+    "mayChangeDecisionFromCli": false
+  },
+  "displayAuthorityBoundary": {
+    "deterministicDecisionAuthoritative": true,
+    "advisoryDisplayNonAuthoritative": true,
+    "displayCanOverrideDecision": false,
+    "displayCanTriggerRuntimeAction": false,
+    "displayCanChangeRouting": false,
+    "requiresFutureExplicitIntegration": true,
+    "requiresHumanApprovalBeforeImplementation": true
+  },
+  "privacyRedactionBoundary": {
+    "categoryOnlyByDefault": true,
+    "rawPromptsProhibited": true,
+    "rawAgentOutputsProhibited": true,
+    "rawCommandsProhibited": true,
+    "rawDiffsProhibited": true,
+    "rawSourceCodeProhibited": true,
+    "rawTracesProhibited": true,
+    "rawReviewsProhibited": true,
+    "rawScoresProhibited": true,
+    "rawThresholdsProhibited": true,
+    "privateDataProhibited": true,
+    "futureRedactionRequiredBeforeAnySurface": true
+  },
+  "futureImplementationRequirements": {
+    "requiredCategories": [
+      "explicit_scope_required",
+      "product_design_review_required",
+      "privacy_review_required",
+      "security_review_required",
+      "claim_boundary_review_required",
+      "read_only_surface_required",
+      "no_runtime_authority_required",
+      "redaction_tests_required",
+      "operator_documentation_required",
+      "human_approval_required"
+    ],
+    "requirementStatus": "future_unmet",
+    "allRequirementsFuture": true
+  },
+  "safety": {
+    "inert": true,
+    "syntheticOnly": true,
+    "designOnly": true,
+    "advisoryOnly": true,
+    "interfaceDesignOnly": true,
+    "executesAgent": false,
+    "executesCommands": false,
+    "executesPackageScripts": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false,
+    "touchesRealSecrets": false,
+    "usesRealRepo": false,
+    "containsPrivateData": false,
+    "containsExecutableAction": false,
+    "changesRuntimeBehavior": false,
+    "implementsUiSurface": false,
+    "implementsApiSurface": false,
+    "implementsCliSurface": false,
+    "implementsAdvisoryRouting": false,
+    "implementsCalibratedRouting": false,
+    "implementsProductionRouting": false,
+    "appliesCalibration": false,
+    "computesScores": false,
+    "computesThresholds": false,
+    "introducesAlpha": false,
+    "implementsConformalRiskControl": false
+  },
+  "privacy": {
+    "rawPromptIncluded": false,
+    "rawActionIncluded": false,
+    "rawCommandIncluded": false,
+    "rawDiffIncluded": false,
+    "rawSourceCodeIncluded": false,
+    "rawValidationLogIncluded": false,
+    "rawReviewIncluded": false,
+    "rawTraceIncluded": false,
+    "rawBaselineIncluded": false,
+    "rawCalibrationDataIncluded": false,
+    "rawScoreDataIncluded": false,
+    "rawThresholdDataIncluded": false,
+    "rawEvaluationDataIncluded": false,
+    "rawRoutingDataIncluded": false,
+    "rawComparisonDataIncluded": false,
+    "rawInterfaceDataIncluded": false,
+    "realRepoNameIncluded": false,
+    "realPathIncluded": false,
+    "realUserIncluded": false,
+    "realEmailIncluded": false,
+    "secretIncluded": false,
+    "rawAgentOutputIncluded": false,
+    "reviewerIdentityIncluded": false,
+    "categoryOnly": true
+  },
+  "claimBoundaries": {
+    "syntheticOnly": true,
+    "designOnly": true,
+    "advisoryOnly": true,
+    "interfaceImplemented": false,
+    "uiSurfaceImplemented": false,
+    "apiSurfaceImplemented": false,
+    "cliSurfaceImplemented": false,
+    "advisoryRoutingImplemented": false,
+    "calibratedRoutingImplemented": false,
+    "productionRoutingChanged": false,
+    "realCalibrationDataset": false,
+    "realReviewedTrace": false,
+    "realScores": false,
+    "nonconformityScores": false,
+    "thresholds": false,
+    "alphaIntroduced": false,
+    "calibrationApplied": false,
+    "conformalRiskControlImplemented": false,
+    "conformalGuarantee": false,
+    "statisticalGuarantee": false,
+    "realEvaluationResults": false,
+    "publicDisclosureApproved": false,
+    "legalConclusion": false
+  },
+  "notes": [
+    "interface_boundary_design_only",
+    "no_ui_api_cli_surface",
+    "deterministic_decisions_authoritative",
+    "category_only_future_display_contract"
+  ]
+}

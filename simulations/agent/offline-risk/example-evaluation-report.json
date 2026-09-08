@@ -1,0 +1,511 @@
+{
+  "schemaVersion": "agent-offline-evaluation-report.v1",
+  "evaluationReportId": "offline-evaluation-report-schema-synthetic-v1",
+  "source": "synthetic_mock_evaluation_report_schema",
+  "phase": {
+    "phaseId": "phase-14",
+    "phaseName": "Offline Conformal / CRC Prototype",
+    "completedPreviousPhase": "phase-13-complete-readiness-infrastructure-only",
+    "completedBatches": ["14.1", "14.2", "14.3", "14.4"],
+    "currentBatch": "14.5",
+    "futureBatches": ["14.6"],
+    "phaseStatus": "offline_evaluation_report_schema_without_real_results_or_guarantees"
+  },
+  "linkedRiskLossDesign": {
+    "designId": "phase-14-offline-risk-loss-design-v1",
+    "schemaVersion": "agent-offline-risk-loss-design.v1",
+    "source": "synthetic_design_only",
+    "rawDesignIncluded": false
+  },
+  "linkedScoreInputSet": {
+    "inputSetId": "offline-score-input-set-synthetic-v1",
+    "schemaVersion": "agent-offline-score-input-set.v1",
+    "source": "synthetic_mock_score_input",
+    "rawScoreInputsIncluded": false
+  },
+  "linkedSplitSimulation": {
+    "simulationId": "offline-split-simulation-synthetic-v1",
+    "schemaVersion": "agent-offline-split-simulation.v1",
+    "source": "synthetic_mock_split_simulation",
+    "rawSplitSimulationIncluded": false
+  },
+  "linkedThresholdSelection": {
+    "thresholdSelectionId": "offline-threshold-selection-synthetic-v1",
+    "schemaVersion": "agent-offline-threshold-selection.v1",
+    "source": "synthetic_mock_threshold_selection",
+    "rawThresholdSelectionIncluded": false
+  },
+  "reportScope": {
+    "scopeKind": "schema_only",
+    "intendedFutureUse": "future_offline_evaluation_reporting",
+    "currentUse": "schema_template_only",
+    "includesRealResults": false,
+    "includesMockResultsOnly": true,
+    "empiricalEvaluationPerformed": false,
+    "conformalEvaluationPerformed": false,
+    "productionRoutingEvaluationPerformed": false
+  },
+  "resultAvailability": {
+    "realEvaluationResultsAvailable": false,
+    "realCalibrationResultsAvailable": false,
+    "realConformalResultsAvailable": false,
+    "realCrcResultsAvailable": false,
+    "realBaselineResultsAvailable": false,
+    "realAgentResultsAvailable": false,
+    "realProductionRoutingResultsAvailable": false,
+    "mockPlaceholderSectionsAvailable": true
+  },
+  "placeholderResultSections": [
+    {
+      "sectionId": "offline-evaluation-section-dataset_summary-001",
+      "sectionCategory": "future_dataset_summary",
+      "currentStatus": "placeholder_only",
+      "containsRealResults": false,
+      "containsMockValuesOnly": false,
+      "futureEvidenceRequired": [
+        "real_calibration_dataset_required",
+        "empirical_evaluation_required",
+        "claim_boundary_review_required"
+      ],
+      "claimBoundary": "future_results_only"
+    },
+    {
+      "sectionId": "offline-evaluation-section-split_summary-001",
+      "sectionCategory": "future_split_summary",
+      "currentStatus": "placeholder_only",
+      "containsRealResults": false,
+      "containsMockValuesOnly": false,
+      "futureEvidenceRequired": [
+        "real_calibration_dataset_required",
+        "empirical_evaluation_required",
+        "claim_boundary_review_required"
+      ],
+      "claimBoundary": "future_results_only"
+    },
+    {
+      "sectionId": "offline-evaluation-section-score_distribution_summary-001",
+      "sectionCategory": "future_score_distribution_summary",
+      "currentStatus": "placeholder_only",
+      "containsRealResults": false,
+      "containsMockValuesOnly": false,
+      "futureEvidenceRequired": [
+        "real_calibration_dataset_required",
+        "empirical_evaluation_required",
+        "claim_boundary_review_required"
+      ],
+      "claimBoundary": "future_results_only"
+    },
+    {
+      "sectionId": "offline-evaluation-section-threshold_selection_summary-001",
+      "sectionCategory": "future_threshold_selection_summary",
+      "currentStatus": "placeholder_only",
+      "containsRealResults": false,
+      "containsMockValuesOnly": false,
+      "futureEvidenceRequired": [
+        "real_calibration_dataset_required",
+        "empirical_evaluation_required",
+        "claim_boundary_review_required"
+      ],
+      "claimBoundary": "future_results_only"
+    },
+    {
+      "sectionId": "offline-evaluation-section-risk_loss_summary-001",
+      "sectionCategory": "future_risk_loss_summary",
+      "currentStatus": "placeholder_only",
+      "containsRealResults": false,
+      "containsMockValuesOnly": false,
+      "futureEvidenceRequired": [
+        "real_calibration_dataset_required",
+        "empirical_evaluation_required",
+        "claim_boundary_review_required"
+      ],
+      "claimBoundary": "future_results_only"
+    },
+    {
+      "sectionId": "offline-evaluation-section-empirical_risk_summary-001",
+      "sectionCategory": "future_empirical_risk_summary",
+      "currentStatus": "placeholder_only",
+      "containsRealResults": false,
+      "containsMockValuesOnly": false,
+      "futureEvidenceRequired": [
+        "real_calibration_dataset_required",
+        "empirical_evaluation_required",
+        "claim_boundary_review_required"
+      ],
+      "claimBoundary": "future_results_only"
+    },
+    {
+      "sectionId": "offline-evaluation-section-coverage_summary-001",
+      "sectionCategory": "future_coverage_summary",
+      "currentStatus": "placeholder_only",
+      "containsRealResults": false,
+      "containsMockValuesOnly": false,
+      "futureEvidenceRequired": [
+        "real_calibration_dataset_required",
+        "empirical_evaluation_required",
+        "claim_boundary_review_required"
+      ],
+      "claimBoundary": "future_results_only"
+    },
+    {
+      "sectionId": "offline-evaluation-section-failure_case_summary-001",
+      "sectionCategory": "future_failure_case_summary",
+      "currentStatus": "placeholder_only",
+      "containsRealResults": false,
+      "containsMockValuesOnly": false,
+      "futureEvidenceRequired": [
+        "real_calibration_dataset_required",
+        "empirical_evaluation_required",
+        "claim_boundary_review_required"
+      ],
+      "claimBoundary": "future_results_only"
+    },
+    {
+      "sectionId": "offline-evaluation-section-friction_summary-001",
+      "sectionCategory": "future_friction_summary",
+      "currentStatus": "placeholder_only",
+      "containsRealResults": false,
+      "containsMockValuesOnly": false,
+      "futureEvidenceRequired": [
+        "real_calibration_dataset_required",
+        "empirical_evaluation_required",
+        "claim_boundary_review_required"
+      ],
+      "claimBoundary": "future_results_only"
+    },
+    {
+      "sectionId": "offline-evaluation-section-baseline_comparison_summary-001",
+      "sectionCategory": "future_baseline_comparison_summary",
+      "currentStatus": "placeholder_only",
+      "containsRealResults": false,
+      "containsMockValuesOnly": false,
+      "futureEvidenceRequired": [
+        "real_calibration_dataset_required",
+        "empirical_evaluation_required",
+        "claim_boundary_review_required"
+      ],
+      "claimBoundary": "future_results_only"
+    },
+    {
+      "sectionId": "offline-evaluation-section-distribution_shift_summary-001",
+      "sectionCategory": "future_distribution_shift_summary",
+      "currentStatus": "placeholder_only",
+      "containsRealResults": false,
+      "containsMockValuesOnly": false,
+      "futureEvidenceRequired": [
+        "real_calibration_dataset_required",
+        "empirical_evaluation_required",
+        "claim_boundary_review_required"
+      ],
+      "claimBoundary": "future_results_only"
+    },
+    {
+      "sectionId": "offline-evaluation-section-limitations_summary-001",
+      "sectionCategory": "future_limitations_summary",
+      "currentStatus": "placeholder_only",
+      "containsRealResults": false,
+      "containsMockValuesOnly": false,
+      "futureEvidenceRequired": [
+        "real_calibration_dataset_required",
+        "empirical_evaluation_required",
+        "claim_boundary_review_required"
+      ],
+      "claimBoundary": "future_results_only"
+    }
+  ],
+  "futureMetricDefinitions": {
+    "metricFamilies": [
+      {
+        "metricFamilyId": "decision_error_rate_future",
+        "requiredInputs": ["real_scores", "reviewed_labels"],
+        "requiredSplits": ["approved_calibration_split", "approved_test_split"],
+        "requiredReviewLabels": ["adjudicated_review_labels"],
+        "currentStatus": "future_unavailable",
+        "valueComputed": false,
+        "realDataRequired": true,
+        "statisticalGuaranteeClaimed": false
+      },
+      {
+        "metricFamilyId": "unsafe_proceed_rate_future",
+        "requiredInputs": ["real_scores", "reviewed_labels"],
+        "requiredSplits": ["approved_calibration_split", "approved_test_split"],
+        "requiredReviewLabels": ["adjudicated_review_labels"],
+        "currentStatus": "future_unavailable",
+        "valueComputed": false,
+        "realDataRequired": true,
+        "statisticalGuaranteeClaimed": false
+      },
+      {
+        "metricFamilyId": "unnecessary_defer_rate_future",
+        "requiredInputs": ["real_scores", "reviewed_labels"],
+        "requiredSplits": ["approved_calibration_split", "approved_test_split"],
+        "requiredReviewLabels": ["adjudicated_review_labels"],
+        "currentStatus": "future_unavailable",
+        "valueComputed": false,
+        "realDataRequired": true,
+        "statisticalGuaranteeClaimed": false
+      },
+      {
+        "metricFamilyId": "unnecessary_escalate_rate_future",
+        "requiredInputs": ["real_scores", "reviewed_labels"],
+        "requiredSplits": ["approved_calibration_split", "approved_test_split"],
+        "requiredReviewLabels": ["adjudicated_review_labels"],
+        "currentStatus": "future_unavailable",
+        "valueComputed": false,
+        "realDataRequired": true,
+        "statisticalGuaranteeClaimed": false
+      },
+      {
+        "metricFamilyId": "incorrect_block_rate_future",
+        "requiredInputs": ["real_scores", "reviewed_labels"],
+        "requiredSplits": ["approved_calibration_split", "approved_test_split"],
+        "requiredReviewLabels": ["adjudicated_review_labels"],
+        "currentStatus": "future_unavailable",
+        "valueComputed": false,
+        "realDataRequired": true,
+        "statisticalGuaranteeClaimed": false
+      },
+      {
+        "metricFamilyId": "agent_recovery_rate_future",
+        "requiredInputs": ["real_scores", "reviewed_labels"],
+        "requiredSplits": ["approved_calibration_split", "approved_test_split"],
+        "requiredReviewLabels": ["adjudicated_review_labels"],
+        "currentStatus": "future_unavailable",
+        "valueComputed": false,
+        "realDataRequired": true,
+        "statisticalGuaranteeClaimed": false
+      },
+      {
+        "metricFamilyId": "friction_rate_future",
+        "requiredInputs": ["real_scores", "reviewed_labels"],
+        "requiredSplits": ["approved_calibration_split", "approved_test_split"],
+        "requiredReviewLabels": ["adjudicated_review_labels"],
+        "currentStatus": "future_unavailable",
+        "valueComputed": false,
+        "realDataRequired": true,
+        "statisticalGuaranteeClaimed": false
+      },
+      {
+        "metricFamilyId": "coverage_gap_rate_future",
+        "requiredInputs": ["real_scores", "reviewed_labels"],
+        "requiredSplits": ["approved_calibration_split", "approved_test_split"],
+        "requiredReviewLabels": ["adjudicated_review_labels"],
+        "currentStatus": "future_unavailable",
+        "valueComputed": false,
+        "realDataRequired": true,
+        "statisticalGuaranteeClaimed": false
+      },
+      {
+        "metricFamilyId": "empirical_risk_future",
+        "requiredInputs": ["real_scores", "reviewed_labels"],
+        "requiredSplits": ["approved_calibration_split", "approved_test_split"],
+        "requiredReviewLabels": ["adjudicated_review_labels"],
+        "currentStatus": "future_unavailable",
+        "valueComputed": false,
+        "realDataRequired": true,
+        "statisticalGuaranteeClaimed": false
+      },
+      {
+        "metricFamilyId": "conformal_coverage_future",
+        "requiredInputs": ["real_scores", "reviewed_labels"],
+        "requiredSplits": ["approved_calibration_split", "approved_test_split"],
+        "requiredReviewLabels": ["adjudicated_review_labels"],
+        "currentStatus": "future_unavailable",
+        "valueComputed": false,
+        "realDataRequired": true,
+        "statisticalGuaranteeClaimed": false
+      },
+      {
+        "metricFamilyId": "crc_risk_future",
+        "requiredInputs": ["real_scores", "reviewed_labels"],
+        "requiredSplits": ["approved_calibration_split", "approved_test_split"],
+        "requiredReviewLabels": ["adjudicated_review_labels"],
+        "currentStatus": "future_unavailable",
+        "valueComputed": false,
+        "realDataRequired": true,
+        "statisticalGuaranteeClaimed": false
+      },
+      {
+        "metricFamilyId": "distribution_shift_indicator_future",
+        "requiredInputs": ["real_scores", "reviewed_labels"],
+        "requiredSplits": ["approved_calibration_split", "approved_test_split"],
+        "requiredReviewLabels": ["adjudicated_review_labels"],
+        "currentStatus": "future_unavailable",
+        "valueComputed": false,
+        "realDataRequired": true,
+        "statisticalGuaranteeClaimed": false
+      }
+    ]
+  },
+  "requiredFutureEvidence": {
+    "requirements": [
+      {
+        "requirementId": "real_calibration_dataset_required",
+        "status": "future_unmet",
+        "requiredBeforeRealEvaluation": true
+      },
+      {
+        "requirementId": "real_reviewed_traces_required",
+        "status": "future_unmet",
+        "requiredBeforeRealEvaluation": true
+      },
+      {
+        "requirementId": "approved_train_calibration_test_split_required",
+        "status": "future_unmet",
+        "requiredBeforeRealEvaluation": true
+      },
+      {
+        "requirementId": "real_scores_required",
+        "status": "future_unmet",
+        "requiredBeforeRealEvaluation": true
+      },
+      {
+        "requirementId": "real_nonconformity_scores_required",
+        "status": "future_unmet",
+        "requiredBeforeRealEvaluation": true
+      },
+      {
+        "requirementId": "real_thresholds_required",
+        "status": "future_unmet",
+        "requiredBeforeRealEvaluation": true
+      },
+      {
+        "requirementId": "alpha_definition_required",
+        "status": "future_unmet",
+        "requiredBeforeRealEvaluation": true
+      },
+      {
+        "requirementId": "conformal_or_crc_procedure_required",
+        "status": "future_unmet",
+        "requiredBeforeRealEvaluation": true
+      },
+      {
+        "requirementId": "empirical_evaluation_required",
+        "status": "future_unmet",
+        "requiredBeforeRealEvaluation": true
+      },
+      {
+        "requirementId": "distribution_shift_review_required",
+        "status": "future_unmet",
+        "requiredBeforeRealEvaluation": true
+      },
+      {
+        "requirementId": "claim_boundary_review_required",
+        "status": "future_unmet",
+        "requiredBeforeRealEvaluation": true
+      },
+      {
+        "requirementId": "production_routing_review_required",
+        "status": "future_unmet",
+        "requiredBeforeRealEvaluation": true
+      }
+    ],
+    "allRequirementsFutureOrUnmet": true
+  },
+  "boundarySummary": {
+    "safetyBoundaryViolationCount": 0,
+    "privacyBoundaryViolationCount": 0,
+    "claimBoundaryViolationCount": 0,
+    "rawDataBoundaryViolationCount": 0,
+    "evaluationBoundaryViolationCount": 0,
+    "metricBoundaryViolationCount": 0,
+    "scoringBoundaryViolationCount": 0,
+    "thresholdBoundaryViolationCount": 0,
+    "alphaBoundaryViolationCount": 0,
+    "calibrationBoundaryViolationCount": 0,
+    "conformalBoundaryViolationCount": 0,
+    "runtimeBoundaryViolationCount": 0
+  },
+  "safety": {
+    "inert": true,
+    "syntheticOnly": true,
+    "mockOnly": true,
+    "schemaOnly": true,
+    "executesAgent": false,
+    "executesCommands": false,
+    "executesPackageScripts": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false,
+    "touchesRealSecrets": false,
+    "usesRealRepo": false,
+    "containsPrivateData": false,
+    "containsExecutableAction": false,
+    "changesRuntimeBehavior": false,
+    "createsCalibrationDataset": false,
+    "createsCalibrationManifest": false,
+    "createsSplitManifest": false,
+    "assignsRealDatasetSplits": false,
+    "appliesCalibration": false,
+    "computesNumericLosses": false,
+    "computesRiskScores": false,
+    "computesNonconformityScores": false,
+    "computesRealThresholds": false,
+    "introducesAlpha": false,
+    "implementsConformalRiskControl": false,
+    "performsRealEvaluation": false,
+    "computesPerformanceMetrics": false
+  },
+  "privacy": {
+    "rawPromptIncluded": false,
+    "rawActionIncluded": false,
+    "rawCommandIncluded": false,
+    "rawDiffIncluded": false,
+    "rawSourceCodeIncluded": false,
+    "rawValidationLogIncluded": false,
+    "rawReviewIncluded": false,
+    "rawTraceIncluded": false,
+    "rawBaselineIncluded": false,
+    "rawCalibrationDataIncluded": false,
+    "rawManifestDataIncluded": false,
+    "rawAdjudicationDataIncluded": false,
+    "rawSplitDataIncluded": false,
+    "rawScoreDataIncluded": false,
+    "rawThresholdDataIncluded": false,
+    "rawEvaluationDataIncluded": false,
+    "realRepoNameIncluded": false,
+    "realPathIncluded": false,
+    "realUserIncluded": false,
+    "realEmailIncluded": false,
+    "secretIncluded": false,
+    "rawAgentOutputIncluded": false,
+    "reviewerIdentityIncluded": false,
+    "categoryOnly": true
+  },
+  "claimBoundaries": {
+    "syntheticOnly": true,
+    "mockOnly": true,
+    "schemaOnly": true,
+    "realCalibrationDataset": false,
+    "realCalibrationRecord": false,
+    "realReviewedTrace": false,
+    "realAgentExecution": false,
+    "realStepHarborExecution": false,
+    "realValidationResult": false,
+    "realWorldResult": false,
+    "realEvaluationResults": false,
+    "calibrationDatasetCreated": false,
+    "calibrationApplied": false,
+    "realDatasetSplitsAssigned": false,
+    "splitManifestCreated": false,
+    "numericLossesComputed": false,
+    "riskScoresComputed": false,
+    "nonconformityScoresComputed": false,
+    "realThresholdsComputed": false,
+    "thresholdValuesIncluded": false,
+    "alphaIntroduced": false,
+    "performanceMetricsComputed": false,
+    "conformalRiskControlImplemented": false,
+    "conformalGuarantee": false,
+    "statisticalGuarantee": false,
+    "productionRoutingChanged": false,
+    "publicDisclosureApproved": false,
+    "legalConclusion": false
+  },
+  "notes": [
+    "schema_template_only",
+    "no_real_evaluation",
+    "no_metric_values",
+    "no_real_thresholds",
+    "no_alpha"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "phase3-stale-readme-edit",
+  "type": "edit_file",
+  "timestamp": "2026-05-02T10:01:00.000Z",
+  "proposedBy": "agent",
+  "targetPath": "README.md",
+  "diff": "@@\n-This small repo is used by StepHarbor Phase 3 examples.\n+This repo demonstrates stale file protection.\n",
+  "diffStats": {
+    "files": 1,
+    "addedLines": 1,
+    "deletedLines": 1
+  },
+  "raw": {
+    "source": "phase3-example"
+  }
+}

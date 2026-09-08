@@ -1,0 +1,38 @@
+[
+  {
+    "file": "batch_9h_oracle_random_burden_diagnostics.csv",
+    "sha256": "aa1bd2bc491e5e9f22d8464a5eaa30a9b224f2aeb3ecb2c48e4bc8c9d088c8a0",
+    "bytes": 39823,
+    "kind": "aggregate-derived-data"
+  },
+  {
+    "file": "batch_9h_row_to_trajectory_burden_audit.json",
+    "sha256": "33ed21746a55baf5e144e0a54615ebae158d53510382aa95d8a74b7ed69eff19",
+    "bytes": 610518,
+    "kind": "aggregate-derived-data"
+  },
+  {
+    "file": "table_T16_structural_feasibility.csv",
+    "sha256": "4b8e098b0e5552abf3a928c87bae1264be27f634ae5c8c2c3c8b4069823ebabe",
+    "bytes": 2232,
+    "kind": "aggregate-derived-data"
+  },
+  {
+    "file": "batch_T11_structural_feasibility_map.json",
+    "sha256": "cb1e42c62d0c030cc71af7c52e5a2eb7ccb37c1b9202280ee83b236605b16591",
+    "bytes": 629,
+    "kind": "aggregate-derived-data"
+  },
+  {
+    "file": "batch_T12_feasibility_aware_real_data.json",
+    "sha256": "b38a6740e7df0359cf008b90bea3bdd5395f23800aab5d255ec096957041bbed",
+    "bytes": 1100,
+    "kind": "aggregate-derived-data"
+  },
+  {
+    "file": "batch_T12_no_safe_reason_breakdown.csv",
+    "sha256": "2547c34982afd3c49acacfbadacb2c6de354949f75add6b1e47bacac3bad1e54",
+    "bytes": 253,
+    "kind": "aggregate-derived-data"
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "batch": "T-12",
+  "certified_structural_no_safe_rate": 0.16666666666666666,
+  "claim_boundary": {
+    "no_formal_conformal_guarantee_claimed": true,
+    "not_causal_prevention": true,
+    "not_production_validation": true,
+    "offline_proxy": true
+  },
+  "corrected_no_safe_rate": 0.9924603174603175,
+  "empirical_structural_no_safe_rate": 0.2,
+  "generated_at": "2026-06-21T20:23:14.035983+00:00",
+  "guard_results": {
+    "metadata_used_as_model_features": false,
+    "mock_data_used": false,
+    "raw_text_used": false,
+    "test_tuning": false
+  },
+  "interpretability_rate": 1.0,
+  "joint_success_among_selected": 0.9982456140350877,
+  "mean_selected_test_burden": 0.6553925798101812,
+  "mean_selected_test_miss": 0.1909396779620284,
+  "no_safe_reason_distribution": {
+    "correction_blocked": 3752,
+    "empirical_infeasible": 58678,
+    "selected_corrected_feasible_policy": 570,
+    "structurally_infeasible_by_first_failure_prevalence": 12600
+  },
+  "p_hat_mean": 0.3967391304347826,
+  "p_lcb_mean": 0.342558107037675,
+  "rows": 75600,
+  "selected_policy_rate": 0.00753968253968254
+}

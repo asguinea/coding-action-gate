@@ -1,0 +1,85 @@
+{
+  "claim_boundary": "Batch 7 score schema only; scores are uncalibrated and are not conformal/risk-controlled results.",
+  "fields": [
+    {
+      "name": "trajectory_id",
+      "raw_text": false,
+      "role": "row_identifier"
+    },
+    {
+      "name": "step_index",
+      "raw_text": false,
+      "role": "row_identifier"
+    },
+    {
+      "name": "split",
+      "raw_text": false,
+      "role": "split"
+    },
+    {
+      "name": "baseline_name",
+      "raw_text": false,
+      "role": "model_identifier"
+    },
+    {
+      "name": "model_family",
+      "raw_text": false,
+      "role": "model_identifier"
+    },
+    {
+      "higher_means_riskier": true,
+      "name": "score",
+      "raw_text": false,
+      "role": "risk_score",
+      "score_range": "[0, 1]"
+    },
+    {
+      "definition": "next_step_bad",
+      "name": "target",
+      "raw_text": false,
+      "role": "target"
+    },
+    {
+      "name": "next_step_bad",
+      "raw_text": false,
+      "role": "target_duplicate_for_audit"
+    },
+    {
+      "name": "source_bucket",
+      "raw_text": false,
+      "role": "evaluation_metadata"
+    },
+    {
+      "name": "agent",
+      "raw_text": false,
+      "role": "evaluation_metadata"
+    },
+    {
+      "name": "layout_family",
+      "raw_text": false,
+      "role": "evaluation_metadata"
+    },
+    {
+      "name": "difficulty",
+      "raw_text": false,
+      "role": "evaluation_metadata"
+    },
+    {
+      "name": "category",
+      "raw_text": false,
+      "role": "evaluation_metadata"
+    },
+    {
+      "name": "higher_means_riskier",
+      "raw_text": false,
+      "role": "score_semantics"
+    }
+  ],
+  "generated_at": "2026-06-17T13:23:01.748772+00:00",
+  "higher_means_riskier": true,
+  "intended_downstream_use": "Batch 8 conformal/risk-control thresholding on calibration data.",
+  "raw_text_fields_allowed": false,
+  "schema_version": "risk-controlled-intervention-model-score-schema.v1",
+  "score_meaning": "Estimated or heuristic risk that allowing continuation into step t+1 would allow incorrect or unuseful behavior.",
+  "score_range": "[0, 1]"
+}

@@ -1,0 +1,14 @@
+{
+  "autonomyCategories": [
+    "repeated_defer_detected",
+    "retry_budget_exceeded",
+    "no_net_progress_detected",
+    "action_scope_too_broad"
+  ],
+  "provenanceCategories": [
+    "provenance_unknown",
+    "delegated_action_provenance_unknown",
+    "provenance_untrusted"
+  ],
+  "executionModel": "metadata_only"
+}

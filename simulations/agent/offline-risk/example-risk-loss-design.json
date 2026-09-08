@@ -1,0 +1,731 @@
+{
+  "schemaVersion": "agent-offline-risk-loss-design.v1",
+  "designId": "phase-14-offline-risk-loss-design-v1",
+  "source": "synthetic_design_only",
+  "phase": {
+    "phaseId": "phase-14",
+    "phaseName": "Offline Conformal / CRC Prototype",
+    "completedPreviousPhase": "phase-13-complete-readiness-infrastructure-only",
+    "completedBatches": [],
+    "currentBatch": "14.1",
+    "futureBatches": ["14.2", "14.3", "14.4", "14.5", "14.6"],
+    "phaseStatus": "offline_prototype_design_started_without_calibration_or_guarantees"
+  },
+  "candidateLossFamilies": [
+    {
+      "lossFamilyId": "unsafe_proceed_loss",
+      "descriptionCategory": "unsafe_action_allowed_candidate",
+      "severityCategory": "safety_critical",
+      "requiredLabels": [
+        "decision_appropriateness_labels",
+        "safety_outcome_labels",
+        "block_quality_labels"
+      ],
+      "requiredEvidence": [
+        "real_reviewed_traces",
+        "eligible_calibration_dataset",
+        "adjudicated_labels",
+        "numeric_loss_definitions"
+      ],
+      "futureNumericDefinitionNeeded": true,
+      "computableWithCurrentSyntheticExamples": false,
+      "realReviewedTracesRequired": true,
+      "numericLossComputed": false
+    },
+    {
+      "lossFamilyId": "missed_block_loss",
+      "descriptionCategory": "block_needed_but_not_selected_candidate",
+      "severityCategory": "safety_critical",
+      "requiredLabels": [
+        "decision_appropriateness_labels",
+        "block_quality_labels",
+        "safety_outcome_labels"
+      ],
+      "requiredEvidence": [
+        "real_reviewed_traces",
+        "eligible_calibration_dataset",
+        "adjudicated_labels",
+        "numeric_loss_definitions"
+      ],
+      "futureNumericDefinitionNeeded": true,
+      "computableWithCurrentSyntheticExamples": false,
+      "realReviewedTracesRequired": true,
+      "numericLossComputed": false
+    },
+    {
+      "lossFamilyId": "missed_escalation_loss",
+      "descriptionCategory": "human_review_needed_but_not_requested_candidate",
+      "severityCategory": "high",
+      "requiredLabels": [
+        "decision_appropriateness_labels",
+        "escalate_quality_labels",
+        "safety_outcome_labels"
+      ],
+      "requiredEvidence": [
+        "real_reviewed_traces",
+        "eligible_calibration_dataset",
+        "adjudicated_labels",
+        "numeric_loss_definitions"
+      ],
+      "futureNumericDefinitionNeeded": true,
+      "computableWithCurrentSyntheticExamples": false,
+      "realReviewedTracesRequired": true,
+      "numericLossComputed": false
+    },
+    {
+      "lossFamilyId": "unnecessary_defer_loss",
+      "descriptionCategory": "defer_without_needed_evidence_gap_candidate",
+      "severityCategory": "medium",
+      "requiredLabels": [
+        "decision_appropriateness_labels",
+        "defer_quality_labels",
+        "friction_labels"
+      ],
+      "requiredEvidence": [
+        "real_reviewed_traces",
+        "eligible_calibration_dataset",
+        "adjudicated_labels",
+        "numeric_loss_definitions"
+      ],
+      "futureNumericDefinitionNeeded": true,
+      "computableWithCurrentSyntheticExamples": false,
+      "realReviewedTracesRequired": true,
+      "numericLossComputed": false
+    },
+    {
+      "lossFamilyId": "unnecessary_escalate_loss",
+      "descriptionCategory": "escalate_without_needed_human_review_candidate",
+      "severityCategory": "medium",
+      "requiredLabels": [
+        "decision_appropriateness_labels",
+        "escalate_quality_labels",
+        "friction_labels"
+      ],
+      "requiredEvidence": [
+        "real_reviewed_traces",
+        "eligible_calibration_dataset",
+        "adjudicated_labels",
+        "numeric_loss_definitions"
+      ],
+      "futureNumericDefinitionNeeded": true,
+      "computableWithCurrentSyntheticExamples": false,
+      "realReviewedTracesRequired": true,
+      "numericLossComputed": false
+    },
+    {
+      "lossFamilyId": "incorrect_block_loss",
+      "descriptionCategory": "block_when_action_should_not_be_blocked_candidate",
+      "severityCategory": "medium",
+      "requiredLabels": [
+        "decision_appropriateness_labels",
+        "block_quality_labels",
+        "friction_labels"
+      ],
+      "requiredEvidence": [
+        "real_reviewed_traces",
+        "eligible_calibration_dataset",
+        "adjudicated_labels",
+        "numeric_loss_definitions"
+      ],
+      "futureNumericDefinitionNeeded": true,
+      "computableWithCurrentSyntheticExamples": false,
+      "realReviewedTracesRequired": true,
+      "numericLossComputed": false
+    },
+    {
+      "lossFamilyId": "missed_uncertainty_reduction_loss",
+      "descriptionCategory": "missing_evidence_gathering_candidate",
+      "severityCategory": "medium",
+      "requiredLabels": [
+        "advisory_uncertainty_usefulness_labels",
+        "defer_quality_labels",
+        "task_progress_labels"
+      ],
+      "requiredEvidence": [
+        "real_reviewed_traces",
+        "eligible_calibration_dataset",
+        "adjudicated_labels",
+        "numeric_loss_definitions"
+      ],
+      "futureNumericDefinitionNeeded": true,
+      "computableWithCurrentSyntheticExamples": false,
+      "realReviewedTracesRequired": true,
+      "numericLossComputed": false
+    },
+    {
+      "lossFamilyId": "agent_recovery_failure_loss",
+      "descriptionCategory": "agent_did_not_recover_after_guardrail_candidate",
+      "severityCategory": "medium",
+      "requiredLabels": [
+        "agent_behavior_labels",
+        "task_progress_labels",
+        "safety_outcome_labels"
+      ],
+      "requiredEvidence": [
+        "real_reviewed_traces",
+        "eligible_calibration_dataset",
+        "adjudicated_labels",
+        "numeric_loss_definitions"
+      ],
+      "futureNumericDefinitionNeeded": true,
+      "computableWithCurrentSyntheticExamples": false,
+      "realReviewedTracesRequired": true,
+      "numericLossComputed": false
+    },
+    {
+      "lossFamilyId": "excessive_friction_loss",
+      "descriptionCategory": "guardrail_friction_candidate",
+      "severityCategory": "friction_only",
+      "requiredLabels": [
+        "friction_labels",
+        "task_progress_labels",
+        "decision_appropriateness_labels"
+      ],
+      "requiredEvidence": [
+        "real_reviewed_traces",
+        "eligible_calibration_dataset",
+        "adjudicated_labels",
+        "numeric_loss_definitions"
+      ],
+      "futureNumericDefinitionNeeded": true,
+      "computableWithCurrentSyntheticExamples": false,
+      "realReviewedTracesRequired": true,
+      "numericLossComputed": false
+    },
+    {
+      "lossFamilyId": "coverage_gap_loss",
+      "descriptionCategory": "uncovered_risk_category_candidate",
+      "severityCategory": "research_only",
+      "requiredLabels": [
+        "coverage_labels",
+        "future_loss_label_candidates",
+        "source_linkage_status"
+      ],
+      "requiredEvidence": [
+        "real_reviewed_traces",
+        "eligible_calibration_dataset",
+        "adjudicated_labels",
+        "numeric_loss_definitions"
+      ],
+      "futureNumericDefinitionNeeded": true,
+      "computableWithCurrentSyntheticExamples": false,
+      "realReviewedTracesRequired": true,
+      "numericLossComputed": false
+    }
+  ],
+  "candidateRiskDimensions": [
+    {
+      "riskDimensionId": "unsafe_action_risk",
+      "relatedUncertaintyDimensions": ["sensitive_area", "workspace_boundary"],
+      "relatedLossFamilies": ["unsafe_proceed_loss", "missed_block_loss"],
+      "requiredEvidence": ["real_reviewed_traces", "risk_score_definitions"],
+      "futureScoreNeeded": true,
+      "scoreComputed": false,
+      "realDataRequired": true
+    },
+    {
+      "riskDimensionId": "premature_action_risk",
+      "relatedUncertaintyDimensions": [
+        "missing_context",
+        "validation_uncertainty"
+      ],
+      "relatedLossFamilies": [
+        "unsafe_proceed_loss",
+        "missed_uncertainty_reduction_loss"
+      ],
+      "requiredEvidence": ["real_reviewed_traces", "risk_score_definitions"],
+      "futureScoreNeeded": true,
+      "scoreComputed": false,
+      "realDataRequired": true
+    },
+    {
+      "riskDimensionId": "missing_context_risk",
+      "relatedUncertaintyDimensions": ["missing_context"],
+      "relatedLossFamilies": [
+        "missed_uncertainty_reduction_loss",
+        "agent_recovery_failure_loss"
+      ],
+      "requiredEvidence": ["real_reviewed_traces", "risk_score_definitions"],
+      "futureScoreNeeded": true,
+      "scoreComputed": false,
+      "realDataRequired": true
+    },
+    {
+      "riskDimensionId": "stale_context_risk",
+      "relatedUncertaintyDimensions": ["stale_context"],
+      "relatedLossFamilies": [
+        "unsafe_proceed_loss",
+        "missed_uncertainty_reduction_loss"
+      ],
+      "requiredEvidence": ["real_reviewed_traces", "risk_score_definitions"],
+      "futureScoreNeeded": true,
+      "scoreComputed": false,
+      "realDataRequired": true
+    },
+    {
+      "riskDimensionId": "validation_failure_risk",
+      "relatedUncertaintyDimensions": ["validation_uncertainty"],
+      "relatedLossFamilies": ["unsafe_proceed_loss", "missed_escalation_loss"],
+      "requiredEvidence": ["real_reviewed_traces", "risk_score_definitions"],
+      "futureScoreNeeded": true,
+      "scoreComputed": false,
+      "realDataRequired": true
+    },
+    {
+      "riskDimensionId": "sensitive_area_risk",
+      "relatedUncertaintyDimensions": ["sensitive_area"],
+      "relatedLossFamilies": ["missed_escalation_loss", "missed_block_loss"],
+      "requiredEvidence": ["real_reviewed_traces", "risk_score_definitions"],
+      "futureScoreNeeded": true,
+      "scoreComputed": false,
+      "realDataRequired": true
+    },
+    {
+      "riskDimensionId": "workspace_boundary_risk",
+      "relatedUncertaintyDimensions": ["workspace_boundary"],
+      "relatedLossFamilies": ["unsafe_proceed_loss", "missed_block_loss"],
+      "requiredEvidence": ["real_reviewed_traces", "risk_score_definitions"],
+      "futureScoreNeeded": true,
+      "scoreComputed": false,
+      "realDataRequired": true
+    },
+    {
+      "riskDimensionId": "git_workflow_risk",
+      "relatedUncertaintyDimensions": ["git_workflow"],
+      "relatedLossFamilies": ["missed_escalation_loss", "incorrect_block_loss"],
+      "requiredEvidence": ["real_reviewed_traces", "risk_score_definitions"],
+      "futureScoreNeeded": true,
+      "scoreComputed": false,
+      "realDataRequired": true
+    },
+    {
+      "riskDimensionId": "environment_ambiguity_risk",
+      "relatedUncertaintyDimensions": ["environment_ambiguity"],
+      "relatedLossFamilies": [
+        "missed_escalation_loss",
+        "missed_uncertainty_reduction_loss"
+      ],
+      "requiredEvidence": ["real_reviewed_traces", "risk_score_definitions"],
+      "futureScoreNeeded": true,
+      "scoreComputed": false,
+      "realDataRequired": true
+    },
+    {
+      "riskDimensionId": "recovery_uncertainty_risk",
+      "relatedUncertaintyDimensions": ["recovery_uncertainty"],
+      "relatedLossFamilies": [
+        "agent_recovery_failure_loss",
+        "missed_uncertainty_reduction_loss"
+      ],
+      "requiredEvidence": ["real_reviewed_traces", "risk_score_definitions"],
+      "futureScoreNeeded": true,
+      "scoreComputed": false,
+      "realDataRequired": true
+    },
+    {
+      "riskDimensionId": "autonomy_retry_risk",
+      "relatedUncertaintyDimensions": ["autonomy_retry"],
+      "relatedLossFamilies": [
+        "agent_recovery_failure_loss",
+        "unsafe_proceed_loss"
+      ],
+      "requiredEvidence": ["real_reviewed_traces", "risk_score_definitions"],
+      "futureScoreNeeded": true,
+      "scoreComputed": false,
+      "realDataRequired": true
+    },
+    {
+      "riskDimensionId": "friction_risk",
+      "relatedUncertaintyDimensions": ["friction"],
+      "relatedLossFamilies": [
+        "unnecessary_defer_loss",
+        "unnecessary_escalate_loss",
+        "incorrect_block_loss",
+        "excessive_friction_loss"
+      ],
+      "requiredEvidence": ["real_reviewed_traces", "risk_score_definitions"],
+      "futureScoreNeeded": true,
+      "scoreComputed": false,
+      "realDataRequired": true
+    },
+    {
+      "riskDimensionId": "coverage_gap_risk",
+      "relatedUncertaintyDimensions": ["coverage_gap"],
+      "relatedLossFamilies": [
+        "coverage_gap_loss",
+        "missed_block_loss",
+        "missed_escalation_loss"
+      ],
+      "requiredEvidence": ["real_reviewed_traces", "risk_score_definitions"],
+      "futureScoreNeeded": true,
+      "scoreComputed": false,
+      "realDataRequired": true
+    }
+  ],
+  "requiredLabelInputs": [
+    {
+      "labelInputId": "decision_appropriateness_labels",
+      "sourcePhase": "phase-13",
+      "requiredForLossFamilies": [
+        "unsafe_proceed_loss",
+        "missed_block_loss",
+        "missed_escalation_loss",
+        "unnecessary_defer_loss",
+        "unnecessary_escalate_loss",
+        "incorrect_block_loss"
+      ],
+      "requiredForRiskDimensions": ["unsafe_action_risk", "friction_risk"],
+      "currentStatus": "synthetic_schema_example_only",
+      "realReviewedTraceRequired": true,
+      "adjudicationRequiredBeforeUse": true
+    },
+    {
+      "labelInputId": "advisory_uncertainty_usefulness_labels",
+      "sourcePhase": "phase-13",
+      "requiredForLossFamilies": ["missed_uncertainty_reduction_loss"],
+      "requiredForRiskDimensions": [
+        "missing_context_risk",
+        "stale_context_risk",
+        "environment_ambiguity_risk"
+      ],
+      "currentStatus": "synthetic_schema_example_only",
+      "realReviewedTraceRequired": true,
+      "adjudicationRequiredBeforeUse": true
+    },
+    {
+      "labelInputId": "defer_quality_labels",
+      "sourcePhase": "phase-13",
+      "requiredForLossFamilies": [
+        "unnecessary_defer_loss",
+        "missed_uncertainty_reduction_loss"
+      ],
+      "requiredForRiskDimensions": ["premature_action_risk"],
+      "currentStatus": "synthetic_schema_example_only",
+      "realReviewedTraceRequired": true,
+      "adjudicationRequiredBeforeUse": true
+    },
+    {
+      "labelInputId": "escalate_quality_labels",
+      "sourcePhase": "phase-13",
+      "requiredForLossFamilies": [
+        "missed_escalation_loss",
+        "unnecessary_escalate_loss"
+      ],
+      "requiredForRiskDimensions": ["sensitive_area_risk", "git_workflow_risk"],
+      "currentStatus": "synthetic_schema_example_only",
+      "realReviewedTraceRequired": true,
+      "adjudicationRequiredBeforeUse": true
+    },
+    {
+      "labelInputId": "block_quality_labels",
+      "sourcePhase": "phase-13",
+      "requiredForLossFamilies": [
+        "unsafe_proceed_loss",
+        "missed_block_loss",
+        "incorrect_block_loss"
+      ],
+      "requiredForRiskDimensions": [
+        "unsafe_action_risk",
+        "workspace_boundary_risk"
+      ],
+      "currentStatus": "synthetic_schema_example_only",
+      "realReviewedTraceRequired": true,
+      "adjudicationRequiredBeforeUse": true
+    },
+    {
+      "labelInputId": "agent_behavior_labels",
+      "sourcePhase": "phase-13",
+      "requiredForLossFamilies": ["agent_recovery_failure_loss"],
+      "requiredForRiskDimensions": [
+        "recovery_uncertainty_risk",
+        "autonomy_retry_risk"
+      ],
+      "currentStatus": "synthetic_schema_example_only",
+      "realReviewedTraceRequired": true,
+      "adjudicationRequiredBeforeUse": true
+    },
+    {
+      "labelInputId": "safety_outcome_labels",
+      "sourcePhase": "phase-13",
+      "requiredForLossFamilies": [
+        "unsafe_proceed_loss",
+        "missed_block_loss",
+        "missed_escalation_loss",
+        "agent_recovery_failure_loss"
+      ],
+      "requiredForRiskDimensions": [
+        "unsafe_action_risk",
+        "validation_failure_risk"
+      ],
+      "currentStatus": "synthetic_schema_example_only",
+      "realReviewedTraceRequired": true,
+      "adjudicationRequiredBeforeUse": true
+    },
+    {
+      "labelInputId": "task_progress_labels",
+      "sourcePhase": "phase-13",
+      "requiredForLossFamilies": [
+        "missed_uncertainty_reduction_loss",
+        "agent_recovery_failure_loss",
+        "excessive_friction_loss"
+      ],
+      "requiredForRiskDimensions": [
+        "recovery_uncertainty_risk",
+        "friction_risk"
+      ],
+      "currentStatus": "synthetic_schema_example_only",
+      "realReviewedTraceRequired": true,
+      "adjudicationRequiredBeforeUse": true
+    },
+    {
+      "labelInputId": "friction_labels",
+      "sourcePhase": "phase-13",
+      "requiredForLossFamilies": [
+        "unnecessary_defer_loss",
+        "unnecessary_escalate_loss",
+        "incorrect_block_loss",
+        "excessive_friction_loss"
+      ],
+      "requiredForRiskDimensions": ["friction_risk"],
+      "currentStatus": "synthetic_schema_example_only",
+      "realReviewedTraceRequired": true,
+      "adjudicationRequiredBeforeUse": true
+    },
+    {
+      "labelInputId": "coverage_labels",
+      "sourcePhase": "phase-13",
+      "requiredForLossFamilies": ["coverage_gap_loss"],
+      "requiredForRiskDimensions": ["coverage_gap_risk"],
+      "currentStatus": "synthetic_schema_example_only",
+      "realReviewedTraceRequired": true,
+      "adjudicationRequiredBeforeUse": true
+    },
+    {
+      "labelInputId": "future_loss_label_candidates",
+      "sourcePhase": "phase-13",
+      "requiredForLossFamilies": ["coverage_gap_loss", "unsafe_proceed_loss"],
+      "requiredForRiskDimensions": ["coverage_gap_risk"],
+      "currentStatus": "synthetic_design_available",
+      "realReviewedTraceRequired": true,
+      "adjudicationRequiredBeforeUse": true
+    },
+    {
+      "labelInputId": "source_linkage_status",
+      "sourcePhase": "phase-13",
+      "requiredForLossFamilies": ["coverage_gap_loss"],
+      "requiredForRiskDimensions": ["coverage_gap_risk"],
+      "currentStatus": "synthetic_schema_example_only",
+      "realReviewedTraceRequired": true,
+      "adjudicationRequiredBeforeUse": true
+    },
+    {
+      "labelInputId": "adjudication_status",
+      "sourcePhase": "phase-13",
+      "requiredForLossFamilies": [
+        "unsafe_proceed_loss",
+        "missed_block_loss",
+        "missed_escalation_loss"
+      ],
+      "requiredForRiskDimensions": [
+        "unsafe_action_risk",
+        "sensitive_area_risk"
+      ],
+      "currentStatus": "future_real_label_required",
+      "realReviewedTraceRequired": true,
+      "adjudicationRequiredBeforeUse": true
+    },
+    {
+      "labelInputId": "split_eligibility_status",
+      "sourcePhase": "phase-13",
+      "requiredForLossFamilies": ["unsafe_proceed_loss", "coverage_gap_loss"],
+      "requiredForRiskDimensions": ["unsafe_action_risk", "coverage_gap_risk"],
+      "currentStatus": "future_real_label_required",
+      "realReviewedTraceRequired": true,
+      "adjudicationRequiredBeforeUse": true
+    }
+  ],
+  "requiredFutureEvidence": {
+    "evidenceCategories": [
+      "real_reviewed_traces",
+      "eligible_calibration_dataset",
+      "approved_train_calibration_test_split",
+      "adjudicated_labels",
+      "numeric_loss_definitions",
+      "risk_score_definitions",
+      "nonconformity_score_definitions",
+      "threshold_selection_protocol",
+      "offline_evaluation_results",
+      "distribution_shift_assessment",
+      "claim_boundary_review"
+    ],
+    "allEvidenceFutureOrMissing": true,
+    "realEvidenceIncluded": false
+  },
+  "nonconformityInputDesign": {
+    "possibleInputFamilies": [
+      "decision_mismatch_inputs",
+      "uncertainty_driver_inputs",
+      "reduction_plan_inputs",
+      "agent_recovery_inputs",
+      "safety_outcome_inputs",
+      "friction_inputs",
+      "coverage_gap_inputs"
+    ],
+    "requiredLabels": [
+      "decision_appropriateness_labels",
+      "advisory_uncertainty_usefulness_labels",
+      "agent_behavior_labels",
+      "safety_outcome_labels",
+      "friction_labels",
+      "coverage_labels"
+    ],
+    "requiredFeatures": [
+      "decision_category",
+      "uncertainty_dimension_category",
+      "reduction_step_category",
+      "agent_response_category",
+      "outcome_category"
+    ],
+    "requiredSplits": ["future_calibration_split", "future_test_split"],
+    "currentStatus": "design_only_no_scores",
+    "nonconformityScoresComputed": false,
+    "riskScoresComputed": false,
+    "thresholdsComputed": false
+  },
+  "crcUseDesign": {
+    "intendedFutureUse": [
+      "offline_threshold_exploration",
+      "future_advisory_routing_comparison",
+      "future_risk_control_experiment",
+      "future_production_gate_only_after_evidence"
+    ],
+    "requiredBeforeUse": [
+      "real_reviewed_traces",
+      "eligible_calibration_dataset",
+      "approved_train_calibration_test_split",
+      "numeric_loss_definitions",
+      "risk_score_definitions",
+      "nonconformity_score_definitions",
+      "threshold_selection_protocol",
+      "offline_evaluation_results",
+      "claim_boundary_review"
+    ],
+    "forbiddenCurrentUse": [
+      "production_routing",
+      "guarantee_claims",
+      "real_world_validation_claims",
+      "calibrated_risk_claims",
+      "alpha_control_claims",
+      "enterprise_readiness_claims"
+    ],
+    "currentStatus": "design_only_no_crc_or_conformal_method",
+    "crcImplemented": false,
+    "conformalImplemented": false,
+    "statisticalGuaranteeClaimed": false,
+    "alphaIntroduced": false
+  },
+  "unsuitableCurrentUses": [
+    "real_calibration_dataset_training",
+    "real_threshold_selection",
+    "real_conformal_calibration",
+    "production_routing",
+    "statistical_guarantee_claims",
+    "risk_control_at_alpha_claims",
+    "real_world_validation_claims",
+    "real_agent_benchmark_claims",
+    "enterprise_readiness_claims"
+  ],
+  "boundarySummary": {
+    "safetyBoundaryViolationCount": 0,
+    "privacyBoundaryViolationCount": 0,
+    "claimBoundaryViolationCount": 0,
+    "rawDataBoundaryViolationCount": 0,
+    "calibrationBoundaryViolationCount": 0,
+    "conformalBoundaryViolationCount": 0,
+    "runtimeBoundaryViolationCount": 0,
+    "numericComputationBoundaryViolationCount": 0
+  },
+  "safety": {
+    "inert": true,
+    "syntheticOnly": true,
+    "designOnly": true,
+    "executesAgent": false,
+    "executesCommands": false,
+    "executesPackageScripts": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false,
+    "touchesRealSecrets": false,
+    "usesRealRepo": false,
+    "containsPrivateData": false,
+    "containsExecutableAction": false,
+    "changesRuntimeBehavior": false,
+    "createsCalibrationDataset": false,
+    "createsCalibrationManifest": false,
+    "createsSplitManifest": false,
+    "assignsDatasetSplits": false,
+    "appliesCalibration": false,
+    "computesNumericLosses": false,
+    "computesRiskScores": false,
+    "computesNonconformityScores": false,
+    "computesThresholds": false,
+    "introducesAlpha": false,
+    "implementsConformalRiskControl": false
+  },
+  "privacy": {
+    "rawPromptIncluded": false,
+    "rawActionIncluded": false,
+    "rawCommandIncluded": false,
+    "rawDiffIncluded": false,
+    "rawSourceCodeIncluded": false,
+    "rawValidationLogIncluded": false,
+    "rawReviewIncluded": false,
+    "rawTraceIncluded": false,
+    "rawBaselineIncluded": false,
+    "rawCalibrationDataIncluded": false,
+    "rawManifestDataIncluded": false,
+    "rawAdjudicationDataIncluded": false,
+    "rawSplitDataIncluded": false,
+    "realRepoNameIncluded": false,
+    "realPathIncluded": false,
+    "realUserIncluded": false,
+    "realEmailIncluded": false,
+    "secretIncluded": false,
+    "rawAgentOutputIncluded": false,
+    "reviewerIdentityIncluded": false,
+    "categoryOnly": true
+  },
+  "claimBoundaries": {
+    "syntheticOnly": true,
+    "designOnly": true,
+    "realCalibrationDataset": false,
+    "realCalibrationRecord": false,
+    "realReviewedTrace": false,
+    "realAgentExecution": false,
+    "realStepHarborExecution": false,
+    "realValidationResult": false,
+    "realWorldResult": false,
+    "calibrationDatasetCreated": false,
+    "calibrationApplied": false,
+    "datasetSplitsAssigned": false,
+    "splitManifestCreated": false,
+    "numericLossesComputed": false,
+    "riskScoresComputed": false,
+    "nonconformityScoresComputed": false,
+    "thresholdsComputed": false,
+    "alphaIntroduced": false,
+    "conformalRiskControlImplemented": false,
+    "conformalGuarantee": false,
+    "statisticalGuarantee": false,
+    "productionRoutingChanged": false,
+    "publicDisclosureApproved": false,
+    "legalConclusion": false
+  },
+  "notes": [
+    "phase_14_1_design_only",
+    "no_numeric_losses",
+    "no_scores",
+    "no_thresholds",
+    "no_alpha",
+    "no_conformal_crc"
+  ]
+}

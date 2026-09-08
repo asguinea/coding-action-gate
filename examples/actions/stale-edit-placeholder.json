@@ -1,0 +1,22 @@
+{
+  "id": "example-stale-edit-placeholder",
+  "type": "edit_file",
+  "timestamp": "2026-04-26T04:06:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "agentId": "example-agent",
+    "provider": "stepharbor-example",
+    "toolId": "apply_patch"
+  },
+  "targetPath": "src/service.ts",
+  "diff": "@@ -20,1 +20,1 @@\n-export const enabled = false;\n+export const enabled = true;\n",
+  "diffStats": {
+    "files": 1,
+    "addedLines": 1,
+    "deletedLines": 1
+  },
+  "expectedHash": "sha256:placeholder-before",
+  "raw": {
+    "source": "examples/actions/stale-edit-placeholder.json"
+  }
+}

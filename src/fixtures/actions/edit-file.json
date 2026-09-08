@@ -1,0 +1,22 @@
+{
+  "id": "action-edit-file-1",
+  "type": "edit_file",
+  "timestamp": "2026-04-25T19:54:00.000Z",
+  "proposedBy": "agent",
+  "origin": {
+    "agentId": "agent-1",
+    "provider": "codex",
+    "toolId": "apply_patch"
+  },
+  "targetPath": "src/domain/actions.ts",
+  "diff": "@@ -1,1 +1,1 @@\n-export const oldName = true;\n+export const newName = true;\n",
+  "diffStats": {
+    "files": 1,
+    "addedLines": 1,
+    "deletedLines": 1
+  },
+  "expectedHash": "sha256:placeholder-before",
+  "raw": {
+    "tool": "apply_patch"
+  }
+}

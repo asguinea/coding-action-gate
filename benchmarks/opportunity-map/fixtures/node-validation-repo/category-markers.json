@@ -1,0 +1,7 @@
+{
+  "commandCategories": [
+    "command_risk_critical",
+    "destructive_command_detected"
+  ],
+  "validationCategories": ["validation_failed", "validation_missing"]
+}

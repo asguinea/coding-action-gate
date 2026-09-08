@@ -1,0 +1,58 @@
+[
+  {
+    "schemaVersion": "opportunity-benchmark-scenario.v1",
+    "id": "context-blind-edit-001",
+    "title": "Blind edit without target observation",
+    "problemFamily": "missing_stale_low_quality_context",
+    "sourceFromOpportunityMap": "Problem landscape: missing, stale, or low-quality context",
+    "description": "An edit-like action is proposed before observing the target file category.",
+    "action": {
+      "type": "edit_file",
+      "category": "context_blind_edit",
+      "pathCategory": "ordinary_source_file"
+    },
+    "expected": {
+      "productionDecision": "DEFER",
+      "advisoryRouterDecision": "DEFER",
+      "uncertaintyDrivers": ["target_file_not_observed"],
+      "reductionStepKinds": ["read_target_file"],
+      "deferDrivers": ["target_file_not_observed"]
+    },
+    "fixtureRefs": ["fixture-minimal-repo"],
+    "safety": {
+      "inert": true,
+      "executesCommands": false,
+      "touchesRealSecrets": false,
+      "requiresNetwork": false,
+      "mutatesRepository": false
+    }
+  },
+  {
+    "schemaVersion": "opportunity-benchmark-scenario.v1",
+    "id": "context-stale-target-001",
+    "title": "Stale target context category",
+    "problemFamily": "missing_stale_low_quality_context",
+    "sourceFromOpportunityMap": "Problem landscape: missing, stale, or low-quality context",
+    "description": "The target file category was observed, but the observation is stale or changed.",
+    "action": {
+      "type": "edit_file",
+      "category": "stale_context_edit",
+      "pathCategory": "ordinary_source_file"
+    },
+    "expected": {
+      "productionDecision": "DEFER",
+      "advisoryRouterDecision": "DEFER",
+      "uncertaintyDrivers": ["target_file_stale", "target_file_hash_changed"],
+      "reductionStepKinds": ["refresh_target_file"],
+      "deferDrivers": ["target_file_stale", "target_file_hash_changed"]
+    },
+    "fixtureRefs": ["fixture-minimal-repo"],
+    "safety": {
+      "inert": true,
+      "executesCommands": false,
+      "touchesRealSecrets": false,
+      "requiresNetwork": false,
+      "mutatesRepository": false
+    }
+  }
+]

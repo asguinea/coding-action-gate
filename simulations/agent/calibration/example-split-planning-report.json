@@ -1,0 +1,474 @@
+{
+  "schemaVersion": "agent-calibration-split-planning-report.v1",
+  "reportId": "calibration-split-planning-synthetic-report-001",
+  "source": "synthetic_schema_split_planning_report",
+  "phase": {
+    "phaseId": "phase-13",
+    "phaseName": "Calibration Dataset Construction",
+    "completedBatches": ["13.1", "13.2", "13.3"],
+    "currentBatch": "13.4",
+    "futureBatches": ["13.5"],
+    "previousPhaseStatus": "phase-12-complete-synthetic-design-readiness-only",
+    "nextPhaseStatus": "phase-14-offline-conformal-crc-prototype-future"
+  },
+  "splitPolicy": {
+    "policyId": "synthetic_split_planning_policy",
+    "allowedFutureSplitCategories": [
+      "future_train",
+      "future_calibration",
+      "future_test",
+      "future_holdout",
+      "not_eligible"
+    ],
+    "leakageRiskCategories": [
+      "same_scenario_family",
+      "same_fixture_family",
+      "same_trace_source",
+      "same_agent_session_future",
+      "same_reviewer_batch_future",
+      "duplicated_or_near_duplicate_record",
+      "same_normalized_action_category",
+      "same_baseline_comparison_family",
+      "synthetic_example_only",
+      "unresolved_source_linkage",
+      "no_leakage_risk_detected"
+    ],
+    "groupingKeys": [
+      "scenario_family",
+      "fixture_family",
+      "trace_source",
+      "action_category",
+      "uncertainty_dimension",
+      "decision_category",
+      "review_label_family",
+      "baseline_comparison_family"
+    ],
+    "exclusionTriggerCategories": [
+      "synthetic_example_only_not_real_data",
+      "missing_required_labels",
+      "needs_adjudication",
+      "unresolved_source_linkage",
+      "boundary_violation",
+      "raw_private_data_present",
+      "raw_agent_output_present",
+      "split_assignment_not_allowed",
+      "real_review_required",
+      "future_trace_required"
+    ],
+    "splitAssignmentAllowed": false,
+    "realReviewedTracesRequiredForRealSplit": true,
+    "syntheticExamplesCanBeAssignedToRealSplit": false
+  },
+  "evaluatedRecords": [
+    {
+      "calibrationRecordId": "calibration-synthetic-ambiguous-deploy-policy-miss-001",
+      "manifestSourceRecordRef": {
+        "manifestId": "calibration-synthetic-manifest-001",
+        "calibrationRecordId": "calibration-synthetic-ambiguous-deploy-policy-miss-001"
+      },
+      "labelCompletenessRecordRef": {
+        "reportId": "calibration-label-completeness-synthetic-report-001",
+        "calibrationRecordId": "calibration-synthetic-ambiguous-deploy-policy-miss-001"
+      },
+      "sourceRecordKind": "synthetic_schema_example",
+      "proposedFutureSplitCategory": "not_eligible",
+      "splitAssigned": false,
+      "splitReadinessStatus": "needs_labels_before_future_split",
+      "leakageRiskCategories": [
+        "same_baseline_comparison_family",
+        "same_fixture_family",
+        "same_trace_source",
+        "synthetic_example_only"
+      ],
+      "groupingKeyCategories": [
+        "action_category",
+        "baseline_comparison_family",
+        "decision_category",
+        "fixture_family",
+        "review_label_family",
+        "scenario_family",
+        "trace_source",
+        "uncertainty_dimension"
+      ],
+      "exclusionReasonCategories": [
+        "future_trace_required",
+        "missing_required_labels",
+        "needs_adjudication",
+        "real_review_required",
+        "split_assignment_not_allowed",
+        "synthetic_example_only_not_real_data"
+      ],
+      "requiredBeforeSplitCategories": [
+        "adjudication_required",
+        "calibration_dataset_approval_required",
+        "claim_boundary_clearance_required",
+        "complete_required_label_groups",
+        "future_split_policy_approval_required",
+        "privacy_boundary_clearance_required",
+        "real_human_review_required",
+        "real_reviewed_trace_required",
+        "safety_boundary_clearance_required"
+      ],
+      "boundaryStatus": "boundary_safe",
+      "rawRecordIncluded": false
+    },
+    {
+      "calibrationRecordId": "calibration-synthetic-blind-edit-defer-001",
+      "manifestSourceRecordRef": {
+        "manifestId": "calibration-synthetic-manifest-001",
+        "calibrationRecordId": "calibration-synthetic-blind-edit-defer-001"
+      },
+      "labelCompletenessRecordRef": {
+        "reportId": "calibration-label-completeness-synthetic-report-001",
+        "calibrationRecordId": "calibration-synthetic-blind-edit-defer-001"
+      },
+      "sourceRecordKind": "synthetic_schema_example",
+      "proposedFutureSplitCategory": "not_eligible",
+      "splitAssigned": false,
+      "splitReadinessStatus": "synthetic_example_only_not_real_data",
+      "leakageRiskCategories": [
+        "same_baseline_comparison_family",
+        "same_fixture_family",
+        "same_normalized_action_category",
+        "same_trace_source",
+        "synthetic_example_only"
+      ],
+      "groupingKeyCategories": [
+        "action_category",
+        "baseline_comparison_family",
+        "decision_category",
+        "fixture_family",
+        "review_label_family",
+        "scenario_family",
+        "trace_source",
+        "uncertainty_dimension"
+      ],
+      "exclusionReasonCategories": [
+        "future_trace_required",
+        "real_review_required",
+        "split_assignment_not_allowed",
+        "synthetic_example_only_not_real_data"
+      ],
+      "requiredBeforeSplitCategories": [
+        "calibration_dataset_approval_required",
+        "claim_boundary_clearance_required",
+        "future_split_policy_approval_required",
+        "privacy_boundary_clearance_required",
+        "real_human_review_required",
+        "real_reviewed_trace_required",
+        "safety_boundary_clearance_required"
+      ],
+      "boundaryStatus": "boundary_safe",
+      "rawRecordIncluded": false
+    },
+    {
+      "calibrationRecordId": "calibration-synthetic-broad-refactor-coverage-gap-001",
+      "manifestSourceRecordRef": {
+        "manifestId": "calibration-synthetic-manifest-001",
+        "calibrationRecordId": "calibration-synthetic-broad-refactor-coverage-gap-001"
+      },
+      "labelCompletenessRecordRef": {
+        "reportId": "calibration-label-completeness-synthetic-report-001",
+        "calibrationRecordId": "calibration-synthetic-broad-refactor-coverage-gap-001"
+      },
+      "sourceRecordKind": "synthetic_schema_example",
+      "proposedFutureSplitCategory": "not_eligible",
+      "splitAssigned": false,
+      "splitReadinessStatus": "needs_labels_before_future_split",
+      "leakageRiskCategories": [
+        "same_baseline_comparison_family",
+        "same_fixture_family",
+        "same_normalized_action_category",
+        "synthetic_example_only"
+      ],
+      "groupingKeyCategories": [
+        "action_category",
+        "baseline_comparison_family",
+        "decision_category",
+        "fixture_family",
+        "review_label_family",
+        "scenario_family",
+        "uncertainty_dimension"
+      ],
+      "exclusionReasonCategories": [
+        "future_trace_required",
+        "missing_required_labels",
+        "needs_adjudication",
+        "real_review_required",
+        "split_assignment_not_allowed",
+        "synthetic_example_only_not_real_data"
+      ],
+      "requiredBeforeSplitCategories": [
+        "adjudication_required",
+        "calibration_dataset_approval_required",
+        "claim_boundary_clearance_required",
+        "complete_required_label_groups",
+        "future_split_policy_approval_required",
+        "privacy_boundary_clearance_required",
+        "real_human_review_required",
+        "real_reviewed_trace_required",
+        "safety_boundary_clearance_required"
+      ],
+      "boundaryStatus": "boundary_safe",
+      "rawRecordIncluded": false
+    },
+    {
+      "calibrationRecordId": "calibration-synthetic-dangerous-command-block-001",
+      "manifestSourceRecordRef": {
+        "manifestId": "calibration-synthetic-manifest-001",
+        "calibrationRecordId": "calibration-synthetic-dangerous-command-block-001"
+      },
+      "labelCompletenessRecordRef": {
+        "reportId": "calibration-label-completeness-synthetic-report-001",
+        "calibrationRecordId": "calibration-synthetic-dangerous-command-block-001"
+      },
+      "sourceRecordKind": "synthetic_schema_example",
+      "proposedFutureSplitCategory": "not_eligible",
+      "splitAssigned": false,
+      "splitReadinessStatus": "synthetic_example_only_not_real_data",
+      "leakageRiskCategories": [
+        "same_baseline_comparison_family",
+        "same_fixture_family",
+        "same_trace_source",
+        "synthetic_example_only"
+      ],
+      "groupingKeyCategories": [
+        "action_category",
+        "baseline_comparison_family",
+        "decision_category",
+        "fixture_family",
+        "review_label_family",
+        "scenario_family",
+        "trace_source",
+        "uncertainty_dimension"
+      ],
+      "exclusionReasonCategories": [
+        "future_trace_required",
+        "real_review_required",
+        "split_assignment_not_allowed",
+        "synthetic_example_only_not_real_data"
+      ],
+      "requiredBeforeSplitCategories": [
+        "calibration_dataset_approval_required",
+        "claim_boundary_clearance_required",
+        "future_split_policy_approval_required",
+        "privacy_boundary_clearance_required",
+        "real_human_review_required",
+        "real_reviewed_trace_required",
+        "safety_boundary_clearance_required"
+      ],
+      "boundaryStatus": "boundary_safe",
+      "rawRecordIncluded": false
+    },
+    {
+      "calibrationRecordId": "calibration-synthetic-sensitive-auth-escalate-001",
+      "manifestSourceRecordRef": {
+        "manifestId": "calibration-synthetic-manifest-001",
+        "calibrationRecordId": "calibration-synthetic-sensitive-auth-escalate-001"
+      },
+      "labelCompletenessRecordRef": {
+        "reportId": "calibration-label-completeness-synthetic-report-001",
+        "calibrationRecordId": "calibration-synthetic-sensitive-auth-escalate-001"
+      },
+      "sourceRecordKind": "synthetic_schema_example",
+      "proposedFutureSplitCategory": "not_eligible",
+      "splitAssigned": false,
+      "splitReadinessStatus": "needs_adjudication_before_future_split",
+      "leakageRiskCategories": [
+        "same_baseline_comparison_family",
+        "same_fixture_family",
+        "same_normalized_action_category",
+        "same_trace_source",
+        "synthetic_example_only"
+      ],
+      "groupingKeyCategories": [
+        "action_category",
+        "baseline_comparison_family",
+        "decision_category",
+        "fixture_family",
+        "review_label_family",
+        "scenario_family",
+        "trace_source",
+        "uncertainty_dimension"
+      ],
+      "exclusionReasonCategories": [
+        "future_trace_required",
+        "needs_adjudication",
+        "real_review_required",
+        "split_assignment_not_allowed",
+        "synthetic_example_only_not_real_data"
+      ],
+      "requiredBeforeSplitCategories": [
+        "adjudication_required",
+        "calibration_dataset_approval_required",
+        "claim_boundary_clearance_required",
+        "future_split_policy_approval_required",
+        "privacy_boundary_clearance_required",
+        "real_human_review_required",
+        "real_reviewed_trace_required",
+        "safety_boundary_clearance_required"
+      ],
+      "boundaryStatus": "boundary_safe",
+      "rawRecordIncluded": false
+    }
+  ],
+  "splitReadinessSummary": {
+    "totalEvaluatedRecords": 5,
+    "readyForFutureSplitDesignCount": 0,
+    "needsLabelsBeforeFutureSplitCount": 2,
+    "needsAdjudicationBeforeFutureSplitCount": 1,
+    "excludedFromFutureSplitCount": 0,
+    "syntheticExampleOnlyNotRealDataCount": 2,
+    "actualSplitAssignedCount": 0,
+    "realSplitReadyCount": 0
+  },
+  "leakageRiskSummary": {
+    "totalRecordsWithLeakageRisk": 5,
+    "sameScenarioFamilyCount": 0,
+    "sameFixtureFamilyCount": 5,
+    "sameTraceSourceCount": 4,
+    "sameAgentSessionFutureCount": 0,
+    "sameReviewerBatchFutureCount": 0,
+    "duplicatedOrNearDuplicateRecordCount": 0,
+    "sameNormalizedActionCategoryCount": 3,
+    "sameBaselineComparisonFamilyCount": 5,
+    "syntheticExampleOnlyCount": 5,
+    "unresolvedSourceLinkageCount": 0,
+    "noLeakageRiskDetectedCount": 0
+  },
+  "exclusionSummary": {
+    "totalExcludedFromFutureSplit": 5,
+    "excludedSyntheticExampleOnlyCount": 5,
+    "excludedMissingLabelsCount": 2,
+    "excludedNeedsAdjudicationCount": 3,
+    "excludedUnresolvedSourceLinkageCount": 0,
+    "excludedBoundaryViolationCount": 0,
+    "excludedRawPrivateDataCount": 0,
+    "excludedRawAgentOutputCount": 0,
+    "excludedSplitAssignmentNotAllowedCount": 5
+  },
+  "labelDependencySummary": {
+    "totalRecordsDependingOnLabelCompleteness": 5,
+    "recordsNeedingDecisionLabels": 1,
+    "recordsNeedingUncertaintyLabels": 0,
+    "recordsNeedingAgentBehaviorLabels": 1,
+    "recordsNeedingOutcomeLabels": 1,
+    "recordsNeedingFrictionLabels": 0,
+    "recordsNeedingCoverageLabels": 0,
+    "recordsNeedingAdjudicationResolution": 3,
+    "realHumanReviewRequiredCount": 5
+  },
+  "futureSplitPlanSummary": {
+    "futureTrainCandidateCount": 0,
+    "futureCalibrationCandidateCount": 0,
+    "futureTestCandidateCount": 0,
+    "futureHoldoutCandidateCount": 0,
+    "notEligibleCount": 5,
+    "splitAssignmentPerformed": false,
+    "splitManifestCreated": false,
+    "realDatasetSplitExists": false
+  },
+  "boundarySummary": {
+    "safetyBoundaryViolationCount": 0,
+    "privacyBoundaryViolationCount": 0,
+    "claimBoundaryViolationCount": 0,
+    "rawDataBoundaryViolationCount": 0,
+    "splitBoundaryViolationCount": 0,
+    "calibrationBoundaryViolationCount": 0,
+    "conformalBoundaryViolationCount": 0,
+    "runtimeBoundaryViolationCount": 0
+  },
+  "metrics": {
+    "totalEvaluatedRecords": 5,
+    "syntheticSchemaExampleCount": 5,
+    "futureControlledTraceCount": 0,
+    "futureRealTrialTraceCount": 0,
+    "realReviewedTraceCount": 0,
+    "actualSplitAssignedCount": 0,
+    "realSplitReadyCount": 0,
+    "splitManifestCreatedCount": 0,
+    "realDatasetSplitCount": 0,
+    "leakageRiskCategoryCount": 5,
+    "excludedFromFutureSplitCount": 5,
+    "calibrationDatasetCreatedCount": 0,
+    "calibrationAppliedCount": 0,
+    "thresholdComputedCount": 0,
+    "conformalImplementationCount": 0
+  },
+  "safety": {
+    "inert": true,
+    "syntheticOnly": true,
+    "executesAgent": false,
+    "executesCommands": false,
+    "executesPackageScripts": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false,
+    "touchesRealSecrets": false,
+    "usesRealRepo": false,
+    "containsPrivateData": false,
+    "containsExecutableAction": false,
+    "changesRuntimeBehavior": false,
+    "createsCalibrationDataset": false,
+    "appliesCalibration": false,
+    "implementsConformalRiskControl": false,
+    "assignsDatasetSplits": false,
+    "createsSplitManifest": false,
+    "computesThresholds": false,
+    "performsAdjudication": false,
+    "assignsReviewers": false
+  },
+  "privacy": {
+    "rawPromptIncluded": false,
+    "rawActionIncluded": false,
+    "rawCommandIncluded": false,
+    "rawDiffIncluded": false,
+    "rawSourceCodeIncluded": false,
+    "rawValidationLogIncluded": false,
+    "rawReviewIncluded": false,
+    "rawTraceIncluded": false,
+    "rawBaselineIncluded": false,
+    "rawCalibrationDataIncluded": false,
+    "rawManifestDataIncluded": false,
+    "rawAdjudicationDataIncluded": false,
+    "rawSplitDataIncluded": false,
+    "realRepoNameIncluded": false,
+    "realPathIncluded": false,
+    "realUserIncluded": false,
+    "realEmailIncluded": false,
+    "secretIncluded": false,
+    "rawAgentOutputIncluded": false,
+    "reviewerIdentityIncluded": false,
+    "categoryOnly": true
+  },
+  "claimBoundaries": {
+    "syntheticOnly": true,
+    "realSplitPlanningReport": false,
+    "realCalibrationManifest": false,
+    "realCalibrationDataset": false,
+    "realCalibrationRecord": false,
+    "realReviewedTrace": false,
+    "realHumanAdjudication": false,
+    "realReviewerAssigned": false,
+    "realAgentExecution": false,
+    "realStepHarborExecution": false,
+    "realValidationResult": false,
+    "realWorldResult": false,
+    "calibrationDatasetCreated": false,
+    "calibrationApplied": false,
+    "datasetSplitsAssigned": false,
+    "splitManifestCreated": false,
+    "thresholdsComputed": false,
+    "conformalRiskControlImplemented": false,
+    "conformalGuarantee": false,
+    "statisticalGuarantee": false,
+    "productionRoutingChanged": false,
+    "publicDisclosureApproved": false,
+    "legalConclusion": false
+  },
+  "notes": [
+    "synthetic_split_planning_report",
+    "no_real_splits_assigned",
+    "no_split_manifest_created",
+    "not_real_calibration_data"
+  ]
+}

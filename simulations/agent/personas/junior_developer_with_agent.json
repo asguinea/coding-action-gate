@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "agent-simulation-persona.v1",
+  "personaId": "junior_developer_with_agent",
+  "displayName": "Junior developer with agent",
+  "description": "A less experienced developer relying heavily on the coding agent and more likely to miss context, tests, or workflow issues.",
+  "developmentContext": "Works in training-style fixture repos with ordinary source, tests, and safe synthetic failures.",
+  "typicalRiskPressure": "Learning pressure and agent trust can make missing validation or stale observations hard to spot.",
+  "likelyAgentUsePattern": "Lets the agent propose fixes and retries, and may not know which evidence StepHarbor expects next.",
+  "relevantStepHarborConcerns": [
+    "context",
+    "freshness",
+    "recovery",
+    "validation"
+  ],
+  "expectedSimulationValue": "Tests whether reduction plans are understandable enough to guide safe follow-up behavior.",
+  "privacyNotes": "Uses no raw user prompts, personal data, or real code excerpts."
+}

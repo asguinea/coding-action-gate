@@ -1,0 +1,22 @@
+{
+  "batch": "T-11",
+  "claim_boundary": {
+    "no_formal_conformal_guarantee_claimed": true,
+    "not_causal_prevention": true,
+    "not_production_validation": true,
+    "offline_proxy": true
+  },
+  "generated_at": "2026-06-21T20:03:14.465228+00:00",
+  "guard_results": {
+    "metadata_used_as_model_features": false,
+    "mock_data_used": false,
+    "raw_text_used": false,
+    "test_tuning": false
+  },
+  "heatmap_rows": 30,
+  "mean_abs_p_F_gap": 0.0021679733903540166,
+  "mean_p_F_calibration": 0.3967391304347826,
+  "mean_p_F_test": 0.3989071038251366,
+  "row_count": 150,
+  "structural_infeasible_rate_calibration": 0.2
+}

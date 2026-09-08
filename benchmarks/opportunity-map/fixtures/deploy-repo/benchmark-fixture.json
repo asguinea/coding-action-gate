@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "opportunity-benchmark-fixture.v1",
+  "id": "fixture-deploy-repo",
+  "title": "Deploy Category Synthetic Repo",
+  "description": "Metadata-only context for deploy, release, and environment uncertainty categories.",
+  "fixturePath": "benchmarks/opportunity-map/fixtures/deploy-repo",
+  "supportedProblemFamilies": ["environment_deploy_uncertainty"],
+  "scenarioIds": [
+    "environment-ambiguous-deploy-001",
+    "environment-prod-deploy-001"
+  ],
+  "safety": {
+    "synthetic": true,
+    "inert": true,
+    "containsRealSecrets": false,
+    "containsExecutableDangerousCommands": false,
+    "requiresNetwork": false,
+    "mutatesRepository": false
+  },
+  "categories": {
+    "hasPackageJson": true,
+    "hasDeployConfigSimulation": true
+  },
+  "categoryMarkers": [
+    "environment_unknown",
+    "deploy_target_ambiguous",
+    "deployment_command_detected",
+    "production_environment_detected",
+    "environment_risk_critical"
+  ]
+}
